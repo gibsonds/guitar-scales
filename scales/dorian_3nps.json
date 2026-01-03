@@ -1,0 +1,31 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "dorian_3nps",
+    "starting_tone": "D",
+    "starting_string": "6",
+    "starting_fret": "10",
+    "scale_type": "Dorian 3NPS",
+    "tuning": ["E", "A", "D", "G", "B", "E"],
+    "properties": {
+      "intervals": ["0", "2", "3", "5", "7", "9", "10"],
+      "mode": "Dorian 3NPS",
+      "recalculate_on_tone_change": true,
+      "scale_degrees": ["1", "2", "b3", "4", "5", "6", "b7"],
+      "fingering_variations": {
+        "index": {
+          "starting_finger": 1,
+          "description": "Starting with index finger",
+          "frets": {
+            "6": ["10", "12", "13"],
+            "5": ["10", "12", "14"],
+            "4": ["10", "12", "14"],
+            "3": ["10", "12", "14"],
+            "2": ["10", "12", "13"],
+            "1": ["10", "12", "13"]
+          }
+        }
+      }
+    }
+  }
+}

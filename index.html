@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guitar Scale Explorer - GitHub Pages</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: #edf1f6;
+      color: #0f172a;
+    }
+    body {
+      margin: 0;
+      padding: 0 1.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      padding-top: 1.8rem;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      color: #0f172a;
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #475467;
+    }
+    select, button {
+      padding: 0.55rem 0.6rem;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background: #fff;
+      color: inherit;
+      cursor: pointer;
+    }
+    button {
+      font-weight: 600;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 18px 46px rgba(15, 23, 42, 0.15);
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    canvas#fretboardCanvas {
+      width: 100%;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #fafafa, #eef2f7);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.05);
+    }
+    .pattern-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      color: #334155;
+      font-size: 0.95rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #e1effe;
+      color: #1e3a8a;
+    }
+    footer {
+      text-align: center;
+      color: #64748b;
+      font-size: 0.85rem;
+      padding: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Guitar Scale Explorer</h1>
+    <div class="controls">
+      <label>
+        Scale Shape
+        <select id="scaleSelect"></select>
+      </label>
+      <label>
+        Root Note
+        <select id="rootSelect"></select>
+      </label>
+      <label>
+        Octave
+        <div style="display: flex; gap: 0.5rem;">
+          <button id="octaveDownBtn" style="flex: 1;">-12</button>
+          <button id="octaveUpBtn" style="flex: 1;">+12</button>
+        </div>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2 id="scaleTitle" style="margin:0;"></h2>
+      <div class="pattern-meta" id="patternMeta"></div>
+      <canvas id="fretboardCanvas" width="1200" height="600"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    Guitar Scale Explorer - Client-Side Version - Deployed on GitHub Pages
+  </footer>
+
+  <script>
+    console.log('Guitar Scale Explorer - GitHub Pages Edition');
+
+    // State management
+    const state = {
+      scales: [],
+      currentScale: null,
+      currentScaleData: null,
+      octaveShift: 0
+    };
+
+    // Note to semitone mapping (C = 0)
+    const NOTE_TO_SEMITONE = {
+      'C': 0, 'C#': 1, 'Db': 1, 'D': 2, 'D#': 3, 'Eb': 3,
+      'E': 4, 'F': 5, 'F#': 6, 'Gb': 6, 'G': 7, 'G#': 8,
+      'Ab': 8, 'A': 9, 'A#': 10, 'Bb': 10, 'B': 11
+    };
+
+    const SEMITONE_TO_NOTE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    const ALL_ROOTS = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+    // Standard guitar tuning (in semitones from C)
+    const STANDARD_TUNING = [
+      NOTE_TO_SEMITONE['E'],  // String 6 (low E)
+      NOTE_TO_SEMITONE['A'],  // String 5
+      NOTE_TO_SEMITONE['D'],  // String 4
+      NOTE_TO_SEMITONE['G'],  // String 3
+      NOTE_TO_SEMITONE['B'],  // String 2
+      NOTE_TO_SEMITONE['E']   // String 1 (high E)
+    ];
+
+    // Canvas and selectors
+    const canvas = document.getElementById('fretboardCanvas');
+    const ctx = canvas.getContext('2d');
+    const scaleSelect = document.getElementById('scaleSelect');
+    const rootSelect = document.getElementById('rootSelect');
+    const scaleTitle = document.getElementById('scaleTitle');
+    const patternMeta = document.getElementById('patternMeta');
+
+    // Load scale catalog
+    async function loadScaleCatalog() {
+      const scaleFiles = [
+        'aeolian_3nps', 'altered_dominant', 'dorian_3nps', 'half_whole_diminished',
+        'ionian_3nps', 'locrian_3nps', 'lydian_3nps', 'major_blues_box',
+        'major_blues_simplified', 'minor_blues_box', 'mixolydian_3nps',
+        'phrygian_3nps', 'whole_tone'
+      ];
+
+      const promises = scaleFiles.map(async (filename) => {
+        try {
+          const response = await fetch(`scales/${filename}.json`);
+          const data = await response.json();
+          return {
+            id: filename,
+            name: data.Item.scale_type || filename,
+            data: data.Item
+          };
+        } catch (err) {
+          console.error(`Failed to load ${filename}:`, err);
+          return null;
+        }
+      });
+
+      state.scales = (await Promise.all(promises)).filter(s => s !== null);
+      populateScaleSelect();
+      populateRootSelect();
+    }
+
+    function populateScaleSelect() {
+      scaleSelect.innerHTML = '';
+      state.scales.forEach(scale => {
+        const option = document.createElement('option');
+        option.value = scale.id;
+        option.textContent = scale.name;
+        scaleSelect.appendChild(option);
+      });
+    }
+
+    function populateRootSelect() {
+      rootSelect.innerHTML = '';
+      ALL_ROOTS.forEach(note => {
+        const option = document.createElement('option');
+        option.value = note;
+        option.textContent = note;
+        rootSelect.appendChild(option);
+      });
+      rootSelect.value = 'A'; // Default to A
+    }
+
+    // Transpose scale pattern to different root
+    function transposeScale(scaleData, newRoot) {
+      const originalRoot = scaleData.starting_tone;
+      const semitoneShift = NOTE_TO_SEMITONE[newRoot] - NOTE_TO_SEMITONE[originalRoot];
+
+      console.log(`Transpose: originalRoot="${originalRoot}" (${NOTE_TO_SEMITONE[originalRoot]}), newRoot="${newRoot}" (${NOTE_TO_SEMITONE[newRoot]}), shift=${semitoneShift}`);
+
+      // Get the original frets from the fingering variations
+      const originalFrets = scaleData.properties.fingering_variations.index.frets;
+      const positions = [];
+
+      // Convert frets object to positions array
+      for (let string = 6; string >= 1; string--) {
+        const stringKey = string.toString();
+        if (originalFrets[stringKey]) {
+          originalFrets[stringKey].forEach(fretStr => {
+            const fret = parseInt(fretStr);
+            const transposedFret = fret + semitoneShift;
+
+            // Calculate what note this is
+            const stringRoot = STANDARD_TUNING[6 - string];
+            const noteValue = (stringRoot + transposedFret) % 12;
+            const note = SEMITONE_TO_NOTE[noteValue];
+
+            // Determine if it's a root note
+            const isRoot = note === newRoot;
+
+            // Find degree (simplified - assumes root is degree 1)
+            const rootSemitone = NOTE_TO_SEMITONE[newRoot];
+            const intervalFromRoot = (noteValue - rootSemitone + 12) % 12;
+            const degreeIndex = scaleData.properties.intervals.findIndex(i => parseInt(i) === intervalFromRoot);
+            const degree = degreeIndex >= 0 ? scaleData.properties.scale_degrees[degreeIndex] : '?';
+
+            positions.push({
+              string: string,
+              fret: transposedFret,
+              note: note,
+              degree: degree,
+              is_root: isRoot
+            });
+          });
+        }
+      }
+
+      return {
+        name: scaleData.scale_type,
+        root: newRoot,
+        positions: positions,
+        intervals: scaleData.properties.intervals,
+        scale_degrees: scaleData.properties.scale_degrees
+      };
+    }
+
+    // Apply octave shift
+    function applyOctaveShift(transposedData) {
+      let shift = state.octaveShift;
+
+      // Calculate min_fret before shift
+      const fretsBeforeShift = transposedData.positions.map(p => p.fret);
+      const minFretBeforeShift = Math.min(...fretsBeforeShift);
+
+      // Auto-shift down if pattern starts above fret 12 (when octaveShift is 0)
+      if (state.octaveShift === 0 && minFretBeforeShift > 12) {
+        shift = -12;
+      }
+
+      if (shift === 0) {
+        return transposedData;
+      }
+
+      // Apply shift
+      const shiftedPositions = transposedData.positions
+        .map(pos => ({
+          ...pos,
+          fret: pos.fret + shift
+        }))
+        .filter(pos => pos.fret >= 0 && pos.fret <= 24);
+
+      return {
+        ...transposedData,
+        positions: shiftedPositions
+      };
+    }
+
+    // Validate intervals between positions being drawn
+    function validateDisplayedIntervals(positions) {
+      console.log('\n=== VISUAL DISPLAY INTERVAL CHECK ===');
+
+      // Group by string and sort by fret
+      const byString = {};
+      positions.forEach(pos => {
+        if (!byString[pos.string]) byString[pos.string] = [];
+        byString[pos.string].push(pos);
+      });
+
+      // Sort each string by fret
+      Object.keys(byString).forEach(s => {
+        byString[s].sort((a, b) => a.fret - b.fret);
+      });
+
+      // Expected intervals between adjacent strings (same fret position in pattern)
+      const expectedIntervals = {
+        '6-5': 5, // E to A (P4)
+        '5-4': 5, // A to D (P4)
+        '4-3': 5, // D to G (P4)
+        '3-2': 4, // G to B (M3)
+        '2-1': 5  // B to E (P4)
+      };
+
+      let violations = 0;
+
+      // Check intervals between adjacent strings
+      for (let string = 6; string > 1; string--) {
+        const nextString = string - 1;
+        if (!byString[string] || !byString[nextString]) continue;
+
+        const positions1 = byString[string];
+        const positions2 = byString[nextString];
+
+        // Check notes at EXACT same fret (tuning interval check)
+        positions1.forEach((pos1, idx) => {
+          positions2.forEach(pos2 => {
+            // Only compare if EXACT same fret
+            if (pos2.fret === pos1.fret) {
+              const note1Semitone = NOTE_TO_SEMITONE[pos1.note];
+              const note2Semitone = NOTE_TO_SEMITONE[pos2.note];
+              const interval = (note2Semitone - note1Semitone + 12) % 12;
+              const expected = expectedIntervals[`${string}-${nextString}`];
+
+              if (interval !== expected) {
+                console.log(`✗ String ${string} (${pos1.note}, f${pos1.fret}) → String ${nextString} (${pos2.note}, f${pos2.fret}): Expected interval ${expected}, Got ${interval}`);
+                violations++;
+              } else {
+                console.log(`✓ Fret ${pos1.fret}: String ${string} (${pos1.note}) → String ${nextString} (${pos2.note}) = ${interval} semitones (correct)`);
+              }
+            }
+          });
+        });
+      }
+
+      if (violations === 0) {
+        console.log('✓ All displayed intervals are correct!');
+      } else {
+        console.log(`✗ Found ${violations} interval violations in visual display`);
+      }
+
+      return violations === 0;
+    }
+
+    // Draw fretboard
+    function drawFretboard(scaleData) {
+      const width = canvas.width;
+      const height = canvas.height;
+      ctx.clearRect(0, 0, width, height);
+
+      if (!scaleData.positions || scaleData.positions.length === 0) {
+        ctx.fillStyle = '#64748b';
+        ctx.font = '20px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('No positions to display', width / 2, height / 2);
+        return;
+      }
+
+      // Validate intervals before drawing
+      validateDisplayedIntervals(scaleData.positions);
+
+      const frets = scaleData.positions.map(p => p.fret);
+      const minFret = Math.min(...frets);
+      const maxFret = Math.max(...frets);
+      const fretRange = Math.max(maxFret - minFret + 2, 5);
+
+      const margin = 80;
+      const stringSpacing = (height - 2 * margin) / 5;
+      const fretSpacing = (width - 2 * margin) / fretRange;
+
+      // Draw strings
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 6; i++) {
+        const y = margin + i * stringSpacing;
+        ctx.beginPath();
+        ctx.moveTo(margin, y);
+        ctx.lineTo(width - margin, y);
+        ctx.stroke();
+      }
+
+      // Draw frets
+      for (let i = 0; i <= fretRange; i++) {
+        const x = margin + i * fretSpacing;
+        ctx.beginPath();
+        ctx.moveTo(x, margin);
+        ctx.lineTo(x, height - margin);
+        ctx.stroke();
+
+        // Fret numbers
+        const fretNumber = minFret + i;
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(fretNumber, x, height - margin + 25);
+      }
+
+      // Draw positions
+      scaleData.positions.forEach(pos => {
+        // String 1 (high E) at top, String 6 (low E) at bottom
+        const stringIndex = pos.string - 1;  // String 1 = index 0 (top), String 6 = index 5 (bottom)
+        const fretOffset = pos.fret - minFret;
+
+        const x = margin + (fretOffset + 0.5) * fretSpacing;
+        const y = margin + stringIndex * stringSpacing;
+        const radius = 18;
+
+        // Circle
+        ctx.fillStyle = pos.is_root ? '#f97316' : '#3b82f6';
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, 2 * Math.PI);
+        ctx.fill();
+
+        // Degree text
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(pos.is_root ? 'R' : pos.degree, x, y);
+
+        // Note name below
+        ctx.fillStyle = '#1f2937';
+        ctx.font = '11px sans-serif';
+        ctx.textBaseline = 'top';
+        ctx.fillText(pos.note, x, y + radius + 4);
+      });
+    }
+
+    // Update display
+    function updateDisplay() {
+      const scale = state.scales.find(s => s.id === scaleSelect.value);
+      if (!scale) return;
+
+      const root = rootSelect.value;
+
+      // Transpose to selected root
+      const transposed = transposeScale(scale.data, root);
+
+      // DEBUG: Log the first few positions
+      console.log(`\n=== ${scale.name} in ${root} ===`);
+      const byString = {};
+      transposed.positions.forEach(pos => {
+        if (!byString[pos.string]) byString[pos.string] = [];
+        byString[pos.string].push(pos);
+      });
+
+      for (let s = 6; s >= 1; s--) {
+        if (byString[s]) {
+          const notes = byString[s].map(p => `${p.note}(f${p.fret})`).join(', ');
+          console.log(`String ${s}: ${notes}`);
+        }
+      }
+
+      // Apply octave shift
+      const final = applyOctaveShift(transposed);
+
+      state.currentScaleData = final;
+
+      // Update title
+      scaleTitle.textContent = `${final.name} — Root: ${final.root}`;
+
+      // Update metadata
+      patternMeta.innerHTML = '';
+      const frets = final.positions.map(p => p.fret);
+      const minFret = Math.min(...frets);
+      const maxFret = Math.max(...frets);
+
+      const metadata = [
+        { label: 'Root', value: final.root },
+        { label: 'Intervals', value: final.intervals.join(' · ') },
+        { label: 'Frets', value: `${minFret}-${maxFret}` }
+      ];
+
+      if (state.octaveShift !== 0) {
+        metadata.push({ label: 'Octave', value: `${state.octaveShift > 0 ? '+' : ''}${state.octaveShift}` });
+      }
+
+      metadata.forEach(item => {
+        const pill = document.createElement('span');
+        pill.className = 'pill';
+        pill.textContent = `${item.label}: ${item.value}`;
+        patternMeta.appendChild(pill);
+      });
+
+      // Draw fretboard
+      drawFretboard(final);
+    }
+
+    // Event listeners
+    scaleSelect.addEventListener('change', () => {
+      state.octaveShift = 0;
+      updateDisplay();
+    });
+
+    rootSelect.addEventListener('change', () => {
+      state.octaveShift = 0;
+      updateDisplay();
+    });
+
+    document.getElementById('octaveUpBtn').addEventListener('click', () => {
+      state.octaveShift += 12;
+      updateDisplay();
+    });
+
+    document.getElementById('octaveDownBtn').addEventListener('click', () => {
+      state.octaveShift -= 12;
+      updateDisplay();
+    });
+
+    // Sanity check tuning intervals
+    function testTuningIntervals() {
+      console.log('=== TUNING INTERVAL SANITY CHECK ===');
+
+      // Expected intervals between adjacent strings (in semitones)
+      const expectedIntervals = [
+        { from: 6, to: 5, interval: 5, name: 'E to A (P4)' },
+        { from: 5, to: 4, interval: 5, name: 'A to D (P4)' },
+        { from: 4, to: 3, interval: 5, name: 'D to G (P4)' },
+        { from: 3, to: 2, interval: 4, name: 'G to B (M3)' },
+        { from: 2, to: 1, interval: 5, name: 'B to E (P4)' }
+      ];
+
+      let allPassed = true;
+
+      // Test same fret across all strings
+      const testFret = 5;
+      console.log(`\nTesting fret ${testFret} across all strings:`);
+
+      for (let test of expectedIntervals) {
+        const string1Idx = 6 - test.from;
+        const string2Idx = 6 - test.to;
+
+        const note1 = (STANDARD_TUNING[string1Idx] + testFret) % 12;
+        const note2 = (STANDARD_TUNING[string2Idx] + testFret) % 12;
+
+        const actualInterval = (note2 - note1 + 12) % 12;
+        const passed = actualInterval === test.interval;
+
+        console.log(
+          `String ${test.from} → ${test.to} (${test.name}): ` +
+          `Expected ${test.interval}, Got ${actualInterval} ${passed ? '✓' : '✗ FAIL'}`
+        );
+
+        if (!passed) allPassed = false;
+      }
+
+      // Test octaves (same note on different strings/frets)
+      console.log('\n=== OCTAVE CHECK ===');
+      // E notes: String 6 fret 0, String 4 fret 2, String 1 fret 0
+      const eNote1 = (STANDARD_TUNING[0] + 0) % 12; // String 6, fret 0
+      const eNote2 = (STANDARD_TUNING[2] + 2) % 12; // String 4, fret 2
+      const eNote3 = (STANDARD_TUNING[5] + 0) % 12; // String 1, fret 0
+
+      console.log(`E note check: S6F0=${eNote1}, S4F2=${eNote2}, S1F0=${eNote3} (all should be 4)`);
+
+      if (allPassed) {
+        console.log('\n✓ All tuning interval checks PASSED');
+      } else {
+        console.log('\n✗ Some tuning interval checks FAILED');
+      }
+
+      return allPassed;
+    }
+
+    // Initialize
+    loadScaleCatalog().then(() => {
+      testTuningIntervals();
+      updateDisplay();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "major_blues_box",
+    "starting_tone": "A",
+    "starting_string": "6",
+    "starting_fret": "5",
+    "scale_type": "Major Blues Box",
+    "tuning": ["E", "A", "D", "G", "B", "E"],
+    "properties": {
+      "intervals": ["0", "2", "4", "7", "9"],
+      "mode": "Major Blues",
+      "recalculate_on_tone_change": true,
+      "scale_degrees": ["1", "2", "3", "5", "6"],
+      "fingering_variations": {
+        "index": {
+          "starting_finger": 1,
+          "description": "Starting with index finger",
+          "frets": {
+            "6": ["5", "7"],
+            "5": ["4", "7"],
+            "4": ["4", "7"],
+            "3": ["4", "6"],
+            "2": ["5", "7"],
+            "1": ["5", "7"]
+          }
+        }
+      }
+    }
+  }
+}

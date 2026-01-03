@@ -1,0 +1,31 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "mixolydian_3nps",
+    "starting_tone": "C",
+    "starting_string": "6",
+    "starting_fret": "8",
+    "scale_type": "Mixolydian 3NPS",
+    "tuning": ["E", "A", "D", "G", "B", "E"],
+    "properties": {
+      "intervals": ["0", "2", "4", "5", "7", "9", "10"],
+      "mode": "Mixolydian 3NPS",
+      "recalculate_on_tone_change": true,
+      "scale_degrees": ["1", "2", "3", "4", "5", "6", "b7"],
+      "fingering_variations": {
+        "index": {
+          "starting_finger": 1,
+          "description": "Starting with index finger",
+          "frets": {
+            "6": ["8", "10", "12"],
+            "5": ["8", "10", "12"],
+            "4": ["8", "10", "12"],
+            "3": ["9", "10", "12"],
+            "2": ["10", "11", "13"],
+            "1": ["10", "12", "13"]
+          }
+        }
+      }
+    }
+  }
+}

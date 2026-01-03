@@ -111,3 +111,4 @@ Works in all modern browsers:
 ## License
 
 MIT License - Feel free to fork and customize!
+

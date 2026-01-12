@@ -1,11 +1,11 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "em_pentatonic_box2",
+    "exercise": "minor_pentatonic_box2",
     "starting_tone": "E",
     "starting_string": "6",
     "starting_fret": "12",
-    "scale_type": "E Minor Pentatonic - Box 2 (12th Position)",
+    "scale_type": "Minor Pentatonic - Box 2",
     "tuning": ["E", "A", "D", "G", "B", "E"],
     "properties": {
       "intervals": ["0", "3", "5", "7", "10"],
@@ -14,7 +14,7 @@
       "scale_degrees": ["1", "b3", "4", "5", "b7"],
       "pattern_type": "box",
       "position": 2,
-      "description": "Box shape starting at 12th fret - common rock/blues position",
+      "description": "Box shape pattern - common rock/blues position (transcribed from 12th fret)",
       "fingering_variations": {
         "index": {
           "starting_finger": 1,

@@ -5,16 +5,16 @@
     "starting_tone": "D",
     "starting_string": "6",
     "starting_fret": "5",
-    "scale_type": "Hexatonic - Position 1",
+    "scale_type": "Hexatonic Blues - Position 1",
     "tuning": ["E", "A", "D", "G", "B", "E"],
     "properties": {
-      "intervals": ["0", "2", "4", "7", "9", "11"],
-      "mode": "Hexatonic",
+      "intervals": ["0", "2", "3", "5", "7", "10"],
+      "mode": "Hexatonic Blues",
       "recalculate_on_tone_change": true,
-      "scale_degrees": ["1", "2", "3", "5", "6", "7"],
+      "scale_degrees": ["1", "2", "b3", "4", "5", "b7"],
       "pattern_type": "hexatonic",
       "position": 1,
-      "description": "6-note scale pattern - combines major and minor triads (jazz/fusion)",
+      "description": "6-note blues scale - minor blues with major 2nd added",
       "fingering_variations": {
         "index": {
           "starting_finger": 1,

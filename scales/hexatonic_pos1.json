@@ -1,0 +1,42 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "hexatonic_pos1",
+    "starting_tone": "D",
+    "starting_string": "6",
+    "starting_fret": "5",
+    "scale_type": "Hexatonic - Position 1",
+    "tuning": ["E", "A", "D", "G", "B", "E"],
+    "properties": {
+      "intervals": ["0", "2", "4", "7", "9", "11"],
+      "mode": "Hexatonic",
+      "recalculate_on_tone_change": true,
+      "scale_degrees": ["1", "2", "3", "5", "6", "7"],
+      "pattern_type": "hexatonic",
+      "position": 1,
+      "description": "6-note scale pattern - combines major and minor triads (jazz/fusion)",
+      "fingering_variations": {
+        "index": {
+          "starting_finger": 1,
+          "description": "Starting with index finger",
+          "frets": {
+            "6": ["5", "7"],
+            "5": ["4", "7"],
+            "4": ["4", "7"],
+            "3": ["4", "7"],
+            "2": ["5", "7"],
+            "1": ["5", "7"]
+          },
+          "finger_assignments": {
+            "6": [1, 3],
+            "5": [1, 4],
+            "4": [1, 4],
+            "3": [1, 4],
+            "2": [1, 3],
+            "1": [1, 3]
+          }
+        }
+      }
+    }
+  }
+}

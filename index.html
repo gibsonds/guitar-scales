@@ -232,7 +232,7 @@
     <canvas id="fretboardCanvas" width="2400" height="300"></canvas>
 
     <div class="info" id="info">
-      Drag the cyan box to move your practice position
+      Drag the blue box to move your practice position
     </div>
   </div>
 
@@ -438,8 +438,8 @@
 
       const scaleData = state.currentScaleData;
       const root = scaleData.root;
-      const intervals = scaleData.intervals.map(i => parseInt(i));
-      const degrees = scaleData.scale_degrees || scaleData.degrees || [];
+      const intervals = (scaleData.properties?.intervals || scaleData.intervals || []).map(i => parseInt(i));
+      const degrees = scaleData.properties?.scale_degrees || scaleData.scale_degrees || scaleData.degrees || [];
 
       const allPositions = calculateFullFretboard(root, intervals, degrees);
 
@@ -701,7 +701,7 @@
       state.currentScale = scale;
 
       document.getElementById('info').textContent =
-        `${scale.name} in ${root} - Drag the cyan box to move your practice position`;
+        `${scale.name} in ${root} - Drag the blue box to move your practice position`;
 
       drawFretboard();
     }

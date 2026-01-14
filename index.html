@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guitar Scale Explorer</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -186,6 +187,20 @@
       <label>Root</label>
       <select id="rootSelect"></select>
     </div>
+
+    <div>
+      <label>Instrument</label>
+      <select id="instrumentSelect">
+        <option value="guitar">Guitar</option>
+        <option value="cello">Cello</option>
+      </select>
+    </div>
+
+    <div style="display: flex; align-items: flex-end;">
+      <button id="playButton" class="control-btn" style="width: auto; padding: 0 1rem; height: 38px;" title="Play scale">
+        ▶ Play
+      </button>
+    </div>
   </div>
 
   <div class="fretboard-container">
@@ -349,6 +364,143 @@
     const ctx = canvas.getContext('2d');
     const scaleSelect = document.getElementById('scaleSelect');
     const rootSelect = document.getElementById('rootSelect');
+
+    // Audio setup
+    let synth = null;
+    let isPlaying = false;
+
+    // MIDI note numbers for open strings (standard tuning)
+    const OPEN_STRING_MIDI = {
+      6: 40,  // E2
+      5: 45,  // A2
+      4: 50,  // D3
+      3: 55,  // G3
+      2: 59,  // B3
+      1: 64   // E4
+    };
+
+    /**
+     * Initialize audio synthesizer with instrument sound
+     */
+    function initAudio(instrument = 'guitar') {
+      if (synth) {
+        synth.dispose();
+      }
+
+      if (instrument === 'guitar') {
+        synth = new Tone.PolySynth(Tone.Synth, {
+          oscillator: { type: 'triangle' },
+          envelope: { attack: 0.005, decay: 0.3, sustain: 0.1, release: 1.2 }
+        }).toDestination();
+        synth.volume.value = -8;
+      } else if (instrument === 'cello') {
+        synth = new Tone.PolySynth(Tone.Synth, {
+          oscillator: { type: 'sawtooth' },
+          envelope: { attack: 0.05, decay: 0.3, sustain: 0.6, release: 1.5 }
+        }).toDestination();
+        synth.volume.value = -10;
+      }
+    }
+
+    /**
+     * Convert fretboard position to MIDI note number
+     */
+    function positionToMidi(string, fret) {
+      return OPEN_STRING_MIDI[string] + fret;
+    }
+
+    /**
+     * Convert MIDI note number to note name (e.g., 60 -> "C4")
+     */
+    function midiToNoteName(midiNote) {
+      const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+      const octave = Math.floor(midiNote / 12) - 1;
+      const noteName = noteNames[midiNote % 12];
+      return noteName + octave;
+    }
+
+    /**
+     * Collect notes from current scale for playback
+     */
+    function collectScaleNotes() {
+      if (!state.currentScaleData) return [];
+
+      const root = state.currentScaleData.root;
+      const intervals = (state.currentScaleData.properties?.intervals || state.currentScaleData.intervals || []).map(i => parseInt(i));
+      const degrees = state.currentScaleData.properties?.scale_degrees || state.currentScaleData.scale_degrees || [];
+
+      // Get all positions
+      const allPositions = calculateFullFretboard(root, intervals, degrees);
+
+      // Sort by pitch (MIDI note number)
+      const sortedNotes = allPositions
+        .map(pos => ({
+          midi: positionToMidi(pos.string, pos.fret),
+          string: pos.string,
+          fret: pos.fret,
+          note: pos.note,
+          degree: pos.degree,
+          isRoot: pos.isRoot
+        }))
+        .sort((a, b) => a.midi - b.midi);
+
+      // Remove duplicates (same MIDI note) and limit to 9 notes
+      const uniqueNotes = [];
+      const seenMidi = new Set();
+
+      for (const note of sortedNotes) {
+        if (!seenMidi.has(note.midi)) {
+          seenMidi.add(note.midi);
+          uniqueNotes.push(note);
+          if (uniqueNotes.length >= 9) break;
+        }
+      }
+
+      return uniqueNotes;
+    }
+
+    /**
+     * Play the scale or arpeggio
+     */
+    async function playScale() {
+      if (isPlaying) return;
+
+      const notes = collectScaleNotes();
+      if (notes.length === 0) {
+        console.log('No notes to play');
+        return;
+      }
+
+      isPlaying = true;
+      const playButton = document.getElementById('playButton');
+      playButton.textContent = '⏸ Playing...';
+      playButton.disabled = true;
+
+      // Ensure audio context is started
+      await Tone.start();
+
+      if (!synth) {
+        const instrument = document.getElementById('instrumentSelect').value;
+        initAudio(instrument);
+      }
+
+      // Play notes sequentially
+      const noteDuration = '8n';  // Eighth note
+      const now = Tone.now();
+
+      notes.forEach((note, index) => {
+        const noteName = midiToNoteName(note.midi);
+        const time = now + index * 0.3;  // 300ms between notes
+        synth.triggerAttackRelease(noteName, noteDuration, time);
+      });
+
+      // Reset button after playing
+      setTimeout(() => {
+        isPlaying = false;
+        playButton.textContent = '▶ Play';
+        playButton.disabled = false;
+      }, notes.length * 300 + 500);
+    }
 
     /**
      * Apply theme colors to UI
@@ -815,6 +967,12 @@
     // Event listeners
     scaleSelect.addEventListener('change', updateDisplay);
     rootSelect.addEventListener('change', updateDisplay);
+
+    document.getElementById('playButton').addEventListener('click', playScale);
+
+    document.getElementById('instrumentSelect').addEventListener('change', (e) => {
+      initAudio(e.target.value);
+    });
 
     document.getElementById('fretRangeMinus').addEventListener('click', () => {
       state.fretMax = Math.max(5, state.fretMax - 6);

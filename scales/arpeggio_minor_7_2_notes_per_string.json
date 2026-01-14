@@ -2,10 +2,10 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "arpeggio_minor_7_2_notes_per_string",
-    "starting_tone": "G",
+    "starting_tone": "A",
     "starting_string": "6",
-    "starting_fret": "3",
-    "scale_type": "Arpeggio - Minor 7 - 2 Notes Per String",
+    "starting_fret": "5",
+    "scale_type": "Minor 7 Arpeggio",
     "tuning": [
       "E",
       "A",
@@ -17,9 +17,9 @@
     "properties": {
       "intervals": [
         "0",
-        "2",
-        "5",
-        "9"
+        "3",
+        "7",
+        "10"
       ],
       "mode": "Arpeggio",
       "recalculate_on_tone_change": true,
@@ -30,7 +30,7 @@
         "b7"
       ],
       "pattern_type": "arpeggio",
-      "description": "Arpeggio - Minor 7 - 2 Notes Per String",
+      "description": "Minor 7 Arpeggio - All chord tones across the fretboard",
       "fingering_variations": {
         "index": {
           "starting_finger": 1,

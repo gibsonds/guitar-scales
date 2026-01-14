@@ -206,6 +206,7 @@
         <button class="control-btn" data-span="4" title="4 frets">4</button>
         <button class="control-btn active" data-span="5" title="5 frets">5</button>
         <button class="control-btn" data-span="6" title="6 frets">6</button>
+        <button class="control-btn" data-span="0" title="Show all notes">Off</button>
       </div>
 
       <div class="divider"></div>
@@ -527,51 +528,53 @@
         }
       });
 
-      // Draw practice position box
-      const practiceStart = state.practicePositionStart;
-      const practiceEnd = practiceStart + state.handSpan - 1;
+      // Draw practice position box (only if span is not 0/Off)
+      if (state.handSpan > 0) {
+        const practiceStart = state.practicePositionStart;
+        const practiceEnd = practiceStart + state.handSpan - 1;
 
-      if (practiceStart >= fretMin && practiceStart <= fretMax) {
-        const x1 = margin + (practiceStart - fretMin) * fretSpacing;
-        const x2 = margin + (Math.min(practiceEnd, fretMax) - fretMin + 1) * fretSpacing;
+        if (practiceStart >= fretMin && practiceStart <= fretMax) {
+          const x1 = margin + (practiceStart - fretMin) * fretSpacing;
+          const x2 = margin + (Math.min(practiceEnd, fretMax) - fretMin + 1) * fretSpacing;
 
-        ctx.fillStyle = colors.practiceBoxBg;
-        ctx.fillRect(x1, margin - 10, x2 - x1, height - 2 * margin + 20);
+          ctx.fillStyle = colors.practiceBoxBg;
+          ctx.fillRect(x1, margin - 10, x2 - x1, height - 2 * margin + 20);
 
-        ctx.strokeStyle = colors.practiceBoxBorder;
-        ctx.lineWidth = 3;
-        if (theme === 'dark') {
-          ctx.shadowBlur = 8;
-          ctx.shadowColor = 'rgba(74, 158, 255, 0.4)';
+          ctx.strokeStyle = colors.practiceBoxBorder;
+          ctx.lineWidth = 3;
+          if (theme === 'dark') {
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = 'rgba(74, 158, 255, 0.4)';
+          }
+          ctx.setLineDash([6, 4]);
+          ctx.strokeRect(x1, margin - 10, x2 - x1, height - 2 * margin + 20);
+          ctx.setLineDash([]);
+          ctx.shadowBlur = 0;
+
+          // Label
+          const labelText = `Frets ${practiceStart}-${practiceEnd}`;
+          const labelX = (x1 + x2) / 2;
+          const labelY = height - margin + 35;
+
+          ctx.font = 'bold 13px sans-serif';
+          const textMetrics = ctx.measureText(labelText);
+          const pillWidth = textMetrics.width + 16;
+          const pillHeight = 24;
+
+          ctx.fillStyle = colors.controlBg;
+          ctx.beginPath();
+          ctx.roundRect(labelX - pillWidth / 2, labelY - pillHeight / 2, pillWidth, pillHeight, 12);
+          ctx.fill();
+
+          ctx.strokeStyle = colors.practiceBoxBorder;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          ctx.fillStyle = colors.practiceBoxBorder;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(labelText, labelX, labelY);
         }
-        ctx.setLineDash([6, 4]);
-        ctx.strokeRect(x1, margin - 10, x2 - x1, height - 2 * margin + 20);
-        ctx.setLineDash([]);
-        ctx.shadowBlur = 0;
-
-        // Label
-        const labelText = `Frets ${practiceStart}-${practiceEnd}`;
-        const labelX = (x1 + x2) / 2;
-        const labelY = height - margin + 35;
-
-        ctx.font = 'bold 13px sans-serif';
-        const textMetrics = ctx.measureText(labelText);
-        const pillWidth = textMetrics.width + 16;
-        const pillHeight = 24;
-
-        ctx.fillStyle = colors.controlBg;
-        ctx.beginPath();
-        ctx.roundRect(labelX - pillWidth / 2, labelY - pillHeight / 2, pillWidth, pillHeight, 12);
-        ctx.fill();
-
-        ctx.strokeStyle = colors.practiceBoxBorder;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-
-        ctx.fillStyle = colors.practiceBoxBorder;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(labelText, labelX, labelY);
       }
 
       // Draw notes
@@ -583,9 +586,12 @@
         const radius = Math.min(fretSpacing * 0.35, 16);
 
         let opacity = 1.0;
-        const practiceEnd = state.practicePositionStart + state.handSpan - 1;
-        if (pos.fret < state.practicePositionStart || pos.fret > practiceEnd) {
-          opacity = 0.2;
+        // Only dim notes if span is active (not 0/Off)
+        if (state.handSpan > 0) {
+          const practiceEnd = state.practicePositionStart + state.handSpan - 1;
+          if (pos.fret < state.practicePositionStart || pos.fret > practiceEnd) {
+            opacity = 0.2;
+          }
         }
 
         ctx.globalAlpha = opacity;
@@ -628,7 +634,7 @@
         'arpeggio_2notesperstring_m7b5', 'arpeggio_major_7_2_notes_per_string',
         'arpeggio_minor_7_2_notes_per_string', 'dorian_3nps',
         'half_whole_diminished', 'hexatonic_pos1', 'ionian_3nps', 'jazz_blues_pos1',
-        'locrian_3nps', 'lydian_3nps', 'major_blues_box', 'major_blues_simplified',
+        'locrian_3nps', 'lydian_3nps', 'major_blues_box',
         'minor_blues_box', 'minor_pentatonic_box2', 'mixolydian_3nps',
         'phrygian_3nps', 'whole_tone'
       ];

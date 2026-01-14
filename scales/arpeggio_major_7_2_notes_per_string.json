@@ -2,10 +2,10 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "arpeggio_major_7_2_notes_per_string",
-    "starting_tone": "F#",
+    "starting_tone": "A",
     "starting_string": "6",
-    "starting_fret": "2",
-    "scale_type": "Arpeggio - Major 7 - 2 Notes Per String",
+    "starting_fret": "5",
+    "scale_type": "Major 7 Arpeggio",
     "tuning": [
       "E",
       "A",
@@ -17,9 +17,9 @@
     "properties": {
       "intervals": [
         "0",
-        "1",
-        "5",
-        "8"
+        "4",
+        "7",
+        "11"
       ],
       "mode": "Arpeggio",
       "recalculate_on_tone_change": true,
@@ -30,7 +30,7 @@
         "7"
       ],
       "pattern_type": "arpeggio",
-      "description": "Arpeggio - Major 7 - 2 Notes Per String",
+      "description": "Major 7 Arpeggio - All chord tones across the fretboard",
       "fingering_variations": {
         "index": {
           "starting_finger": 1,

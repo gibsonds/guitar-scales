@@ -236,6 +236,7 @@
         <span class="control-label">Markers</span>
         <button class="control-btn active" data-markers="dots" title="Standard dots">●</button>
         <button class="control-btn" data-markers="blocks" title="Gibson blocks">▬</button>
+        <button class="control-btn" data-markers="birds" title="PRS birds">🐦</button>
         <button class="control-btn" data-markers="small" title="Fender dots">•</button>
         <button class="control-btn" data-markers="none" title="No markers">○</button>
       </div>
@@ -504,8 +505,8 @@
         const fretNumber = fretMin + i;
         const x = margin + i * fretSpacing;
 
-        // Make the nut (fret 0) more prominent
-        if (fretNumber === 0) {
+        // Make the nut (between fret 0 and 1) more prominent
+        if (fretNumber === 1 && fretMin === 0) {
           ctx.strokeStyle = colors.nutColor;
           ctx.lineWidth = 6;
         } else {
@@ -578,6 +579,19 @@
                 ctx.beginPath();
                 ctx.arc(x, y, 5, 0, 2 * Math.PI);
                 ctx.fill();
+              }
+            } else if (markerStyle === 'birds') {
+              // PRS-style bird inlays
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              ctx.font = '20px serif';
+              ctx.fillStyle = colors.markerColor;
+
+              if (isDouble) {
+                ctx.fillText('🐦', x, y - 30);
+                ctx.fillText('🐦', x, y + 30);
+              } else {
+                ctx.fillText('🐦', x, y);
               }
             }
           }

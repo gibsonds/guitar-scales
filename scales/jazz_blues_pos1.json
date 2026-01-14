@@ -5,13 +5,40 @@
     "starting_tone": "A",
     "starting_string": "6",
     "starting_fret": "5",
-    "scale_type": "Jazz Blues - Position 1",
-    "tuning": ["E", "A", "D", "G", "B", "E"],
+    "scale_type": "Jazz Blues",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
     "properties": {
-      "intervals": ["0", "2", "3", "4", "5", "6", "7", "9", "10"],
+      "intervals": [
+        "0",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "9",
+        "10"
+      ],
       "mode": "Jazz Blues",
       "recalculate_on_tone_change": true,
-      "scale_degrees": ["1", "2", "b3", "3", "4", "b5", "5", "6", "b7"],
+      "scale_degrees": [
+        "1",
+        "2",
+        "b3",
+        "3",
+        "4",
+        "b5",
+        "5",
+        "6",
+        "b7"
+      ],
       "pattern_type": "chromatic_blues",
       "position": 1,
       "description": "Full chromatic jazz blues with all passing tones - 9 note scale",
@@ -20,23 +47,78 @@
           "starting_finger": 1,
           "description": "Starting with index finger",
           "frets": {
-            "6": ["5", "7", "8"],
-            "5": ["4", "5", "6", "7"],
-            "4": ["4", "5", "7"],
-            "3": ["5", "6", "7", "8"],
-            "2": ["5", "7", "8"],
-            "1": ["5", "7", "8", "9"]
+            "6": [
+              "5",
+              "7",
+              "8"
+            ],
+            "5": [
+              "4",
+              "5",
+              "6",
+              "7"
+            ],
+            "4": [
+              "4",
+              "5",
+              "7"
+            ],
+            "3": [
+              "5",
+              "6",
+              "7",
+              "8"
+            ],
+            "2": [
+              "5",
+              "7",
+              "8"
+            ],
+            "1": [
+              "5",
+              "7",
+              "8",
+              "9"
+            ]
           },
           "finger_assignments": {
-            "6": [1, 3, 4],
-            "5": [1, 2, 3, 4],
-            "4": [1, 2, 4],
-            "3": [1, 2, 3, 4],
-            "2": [1, 3, 4],
-            "1": [1, 2, 3, 4]
+            "6": [
+              1,
+              3,
+              4
+            ],
+            "5": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "4": [
+              1,
+              2,
+              4
+            ],
+            "3": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "2": [
+              1,
+              3,
+              4
+            ],
+            "1": [
+              1,
+              2,
+              3,
+              4
+            ]
           }
         }
-      }
+      },
+      "category": "scales"
     }
   }
 }

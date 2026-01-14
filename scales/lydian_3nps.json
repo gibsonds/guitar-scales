@@ -5,27 +5,75 @@
     "starting_tone": "C",
     "starting_string": "6",
     "starting_fret": "8",
-    "scale_type": "Lydian 3NPS",
-    "tuning": ["E", "A", "D", "G", "B", "E"],
+    "scale_type": "Lydian",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
     "properties": {
-      "intervals": ["0", "2", "4", "6", "7", "9", "11"],
+      "intervals": [
+        "0",
+        "2",
+        "4",
+        "6",
+        "7",
+        "9",
+        "11"
+      ],
       "mode": "Lydian 3NPS",
       "recalculate_on_tone_change": true,
-      "scale_degrees": ["1", "2", "3", "#4", "5", "6", "7"],
+      "scale_degrees": [
+        "1",
+        "2",
+        "3",
+        "#4",
+        "5",
+        "6",
+        "7"
+      ],
       "fingering_variations": {
         "index": {
           "starting_finger": 1,
           "description": "Starting with index finger",
           "frets": {
-            "6": ["8", "10", "12"],
-            "5": ["9", "10", "12"],
-            "4": ["9", "10", "12"],
-            "3": ["9", "11", "12"],
-            "2": ["10", "12", "13"],
-            "1": ["10", "12", "14"]
+            "6": [
+              "8",
+              "10",
+              "12"
+            ],
+            "5": [
+              "9",
+              "10",
+              "12"
+            ],
+            "4": [
+              "9",
+              "10",
+              "12"
+            ],
+            "3": [
+              "9",
+              "11",
+              "12"
+            ],
+            "2": [
+              "10",
+              "12",
+              "13"
+            ],
+            "1": [
+              "10",
+              "12",
+              "14"
+            ]
           }
         }
-      }
+      },
+      "category": "modes"
     }
   }
 }

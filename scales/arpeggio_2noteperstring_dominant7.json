@@ -5,7 +5,7 @@
     "starting_tone": "D",
     "starting_string": "6",
     "starting_fret": "8",
-    "scale_type": "Arpeggio-2NotePerString-Dominant7",
+    "scale_type": "Dominant 7",
     "tuning": [
       "E",
       "A",
@@ -88,7 +88,8 @@
             ]
           }
         }
-      }
+      },
+      "category": "arpeggios"
     }
   }
 }

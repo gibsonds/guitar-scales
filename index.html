@@ -646,6 +646,7 @@
           return {
             id: filename,
             name: data.Item.scale_type || filename,
+            category: data.Item.properties?.category || 'other',
             data: data.Item
           };
         } catch (err) {
@@ -666,11 +667,40 @@
 
     function populateScaleSelect() {
       scaleSelect.innerHTML = '';
+
+      // Group scales by category
+      const categories = {
+        'scales': { label: 'Scales', scales: [] },
+        'modes': { label: 'Modes', scales: [] },
+        'arpeggios': { label: 'Arpeggios', scales: [] }
+      };
+
       state.scales.forEach(scale => {
-        const option = document.createElement('option');
-        option.value = scale.id;
-        option.textContent = scale.name;
-        scaleSelect.appendChild(option);
+        const category = scale.category || 'scales';
+        if (categories[category]) {
+          categories[category].scales.push(scale);
+        }
+      });
+
+      // Create optgroups for each category
+      ['scales', 'modes', 'arpeggios'].forEach(categoryKey => {
+        const category = categories[categoryKey];
+        if (category.scales.length > 0) {
+          const optgroup = document.createElement('optgroup');
+          optgroup.label = category.label;
+
+          // Sort scales alphabetically within category
+          category.scales.sort((a, b) => a.name.localeCompare(b.name));
+
+          category.scales.forEach(scale => {
+            const option = document.createElement('option');
+            option.value = scale.id;
+            option.textContent = scale.name;
+            optgroup.appendChild(option);
+          });
+
+          scaleSelect.appendChild(optgroup);
+        }
       });
     }
 

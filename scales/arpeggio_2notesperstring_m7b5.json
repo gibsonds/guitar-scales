@@ -5,7 +5,7 @@
     "starting_tone": "F#",
     "starting_string": "6",
     "starting_fret": "12",
-    "scale_type": "Arpeggio-2NotesPerString-m7b5",
+    "scale_type": "Minor 7b5",
     "tuning": [
       "E",
       "A",
@@ -88,7 +88,8 @@
             ]
           }
         }
-      }
+      },
+      "category": "arpeggios"
     }
   }
 }

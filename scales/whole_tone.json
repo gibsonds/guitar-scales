@@ -5,27 +5,72 @@
     "starting_tone": "C",
     "starting_string": "6",
     "starting_fret": "8",
-    "scale_type": "Whole Tone Scale",
-    "tuning": ["E", "A", "D", "G", "B", "E"],
+    "scale_type": "Whole Tone",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
     "properties": {
-      "intervals": ["0", "2", "4", "6", "8", "10"],
+      "intervals": [
+        "0",
+        "2",
+        "4",
+        "6",
+        "8",
+        "10"
+      ],
       "mode": "Whole Tone Scale",
       "recalculate_on_tone_change": true,
-      "scale_degrees": ["1", "2", "3", "#4", "#5", "b7"],
+      "scale_degrees": [
+        "1",
+        "2",
+        "3",
+        "#4",
+        "#5",
+        "b7"
+      ],
       "fingering_variations": {
         "index": {
           "starting_finger": 1,
           "description": "Starting with index finger",
           "frets": {
-            "6": ["8", "10", "12"],
-            "5": ["9", "11", "13"],
-            "4": ["10", "12", "14"],
-            "3": ["11", "13"],
-            "2": ["9", "11", "13"],
-            "1": ["10", "12", "14"]
+            "6": [
+              "8",
+              "10",
+              "12"
+            ],
+            "5": [
+              "9",
+              "11",
+              "13"
+            ],
+            "4": [
+              "10",
+              "12",
+              "14"
+            ],
+            "3": [
+              "11",
+              "13"
+            ],
+            "2": [
+              "9",
+              "11",
+              "13"
+            ],
+            "1": [
+              "10",
+              "12",
+              "14"
+            ]
           }
         }
-      }
+      },
+      "category": "scales"
     }
   }
 }

@@ -228,6 +228,17 @@
         <button class="control-btn" id="resetZoom" title="Reset zoom">⊙</button>
         <button class="control-btn" id="zoomIn" title="Zoom in">+</button>
       </div>
+
+      <div class="divider"></div>
+
+      <!-- Marker Style -->
+      <div class="control-section">
+        <span class="control-label">Markers</span>
+        <button class="control-btn active" data-markers="dots" title="Standard dots">●</button>
+        <button class="control-btn" data-markers="blocks" title="Gibson blocks">▬</button>
+        <button class="control-btn" data-markers="small" title="Fender dots">•</button>
+        <button class="control-btn" data-markers="none" title="No markers">○</button>
+      </div>
     </div>
 
     <canvas id="fretboardCanvas" width="2400" height="300"></canvas>
@@ -270,7 +281,8 @@
       isDragging: false,
       dragStartX: 0,
       dragStartFret: 0,
-      theme: 'dark'
+      theme: 'dark',
+      markerStyle: 'dots'
     };
 
     // Theme colors
@@ -293,6 +305,7 @@
         canvasBg: '#1a1a27',
         stringColor: '#3a3a4a',
         fretColor: '#2a2a3a',
+        nutColor: '#4a4a5a',
         markerColor: '#2a2a3a',
         labelColor: '#6a6a7a',
         practiceBoxBg: 'rgba(74, 158, 255, 0.12)',
@@ -319,6 +332,7 @@
         canvasBg: '#ffffff',
         stringColor: '#adb5bd',
         fretColor: '#ced4da',
+        nutColor: '#8a8a9a',
         markerColor: '#e9ecef',
         labelColor: '#868e96',
         practiceBoxBg: 'rgba(74, 158, 255, 0.08)',
@@ -486,11 +500,18 @@
       }
 
       // Draw frets
-      ctx.strokeStyle = colors.fretColor;
-      ctx.lineWidth = 2;
       for (let i = 0; i <= fretCount; i++) {
         const fretNumber = fretMin + i;
         const x = margin + i * fretSpacing;
+
+        // Make the nut (fret 0) more prominent
+        if (fretNumber === 0) {
+          ctx.strokeStyle = colors.nutColor;
+          ctx.lineWidth = 6;
+        } else {
+          ctx.strokeStyle = colors.fretColor;
+          ctx.lineWidth = 2;
+        }
 
         ctx.beginPath();
         ctx.moveTo(x, margin);
@@ -509,24 +530,59 @@
 
       // Draw fret markers
       const markerFrets = [3, 5, 7, 9, 12, 15, 17, 19, 21, 24];
-      ctx.fillStyle = colors.markerColor;
-      markerFrets.forEach(fret => {
-        if (fret >= fretMin && fret <= fretMax) {
-          const x = margin + (fret - fretMin - 0.5) * fretSpacing;
-          const y = height / 2;
-          ctx.beginPath();
-          if (fret === 12 || fret === 24) {
-            ctx.arc(x, y - 30, 7, 0, 2 * Math.PI);
-            ctx.fill();
-            ctx.beginPath();
-            ctx.arc(x, y + 30, 7, 0, 2 * Math.PI);
-            ctx.fill();
-          } else {
-            ctx.arc(x, y, 7, 0, 2 * Math.PI);
-            ctx.fill();
+      const markerStyle = state.markerStyle;
+
+      if (markerStyle !== 'none') {
+        ctx.fillStyle = colors.markerColor;
+
+        markerFrets.forEach(fret => {
+          if (fret >= fretMin && fret <= fretMax) {
+            const x = margin + (fret - fretMin - 0.5) * fretSpacing;
+            const y = height / 2;
+            const isDouble = fret === 12 || fret === 24;
+
+            if (markerStyle === 'dots') {
+              // Standard circular dots (7px radius)
+              if (isDouble) {
+                ctx.beginPath();
+                ctx.arc(x, y - 30, 7, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(x, y + 30, 7, 0, 2 * Math.PI);
+                ctx.fill();
+              } else {
+                ctx.beginPath();
+                ctx.arc(x, y, 7, 0, 2 * Math.PI);
+                ctx.fill();
+              }
+            } else if (markerStyle === 'blocks') {
+              // Gibson-style block inlays
+              const blockWidth = Math.min(fretSpacing * 0.6, 40);
+              const blockHeight = 16;
+              if (isDouble) {
+                ctx.fillRect(x - blockWidth / 2, y - 30 - blockHeight / 2, blockWidth, blockHeight);
+                ctx.fillRect(x - blockWidth / 2, y + 30 - blockHeight / 2, blockWidth, blockHeight);
+              } else {
+                ctx.fillRect(x - blockWidth / 2, y - blockHeight / 2, blockWidth, blockHeight);
+              }
+            } else if (markerStyle === 'small') {
+              // Fender-style small dots (5px radius)
+              if (isDouble) {
+                ctx.beginPath();
+                ctx.arc(x, y - 30, 5, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(x, y + 30, 5, 0, 2 * Math.PI);
+                ctx.fill();
+              } else {
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                ctx.fill();
+              }
+            }
           }
-        }
-      });
+        });
+      }
 
       // Draw practice position box (only if span is not 0/Off)
       if (state.handSpan > 0) {
@@ -798,6 +854,15 @@
     document.getElementById('resetZoom').addEventListener('click', () => {
       state.zoom = 1.0;
       drawFretboard();
+    });
+
+    document.querySelectorAll('[data-markers]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-markers]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.markerStyle = btn.dataset.markers;
+        drawFretboard();
+      });
     });
 
     document.getElementById('themeToggle').addEventListener('click', () => {

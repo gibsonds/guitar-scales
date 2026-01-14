@@ -151,6 +151,7 @@
       margin: 0 auto;
       padding: 1.5rem;
       background: #1a1a27;
+      touch-action: none;
     }
     .info {
       padding: 0.75rem 1rem;
@@ -1121,6 +1122,71 @@
       if (state.isDragging) {
         state.isDragging = false;
         canvas.style.cursor = 'default';
+      }
+    });
+
+    // Touch support for iOS/mobile
+    canvas.addEventListener('touchstart', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      const touchX = touch.clientX - rect.left;
+      const touchY = touch.clientY - rect.top;
+
+      const margin = 60;
+      const width = canvas.width;
+      const height = canvas.height;
+      const fretCount = state.fretMax - state.fretMin;
+      const fretSpacing = (width - 2 * margin) / fretCount;
+
+      const practiceStart = state.practicePositionStart;
+      const practiceEnd = practiceStart + state.handSpan - 1;
+
+      if (practiceStart >= state.fretMin && practiceStart <= state.fretMax) {
+        const x1 = margin + (practiceStart - state.fretMin) * fretSpacing;
+        const x2 = margin + (Math.min(practiceEnd, state.fretMax) - state.fretMin + 1) * fretSpacing;
+
+        if (touchX >= x1 && touchX <= x2 && touchY >= margin - 10 && touchY <= height - margin + 10) {
+          state.isDragging = true;
+          state.dragStartX = touchX;
+          state.dragStartFret = state.practicePositionStart;
+          e.preventDefault();
+        }
+      }
+    }, { passive: false });
+
+    canvas.addEventListener('touchmove', (e) => {
+      if (!state.isDragging) return;
+
+      const rect = canvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      const touchX = touch.clientX - rect.left;
+
+      const margin = 60;
+      const width = canvas.width;
+      const fretCount = state.fretMax - state.fretMin;
+      const fretSpacing = (width - 2 * margin) / fretCount;
+
+      const deltaX = touchX - state.dragStartX;
+      const fretsDelta = Math.round(deltaX / fretSpacing);
+      const newFret = Math.max(0, Math.min(24 - state.handSpan, state.dragStartFret + fretsDelta));
+
+      if (newFret !== state.practicePositionStart) {
+        state.practicePositionStart = newFret;
+        drawFretboard();
+      }
+
+      e.preventDefault();
+    }, { passive: false });
+
+    canvas.addEventListener('touchend', () => {
+      if (state.isDragging) {
+        state.isDragging = false;
+      }
+    });
+
+    canvas.addEventListener('touchcancel', () => {
+      if (state.isDragging) {
+        state.isDragging = false;
       }
     });
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guitar Scale Explorer</title>
+  <title>Full Fretboard View - Prototype</title>
   <style>
     * {
       box-sizing: border-box;
@@ -31,12 +31,6 @@
       color: #ffffff;
       letter-spacing: -0.03em;
     }
-    .header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
     .scale-selector {
       background: #1a1a27;
       border: 1px solid #2a2a3a;
@@ -46,12 +40,6 @@
       display: flex;
       gap: 1.5rem;
       align-items: center;
-      flex-wrap: wrap;
-    }
-    .scale-selector > div {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
     }
     .scale-selector select {
       padding: 0.5rem 0.75rem;
@@ -63,7 +51,6 @@
       color: #e8e8eb;
       cursor: pointer;
       transition: all 0.2s;
-      min-width: 180px;
     }
     .scale-selector select:hover {
       border-color: #3a3a4a;
@@ -97,7 +84,6 @@
       padding: 0.875rem 1.25rem;
       background: #14141f;
       border-bottom: 1px solid #2a2a3a;
-      flex-wrap: wrap;
     }
     .control-section {
       display: flex;
@@ -160,17 +146,11 @@
       border-top: 1px solid #2a2a3a;
       text-align: center;
     }
-    footer {
-      text-align: center;
-      color: #8a8a9a;
-      font-size: 0.813rem;
-      padding: 2rem 0 1rem;
-    }
   </style>
 </head>
 <body>
-  <div class="header-row">
-    <h1>🎸 Guitar Scale Explorer</h1>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+    <h1>🎸 Full Fretboard View</h1>
     <button id="themeToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Toggle theme">
       <span id="themeIcon">☀️</span>
     </button>
@@ -179,12 +159,20 @@
   <div class="scale-selector">
     <div>
       <label>Scale</label>
-      <select id="scaleSelect"></select>
+      <select id="scaleSelect">
+        <option value="minor_pentatonic">Minor Pentatonic</option>
+      </select>
     </div>
 
     <div>
       <label>Root</label>
-      <select id="rootSelect"></select>
+      <select id="rootSelect">
+        <option value="A">A</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="G">G</option>
+      </select>
     </div>
   </div>
 
@@ -194,7 +182,7 @@
       <div class="control-section">
         <span class="control-label">Frets</span>
         <button class="control-btn" id="fretRangeMinus" title="Show fewer frets">−</button>
-        <span id="fretRangeDisplay" style="font-size: 0.813rem; color: #e8e8eb; min-width: 40px; text-align: center;">0-24</span>
+        <span id="fretRangeDisplay" style="font-size: 0.813rem; color: #525252; min-width: 40px; text-align: center;">0-24</span>
         <button class="control-btn" id="fretRangePlus" title="Show more frets">+</button>
       </div>
 
@@ -231,33 +219,22 @@
 
     <canvas id="fretboardCanvas" width="2400" height="300"></canvas>
 
-    <div class="info" id="info">
-      Drag the cyan box to move your practice position
+    <div class="info">
+      Drag the green box to move your practice position
     </div>
   </div>
 
-  <footer>
-    Guitar Scale Explorer - Full Fretboard View - Deployed on GitHub Pages
-  </footer>
-
   <script>
-    console.log('Guitar Scale Explorer - Full Fretboard Edition');
-
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
     const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
     const NOTE_TO_SEMITONE = {
-      'C': 0, 'C#': 1, 'Db': 1, 'D': 2, 'D#': 3, 'Eb': 3,
-      'E': 4, 'F': 5, 'F#': 6, 'Gb': 6, 'G': 7, 'G#': 8,
-      'Ab': 8, 'A': 9, 'A#': 10, 'Bb': 10, 'B': 11
+      'C': 0, 'C#': 1, 'D': 2, 'D#': 3, 'E': 4, 'F': 5,
+      'F#': 6, 'G': 7, 'G#': 8, 'A': 9, 'A#': 10, 'B': 11
     };
-    const ALL_ROOTS = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
     // State
     const state = {
-      scales: [],
-      currentScale: null,
-      currentScaleData: null,
       fretMin: 0,
       fretMax: 24,
       practicePositionStart: 0,
@@ -266,6 +243,8 @@
       showRoots: true,
       showDegrees: true,
       showNoteNames: true,
+      root: 'A',
+      scale: 'minor_pentatonic',
       isDragging: false,
       dragStartX: 0,
       dragStartFret: 0,
@@ -331,17 +310,18 @@
     // DOM elements
     const canvas = document.getElementById('fretboardCanvas');
     const ctx = canvas.getContext('2d');
-    const scaleSelect = document.getElementById('scaleSelect');
-    const rootSelect = document.getElementById('rootSelect');
 
     /**
      * Apply theme colors to UI
      */
     function applyTheme() {
       const theme = themes[state.theme];
+      const root = document.documentElement;
 
+      // Update CSS custom properties
       document.body.style.background = theme.bodyBg;
 
+      // Update all scale-selector elements
       document.querySelectorAll('.scale-selector').forEach(el => {
         el.style.background = theme.cardBg;
         el.style.borderColor = theme.cardBorder;
@@ -357,6 +337,7 @@
         el.style.color = theme.textMuted;
       });
 
+      // Update fretboard container
       document.querySelectorAll('.fretboard-container').forEach(el => {
         el.style.background = theme.cardBg;
         el.style.borderColor = theme.cardBorder;
@@ -384,13 +365,19 @@
       });
 
       document.querySelector('h1').style.color = theme.textPrimary;
-      document.querySelector('footer').style.color = theme.textMuted;
-      document.getElementById('fretRangeDisplay').style.color = theme.textSecondary;
 
+      // Update theme icon
       document.getElementById('themeIcon').textContent = state.theme === 'dark' ? '☀️' : '🌙';
 
+      // Redraw canvas with new colors
       drawFretboard();
     }
+
+    // Demo scale data (Minor Pentatonic)
+    const MINOR_PENTATONIC = {
+      intervals: [0, 3, 5, 7, 10],  // 1 b3 4 5 b7
+      degrees: ['1', 'b3', '4', '5', 'b7']
+    };
 
     /**
      * Calculate all positions of a scale across the entire fretboard
@@ -399,13 +386,16 @@
       const rootSemitone = NOTE_TO_SEMITONE[root];
       const positions = [];
 
+      // For each string (6 = low E, 1 = high E)
       for (let string = 6; string >= 1; string--) {
         const openStringSemitone = STANDARD_TUNING[6 - string];
 
+        // For each fret (0-24)
         for (let fret = 0; fret <= 24; fret++) {
           const noteSemitone = (openStringSemitone + fret) % 12;
           const intervalFromRoot = (noteSemitone - rootSemitone + 12) % 12;
 
+          // Check if this note is in the scale
           const degreeIndex = scaleIntervals.indexOf(intervalFromRoot);
           if (degreeIndex !== -1) {
             const note = NOTE_NAMES[noteSemitone];
@@ -431,25 +421,22 @@
      * Draw the fretboard
      */
     function drawFretboard() {
-      if (!state.currentScaleData) return;
-
-      const { fretMin, fretMax, zoom, showRoots, showDegrees, showNoteNames, theme } = state;
+      const { fretMin, fretMax, zoom, showRoots, showDegrees, showNoteNames, root, theme } = state;
       const colors = themes[theme];
 
-      const scaleData = state.currentScaleData;
-      const root = scaleData.root;
-      const intervals = scaleData.intervals.map(i => parseInt(i));
-      const degrees = scaleData.scale_degrees || scaleData.degrees || [];
+      // Calculate all positions
+      const allPositions = calculateFullFretboard(root, MINOR_PENTATONIC.intervals, MINOR_PENTATONIC.degrees);
 
-      const allPositions = calculateFullFretboard(root, intervals, degrees);
-
+      // Filter to visible fret range
       const visiblePositions = allPositions.filter(p =>
         p.fret >= fretMin && p.fret <= fretMax
       );
 
+      // Clear canvas
       const width = canvas.width;
       const height = canvas.height;
 
+      // Fill canvas background
       ctx.fillStyle = colors.canvasBg;
       ctx.fillRect(0, 0, width, height);
 
@@ -461,6 +448,7 @@
         return;
       }
 
+      // Calculate layout
       const margin = 60;
       const stringSpacing = (height - 2 * margin) / 5;
       const fretCount = fretMax - fretMin;
@@ -476,6 +464,7 @@
         ctx.lineTo(margin + fretCount * fretSpacing, y);
         ctx.stroke();
 
+        // String labels
         const stringNum = i + 1;
         ctx.fillStyle = colors.textMuted;
         ctx.font = 'bold 13px sans-serif';
@@ -491,22 +480,25 @@
         const fretNumber = fretMin + i;
         const x = margin + i * fretSpacing;
 
+        // Fret line
         ctx.beginPath();
         ctx.moveTo(x, margin);
         ctx.lineTo(x, height - margin);
         ctx.stroke();
 
-        if (i < fretCount) {
+        // Fret numbers (centered in fret space, every 2 frets if zoomed out)
+        if (i < fretCount) { // Don't draw number for the last fret line
           if (fretCount > 12 && i % 2 !== 0) continue;
           ctx.fillStyle = colors.labelColor;
           ctx.font = 'bold 12px sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'top';
+          // Center the number in the middle of the fret space
           ctx.fillText(fretNumber, x + fretSpacing / 2, height - margin + 15);
         }
       }
 
-      // Draw fret markers
+      // Draw fret markers (3, 5, 7, 9, 12, 15, 17, 19, 21, 24)
       const markerFrets = [3, 5, 7, 9, 12, 15, 17, 19, 21, 24];
       ctx.fillStyle = colors.markerColor;
       markerFrets.forEach(fret => {
@@ -515,6 +507,7 @@
           const y = height / 2;
           ctx.beginPath();
           if (fret === 12 || fret === 24) {
+            // Double dot for octave
             ctx.arc(x, y - 30, 7, 0, 2 * Math.PI);
             ctx.fill();
             ctx.beginPath();
@@ -527,7 +520,7 @@
         }
       });
 
-      // Draw practice position box
+      // Draw practice position box (slidable hand position)
       const practiceStart = state.practicePositionStart;
       const practiceEnd = practiceStart + state.handSpan - 1;
 
@@ -535,25 +528,28 @@
         const x1 = margin + (practiceStart - fretMin) * fretSpacing;
         const x2 = margin + (Math.min(practiceEnd, fretMax) - fretMin + 1) * fretSpacing;
 
+        // Semi-transparent box
         ctx.fillStyle = colors.practiceBoxBg;
         ctx.fillRect(x1, margin - 10, x2 - x1, height - 2 * margin + 20);
 
+        // Border with glow (only in dark mode)
         ctx.strokeStyle = colors.practiceBoxBorder;
         ctx.lineWidth = 3;
         if (theme === 'dark') {
           ctx.shadowBlur = 8;
           ctx.shadowColor = 'rgba(74, 158, 255, 0.4)';
         }
-        ctx.setLineDash([6, 4]);
+        ctx.setLineDash([6, 4]);  // Dashed line
         ctx.strokeRect(x1, margin - 10, x2 - x1, height - 2 * margin + 20);
-        ctx.setLineDash([]);
+        ctx.setLineDash([]);  // Reset to solid
         ctx.shadowBlur = 0;
 
-        // Label
+        // Label - positioned below the box on a background pill
         const labelText = `Frets ${practiceStart}-${practiceEnd}`;
         const labelX = (x1 + x2) / 2;
         const labelY = height - margin + 35;
 
+        // Pill background
         ctx.font = 'bold 13px sans-serif';
         const textMetrics = ctx.measureText(labelText);
         const pillWidth = textMetrics.width + 16;
@@ -564,10 +560,12 @@
         ctx.roundRect(labelX - pillWidth / 2, labelY - pillHeight / 2, pillWidth, pillHeight, 12);
         ctx.fill();
 
+        // Border
         ctx.strokeStyle = colors.practiceBoxBorder;
         ctx.lineWidth = 1.5;
         ctx.stroke();
 
+        // Label text
         ctx.fillStyle = colors.practiceBoxBorder;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -582,12 +580,14 @@
         const y = margin + stringIndex * stringSpacing;
         const radius = Math.min(fretSpacing * 0.35, 16);
 
+        // Dim notes outside practice position
         let opacity = 1.0;
         const practiceEnd = state.practicePositionStart + state.handSpan - 1;
         if (pos.fret < state.practicePositionStart || pos.fret > practiceEnd) {
           opacity = 0.2;
         }
 
+        // Circle with glow for active notes (only in dark mode)
         ctx.globalAlpha = opacity;
         if (opacity === 1.0 && theme === 'dark') {
           ctx.shadowBlur = 10;
@@ -599,6 +599,7 @@
         ctx.fill();
         ctx.shadowBlur = 0;
 
+        // Degree/Root indicator
         if (showDegrees || showRoots) {
           ctx.fillStyle = '#ffffff';
           ctx.font = `bold ${Math.min(radius * 0.8, 12)}px sans-serif`;
@@ -608,6 +609,7 @@
           ctx.fillText(label, x, y);
         }
 
+        // Note name below
         if (showNoteNames) {
           ctx.fillStyle = colors.noteLabelColor;
           ctx.font = `bold ${Math.min(radius * 0.7, 11)}px sans-serif`;
@@ -617,99 +619,24 @@
 
         ctx.globalAlpha = 1.0;
       });
+
     }
 
     /**
-     * Load scale catalog
+     * Event listeners
      */
-    async function loadScaleCatalog() {
-      const scaleFiles = [
-        'aeolian_3nps', 'altered_dominant', 'arpeggio_2noteperstring_dominant7',
-        'arpeggio_2notesperstring_m7b5', 'arpeggio_major_7_2_notes_per_string',
-        'arpeggio_minor_7_2_notes_per_string', 'dorian_3nps',
-        'half_whole_diminished', 'hexatonic_pos1', 'ionian_3nps', 'jazz_blues_pos1',
-        'locrian_3nps', 'lydian_3nps', 'major_blues_box', 'major_blues_simplified',
-        'minor_blues_box', 'minor_pentatonic_box2', 'mixolydian_3nps',
-        'phrygian_3nps', 'whole_tone'
-      ];
 
-      const promises = scaleFiles.map(async (filename) => {
-        try {
-          const response = await fetch(`scales/${filename}.json`);
-          const data = await response.json();
-          return {
-            id: filename,
-            name: data.Item.scale_type || filename,
-            data: data.Item
-          };
-        } catch (err) {
-          console.error(`Failed to load ${filename}:`, err);
-          return null;
-        }
-      });
-
-      state.scales = (await Promise.all(promises)).filter(s => s !== null);
-      populateScaleSelect();
-      populateRootSelect();
-
-      if (state.scales.length > 0) {
-        scaleSelect.value = state.scales[0].id;
-        updateDisplay();
-      }
-    }
-
-    function populateScaleSelect() {
-      scaleSelect.innerHTML = '';
-      state.scales.forEach(scale => {
-        const option = document.createElement('option');
-        option.value = scale.id;
-        option.textContent = scale.name;
-        scaleSelect.appendChild(option);
-      });
-    }
-
-    function populateRootSelect() {
-      rootSelect.innerHTML = '';
-      ALL_ROOTS.forEach(root => {
-        const option = document.createElement('option');
-        option.value = root;
-        option.textContent = root;
-        rootSelect.appendChild(option);
-      });
-      rootSelect.value = 'A';
-    }
-
-    function transposeScale(scaleData, targetRoot) {
-      const originalRoot = scaleData.starting_tone || 'A';
-      const semitoneShift = (NOTE_TO_SEMITONE[targetRoot] - NOTE_TO_SEMITONE[originalRoot] + 12) % 12;
-
-      return {
-        ...scaleData,
-        root: targetRoot,
-        starting_tone: targetRoot
-      };
-    }
-
-    function updateDisplay() {
-      const scale = state.scales.find(s => s.id === scaleSelect.value);
-      if (!scale) return;
-
-      const root = rootSelect.value;
-      const transposed = transposeScale(scale.data, root);
-
-      state.currentScaleData = transposed;
-      state.currentScale = scale;
-
-      document.getElementById('info').textContent =
-        `${scale.name} in ${root} - Drag the cyan box to move your practice position`;
-
+    // Scale and root selectors
+    document.getElementById('scaleSelect').addEventListener('change', () => {
       drawFretboard();
-    }
+    });
 
-    // Event listeners
-    scaleSelect.addEventListener('change', updateDisplay);
-    rootSelect.addEventListener('change', updateDisplay);
+    document.getElementById('rootSelect').addEventListener('change', (e) => {
+      state.root = e.target.value;
+      drawFretboard();
+    });
 
+    // Fret range controls
     document.getElementById('fretRangeMinus').addEventListener('click', () => {
       state.fretMax = Math.max(5, state.fretMax - 6);
       document.getElementById('fretRangeDisplay').textContent = `${state.fretMin}-${state.fretMax}`;
@@ -722,6 +649,7 @@
       drawFretboard();
     });
 
+    // Hand span buttons
     document.querySelectorAll('[data-span]').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('[data-span]').forEach(b => b.classList.remove('active'));
@@ -731,6 +659,7 @@
       });
     });
 
+    // Display toggle buttons
     document.getElementById('toggleRoots').addEventListener('click', (e) => {
       state.showRoots = !state.showRoots;
       e.currentTarget.classList.toggle('active', state.showRoots);
@@ -749,6 +678,7 @@
       drawFretboard();
     });
 
+    // Zoom controls
     document.getElementById('zoomIn').addEventListener('click', () => {
       state.zoom = Math.min(state.zoom * 1.2, 3.0);
       drawFretboard();
@@ -764,17 +694,13 @@
       drawFretboard();
     });
 
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      state.theme = state.theme === 'dark' ? 'light' : 'dark';
-      applyTheme();
-    });
-
-    // Canvas drag functionality
+    // Canvas drag functionality for practice box
     canvas.addEventListener('mousedown', (e) => {
       const rect = canvas.getBoundingClientRect();
       const mouseX = e.clientX - rect.left;
       const mouseY = e.clientY - rect.top;
 
+      // Check if mouse is over the practice box
       const margin = 60;
       const width = canvas.width;
       const height = canvas.height;
@@ -788,6 +714,7 @@
         const x1 = margin + (practiceStart - state.fretMin) * fretSpacing;
         const x2 = margin + (Math.min(practiceEnd, state.fretMax) - state.fretMin + 1) * fretSpacing;
 
+        // Check if click is inside the practice box
         if (mouseX >= x1 && mouseX <= x2 && mouseY >= margin - 10 && mouseY <= height - margin + 10) {
           state.isDragging = true;
           state.dragStartX = mouseX;
@@ -810,6 +737,7 @@
       const fretSpacing = (width - 2 * margin) / fretCount;
 
       if (state.isDragging) {
+        // Calculate how many frets we've moved
         const deltaX = mouseX - state.dragStartX;
         const fretsDelta = Math.round(deltaX / fretSpacing);
         const newFret = Math.max(0, Math.min(24 - state.handSpan, state.dragStartFret + fretsDelta));
@@ -819,6 +747,7 @@
           drawFretboard();
         }
       } else {
+        // Check if hovering over practice box to show grab cursor
         const practiceStart = state.practicePositionStart;
         const practiceEnd = practiceStart + state.handSpan - 1;
 
@@ -851,10 +780,14 @@
       }
     });
 
-    // Initialize
-    loadScaleCatalog().then(() => {
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      state.theme = state.theme === 'dark' ? 'light' : 'dark';
       applyTheme();
     });
+
+    // Initialize
+    applyTheme();
   </script>
 </body>
 </html>

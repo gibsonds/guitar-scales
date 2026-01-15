@@ -202,6 +202,26 @@
         ▶ Play
       </button>
     </div>
+
+    <div>
+      <label>Metronome</label>
+      <div style="display: flex; gap: 0.5rem; align-items: center;">
+        <button id="metronomeToggle" class="control-btn" style="width: auto; padding: 0 0.75rem; height: 38px;" title="Toggle metronome">
+          Off
+        </button>
+        <div style="display: flex; align-items: center; gap: 0.25rem;">
+          <input
+            type="number"
+            id="metronomeBpm"
+            value="72"
+            min="30"
+            max="240"
+            style="width: 60px; padding: 0.5rem; border: 1px solid #2a2a3a; border-radius: 8px; font-size: 0.875rem; background: #14141f; color: #e8e8eb; text-align: center;"
+          />
+          <span style="font-size: 0.75rem; color: #8a8a9a;">BPM</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="fretboard-container">
@@ -299,7 +319,9 @@
       dragStartX: 0,
       dragStartFret: 0,
       theme: 'dark',
-      markerStyle: 'dots'
+      markerStyle: 'dots',
+      metronomeEnabled: false,
+      metronomeBpm: 72
     };
 
     // Theme colors
@@ -369,6 +391,52 @@
     // Audio setup
     let synth = null;
     let isPlaying = false;
+
+    // Metronome setup
+    let metronomeSynth = null;
+    let metronomeLoop = null;
+
+    function initMetronome() {
+      if (metronomeSynth) {
+        metronomeSynth.dispose();
+      }
+
+      // Create a simple click sound using a high-pitched synth
+      metronomeSynth = new Tone.MembraneSynth({
+        pitchDecay: 0.008,
+        octaves: 2,
+        envelope: { attack: 0.0006, decay: 0.5, sustain: 0 }
+      }).toDestination();
+      metronomeSynth.volume.value = -5;
+    }
+
+    function startMetronome() {
+      if (metronomeLoop) {
+        metronomeLoop.stop();
+        metronomeLoop.dispose();
+      }
+
+      if (!metronomeSynth) {
+        initMetronome();
+      }
+
+      const bpm = state.metronomeBpm;
+      Tone.Transport.bpm.value = bpm;
+
+      metronomeLoop = new Tone.Loop((time) => {
+        metronomeSynth.triggerAttackRelease('C5', '16n', time);
+      }, '4n');
+
+      Tone.Transport.start();
+      metronomeLoop.start(0);
+    }
+
+    function stopMetronome() {
+      if (metronomeLoop) {
+        metronomeLoop.stop();
+        Tone.Transport.stop();
+      }
+    }
 
     // MIDI note numbers for open strings (standard tuning)
     const OPEN_STRING_MIDI = {
@@ -555,6 +623,14 @@
       document.querySelector('h1').style.color = theme.textPrimary;
       document.querySelector('footer').style.color = theme.textMuted;
       document.getElementById('fretRangeDisplay').style.color = theme.textSecondary;
+
+      // Metronome BPM input
+      const bpmInput = document.getElementById('metronomeBpm');
+      if (bpmInput) {
+        bpmInput.style.background = theme.selectBg;
+        bpmInput.style.borderColor = theme.selectBorder;
+        bpmInput.style.color = theme.textSecondary;
+      }
 
       document.getElementById('themeIcon').textContent = state.theme === 'dark' ? '☀️' : '🌙';
 
@@ -973,6 +1049,34 @@
 
     document.getElementById('instrumentSelect').addEventListener('change', (e) => {
       initAudio(e.target.value);
+    });
+
+    // Metronome event listeners
+    document.getElementById('metronomeToggle').addEventListener('click', async () => {
+      await Tone.start();
+
+      state.metronomeEnabled = !state.metronomeEnabled;
+      const toggleBtn = document.getElementById('metronomeToggle');
+
+      if (state.metronomeEnabled) {
+        startMetronome();
+        toggleBtn.textContent = 'On';
+        toggleBtn.classList.add('active');
+      } else {
+        stopMetronome();
+        toggleBtn.textContent = 'Off';
+        toggleBtn.classList.remove('active');
+      }
+    });
+
+    document.getElementById('metronomeBpm').addEventListener('change', (e) => {
+      const newBpm = parseInt(e.target.value);
+      if (newBpm >= 30 && newBpm <= 240) {
+        state.metronomeBpm = newBpm;
+        if (state.metronomeEnabled) {
+          Tone.Transport.bpm.value = newBpm;
+        }
+      }
     });
 
     document.getElementById('fretRangeMinus').addEventListener('click', () => {

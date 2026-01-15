@@ -205,19 +205,27 @@
 
     <div>
       <label>Metronome</label>
-      <div style="display: flex; gap: 0.5rem; align-items: center;">
+      <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
         <button id="metronomeToggle" class="control-btn" style="width: auto; padding: 0 0.75rem; height: 38px;" title="Toggle metronome">
           Off
         </button>
+        <select id="metronomeSound" style="padding: 0.5rem 0.75rem; border: 1px solid #2a2a3a; border-radius: 8px; font-size: 0.875rem; background: #14141f; color: #e8e8eb; min-width: 100px;">
+          <option value="woodblock">Woodblock</option>
+          <option value="click">Click</option>
+          <option value="beep">Beep</option>
+          <option value="cowbell">Cowbell</option>
+        </select>
         <div style="display: flex; align-items: center; gap: 0.25rem;">
+          <button id="metronomeBpmDown" class="control-btn" style="width: 28px; height: 38px; padding: 0; font-size: 16px;" title="Decrease BPM">−</button>
           <input
             type="number"
             id="metronomeBpm"
             value="72"
             min="30"
             max="240"
-            style="width: 60px; padding: 0.5rem; border: 1px solid #2a2a3a; border-radius: 8px; font-size: 0.875rem; background: #14141f; color: #e8e8eb; text-align: center;"
+            style="width: 50px; padding: 0.5rem 0.25rem; border: 1px solid #2a2a3a; border-radius: 8px; font-size: 0.875rem; background: #14141f; color: #e8e8eb; text-align: center;"
           />
+          <button id="metronomeBpmUp" class="control-btn" style="width: 28px; height: 38px; padding: 0; font-size: 16px;" title="Increase BPM">+</button>
           <span style="font-size: 0.75rem; color: #8a8a9a;">BPM</span>
         </div>
       </div>
@@ -321,7 +329,8 @@
       theme: 'dark',
       markerStyle: 'dots',
       metronomeEnabled: false,
-      metronomeBpm: 72
+      metronomeBpm: 72,
+      metronomeSound: 'woodblock'
     };
 
     // Theme colors
@@ -396,18 +405,62 @@
     let metronomeSynth = null;
     let metronomeLoop = null;
 
-    function initMetronome() {
+    function initMetronome(soundType = 'woodblock') {
       if (metronomeSynth) {
         metronomeSynth.dispose();
       }
 
-      // Create a simple click sound using a high-pitched synth
-      metronomeSynth = new Tone.MembraneSynth({
-        pitchDecay: 0.008,
-        octaves: 2,
-        envelope: { attack: 0.0006, decay: 0.5, sustain: 0 }
-      }).toDestination();
-      metronomeSynth.volume.value = -5;
+      const soundConfigs = {
+        woodblock: {
+          synth: new Tone.MembraneSynth({
+            pitchDecay: 0.05,
+            octaves: 4,
+            envelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.1 }
+          }),
+          note: 'G5',
+          duration: '32n',
+          volume: -8
+        },
+        click: {
+          synth: new Tone.MembraneSynth({
+            pitchDecay: 0.008,
+            octaves: 2,
+            envelope: { attack: 0.0006, decay: 0.05, sustain: 0, release: 0.02 }
+          }),
+          note: 'C6',
+          duration: '64n',
+          volume: -5
+        },
+        beep: {
+          synth: new Tone.Synth({
+            oscillator: { type: 'sine' },
+            envelope: { attack: 0.001, decay: 0.05, sustain: 0, release: 0.05 }
+          }),
+          note: 'C6',
+          duration: '16n',
+          volume: -10
+        },
+        cowbell: {
+          synth: new Tone.MetalSynth({
+            frequency: 800,
+            envelope: { attack: 0.001, decay: 0.1, release: 0.05 },
+            harmonicity: 5.1,
+            modulationIndex: 32,
+            resonance: 4000,
+            octaves: 1.5
+          }),
+          note: 'C4',
+          duration: '16n',
+          volume: -12
+        }
+      };
+
+      const config = soundConfigs[soundType] || soundConfigs.woodblock;
+      metronomeSynth = config.synth.toDestination();
+      metronomeSynth.volume.value = config.volume;
+
+      // Store config for playback
+      metronomeSynth._config = config;
     }
 
     function startMetronome() {
@@ -417,14 +470,15 @@
       }
 
       if (!metronomeSynth) {
-        initMetronome();
+        initMetronome(state.metronomeSound);
       }
 
       const bpm = state.metronomeBpm;
       Tone.Transport.bpm.value = bpm;
 
+      const config = metronomeSynth._config;
       metronomeLoop = new Tone.Loop((time) => {
-        metronomeSynth.triggerAttackRelease('C5', '16n', time);
+        metronomeSynth.triggerAttackRelease(config.note, config.duration, time);
       }, '4n');
 
       Tone.Transport.start();
@@ -1076,6 +1130,41 @@
         if (state.metronomeEnabled) {
           Tone.Transport.bpm.value = newBpm;
         }
+      }
+    });
+
+    document.getElementById('metronomeSound').addEventListener('change', (e) => {
+      state.metronomeSound = e.target.value;
+      const wasEnabled = state.metronomeEnabled;
+
+      if (wasEnabled) {
+        stopMetronome();
+      }
+
+      initMetronome(state.metronomeSound);
+
+      if (wasEnabled) {
+        startMetronome();
+      }
+    });
+
+    document.getElementById('metronomeBpmUp').addEventListener('click', () => {
+      const currentBpm = state.metronomeBpm;
+      const newBpm = Math.min(240, currentBpm + 1);
+      state.metronomeBpm = newBpm;
+      document.getElementById('metronomeBpm').value = newBpm;
+      if (state.metronomeEnabled) {
+        Tone.Transport.bpm.value = newBpm;
+      }
+    });
+
+    document.getElementById('metronomeBpmDown').addEventListener('click', () => {
+      const currentBpm = state.metronomeBpm;
+      const newBpm = Math.max(30, currentBpm - 1);
+      state.metronomeBpm = newBpm;
+      document.getElementById('metronomeBpm').value = newBpm;
+      if (state.metronomeEnabled) {
+        Tone.Transport.bpm.value = newBpm;
       }
     });
 

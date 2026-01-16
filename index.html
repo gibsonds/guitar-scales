@@ -900,7 +900,8 @@
 
           const degreeIndex = scaleIntervals.indexOf(intervalFromRoot);
           if (degreeIndex !== -1) {
-            const note = NOTE_NAMES[noteSemitone];
+            const noteNames = state.enharmonicPreference === 'sharps' ? NOTE_NAMES_SHARPS : NOTE_NAMES_FLATS;
+            const note = noteNames[noteSemitone];
             const degree = scaleDegrees[degreeIndex];
             const isRoot = note === root;
 
@@ -954,7 +955,8 @@
           // Find the degree for this interval
           const degreeIndex = scaleIntervals.indexOf(intervalFromRoot);
           if (degreeIndex !== -1) {
-            const note = NOTE_NAMES[noteSemitone];
+            const noteNames = state.enharmonicPreference === 'sharps' ? NOTE_NAMES_SHARPS : NOTE_NAMES_FLATS;
+            const note = noteNames[noteSemitone];
             const degree = scaleDegrees[degreeIndex];
             const isRoot = note === root;
 
@@ -1444,13 +1446,24 @@
 
     function populateRootSelect() {
       rootSelect.innerHTML = '';
-      ALL_ROOTS.forEach(root => {
+      const roots = state.enharmonicPreference === 'sharps' ? PREFERRED_ROOTS_SHARPS : PREFERRED_ROOTS_FLATS;
+      const currentValue = rootSelect.value || 'A';
+
+      roots.forEach(root => {
         const option = document.createElement('option');
         option.value = root;
         option.textContent = root;
         rootSelect.appendChild(option);
       });
-      rootSelect.value = 'A';
+
+      // Try to maintain the same pitch if switching enharmonics
+      if (currentValue) {
+        const currentSemitone = NOTE_TO_SEMITONE[currentValue];
+        const matchingRoot = roots.find(r => NOTE_TO_SEMITONE[r] === currentSemitone);
+        rootSelect.value = matchingRoot || roots[9]; // Default to A (index 9)
+      } else {
+        rootSelect.value = 'A';
+      }
     }
 
     function populateFingeringPatternSelect() {
@@ -1643,7 +1656,8 @@
 
         // Calculate the chord root note
         const chordRootSemitone = (rootSemitone + rootInterval) % 12;
-        const chordRoot = NOTE_NAMES[chordRootSemitone];
+        const noteNames = state.enharmonicPreference === 'sharps' ? NOTE_NAMES_SHARPS : NOTE_NAMES_FLATS;
+        const chordRoot = noteNames[chordRootSemitone];
 
         // Determine chord symbol and quality
         let triadSymbol = '';
@@ -1910,6 +1924,12 @@
       drawFretboard();
     });
 
+    document.getElementById('enharmonicToggle').addEventListener('click', () => {
+      state.enharmonicPreference = state.enharmonicPreference === 'sharps' ? 'flats' : 'sharps';
+      populateRootSelect();
+      loadScale(state.selectedScaleId, rootSelect.value);
+    });
+
     document.getElementById('zoomIn').addEventListener('click', () => {
       state.zoom = Math.min(state.zoom * 1.2, 3.0);
       drawFretboard();
@@ -2021,12 +2041,16 @@
       }
     });
 
-    // Touch support for iOS/mobile
+    // Touch support for iOS/Android mobile
     canvas.addEventListener('touchstart', (e) => {
       const rect = canvas.getBoundingClientRect();
       const touch = e.touches[0];
-      const touchX = touch.clientX - rect.left;
-      const touchY = touch.clientY - rect.top;
+
+      // Convert from display coordinates to canvas coordinates
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const touchX = (touch.clientX - rect.left) * scaleX;
+      const touchY = (touch.clientY - rect.top) * scaleY;
 
       const margin = 60;
       const width = canvas.width;
@@ -2041,7 +2065,8 @@
         const x1 = margin + (practiceStart - state.fretMin) * fretSpacing;
         const x2 = margin + (Math.min(practiceEnd, state.fretMax) - state.fretMin + 1) * fretSpacing;
 
-        if (touchX >= x1 && touchX <= x2 && touchY >= margin - 10 && touchY <= height - margin + 10) {
+        // More generous vertical hit area for touch (±30px in canvas space)
+        if (touchX >= x1 && touchX <= x2 && touchY >= margin - 30 && touchY <= height - margin + 30) {
           state.isDragging = true;
           state.dragStartX = touchX;
           state.dragStartFret = state.practicePositionStart;
@@ -2055,7 +2080,10 @@
 
       const rect = canvas.getBoundingClientRect();
       const touch = e.touches[0];
-      const touchX = touch.clientX - rect.left;
+
+      // Convert from display coordinates to canvas coordinates
+      const scaleX = canvas.width / rect.width;
+      const touchX = (touch.clientX - rect.left) * scaleX;
 
       const margin = 60;
       const width = canvas.width;

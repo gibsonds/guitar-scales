@@ -111,8 +111,8 @@
       "progressions": [
         {
           "name": "Black Orpheus",
-          "progression": "||: Am | G | F | E7 :||",
-          "description": "i-VII-VI-V (famous bossa nova tune)"
+          "progression": "||: Am | Bm7b5 | E7b9 | Am :||",
+          "description": "i-iiø7-V7b9-i (famous bossa nova tune)"
         },
         {
           "name": "Minor ii-V-i",

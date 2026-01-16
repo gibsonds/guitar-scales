@@ -1403,41 +1403,47 @@
     }
 
     function populateFingeringPatternSelect() {
-      const scale = state.scales.find(s => s.id === state.selectedScaleId);
-      if (!scale) return;
+      // TEMPORARILY DISABLED - Issue #29
+      // Need to properly define patterns with position shifts before enabling
+      fingeringPatternContainer.style.display = 'none';
+      state.selectedFingeringPattern = 'all';
+      return;
 
-      const fingeringVariations = scale.data.properties?.fingering_variations;
+      // const scale = state.scales.find(s => s.id === state.selectedScaleId);
+      // if (!scale) return;
 
-      // Hide the selector if no fingering variations exist
-      if (!fingeringVariations || Object.keys(fingeringVariations).length === 0) {
-        fingeringPatternContainer.style.display = 'none';
-        state.selectedFingeringPattern = 'all';
-        return;
-      }
+      // const fingeringVariations = scale.data.properties?.fingering_variations;
 
-      // Show the selector
-      fingeringPatternContainer.style.display = 'flex';
+      // // Hide the selector if no fingering variations exist
+      // if (!fingeringVariations || Object.keys(fingeringVariations).length === 0) {
+      //   fingeringPatternContainer.style.display = 'none';
+      //   state.selectedFingeringPattern = 'all';
+      //   return;
+      // }
 
-      // Populate options
-      fingeringPatternSelect.innerHTML = '';
+      // // Show the selector
+      // fingeringPatternContainer.style.display = 'flex';
 
-      // Always add "All Tones" option
-      const allOption = document.createElement('option');
-      allOption.value = 'all';
-      allOption.textContent = 'All Tones';
-      fingeringPatternSelect.appendChild(allOption);
+      // // Populate options
+      // fingeringPatternSelect.innerHTML = '';
 
-      // Add fingering variation options
-      Object.keys(fingeringVariations).forEach(key => {
-        const variation = fingeringVariations[key];
-        const option = document.createElement('option');
-        option.value = key;
-        option.textContent = variation.description || key;
-        fingeringPatternSelect.appendChild(option);
-      });
+      // // Always add "All Tones" option
+      // const allOption = document.createElement('option');
+      // allOption.value = 'all';
+      // allOption.textContent = 'All Tones';
+      // fingeringPatternSelect.appendChild(allOption);
 
-      // Set current selection
-      fingeringPatternSelect.value = state.selectedFingeringPattern;
+      // // Add fingering variation options
+      // Object.keys(fingeringVariations).forEach(key => {
+      //   const variation = fingeringVariations[key];
+      //   const option = document.createElement('option');
+      //   option.value = key;
+      //   option.textContent = variation.description || key;
+      //   fingeringPatternSelect.appendChild(option);
+      // });
+
+      // // Set current selection
+      // fingeringPatternSelect.value = state.selectedFingeringPattern;
     }
 
     function transposeScale(scaleData, targetRoot) {

@@ -94,7 +94,19 @@
           }
         }
       },
-      "category": "scales"
+      "category": "scales",
+      "progressions": [
+        {
+          "name": "Blues in A",
+          "progression": "||: A7 | D7 | A7 | A7 | D7 | D7 | A7 | A7 | E7 | D7 | A7 | E7 :||",
+          "description": "12-bar blues (6-note blues scale)"
+        },
+        {
+          "name": "Blues shuffle",
+          "progression": "||: A7 | A7 | D7 | D7 | A7 | A7 | E7 | E7 :||",
+          "description": "8-bar blues variation"
+        }
+      ]
     }
   }
 }

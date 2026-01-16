@@ -70,7 +70,19 @@
           }
         }
       },
-      "category": "scales"
+      "category": "scales",
+      "progressions": [
+        {
+          "name": "Augmented dominant",
+          "progression": "||: Dm7 | G7#5 | Cmaj7 | Cmaj7 :||",
+          "description": "Use over G7#5 chord (ii-V-I with augmented V)"
+        },
+        {
+          "name": "Whole tone vamp",
+          "progression": "||: G7#5 | G7#5 | G7#5 | G7#5 :||",
+          "description": "Floating, dreamlike augmented sound"
+        }
+      ]
     }
   }
 }

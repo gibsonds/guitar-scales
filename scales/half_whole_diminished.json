@@ -77,7 +77,19 @@
           }
         }
       },
-      "category": "scales"
+      "category": "scales",
+      "progressions": [
+        {
+          "name": "Dominant 7b9",
+          "progression": "||: Dm7 | G7b9 | Cmaj7 | Cmaj7 :||",
+          "description": "Use over G7b9 chord (ii-V-I with altered V)"
+        },
+        {
+          "name": "Diminished 7 vamp",
+          "progression": "||: G°7 | G°7 | G°7 | G°7 :||",
+          "description": "Symmetrical diminished sound"
+        }
+      ]
     }
   }
 }

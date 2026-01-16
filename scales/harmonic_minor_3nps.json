@@ -107,7 +107,19 @@
           }
         }
       },
-      "category": "scales"
+      "category": "scales",
+      "progressions": [
+        {
+          "name": "Black Orpheus",
+          "progression": "||: Am | G | F | E7 :||",
+          "description": "i-VII-VI-V (famous bossa nova tune)"
+        },
+        {
+          "name": "Minor ii-V-i",
+          "progression": "||: Bm7b5 | E7 | Am | Am :||",
+          "description": "iiø7-V7-i (harmonic minor cadence)"
+        }
+      ]
     }
   }
 }

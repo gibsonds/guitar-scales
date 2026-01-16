@@ -89,7 +89,19 @@
           }
         }
       },
-      "category": "arpeggios"
+      "category": "arpeggios",
+      "progressions": [
+        {
+          "name": "ii-V-I in C",
+          "progression": "||: Dm7 | G7 | Cmaj7 | Cmaj7 :||",
+          "description": "Use over Dm7 chord (ii7)"
+        },
+        {
+          "name": "Modal jazz",
+          "progression": "||: Dm7 | Dm7 | Dm7 | Dm7 :||",
+          "description": "Outline minor 7 chord"
+        }
+      ]
     }
   }
 }

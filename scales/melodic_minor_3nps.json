@@ -107,7 +107,19 @@
           }
         }
       },
-      "category": "scales"
+      "category": "scales",
+      "progressions": [
+        {
+          "name": "Minor ii-V-i jazz",
+          "progression": "||: Bm7b5 | E7alt | AmMaj7 | AmMaj7 :||",
+          "description": "iiø7-V7alt-iMaj7 (melodic minor i chord)"
+        },
+        {
+          "name": "Melodic minor vamp",
+          "progression": "||: AmMaj7 | AmMaj7 | AmMaj7 | AmMaj7 :||",
+          "description": "Minor with major 7th and natural 6th"
+        }
+      ]
     }
   }
 }

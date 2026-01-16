@@ -73,7 +73,19 @@
           }
         }
       },
-      "category": "modes"
+      "category": "modes",
+      "progressions": [
+        {
+          "name": "viiø7 chord",
+          "progression": "||: Bm7b5 | E7 | Am | Am :||",
+          "description": "Use over viiø7 in minor (rare usage)"
+        },
+        {
+          "name": "Locrian vamp",
+          "progression": "||: Bm7b5 | Bm7b5 | Bm7b5 | Bm7b5 :||",
+          "description": "Unstable diminished sound"
+        }
+      ]
     }
   }
 }

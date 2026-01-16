@@ -118,7 +118,19 @@
           }
         }
       },
-      "category": "scales"
+      "category": "scales",
+      "progressions": [
+        {
+          "name": "Jazz blues in F",
+          "progression": "||: Fmaj7 | Bb7 | Fmaj7 | Cm7 F7 | Bb7 | Bbm7 Eb7 | Fmaj7 | Am7 D7 | Gm7 | C7 | Fmaj7 D7 | Gm7 C7 :||",
+          "description": "12-bar jazz blues with substitutions"
+        },
+        {
+          "name": "Simple jazz blues",
+          "progression": "||: F7 | Bb7 | F7 | F7 | Bb7 | Bb7 | F7 | F7 | Gm7 | C7 | F7 | Gm7 C7 :||",
+          "description": "Straightforward jazz blues"
+        }
+      ]
     }
   }
 }

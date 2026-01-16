@@ -82,8 +82,8 @@
         },
         {
           "name": "i-iv-i-iv",
-          "progression": "||: Am7 | Am7 | Dm7 | Dm7 :||",
-          "description": "Simple minor modal vamp"
+          "progression": "||: Am7 | Dm7 | Am7 | Dm7 :||",
+          "description": "Alternating minor modal vamp"
         }
       ]
     }

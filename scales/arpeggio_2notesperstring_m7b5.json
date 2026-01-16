@@ -89,7 +89,19 @@
           }
         }
       },
-      "category": "arpeggios"
+      "category": "arpeggios",
+      "progressions": [
+        {
+          "name": "Minor ii-V-i",
+          "progression": "||: Bm7b5 | E7 | Am | Am :||",
+          "description": "Use over Bm7b5 chord (iiø7)"
+        },
+        {
+          "name": "Half-diminished vamp",
+          "progression": "||: Bm7b5 | Bm7b5 | Bm7b5 | Bm7b5 :||",
+          "description": "Outline half-diminished chord"
+        }
+      ]
     }
   }
 }

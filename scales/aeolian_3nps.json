@@ -73,7 +73,19 @@
           }
         }
       },
-      "category": "modes"
+      "category": "modes",
+      "progressions": [
+        {
+          "name": "i-VII-VI-V",
+          "progression": "||: Am | G | F | E7 :||",
+          "description": "Natural minor rock progression"
+        },
+        {
+          "name": "i-iv-i-iv",
+          "progression": "||: Am7 | Am7 | Dm7 | Dm7 :||",
+          "description": "Simple minor modal vamp"
+        }
+      ]
     }
   }
 }

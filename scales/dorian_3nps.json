@@ -73,7 +73,19 @@
           }
         }
       },
-      "category": "modes"
+      "category": "modes",
+      "progressions": [
+        {
+          "name": "ii-V vamp",
+          "progression": "||: Dm7 | G7 :||",
+          "description": "Classic Dorian modal vamp"
+        },
+        {
+          "name": "So What",
+          "progression": "||: Dm7 | Dm7 | Dm7 | Dm7 | Dm7 | Dm7 | Dm7 | Dm7 :||",
+          "description": "Modal jazz a la Miles Davis"
+        }
+      ]
     }
   }
 }

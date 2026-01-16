@@ -300,6 +300,13 @@
     <div class="info" id="info">
       Drag the blue box to move your practice position
     </div>
+
+    <div id="progressionsSection" style="display: none; padding: 1rem 1.25rem; background: #14141f; border-top: 1px solid #2a2a3a;">
+      <div style="font-size: 0.75rem; font-weight: 600; color: #8a8a9a; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">
+        Practice Over
+      </div>
+      <div id="progressionsList" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
+    </div>
   </div>
 
   <footer>
@@ -1126,6 +1133,49 @@
 
       document.getElementById('info').textContent =
         `${scale.name} in ${root} - Drag the blue box to move your practice position`;
+
+      // Display chord progressions if available
+      const progressions = scale.data.properties?.progressions || [];
+      const progressionsSection = document.getElementById('progressionsSection');
+      const progressionsList = document.getElementById('progressionsList');
+
+      if (progressions.length > 0) {
+        progressionsList.innerHTML = '';
+        progressions.forEach(prog => {
+          const progItem = document.createElement('div');
+          progItem.style.cssText = 'display: flex; flex-direction: column; gap: 0.25rem; padding: 0.75rem; background: #1a1a27; border-radius: 8px; border: 1px solid #2a2a3a;';
+
+          const progHeader = document.createElement('div');
+          progHeader.style.cssText = 'display: flex; align-items: center; gap: 0.5rem;';
+
+          const progIcon = document.createElement('span');
+          progIcon.textContent = '🎵';
+          progIcon.style.fontSize = '1rem';
+
+          const progName = document.createElement('span');
+          progName.textContent = prog.name;
+          progName.style.cssText = 'font-size: 0.875rem; font-weight: 600; color: #e8e8eb;';
+
+          progHeader.appendChild(progIcon);
+          progHeader.appendChild(progName);
+
+          const progChords = document.createElement('div');
+          progChords.textContent = prog.progression;
+          progChords.style.cssText = 'font-size: 0.813rem; color: #4a9eff; font-family: monospace; margin-left: 1.5rem;';
+
+          const progDesc = document.createElement('div');
+          progDesc.textContent = prog.description;
+          progDesc.style.cssText = 'font-size: 0.75rem; color: #8a8a9a; margin-left: 1.5rem;';
+
+          progItem.appendChild(progHeader);
+          progItem.appendChild(progChords);
+          progItem.appendChild(progDesc);
+          progressionsList.appendChild(progItem);
+        });
+        progressionsSection.style.display = 'block';
+      } else {
+        progressionsSection.style.display = 'none';
+      }
 
       drawFretboard();
     }

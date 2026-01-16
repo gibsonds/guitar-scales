@@ -73,7 +73,19 @@
           }
         }
       },
-      "category": "modes"
+      "category": "modes",
+      "progressions": [
+        {
+          "name": "V7-IV vamp",
+          "progression": "||: G7 | G7 | C | C :||",
+          "description": "Rock/blues Mixolydian groove"
+        },
+        {
+          "name": "Dominant pedal",
+          "progression": "||: G7 | G7 | G7 | G7 :||",
+          "description": "Single chord modal vamp"
+        }
+      ]
     }
   }
 }

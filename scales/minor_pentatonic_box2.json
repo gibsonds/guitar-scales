@@ -146,7 +146,19 @@
           }
         }
       },
-      "category": "scales"
+      "category": "scales",
+      "progressions": [
+        {
+          "name": "i-iv",
+          "progression": "||: Am7 | Am7 | Dm7 | Dm7 :||",
+          "description": "Simple minor vamp"
+        },
+        {
+          "name": "Blues in A",
+          "progression": "||: A7 | D7 | A7 | A7 | D7 | D7 | A7 | A7 | E7 | D7 | A7 | E7 :||",
+          "description": "12-bar blues progression"
+        }
+      ]
     }
   }
 }

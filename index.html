@@ -315,9 +315,12 @@
       </div>
     </div>
 
-    <div>
-      <label>Root</label>
-      <select id="rootSelect"></select>
+    <div style="display: flex; gap: 0.5rem; align-items: flex-end;">
+      <div>
+        <label>Root</label>
+        <select id="rootSelect"></select>
+      </div>
+      <button id="enharmonicToggle" class="control-btn" title="Toggle between sharps and flats" style="height: 38px; padding: 0 0.75rem;">♯/♭</button>
     </div>
 
     <div id="fingeringPatternContainer" style="display: none;">
@@ -396,9 +399,7 @@
       <!-- Display Options -->
       <div class="control-section">
         <span class="control-label">Show</span>
-        <button class="control-btn active" id="toggleRoots" title="Root notes">R</button>
-        <button class="control-btn active" id="toggleDegrees" title="Scale degrees">#</button>
-        <button class="control-btn active" id="toggleNotes" title="Note names">♪</button>
+        <button class="control-btn active" id="toggleDisplay" title="Toggle between degrees and notes">#</button>
       </div>
 
       <div class="divider"></div>
@@ -466,13 +467,22 @@
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
-    const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    const NOTE_NAMES_SHARPS = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    const NOTE_NAMES_FLATS = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
     const NOTE_TO_SEMITONE = {
       'C': 0, 'C#': 1, 'Db': 1, 'D': 2, 'D#': 3, 'Eb': 3,
       'E': 4, 'F': 5, 'F#': 6, 'Gb': 6, 'G': 7, 'G#': 8,
       'Ab': 8, 'A': 9, 'A#': 10, 'Bb': 10, 'B': 11
     };
-    const ALL_ROOTS = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    const PREFERRED_ROOTS_SHARPS = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    const PREFERRED_ROOTS_FLATS = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+    const ENHARMONIC_MAP = {
+      'C#': 'Db', 'Db': 'C#',
+      'D#': 'Eb', 'Eb': 'D#',
+      'F#': 'Gb', 'Gb': 'F#',
+      'G#': 'Ab', 'Ab': 'G#',
+      'A#': 'Bb', 'Bb': 'A#'
+    };
 
     // State
     const state = {
@@ -483,6 +493,7 @@
       selectedFingeringPattern: 'all',
       selectedChord: null,
       diatonicChords: [],
+      enharmonicPreference: 'flats', // 'sharps' or 'flats'
       categoriesCollapsed: JSON.parse(localStorage.getItem('categoriesCollapsed') || '{}'),
       dropdownOpen: false,
       fretMin: 0,
@@ -490,9 +501,7 @@
       practicePositionStart: 0,
       handSpan: 5,
       zoom: 1.0,
-      showRoots: true,
-      showDegrees: true,
-      showNoteNames: true,
+      showDegrees: true, // true = show degrees (#), false = show note names (♪)
       isDragging: false,
       dragStartX: 0,
       dragStartFret: 0,
@@ -968,7 +977,7 @@
     function drawFretboard() {
       if (!state.currentScaleData) return;
 
-      const { fretMin, fretMax, zoom, showRoots, showDegrees, showNoteNames, theme } = state;
+      const { fretMin, fretMax, zoom, showDegrees, theme } = state;
       const colors = themes[theme];
 
       const scaleData = state.currentScaleData;
@@ -1217,31 +1226,22 @@
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        if (showDegrees || showRoots || state.selectedChord) {
-          ctx.fillStyle = '#ffffff';
-          ctx.font = `bold ${Math.min(radius * 0.8, 12)}px sans-serif`;
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
+        // Draw label inside circle
+        ctx.fillStyle = '#ffffff';
+        ctx.font = `bold ${Math.min(radius * 0.8, 12)}px sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
 
-          // Show chord tone labels if a chord is selected
-          let label = '';
-          if (state.selectedChord && pos.chordTone) {
-            label = pos.chordTone;
-          } else if (pos.isRoot && showRoots) {
-            label = 'R';
-          } else if (showDegrees) {
-            label = pos.degree;
-          }
-
-          ctx.fillText(label, x, y);
+        let label = '';
+        if (showDegrees) {
+          // Show scale degrees/intervals
+          label = pos.degree;
+        } else {
+          // Show note names
+          label = pos.note;
         }
 
-        if (showNoteNames) {
-          ctx.fillStyle = colors.noteLabelColor;
-          ctx.font = `bold ${Math.min(radius * 0.7, 11)}px sans-serif`;
-          ctx.textBaseline = 'top';
-          ctx.fillText(pos.note, x, y + radius + 3);
-        }
+        ctx.fillText(label, x, y);
 
         ctx.globalAlpha = 1.0;
       });
@@ -1901,21 +1901,10 @@
       });
     });
 
-    document.getElementById('toggleRoots').addEventListener('click', (e) => {
-      state.showRoots = !state.showRoots;
-      e.currentTarget.classList.toggle('active', state.showRoots);
-      drawFretboard();
-    });
-
-    document.getElementById('toggleDegrees').addEventListener('click', (e) => {
+    document.getElementById('toggleDisplay').addEventListener('click', (e) => {
       state.showDegrees = !state.showDegrees;
-      e.currentTarget.classList.toggle('active', state.showDegrees);
-      drawFretboard();
-    });
-
-    document.getElementById('toggleNotes').addEventListener('click', (e) => {
-      state.showNoteNames = !state.showNoteNames;
-      e.currentTarget.classList.toggle('active', state.showNoteNames);
+      e.currentTarget.textContent = state.showDegrees ? '#' : '♪';
+      e.currentTarget.title = state.showDegrees ? 'Showing degrees (click for notes)' : 'Showing notes (click for degrees)';
       drawFretboard();
     });
 

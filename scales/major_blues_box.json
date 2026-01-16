@@ -63,7 +63,19 @@
           }
         }
       },
-      "category": "scales"
+      "category": "scales",
+      "progressions": [
+        {
+          "name": "Blues in C",
+          "progression": "||: C7 | F7 | C7 | C7 | F7 | F7 | C7 | C7 | G7 | F7 | C7 | G7 :||",
+          "description": "12-bar blues progression"
+        },
+        {
+          "name": "Quick-change blues",
+          "progression": "||: C7 | F7 | C7 | C7 | F7 | F7 | C7 | C7 | G7 | F7 | C7 | C7 :||",
+          "description": "Blues with IV in bar 2"
+        }
+      ]
     }
   }
 }

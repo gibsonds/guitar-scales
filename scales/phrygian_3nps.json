@@ -73,7 +73,19 @@
           }
         }
       },
-      "category": "modes"
+      "category": "modes",
+      "progressions": [
+        {
+          "name": "i-bII Spanish",
+          "progression": "||: Em | F | Em | F :||",
+          "description": "Flamenco/Spanish phrasing"
+        },
+        {
+          "name": "Phrygian vamp",
+          "progression": "||: Em | Em | Em | Em :||",
+          "description": "Dark modal pedal"
+        }
+      ]
     }
   }
 }

@@ -73,7 +73,19 @@
           }
         }
       },
-      "category": "modes"
+      "category": "modes",
+      "progressions": [
+        {
+          "name": "IVmaj7 vamp",
+          "progression": "||: Fmaj7 | Fmaj7 | Fmaj7 | Fmaj7 :||",
+          "description": "Lydian modal vamp (bright, dreamy)"
+        },
+        {
+          "name": "I-II",
+          "progression": "||: Fmaj7 | Gmaj7 | Fmaj7 | Gmaj7 :||",
+          "description": "Bright major II chord (from #4)"
+        }
+      ]
     }
   }
 }

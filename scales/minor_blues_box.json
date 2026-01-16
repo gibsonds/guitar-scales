@@ -66,7 +66,19 @@
           }
         }
       },
-      "category": "scales"
+      "category": "scales",
+      "progressions": [
+        {
+          "name": "Minor blues in A",
+          "progression": "||: Am7 | Dm7 | Am7 | Am7 | Dm7 | Dm7 | Am7 | Am7 | Em7 | Dm7 | Am7 | Em7 :||",
+          "description": "12-bar minor blues"
+        },
+        {
+          "name": "Rock blues",
+          "progression": "||: A7 | D7 | A7 | A7 | D7 | D7 | A7 | A7 | E7 | D7 | A7 | E7 :||",
+          "description": "Minor blues scale over dominant 7 chords"
+        }
+      ]
     }
   }
 }

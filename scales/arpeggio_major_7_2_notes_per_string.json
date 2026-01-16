@@ -89,7 +89,19 @@
           }
         }
       },
-      "category": "arpeggios"
+      "category": "arpeggios",
+      "progressions": [
+        {
+          "name": "I chord vamp",
+          "progression": "||: Cmaj7 | Cmaj7 | Cmaj7 | Cmaj7 :||",
+          "description": "Outline tonic major 7 chord"
+        },
+        {
+          "name": "Ballad ending",
+          "progression": "||: Dm7 | G7 | Cmaj7 | Cmaj7 :||",
+          "description": "Use over Cmaj7 chord (Imaj7)"
+        }
+      ]
     }
   }
 }

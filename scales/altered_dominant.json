@@ -75,7 +75,19 @@
           }
         }
       },
-      "category": "modes"
+      "category": "modes",
+      "progressions": [
+        {
+          "name": "ii-V-I jazz",
+          "progression": "||: Dm7 | G7alt | Cmaj7 | Cmaj7 :||",
+          "description": "Use over G7alt (altered V7)"
+        },
+        {
+          "name": "Tritone sub",
+          "progression": "||: Dm7 | Db7alt | Cmaj7 | Cmaj7 :||",
+          "description": "bII7 substitution"
+        }
+      ]
     }
   }
 }

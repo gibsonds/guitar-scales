@@ -89,7 +89,19 @@
           }
         }
       },
-      "category": "arpeggios"
+      "category": "arpeggios",
+      "progressions": [
+        {
+          "name": "ii-V-I in C",
+          "progression": "||: Dm7 | G7 | Cmaj7 | Cmaj7 :||",
+          "description": "Use over G7 chord (V7)"
+        },
+        {
+          "name": "Blues",
+          "progression": "||: G7 | G7 | G7 | G7 :||",
+          "description": "Outline dominant 7 chord"
+        }
+      ]
     }
   }
 }

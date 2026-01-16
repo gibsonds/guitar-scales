@@ -75,6 +75,121 @@
       border-color: #4a9eff;
       box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
     }
+    .custom-select-wrapper {
+      position: relative;
+      min-width: 180px;
+    }
+    .custom-select-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      background: #14141f;
+      color: #e8e8eb;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .custom-select-button:hover {
+      border-color: #3a3a4a;
+      background: #1a1a27;
+    }
+    .custom-select-button:focus {
+      outline: none;
+      border-color: #4a9eff;
+      box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+    }
+    .dropdown-arrow {
+      font-size: 0.625rem;
+      color: #8a8a9a;
+      transition: transform 0.2s;
+    }
+    .custom-select-button[aria-expanded="true"] .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+    .custom-select-dropdown {
+      position: absolute;
+      top: calc(100% + 0.25rem);
+      left: 0;
+      right: 0;
+      background: #14141f;
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      max-height: 400px;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+    .custom-select-dropdown::-webkit-scrollbar {
+      width: 8px;
+    }
+    .custom-select-dropdown::-webkit-scrollbar-track {
+      background: #0a0a0f;
+      border-radius: 4px;
+    }
+    .custom-select-dropdown::-webkit-scrollbar-thumb {
+      background: #2a2a3a;
+      border-radius: 4px;
+    }
+    .custom-select-dropdown::-webkit-scrollbar-thumb:hover {
+      background: #3a3a4a;
+    }
+    .category-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.625rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #8a8a9a;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: #1a1a27;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid #2a2a3a;
+    }
+    .category-header:hover {
+      background: #1f1f2c;
+      color: #9a9aaa;
+    }
+    .category-header:first-child {
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
+    }
+    .category-icon {
+      font-size: 0.75rem;
+      transition: transform 0.2s;
+    }
+    .category-header.collapsed .category-icon {
+      transform: rotate(-90deg);
+    }
+    .category-items {
+      display: block;
+      border-bottom: 1px solid #2a2a3a;
+    }
+    .category-items.collapsed {
+      display: none;
+    }
+    .scale-option {
+      padding: 0.5rem 0.75rem 0.5rem 1.5rem;
+      font-size: 0.875rem;
+      color: #e8e8eb;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .scale-option:hover {
+      background: #1f1f2c;
+    }
+    .scale-option.selected {
+      background: #2a3a4a;
+      color: #4a9eff;
+      font-weight: 500;
+    }
     .scale-selector label {
       font-size: 0.75rem;
       font-weight: 600;
@@ -190,7 +305,13 @@
         />
         <span style="position: absolute; left: 0.6rem; top: 0.55rem; font-size: 0.875rem; color: #8a8a9a;">🔍</span>
       </div>
-      <select id="scaleSelect"></select>
+      <div class="custom-select-wrapper">
+        <div id="scaleSelectButton" class="custom-select-button" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+          <span id="scaleSelectValue">Select a pattern...</span>
+          <span class="dropdown-arrow">▼</span>
+        </div>
+        <div id="scaleSelectDropdown" class="custom-select-dropdown" role="listbox" style="display: none;"></div>
+      </div>
     </div>
 
     <div>
@@ -331,6 +452,9 @@
       scales: [],
       currentScale: null,
       currentScaleData: null,
+      selectedScaleId: null,
+      categoriesCollapsed: JSON.parse(localStorage.getItem('categoriesCollapsed') || '{}'),
+      dropdownOpen: false,
       fretMin: 0,
       fretMax: 24,
       practicePositionStart: 0,
@@ -410,7 +534,9 @@
     // DOM elements
     const canvas = document.getElementById('fretboardCanvas');
     const ctx = canvas.getContext('2d');
-    const scaleSelect = document.getElementById('scaleSelect');
+    const scaleSelectButton = document.getElementById('scaleSelectButton');
+    const scaleSelectValue = document.getElementById('scaleSelectValue');
+    const scaleSelectDropdown = document.getElementById('scaleSelectDropdown');
     const rootSelect = document.getElementById('rootSelect');
 
     // Audio setup
@@ -1037,13 +1163,15 @@
       populateRootSelect();
 
       if (state.scales.length > 0) {
-        scaleSelect.value = state.scales[0].id;
+        // Set initial selection
+        state.selectedScaleId = state.scales[0].id;
+        scaleSelectValue.textContent = state.scales[0].name;
         updateDisplay();
       }
     }
 
     function populateScaleSelect(filterText = '') {
-      scaleSelect.innerHTML = '';
+      scaleSelectDropdown.innerHTML = '';
 
       const filter = filterText.toLowerCase().trim();
 
@@ -1068,34 +1196,124 @@
 
       let hasResults = false;
 
-      // Create optgroups for each category
+      // Create custom dropdown structure with collapsible categories
       ['scales', 'modes', 'arpeggios'].forEach(categoryKey => {
         const category = categories[categoryKey];
         if (category.scales.length > 0) {
           hasResults = true;
-          const optgroup = document.createElement('optgroup');
-          optgroup.label = category.label;
 
           // Sort scales alphabetically within category
           category.scales.sort((a, b) => a.name.localeCompare(b.name));
 
-          category.scales.forEach(scale => {
-            const option = document.createElement('option');
-            option.value = scale.id;
-            option.textContent = scale.name;
-            optgroup.appendChild(option);
+          // Determine if category should be collapsed
+          const isCollapsed = state.categoriesCollapsed[categoryKey] === true;
+
+          // Category header
+          const header = document.createElement('div');
+          header.className = `category-header${isCollapsed ? ' collapsed' : ''}`;
+          header.dataset.category = categoryKey;
+          header.innerHTML = `
+            <div>
+              <span class="category-icon">▼</span>
+              ${category.label} (${category.scales.length})
+            </div>
+          `;
+          header.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleCategory(categoryKey);
           });
 
-          scaleSelect.appendChild(optgroup);
+          scaleSelectDropdown.appendChild(header);
+
+          // Category items container
+          const itemsContainer = document.createElement('div');
+          itemsContainer.className = `category-items${isCollapsed ? ' collapsed' : ''}`;
+          itemsContainer.dataset.category = categoryKey;
+
+          category.scales.forEach(scale => {
+            const option = document.createElement('div');
+            option.className = 'scale-option';
+            if (scale.id === state.selectedScaleId) {
+              option.classList.add('selected');
+            }
+            option.dataset.scaleId = scale.id;
+            option.textContent = scale.name;
+            option.addEventListener('click', (e) => {
+              e.stopPropagation();
+              selectScale(scale.id);
+            });
+
+            itemsContainer.appendChild(option);
+          });
+
+          scaleSelectDropdown.appendChild(itemsContainer);
         }
       });
 
       // Show "No results" message if nothing found
       if (!hasResults && filter) {
-        const option = document.createElement('option');
-        option.textContent = 'No patterns found';
-        option.disabled = true;
-        scaleSelect.appendChild(option);
+        const noResults = document.createElement('div');
+        noResults.style.cssText = 'padding: 1rem; text-align: center; color: #8a8a9a; font-size: 0.875rem;';
+        noResults.textContent = 'No patterns found';
+        scaleSelectDropdown.appendChild(noResults);
+      }
+    }
+
+    function toggleCategory(categoryKey) {
+      const isCurrentlyCollapsed = state.categoriesCollapsed[categoryKey] === true;
+      state.categoriesCollapsed[categoryKey] = !isCurrentlyCollapsed;
+
+      // Save to localStorage
+      localStorage.setItem('categoriesCollapsed', JSON.stringify(state.categoriesCollapsed));
+
+      // Update UI
+      const header = scaleSelectDropdown.querySelector(`.category-header[data-category="${categoryKey}"]`);
+      const items = scaleSelectDropdown.querySelector(`.category-items[data-category="${categoryKey}"]`);
+
+      if (header && items) {
+        if (state.categoriesCollapsed[categoryKey]) {
+          header.classList.add('collapsed');
+          items.classList.add('collapsed');
+        } else {
+          header.classList.remove('collapsed');
+          items.classList.remove('collapsed');
+        }
+      }
+    }
+
+    function selectScale(scaleId) {
+      state.selectedScaleId = scaleId;
+
+      // Update button display
+      const scale = state.scales.find(s => s.id === scaleId);
+      if (scale) {
+        scaleSelectValue.textContent = scale.name;
+      }
+
+      // Close dropdown
+      closeDropdown();
+
+      // Update the fretboard
+      updateDisplay();
+    }
+
+    function openDropdown() {
+      state.dropdownOpen = true;
+      scaleSelectDropdown.style.display = 'block';
+      scaleSelectButton.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDropdown() {
+      state.dropdownOpen = false;
+      scaleSelectDropdown.style.display = 'none';
+      scaleSelectButton.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleDropdown() {
+      if (state.dropdownOpen) {
+        closeDropdown();
+      } else {
+        openDropdown();
       }
     }
 
@@ -1122,7 +1340,7 @@
     }
 
     function updateDisplay() {
-      const scale = state.scales.find(s => s.id === scaleSelect.value);
+      const scale = state.scales.find(s => s.id === state.selectedScaleId);
       if (!scale) return;
 
       const root = rootSelect.value;
@@ -1181,21 +1399,38 @@
     }
 
     // Event listeners
-    scaleSelect.addEventListener('change', updateDisplay);
     rootSelect.addEventListener('change', updateDisplay);
+
+    // Custom dropdown event listeners
+    scaleSelectButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (state.dropdownOpen && !scaleSelectButton.contains(e.target) && !scaleSelectDropdown.contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    // Keyboard navigation for dropdown button
+    scaleSelectButton.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleDropdown();
+      } else if (e.key === 'Escape') {
+        closeDropdown();
+      }
+    });
 
     // Pattern search filter
     document.getElementById('patternSearch').addEventListener('input', (e) => {
-      const currentSelection = scaleSelect.value;
       populateScaleSelect(e.target.value);
 
-      // Try to preserve selection if it's still visible after filtering
-      const optionExists = Array.from(scaleSelect.options).some(opt => opt.value === currentSelection);
-      if (optionExists) {
-        scaleSelect.value = currentSelection;
-      } else if (scaleSelect.options.length > 0) {
-        scaleSelect.selectedIndex = 0;
-        updateDisplay();
+      // Auto-open dropdown when typing
+      if (e.target.value && !state.dropdownOpen) {
+        openDropdown();
       }
     });
 

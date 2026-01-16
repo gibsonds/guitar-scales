@@ -1445,9 +1445,11 @@
     }
 
     function populateRootSelect() {
-      rootSelect.innerHTML = '';
-      const roots = state.enharmonicPreference === 'sharps' ? PREFERRED_ROOTS_SHARPS : PREFERRED_ROOTS_FLATS;
+      // IMPORTANT: Save current value BEFORE clearing the select
       const currentValue = rootSelect.value || 'A';
+      const roots = state.enharmonicPreference === 'sharps' ? PREFERRED_ROOTS_SHARPS : PREFERRED_ROOTS_FLATS;
+
+      rootSelect.innerHTML = '';
 
       roots.forEach(root => {
         const option = document.createElement('option');
@@ -1930,7 +1932,7 @@
       e.currentTarget.textContent = state.enharmonicPreference === 'sharps' ? '♯' : '♭';
       e.currentTarget.title = state.enharmonicPreference === 'sharps' ? 'Showing sharps (click for flats)' : 'Showing flats (click for sharps)';
       populateRootSelect();
-      loadScale(state.selectedScaleId, rootSelect.value);
+      updateDisplay(); // Recalculate scale with new enharmonic preference
     });
 
     document.getElementById('zoomIn').addEventListener('click', () => {

@@ -181,6 +181,15 @@
   <div class="scale-selector">
     <div>
       <label>Pattern</label>
+      <div style="position: relative;">
+        <input
+          type="text"
+          id="patternSearch"
+          placeholder="Search patterns..."
+          style="width: 100%; padding: 0.5rem 0.75rem 0.5rem 2rem; border: 1px solid #2a2a3a; border-radius: 8px; font-size: 0.875rem; background: #14141f; color: #e8e8eb; margin-bottom: 0.5rem;"
+        />
+        <span style="position: absolute; left: 0.6rem; top: 0.55rem; font-size: 0.875rem; color: #8a8a9a;">🔍</span>
+      </div>
       <select id="scaleSelect"></select>
     </div>
 
@@ -686,6 +695,14 @@
         bpmInput.style.color = theme.textSecondary;
       }
 
+      // Pattern search input
+      const patternSearch = document.getElementById('patternSearch');
+      if (patternSearch) {
+        patternSearch.style.background = theme.selectBg;
+        patternSearch.style.borderColor = theme.selectBorder;
+        patternSearch.style.color = theme.textSecondary;
+      }
+
       document.getElementById('themeIcon').textContent = state.theme === 'dark' ? '☀️' : '🌙';
 
       drawFretboard();
@@ -1018,8 +1035,10 @@
       }
     }
 
-    function populateScaleSelect() {
+    function populateScaleSelect(filterText = '') {
       scaleSelect.innerHTML = '';
+
+      const filter = filterText.toLowerCase().trim();
 
       // Group scales by category
       const categories = {
@@ -1029,16 +1048,24 @@
       };
 
       state.scales.forEach(scale => {
+        // Filter by search text
+        if (filter && !scale.name.toLowerCase().includes(filter) && !scale.id.toLowerCase().includes(filter)) {
+          return;
+        }
+
         const category = scale.category || 'scales';
         if (categories[category]) {
           categories[category].scales.push(scale);
         }
       });
 
+      let hasResults = false;
+
       // Create optgroups for each category
       ['scales', 'modes', 'arpeggios'].forEach(categoryKey => {
         const category = categories[categoryKey];
         if (category.scales.length > 0) {
+          hasResults = true;
           const optgroup = document.createElement('optgroup');
           optgroup.label = category.label;
 
@@ -1055,6 +1082,14 @@
           scaleSelect.appendChild(optgroup);
         }
       });
+
+      // Show "No results" message if nothing found
+      if (!hasResults && filter) {
+        const option = document.createElement('option');
+        option.textContent = 'No patterns found';
+        option.disabled = true;
+        scaleSelect.appendChild(option);
+      }
     }
 
     function populateRootSelect() {
@@ -1098,6 +1133,21 @@
     // Event listeners
     scaleSelect.addEventListener('change', updateDisplay);
     rootSelect.addEventListener('change', updateDisplay);
+
+    // Pattern search filter
+    document.getElementById('patternSearch').addEventListener('input', (e) => {
+      const currentSelection = scaleSelect.value;
+      populateScaleSelect(e.target.value);
+
+      // Try to preserve selection if it's still visible after filtering
+      const optionExists = Array.from(scaleSelect.options).some(opt => opt.value === currentSelection);
+      if (optionExists) {
+        scaleSelect.value = currentSelection;
+      } else if (scaleSelect.options.length > 0) {
+        scaleSelect.selectedIndex = 0;
+        updateDisplay();
+      }
+    });
 
     document.getElementById('playButton').addEventListener('click', playScale);
 

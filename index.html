@@ -430,6 +430,25 @@
       Drag the blue box to move your practice position
     </div>
 
+    <div id="chordExplorerSection" style="display: none; padding: 1rem 1.25rem; background: #14141f; border-top: 1px solid #2a2a3a;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+        <div style="font-size: 0.75rem; font-weight: 600; color: #8a8a9a; text-transform: uppercase; letter-spacing: 0.08em;">
+          Chord Explorer
+        </div>
+        <button id="clearChordBtn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: #2a2a3a; color: #8a8a9a; border: 1px solid #3a3a4a; border-radius: 4px; cursor: pointer;">
+          Show All Scale Tones
+        </button>
+      </div>
+      <div style="margin-bottom: 0.5rem;">
+        <div style="font-size: 0.688rem; color: #8a8a9a; margin-bottom: 0.375rem;">Triads:</div>
+        <div id="chordsTriadsList" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+      </div>
+      <div>
+        <div style="font-size: 0.688rem; color: #8a8a9a; margin-bottom: 0.375rem;">7th Chords:</div>
+        <div id="chords7thList" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+      </div>
+    </div>
+
     <div id="progressionsSection" style="display: none; padding: 1rem 1.25rem; background: #14141f; border-top: 1px solid #2a2a3a;">
       <div style="font-size: 0.75rem; font-weight: 600; color: #8a8a9a; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">
         Practice Over
@@ -462,6 +481,8 @@
       currentScaleData: null,
       selectedScaleId: null,
       selectedFingeringPattern: 'all',
+      selectedChord: null,
+      diatonicChords: [],
       categoriesCollapsed: JSON.parse(localStorage.getItem('categoriesCollapsed') || '{}'),
       dropdownOpen: false,
       fretMin: 0,
@@ -963,6 +984,23 @@
         allPositions = calculateFullFretboard(root, intervals, degrees);
       }
 
+      // Filter by chord tones if a chord is selected
+      if (state.selectedChord) {
+        const chordIntervals = state.selectedChord.type === 'seventh'
+          ? state.selectedChord.intervalsWithSeventh
+          : state.selectedChord.intervals;
+
+        allPositions = allPositions.filter(pos => chordIntervals.includes(pos.intervalFromRoot));
+
+        // Add chord tone labels (R, 3, 5, 7)
+        allPositions.forEach(pos => {
+          const chordToneIndex = chordIntervals.indexOf(pos.intervalFromRoot);
+          const chordToneLabels = ['R', '3', '5', '7'];
+          pos.chordTone = chordToneLabels[chordToneIndex];
+          pos.isChordRoot = chordToneIndex === 0;
+        });
+      }
+
       const visiblePositions = allPositions.filter(p =>
         p.fret >= fretMin && p.fret <= fretMax
       );
@@ -1179,12 +1217,22 @@
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        if (showDegrees || showRoots) {
+        if (showDegrees || showRoots || state.selectedChord) {
           ctx.fillStyle = '#ffffff';
           ctx.font = `bold ${Math.min(radius * 0.8, 12)}px sans-serif`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          const label = pos.isRoot && showRoots ? 'R' : (showDegrees ? pos.degree : '');
+
+          // Show chord tone labels if a chord is selected
+          let label = '';
+          if (state.selectedChord && pos.chordTone) {
+            label = pos.chordTone;
+          } else if (pos.isRoot && showRoots) {
+            label = 'R';
+          } else if (showDegrees) {
+            label = pos.degree;
+          }
+
           ctx.fillText(label, x, y);
         }
 
@@ -1355,8 +1403,9 @@
     function selectScale(scaleId) {
       state.selectedScaleId = scaleId;
 
-      // Reset fingering pattern to "All Tones" when switching scales
+      // Reset fingering pattern and chord selection when switching scales
       state.selectedFingeringPattern = 'all';
+      state.selectedChord = null;
 
       // Update button display
       const scale = state.scales.find(s => s.id === scaleId);
@@ -1457,6 +1506,194 @@
       };
     }
 
+    function populateChordExplorer() {
+      const chordExplorerSection = document.getElementById('chordExplorerSection');
+      const chordsTriadsList = document.getElementById('chordsTriadsList');
+      const chords7thList = document.getElementById('chords7thList');
+
+      if (state.diatonicChords.length === 0) {
+        chordExplorerSection.style.display = 'none';
+        return;
+      }
+
+      chordExplorerSection.style.display = 'block';
+
+      // Clear existing chords
+      chordsTriadsList.innerHTML = '';
+      chords7thList.innerHTML = '';
+
+      // Populate triads
+      state.diatonicChords.forEach((chord, index) => {
+        if (chord.triadSymbol) {
+          const btn = document.createElement('button');
+          btn.textContent = chord.triadSymbol;
+          btn.dataset.chordIndex = index;
+          btn.dataset.chordType = 'triad';
+          btn.style.cssText = 'padding: 0.375rem 0.75rem; font-size: 0.813rem; background: #2a2a3a; color: #e8e8eb; border: 1px solid #3a3a4a; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-weight: 500;';
+          btn.addEventListener('click', () => selectChord(chord, 'triad'));
+          btn.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('selected-chord')) {
+              this.style.background = '#3a3a4a';
+              this.style.borderColor = '#4a9eff';
+            }
+          });
+          btn.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('selected-chord')) {
+              this.style.background = '#2a2a3a';
+              this.style.borderColor = '#3a3a4a';
+            }
+          });
+          chordsTriadsList.appendChild(btn);
+        }
+      });
+
+      // Populate 7th chords
+      state.diatonicChords.forEach((chord, index) => {
+        if (chord.seventhSymbol) {
+          const btn = document.createElement('button');
+          btn.textContent = chord.seventhSymbol;
+          btn.dataset.chordIndex = index;
+          btn.dataset.chordType = 'seventh';
+          btn.style.cssText = 'padding: 0.375rem 0.75rem; font-size: 0.813rem; background: #2a2a3a; color: #e8e8eb; border: 1px solid #3a3a4a; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-weight: 500;';
+          btn.addEventListener('click', () => selectChord(chord, 'seventh'));
+          btn.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('selected-chord')) {
+              this.style.background = '#3a3a4a';
+              this.style.borderColor = '#4a9eff';
+            }
+          });
+          btn.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('selected-chord')) {
+              this.style.background = '#2a2a3a';
+              this.style.borderColor = '#3a3a4a';
+            }
+          });
+          chords7thList.appendChild(btn);
+        }
+      });
+    }
+
+    function selectChord(chord, type) {
+      state.selectedChord = { ...chord, type };
+
+      // Update button styles
+      document.querySelectorAll('#chordsTriadsList button, #chords7thList button').forEach(btn => {
+        btn.classList.remove('selected-chord');
+        btn.style.background = '#2a2a3a';
+        btn.style.borderColor = '#3a3a4a';
+        btn.style.color = '#e8e8eb';
+      });
+
+      // Highlight selected button
+      const selectedButtons = document.querySelectorAll(`button[data-chord-index="${chord.degree - 1}"][data-chord-type="${type}"]`);
+      selectedButtons.forEach(btn => {
+        btn.classList.add('selected-chord');
+        btn.style.background = '#4a9eff';
+        btn.style.borderColor = '#4a9eff';
+        btn.style.color = '#ffffff';
+      });
+
+      drawFretboard();
+    }
+
+    function clearChordSelection() {
+      state.selectedChord = null;
+
+      // Reset button styles
+      document.querySelectorAll('#chordsTriadsList button, #chords7thList button').forEach(btn => {
+        btn.classList.remove('selected-chord');
+        btn.style.background = '#2a2a3a';
+        btn.style.borderColor = '#3a3a4a';
+        btn.style.color = '#e8e8eb';
+      });
+
+      drawFretboard();
+    }
+
+    function calculateDiatonicChords(root, intervals) {
+      const rootSemitone = NOTE_TO_SEMITONE[root];
+      const chords = [];
+
+      // Roman numerals for chord degrees
+      const majorRomanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+      const minorRomanNumerals = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii'];
+
+      // Build a chord from each scale degree
+      intervals.forEach((rootInterval, index) => {
+        // Stack thirds to build chord (root, 3rd, 5th, 7th)
+        const third = intervals[(index + 2) % intervals.length];
+        const fifth = intervals[(index + 4) % intervals.length];
+        const seventh = intervals[(index + 6) % intervals.length];
+
+        // Calculate interval sizes
+        const thirdSize = (third - rootInterval + 12) % 12;
+        const fifthSize = (fifth - rootInterval + 12) % 12;
+        const seventhSize = (seventh - rootInterval + 12) % 12;
+
+        // Determine chord quality
+        const isMajorThird = thirdSize === 4;
+        const isMinorThird = thirdSize === 3;
+        const isPerfectFifth = fifthSize === 7;
+        const isDiminishedFifth = fifthSize === 6;
+        const isAugmentedFifth = fifthSize === 8;
+        const isMajorSeventh = seventhSize === 11;
+        const isMinorSeventh = seventhSize === 10;
+
+        // Calculate the chord root note
+        const chordRootSemitone = (rootSemitone + rootInterval) % 12;
+        const chordRoot = NOTE_NAMES[chordRootSemitone];
+
+        // Determine chord symbol and quality
+        let triadSymbol = '';
+        let seventhSymbol = '';
+        let romanNumeral = '';
+
+        // Triad quality
+        if (isMajorThird && isPerfectFifth) {
+          triadSymbol = chordRoot;
+          romanNumeral = majorRomanNumerals[index];
+        } else if (isMinorThird && isPerfectFifth) {
+          triadSymbol = chordRoot + 'm';
+          romanNumeral = minorRomanNumerals[index];
+        } else if (isMinorThird && isDiminishedFifth) {
+          triadSymbol = chordRoot + 'dim';
+          romanNumeral = minorRomanNumerals[index] + '°';
+        } else if (isMajorThird && isAugmentedFifth) {
+          triadSymbol = chordRoot + 'aug';
+          romanNumeral = majorRomanNumerals[index] + '+';
+        }
+
+        // 7th chord quality
+        if (isMajorThird && isPerfectFifth && isMajorSeventh) {
+          seventhSymbol = chordRoot + 'maj7';
+        } else if (isMinorThird && isPerfectFifth && isMinorSeventh) {
+          seventhSymbol = chordRoot + 'm7';
+        } else if (isMajorThird && isPerfectFifth && isMinorSeventh) {
+          seventhSymbol = chordRoot + '7';
+        } else if (isMinorThird && isDiminishedFifth && isMinorSeventh) {
+          seventhSymbol = chordRoot + 'm7b5';
+        } else if (isMinorThird && isDiminishedFifth && (seventhSize === 9)) {
+          seventhSymbol = chordRoot + 'dim7';
+        } else if (isMinorThird && isPerfectFifth && isMajorSeventh) {
+          seventhSymbol = chordRoot + 'mMaj7';
+        } else if (isMajorThird && isAugmentedFifth && isMajorSeventh) {
+          seventhSymbol = chordRoot + 'maj7#5';
+        }
+
+        chords.push({
+          root: chordRoot,
+          triadSymbol: triadSymbol,
+          seventhSymbol: seventhSymbol,
+          romanNumeral: romanNumeral,
+          intervals: [rootInterval, third, fifth],
+          intervalsWithSeventh: [rootInterval, third, fifth, seventh],
+          degree: index + 1
+        });
+      });
+
+      return chords;
+    }
+
     function updateDisplay() {
       const scale = state.scales.find(s => s.id === state.selectedScaleId);
       if (!scale) return;
@@ -1516,6 +1753,17 @@
         progressionsSection.style.display = 'none';
       }
 
+      // Calculate and display diatonic chords
+      const intervals = (transposed.properties?.intervals || transposed.intervals || []).map(i => parseInt(i));
+      if (intervals.length >= 7) {
+        state.diatonicChords = calculateDiatonicChords(root, intervals);
+        populateChordExplorer();
+      } else {
+        // Hide chord explorer for scales with less than 7 notes
+        document.getElementById('chordExplorerSection').style.display = 'none';
+        state.selectedChord = null;
+      }
+
       drawFretboard();
     }
 
@@ -1526,6 +1774,9 @@
       state.selectedFingeringPattern = e.target.value;
       drawFretboard();
     });
+
+    // Chord explorer event listeners
+    document.getElementById('clearChordBtn').addEventListener('click', clearChordSelection);
 
     // Custom dropdown event listeners
     scaleSelectButton.addEventListener('click', (e) => {

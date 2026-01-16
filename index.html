@@ -318,9 +318,9 @@
     <div style="display: flex; gap: 0.5rem; align-items: flex-end;">
       <div>
         <label>Root</label>
-        <select id="rootSelect"></select>
+        <select id="rootSelect" style="width: 70px;"></select>
       </div>
-      <button id="enharmonicToggle" class="control-btn" title="Toggle between sharps and flats" style="height: 38px; padding: 0 0.75rem;">♯/♭</button>
+      <button id="enharmonicToggle" class="control-btn" title="Showing sharps (click for flats)" style="height: 38px; padding: 0 0.75rem; margin-bottom: 0;">♯</button>
     </div>
 
     <div id="fingeringPatternContainer" style="display: none;">
@@ -495,7 +495,7 @@
       selectedFingeringPattern: 'all',
       selectedChord: null,
       diatonicChords: [],
-      enharmonicPreference: 'flats', // 'sharps' or 'flats'
+      enharmonicPreference: 'sharps', // 'sharps' or 'flats' - default to sharps to match NOTE_NAMES
       categoriesCollapsed: JSON.parse(localStorage.getItem('categoriesCollapsed') || '{}'),
       dropdownOpen: false,
       fretMin: 0,
@@ -1924,8 +1924,11 @@
       drawFretboard();
     });
 
-    document.getElementById('enharmonicToggle').addEventListener('click', () => {
+    document.getElementById('enharmonicToggle').addEventListener('click', (e) => {
       state.enharmonicPreference = state.enharmonicPreference === 'sharps' ? 'flats' : 'sharps';
+      // Update button to show current preference
+      e.currentTarget.textContent = state.enharmonicPreference === 'sharps' ? '♯' : '♭';
+      e.currentTarget.title = state.enharmonicPreference === 'sharps' ? 'Showing sharps (click for flats)' : 'Showing flats (click for sharps)';
       populateRootSelect();
       loadScale(state.selectedScaleId, rootSelect.value);
     });

@@ -315,12 +315,12 @@
       </div>
     </div>
 
-    <div style="display: flex; gap: 0.5rem; align-items: flex-end;">
+    <div style="display: inline-flex; gap: 0.5rem; align-items: flex-end;">
       <div>
         <label>Root</label>
-        <select id="rootSelect" style="width: 70px;"></select>
+        <select id="rootSelect" style="width: 55px;"></select>
       </div>
-      <button id="enharmonicToggle" class="control-btn" title="Showing sharps (click for flats)" style="height: 38px; padding: 0 0.75rem; margin-bottom: 0;">♯</button>
+      <button id="enharmonicToggle" class="control-btn" title="Showing sharps (click for flats)" style="height: 38px; padding: 0 0.5rem; margin-bottom: 0; min-width: 38px;">♯</button>
     </div>
 
     <div id="fingeringPatternContainer" style="display: none;">
@@ -399,7 +399,7 @@
       <!-- Display Options -->
       <div class="control-section">
         <span class="control-label">Show</span>
-        <button class="control-btn active" id="toggleDisplay" title="Toggle between degrees and notes">#</button>
+        <button class="control-btn active" id="toggleDisplay" title="Showing notes (click for degrees)">♪</button>
       </div>
 
       <div class="divider"></div>
@@ -503,7 +503,7 @@
       practicePositionStart: 0,
       handSpan: 5,
       zoom: 1.0,
-      showDegrees: true, // true = show degrees (#), false = show note names (♪)
+      showDegrees: false, // true = show degrees (#), false = show note names (♪)
       isDragging: false,
       dragStartX: 0,
       dragStartFret: 0,

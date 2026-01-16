@@ -320,6 +320,13 @@
       <select id="rootSelect"></select>
     </div>
 
+    <div id="fingeringPatternContainer" style="display: none;">
+      <label>Fingering Pattern</label>
+      <select id="fingeringPatternSelect">
+        <option value="all">All Tones</option>
+      </select>
+    </div>
+
     <div>
       <label>Instrument</label>
       <select id="instrumentSelect">
@@ -454,6 +461,7 @@
       currentScale: null,
       currentScaleData: null,
       selectedScaleId: null,
+      selectedFingeringPattern: 'all',
       categoriesCollapsed: JSON.parse(localStorage.getItem('categoriesCollapsed') || '{}'),
       dropdownOpen: false,
       fretMin: 0,
@@ -539,6 +547,8 @@
     const scaleSelectValue = document.getElementById('scaleSelectValue');
     const scaleSelectDropdown = document.getElementById('scaleSelectDropdown');
     const rootSelect = document.getElementById('rootSelect');
+    const fingeringPatternSelect = document.getElementById('fingeringPatternSelect');
+    const fingeringPatternContainer = document.getElementById('fingeringPatternContainer');
 
     // Audio setup
     let synth = null;
@@ -877,6 +887,60 @@
       return positions;
     }
 
+    function calculateFingeringPatternPositions(scaleData, root, patternKey) {
+      const fingeringVariations = scaleData.properties?.fingering_variations;
+      if (!fingeringVariations || !fingeringVariations[patternKey]) {
+        return [];
+      }
+
+      const pattern = fingeringVariations[patternKey];
+      const frets = pattern.frets;
+      const scaleIntervals = (scaleData.properties?.intervals || scaleData.intervals || []).map(i => parseInt(i));
+      const scaleDegrees = scaleData.properties?.scale_degrees || scaleData.scale_degrees || scaleData.degrees || [];
+
+      // Calculate transposition offset
+      const originalRoot = scaleData.starting_tone || scaleData.root || 'A';
+      const semitoneShift = (NOTE_TO_SEMITONE[root] - NOTE_TO_SEMITONE[originalRoot] + 12) % 12;
+
+      const positions = [];
+      const rootSemitone = NOTE_TO_SEMITONE[root];
+
+      // Iterate through each string in the pattern
+      Object.keys(frets).forEach(stringKey => {
+        const stringNum = parseInt(stringKey);
+        const stringFrets = frets[stringKey];
+
+        stringFrets.forEach(fretStr => {
+          const originalFret = parseInt(fretStr);
+          const transposedFret = originalFret + semitoneShift;
+
+          // Calculate the note at this position
+          const openStringSemitone = STANDARD_TUNING[6 - stringNum];
+          const noteSemitone = (openStringSemitone + transposedFret) % 12;
+          const intervalFromRoot = (noteSemitone - rootSemitone + 12) % 12;
+
+          // Find the degree for this interval
+          const degreeIndex = scaleIntervals.indexOf(intervalFromRoot);
+          if (degreeIndex !== -1) {
+            const note = NOTE_NAMES[noteSemitone];
+            const degree = scaleDegrees[degreeIndex];
+            const isRoot = note === root;
+
+            positions.push({
+              string: stringNum,
+              fret: transposedFret,
+              note: note,
+              degree: degree,
+              isRoot: isRoot,
+              intervalFromRoot: intervalFromRoot
+            });
+          }
+        });
+      });
+
+      return positions;
+    }
+
     /**
      * Draw the fretboard
      */
@@ -891,7 +955,13 @@
       const intervals = (scaleData.properties?.intervals || scaleData.intervals || []).map(i => parseInt(i));
       const degrees = scaleData.properties?.scale_degrees || scaleData.scale_degrees || scaleData.degrees || [];
 
-      const allPositions = calculateFullFretboard(root, intervals, degrees);
+      // Use fingering pattern positions if a pattern is selected, otherwise show all tones
+      let allPositions;
+      if (state.selectedFingeringPattern !== 'all') {
+        allPositions = calculateFingeringPatternPositions(scaleData, root, state.selectedFingeringPattern);
+      } else {
+        allPositions = calculateFullFretboard(root, intervals, degrees);
+      }
 
       const visiblePositions = allPositions.filter(p =>
         p.fret >= fretMin && p.fret <= fretMax
@@ -1285,6 +1355,9 @@
     function selectScale(scaleId) {
       state.selectedScaleId = scaleId;
 
+      // Reset fingering pattern to "All Tones" when switching scales
+      state.selectedFingeringPattern = 'all';
+
       // Update button display
       const scale = state.scales.find(s => s.id === scaleId);
       if (scale) {
@@ -1329,6 +1402,44 @@
       rootSelect.value = 'A';
     }
 
+    function populateFingeringPatternSelect() {
+      const scale = state.scales.find(s => s.id === state.selectedScaleId);
+      if (!scale) return;
+
+      const fingeringVariations = scale.data.properties?.fingering_variations;
+
+      // Hide the selector if no fingering variations exist
+      if (!fingeringVariations || Object.keys(fingeringVariations).length === 0) {
+        fingeringPatternContainer.style.display = 'none';
+        state.selectedFingeringPattern = 'all';
+        return;
+      }
+
+      // Show the selector
+      fingeringPatternContainer.style.display = 'flex';
+
+      // Populate options
+      fingeringPatternSelect.innerHTML = '';
+
+      // Always add "All Tones" option
+      const allOption = document.createElement('option');
+      allOption.value = 'all';
+      allOption.textContent = 'All Tones';
+      fingeringPatternSelect.appendChild(allOption);
+
+      // Add fingering variation options
+      Object.keys(fingeringVariations).forEach(key => {
+        const variation = fingeringVariations[key];
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = variation.description || key;
+        fingeringPatternSelect.appendChild(option);
+      });
+
+      // Set current selection
+      fingeringPatternSelect.value = state.selectedFingeringPattern;
+    }
+
     function transposeScale(scaleData, targetRoot) {
       const originalRoot = scaleData.starting_tone || 'A';
       const semitoneShift = (NOTE_TO_SEMITONE[targetRoot] - NOTE_TO_SEMITONE[originalRoot] + 12) % 12;
@@ -1349,6 +1460,9 @@
 
       state.currentScaleData = transposed;
       state.currentScale = scale;
+
+      // Update fingering pattern selector
+      populateFingeringPatternSelect();
 
       document.getElementById('info').textContent =
         `${scale.name} in ${root} - Drag the blue box to move your practice position`;
@@ -1401,6 +1515,11 @@
 
     // Event listeners
     rootSelect.addEventListener('change', updateDisplay);
+
+    fingeringPatternSelect.addEventListener('change', (e) => {
+      state.selectedFingeringPattern = e.target.value;
+      drawFretboard();
+    });
 
     // Custom dropdown event listeners
     scaleSelectButton.addEventListener('click', (e) => {

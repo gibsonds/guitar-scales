@@ -1316,13 +1316,12 @@
 
       // Group scales by category
       const categories = {
-        'custom': { label: 'My Custom Scales', scales: [] },
-        'scales': { label: 'Scales', scales: [] },
+        'arpeggios': { label: 'Arpeggios', scales: [] },
         'modes_major': { label: 'Major Scale Modes', scales: [] },
         'modes_melodic_minor': { label: 'Melodic Minor Modes', scales: [] },
         'modes_harmonic_minor': { label: 'Harmonic Minor Modes', scales: [] },
-        'modes': { label: 'Other Modes', scales: [] },
-        'arpeggios': { label: 'Arpeggios', scales: [] }
+        'scales': { label: 'Other Scales', scales: [] },
+        'modes': { label: 'Other Modes', scales: [] }
       };
 
       state.scales.forEach(scale => {
@@ -1339,14 +1338,39 @@
 
       let hasResults = false;
 
+      // Helper function to extract mode number from scale name
+      function getModeNumber(scaleName) {
+        const match = scaleName.match(/Mode (\d+)/);
+        return match ? parseInt(match[1]) : 999; // Return 999 for non-mode scales
+      }
+
       // Create custom dropdown structure with collapsible categories
-      ['custom', 'scales', 'modes_major', 'modes_melodic_minor', 'modes_harmonic_minor', 'modes', 'arpeggios'].forEach(categoryKey => {
+      let scalesHeaderAdded = false;
+      ['arpeggios', 'modes_major', 'modes_melodic_minor', 'modes_harmonic_minor', 'scales', 'modes'].forEach(categoryKey => {
         const category = categories[categoryKey];
         if (category.scales.length > 0) {
           hasResults = true;
 
-          // Sort scales alphabetically within category
-          category.scales.sort((a, b) => a.name.localeCompare(b.name));
+          // Add "Scales" parent header before first mode category
+          if (categoryKey === 'modes_major' && !scalesHeaderAdded) {
+            const scalesHeader = document.createElement('div');
+            scalesHeader.className = 'category-header';
+            scalesHeader.style.cssText = 'cursor: default; background: #14141f;';
+            scalesHeader.innerHTML = `
+              <div style="font-weight: 700; color: #4a9eff;">
+                🎼 Scales
+              </div>
+            `;
+            scaleSelectDropdown.appendChild(scalesHeader);
+            scalesHeaderAdded = true;
+          }
+
+          // Sort scales by mode number for mode categories, alphabetically for others
+          if (categoryKey.startsWith('modes_')) {
+            category.scales.sort((a, b) => getModeNumber(a.name) - getModeNumber(b.name));
+          } else {
+            category.scales.sort((a, b) => a.name.localeCompare(b.name));
+          }
 
           // Determine if category should be collapsed
           const isCollapsed = state.categoriesCollapsed[categoryKey] === true;
@@ -1355,10 +1379,16 @@
           const header = document.createElement('div');
           header.className = `category-header${isCollapsed ? ' collapsed' : ''}`;
           header.dataset.category = categoryKey;
+
+          // Add indentation for subcategories under Scales
+          const isScalesSubCategory = categoryKey.startsWith('modes_') || categoryKey === 'scales' || categoryKey === 'modes';
+          const indent = isScalesSubCategory ? 'padding-left: 1.5rem;' : '';
+
+          header.style.cssText = indent;
           header.innerHTML = `
             <div>
               <span class="category-icon">▼</span>
-              ${category.label} (${category.scales.length})
+              ${isScalesSubCategory ? '└ ' : ''}${category.label} (${category.scales.length})
             </div>
           `;
           header.addEventListener('click', (e) => {
@@ -1381,6 +1411,12 @@
             }
             option.dataset.scaleId = scale.id;
             option.textContent = scale.name;
+
+            // Add extra indentation for subcategory items under Scales
+            if (isScalesSubCategory) {
+              option.style.paddingLeft = '2.75rem';
+            }
+
             option.addEventListener('click', (e) => {
               e.stopPropagation();
               selectScale(scale.id);
@@ -1905,14 +1941,15 @@
       const customScales = JSON.parse(localStorage.getItem('customScales') || '[]');
 
       // Remove existing custom scales from state.scales
-      state.scales = state.scales.filter(s => s.category !== 'custom');
+      const customScaleIds = customScales.map(s => s.exercise);
+      state.scales = state.scales.filter(s => !customScaleIds.includes(s.id));
 
-      // Add custom scales to state.scales
+      // Add custom scales to state.scales, using their actual category
       customScales.forEach(scaleData => {
         state.scales.push({
           id: scaleData.exercise,
           name: scaleData.scale_type || scaleData.exercise,
-          category: 'custom',
+          category: scaleData.properties?.category || 'scales',
           data: scaleData
         });
       });

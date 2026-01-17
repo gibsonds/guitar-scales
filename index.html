@@ -1320,6 +1320,8 @@
         'modes_major': { label: 'Major Scale Modes', scales: [] },
         'modes_melodic_minor': { label: 'Melodic Minor Modes', scales: [] },
         'modes_harmonic_minor': { label: 'Harmonic Minor Modes', scales: [] },
+        'pentatonic_blues': { label: 'Pentatonic & Blues Scales', scales: [] },
+        'symmetrical': { label: 'Symmetrical Scales', scales: [] },
         'scales': { label: 'Other Scales', scales: [] },
         'modes': { label: 'Other Modes', scales: [] }
       };
@@ -1346,7 +1348,7 @@
 
       // Create custom dropdown structure with collapsible categories
       let scalesHeaderAdded = false;
-      ['arpeggios', 'modes_major', 'modes_melodic_minor', 'modes_harmonic_minor', 'scales', 'modes'].forEach(categoryKey => {
+      ['arpeggios', 'modes_major', 'modes_melodic_minor', 'modes_harmonic_minor', 'pentatonic_blues', 'symmetrical', 'scales', 'modes'].forEach(categoryKey => {
         const category = categories[categoryKey];
         if (category.scales.length > 0) {
           hasResults = true;
@@ -1381,7 +1383,7 @@
           header.dataset.category = categoryKey;
 
           // Add indentation for subcategories under Scales
-          const isScalesSubCategory = categoryKey.startsWith('modes_') || categoryKey === 'scales' || categoryKey === 'modes';
+          const isScalesSubCategory = categoryKey.startsWith('modes_') || categoryKey === 'scales' || categoryKey === 'modes' || categoryKey === 'pentatonic_blues' || categoryKey === 'symmetrical';
           const indent = isScalesSubCategory ? 'padding-left: 1.5rem;' : '';
 
           header.style.cssText = indent;

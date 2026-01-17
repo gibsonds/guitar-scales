@@ -5,7 +5,7 @@
     "starting_tone": "G",
     "starting_string": "6",
     "starting_fret": "3",
-    "scale_type": "Super Locrian bb7",
+    "scale_type": "Super Locrian ♭♭7 (Mode 7 of Harmonic Minor)",
     "tuning": [
       "E",
       "A",
@@ -107,7 +107,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_harmonic_minor",
       "progressions": [
         {
           "name": "Diminished vamp",

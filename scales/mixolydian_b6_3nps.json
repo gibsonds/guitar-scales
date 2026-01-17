@@ -5,7 +5,7 @@
     "starting_tone": "G",
     "starting_string": "6",
     "starting_fret": "3",
-    "scale_type": "Mixolydian ♭6",
+    "scale_type": "Mixolydian ♭6 (Mode 5 of Melodic Minor)",
     "tuning": [
       "E",
       "A",
@@ -107,7 +107,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_melodic_minor",
       "progressions": [
         {
           "name": "Dominant 7 vamp",

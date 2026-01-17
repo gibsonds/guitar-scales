@@ -5,7 +5,7 @@
     "starting_tone": "B",
     "starting_string": "6",
     "starting_fret": "7",
-    "scale_type": "Locrian ♮2",
+    "scale_type": "Locrian ♮2 (Mode 6 of Melodic Minor)",
     "tuning": [
       "E",
       "A",
@@ -107,7 +107,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_melodic_minor",
       "progressions": [
         {
           "name": "Minor ii-V-i",

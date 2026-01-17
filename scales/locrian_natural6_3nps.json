@@ -5,7 +5,7 @@
     "starting_tone": "B",
     "starting_string": "6",
     "starting_fret": "7",
-    "scale_type": "Locrian ♮6",
+    "scale_type": "Locrian ♮6 (Mode 2 of Harmonic Minor)",
     "tuning": [
       "E",
       "A",
@@ -107,7 +107,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_harmonic_minor",
       "progressions": [
         {
           "name": "Minor ii chord",

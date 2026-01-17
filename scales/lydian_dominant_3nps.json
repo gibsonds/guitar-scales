@@ -5,7 +5,7 @@
     "starting_tone": "C",
     "starting_string": "6",
     "starting_fret": "8",
-    "scale_type": "Lydian Dominant",
+    "scale_type": "Lydian Dominant (Mode 4 of Melodic Minor)",
     "tuning": [
       "E",
       "A",
@@ -107,7 +107,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_melodic_minor",
       "progressions": [
         {
           "name": "Dominant 7th vamp",

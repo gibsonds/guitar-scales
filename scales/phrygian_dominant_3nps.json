@@ -5,7 +5,7 @@
     "starting_tone": "E",
     "starting_string": "6",
     "starting_fret": "0",
-    "scale_type": "Phrygian Dominant",
+    "scale_type": "Phrygian Dominant (Mode 5 of Harmonic Minor)",
     "tuning": [
       "E",
       "A",
@@ -107,7 +107,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_harmonic_minor",
       "progressions": [
         {
           "name": "Spanish progression",

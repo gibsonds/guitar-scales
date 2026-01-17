@@ -5,7 +5,7 @@
     "starting_tone": "A",
     "starting_string": "6",
     "starting_fret": "5",
-    "scale_type": "Harmonic Minor",
+    "scale_type": "Harmonic Minor (Mode 1)",
     "tuning": [
       "E",
       "A",
@@ -107,7 +107,7 @@
           }
         }
       },
-      "category": "scales",
+      "category": "modes_harmonic_minor",
       "progressions": [
         {
           "name": "Black Orpheus",

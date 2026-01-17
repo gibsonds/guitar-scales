@@ -5,7 +5,7 @@
     "starting_tone": "C",
     "starting_string": "6",
     "starting_fret": "8",
-    "scale_type": "Mixolydian",
+    "scale_type": "Mixolydian (Mode 5 of Major Scale)",
     "tuning": [
       "E",
       "A",
@@ -73,7 +73,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_major",
       "progressions": [
         {
           "name": "V7-IV vamp",

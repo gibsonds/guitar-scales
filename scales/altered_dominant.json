@@ -5,7 +5,7 @@
     "starting_tone": "G",
     "starting_string": "6",
     "starting_fret": "3",
-    "scale_type": "Altered Dominant",
+    "scale_type": "Altered Dominant (Mode 7 of Melodic Minor)",
     "tuning": [
       "E",
       "A",
@@ -75,7 +75,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_melodic_minor",
       "progressions": [
         {
           "name": "ii-V-I jazz",

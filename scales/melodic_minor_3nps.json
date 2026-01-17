@@ -5,7 +5,7 @@
     "starting_tone": "A",
     "starting_string": "6",
     "starting_fret": "5",
-    "scale_type": "Melodic Minor",
+    "scale_type": "Melodic Minor (Mode 1)",
     "tuning": [
       "E",
       "A",
@@ -107,7 +107,7 @@
           }
         }
       },
-      "category": "scales",
+      "category": "modes_melodic_minor",
       "progressions": [
         {
           "name": "Minor ii-V-i jazz",

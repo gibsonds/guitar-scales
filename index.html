@@ -1318,7 +1318,10 @@
       const categories = {
         'custom': { label: 'My Custom Scales', scales: [] },
         'scales': { label: 'Scales', scales: [] },
-        'modes': { label: 'Modes', scales: [] },
+        'modes_major': { label: 'Major Scale Modes', scales: [] },
+        'modes_melodic_minor': { label: 'Melodic Minor Modes', scales: [] },
+        'modes_harmonic_minor': { label: 'Harmonic Minor Modes', scales: [] },
+        'modes': { label: 'Other Modes', scales: [] },
         'arpeggios': { label: 'Arpeggios', scales: [] }
       };
 
@@ -1337,7 +1340,7 @@
       let hasResults = false;
 
       // Create custom dropdown structure with collapsible categories
-      ['custom', 'scales', 'modes', 'arpeggios'].forEach(categoryKey => {
+      ['custom', 'scales', 'modes_major', 'modes_melodic_minor', 'modes_harmonic_minor', 'modes', 'arpeggios'].forEach(categoryKey => {
         const category = categories[categoryKey];
         if (category.scales.length > 0) {
           hasResults = true;

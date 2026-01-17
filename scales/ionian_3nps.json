@@ -5,7 +5,7 @@
     "starting_tone": "G",
     "starting_string": "6",
     "starting_fret": "3",
-    "scale_type": "Ionian",
+    "scale_type": "Ionian (Mode 1 of Major Scale)",
     "tuning": [
       "E",
       "A",
@@ -73,7 +73,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_major",
       "progressions": [
         {
           "name": "I-IV-V",

@@ -5,7 +5,7 @@
     "starting_tone": "B",
     "starting_string": "6",
     "starting_fret": "7",
-    "scale_type": "Locrian",
+    "scale_type": "Locrian (Mode 7 of Major Scale)",
     "tuning": [
       "E",
       "A",
@@ -73,7 +73,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_major",
       "progressions": [
         {
           "name": "viiø7 chord",

@@ -5,7 +5,7 @@
     "starting_tone": "D",
     "starting_string": "6",
     "starting_fret": "10",
-    "scale_type": "Dorian ♯4",
+    "scale_type": "Dorian ♯4 (Mode 4 of Harmonic Minor)",
     "tuning": [
       "E",
       "A",
@@ -107,7 +107,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_harmonic_minor",
       "progressions": [
         {
           "name": "Minor iv chord",

@@ -5,7 +5,7 @@
     "starting_tone": "A",
     "starting_string": "6",
     "starting_fret": "5",
-    "scale_type": "Aeolian",
+    "scale_type": "Aeolian (Mode 6 of Major Scale)",
     "tuning": [
       "E",
       "A",
@@ -73,7 +73,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_major",
       "progressions": [
         {
           "name": "i-VII-VI-V",

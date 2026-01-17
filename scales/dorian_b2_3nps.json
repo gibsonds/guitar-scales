@@ -5,7 +5,7 @@
     "starting_tone": "D",
     "starting_string": "6",
     "starting_fret": "10",
-    "scale_type": "Dorian ♭2",
+    "scale_type": "Dorian ♭2 (Mode 2 of Melodic Minor)",
     "tuning": [
       "E",
       "A",
@@ -107,7 +107,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_melodic_minor",
       "progressions": [
         {
           "name": "Minor ii-V-i",

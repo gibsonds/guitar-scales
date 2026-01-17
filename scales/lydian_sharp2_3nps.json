@@ -5,7 +5,7 @@
     "starting_tone": "F",
     "starting_string": "6",
     "starting_fret": "1",
-    "scale_type": "Lydian ♯2",
+    "scale_type": "Lydian ♯2 (Mode 6 of Harmonic Minor)",
     "tuning": [
       "E",
       "A",
@@ -107,7 +107,7 @@
           }
         }
       },
-      "category": "modes",
+      "category": "modes_harmonic_minor",
       "progressions": [
         {
           "name": "Major vamp",

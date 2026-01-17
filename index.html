@@ -1396,6 +1396,15 @@
             toggleCategory(categoryKey);
           });
 
+          // Hover to expand
+          header.addEventListener('mouseenter', () => {
+            expandCategory(categoryKey);
+          });
+
+          header.addEventListener('mouseleave', () => {
+            collapseCategory(categoryKey, false); // Delayed collapse
+          });
+
           scaleSelectDropdown.appendChild(header);
 
           // Category items container
@@ -1425,6 +1434,15 @@
             itemsContainer.appendChild(option);
           });
 
+          // Keep expanded when hovering over items
+          itemsContainer.addEventListener('mouseenter', () => {
+            expandCategory(categoryKey);
+          });
+
+          itemsContainer.addEventListener('mouseleave', () => {
+            collapseCategory(categoryKey, false); // Delayed collapse
+          });
+
           scaleSelectDropdown.appendChild(itemsContainer);
         }
       });
@@ -1438,26 +1456,67 @@
       }
     }
 
-    function toggleCategory(categoryKey) {
-      const isCurrentlyCollapsed = state.categoriesCollapsed[categoryKey] === true;
-      state.categoriesCollapsed[categoryKey] = !isCurrentlyCollapsed;
+    // Track hover collapse timers
+    const hoverCollapseTimers = {};
 
-      // Save to localStorage
-      localStorage.setItem('categoriesCollapsed', JSON.stringify(state.categoriesCollapsed));
+    function expandCategory(categoryKey) {
+      // Clear any pending collapse timer
+      if (hoverCollapseTimers[categoryKey]) {
+        clearTimeout(hoverCollapseTimers[categoryKey]);
+        delete hoverCollapseTimers[categoryKey];
+      }
+
+      state.categoriesCollapsed[categoryKey] = false;
 
       // Update UI
       const header = scaleSelectDropdown.querySelector(`.category-header[data-category="${categoryKey}"]`);
       const items = scaleSelectDropdown.querySelector(`.category-items[data-category="${categoryKey}"]`);
 
       if (header && items) {
-        if (state.categoriesCollapsed[categoryKey]) {
+        header.classList.remove('collapsed');
+        items.classList.remove('collapsed');
+      }
+    }
+
+    function collapseCategory(categoryKey, immediate = false) {
+      // Clear any existing timer
+      if (hoverCollapseTimers[categoryKey]) {
+        clearTimeout(hoverCollapseTimers[categoryKey]);
+        delete hoverCollapseTimers[categoryKey];
+      }
+
+      const doCollapse = () => {
+        state.categoriesCollapsed[categoryKey] = true;
+
+        // Update UI
+        const header = scaleSelectDropdown.querySelector(`.category-header[data-category="${categoryKey}"]`);
+        const items = scaleSelectDropdown.querySelector(`.category-items[data-category="${categoryKey}"]`);
+
+        if (header && items) {
           header.classList.add('collapsed');
           items.classList.add('collapsed');
-        } else {
-          header.classList.remove('collapsed');
-          items.classList.remove('collapsed');
         }
+      };
+
+      if (immediate) {
+        doCollapse();
+      } else {
+        // Small delay before collapsing to prevent accidental closures
+        hoverCollapseTimers[categoryKey] = setTimeout(doCollapse, 300);
       }
+    }
+
+    function toggleCategory(categoryKey) {
+      const isCurrentlyCollapsed = state.categoriesCollapsed[categoryKey] === true;
+
+      if (isCurrentlyCollapsed) {
+        expandCategory(categoryKey);
+      } else {
+        collapseCategory(categoryKey, true); // Immediate collapse on click
+      }
+
+      // Save to localStorage
+      localStorage.setItem('categoriesCollapsed', JSON.stringify(state.categoriesCollapsed));
     }
 
     function selectScale(scaleId) {

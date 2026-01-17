@@ -342,6 +342,16 @@
       </button>
     </div>
 
+    <div style="display: flex; align-items: flex-end; gap: 0.5rem;">
+      <button id="exportButton" class="control-btn" style="width: auto; padding: 0 1rem; height: 38px;" title="Export current scale as JSON">
+        ⬇ Export
+      </button>
+      <button id="importButton" class="control-btn" style="width: auto; padding: 0 1rem; height: 38px;" title="Import scale from JSON">
+        ⬆ Import
+      </button>
+      <input type="file" id="importFileInput" accept=".json" style="display: none;" />
+    </div>
+
     <div>
       <label>Metronome</label>
       <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
@@ -1280,6 +1290,10 @@
       });
 
       state.scales = (await Promise.all(promises)).filter(s => s !== null);
+
+      // Load custom scales from localStorage
+      loadCustomScalesFromStorage();
+
       populateScaleSelect();
       populateRootSelect();
 
@@ -1298,6 +1312,7 @@
 
       // Group scales by category
       const categories = {
+        'custom': { label: 'My Custom Scales', scales: [] },
         'scales': { label: 'Scales', scales: [] },
         'modes': { label: 'Modes', scales: [] },
         'arpeggios': { label: 'Arpeggios', scales: [] }
@@ -1318,7 +1333,7 @@
       let hasResults = false;
 
       // Create custom dropdown structure with collapsible categories
-      ['scales', 'modes', 'arpeggios'].forEach(categoryKey => {
+      ['custom', 'scales', 'modes', 'arpeggios'].forEach(categoryKey => {
         const category = categories[categoryKey];
         if (category.scales.length > 0) {
           hasResults = true;
@@ -1783,6 +1798,134 @@
       drawFretboard();
     }
 
+    /**
+     * Export current scale as JSON file
+     */
+    function exportScale() {
+      if (!state.currentScaleData || !state.currentScale) {
+        alert('No scale loaded to export');
+        return;
+      }
+
+      const root = rootSelect.value;
+      const scaleName = state.currentScale.name.replace(/\s+/g, '_').toLowerCase();
+      const filename = `${scaleName}_${root}.json`;
+
+      // Create JSON structure matching the format
+      const exportData = {
+        TableName: "GuitarExercises",
+        Item: state.currentScaleData
+      };
+
+      // Create blob and download
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      console.log(`Exported scale: ${filename}`);
+    }
+
+    /**
+     * Import scale from JSON file
+     */
+    function importScale(file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result);
+
+          // Validate JSON structure
+          if (!data.Item || !data.Item.exercise) {
+            alert('Invalid scale JSON format: missing Item.exercise');
+            return;
+          }
+
+          const item = data.Item;
+
+          // Validate required fields
+          if (!item.scale_type || !item.starting_tone || !item.properties) {
+            alert('Invalid scale JSON format: missing required fields (scale_type, starting_tone, properties)');
+            return;
+          }
+
+          // Add to custom scales in localStorage
+          saveCustomScale(item);
+
+          // Reload catalog to include the new scale
+          loadCustomScalesFromStorage();
+
+          alert(`Successfully imported: ${item.scale_type}`);
+        } catch (err) {
+          alert(`Failed to import scale: ${err.message}`);
+          console.error('Import error:', err);
+        }
+      };
+
+      reader.readAsText(file);
+    }
+
+    /**
+     * Save custom scale to localStorage
+     */
+    function saveCustomScale(scaleData) {
+      const customScales = JSON.parse(localStorage.getItem('customScales') || '[]');
+
+      // Check if scale already exists (by exercise name)
+      const existingIndex = customScales.findIndex(s => s.exercise === scaleData.exercise);
+
+      if (existingIndex >= 0) {
+        // Update existing scale
+        customScales[existingIndex] = scaleData;
+      } else {
+        // Add new scale
+        customScales.push(scaleData);
+      }
+
+      localStorage.setItem('customScales', JSON.stringify(customScales));
+    }
+
+    /**
+     * Load custom scales from localStorage and add to catalog
+     */
+    function loadCustomScalesFromStorage() {
+      const customScales = JSON.parse(localStorage.getItem('customScales') || '[]');
+
+      // Remove existing custom scales from state.scales
+      state.scales = state.scales.filter(s => s.category !== 'custom');
+
+      // Add custom scales to state.scales
+      customScales.forEach(scaleData => {
+        state.scales.push({
+          id: scaleData.exercise,
+          name: scaleData.scale_type || scaleData.exercise,
+          category: 'custom',
+          data: scaleData
+        });
+      });
+
+      // Refresh the dropdown
+      populateScaleSelect();
+    }
+
+    /**
+     * Delete a custom scale
+     */
+    function deleteCustomScale(scaleId) {
+      const customScales = JSON.parse(localStorage.getItem('customScales') || '[]');
+      const filtered = customScales.filter(s => s.exercise !== scaleId);
+      localStorage.setItem('customScales', JSON.stringify(filtered));
+
+      // Reload catalog
+      loadCustomScalesFromStorage();
+    }
+
     // Event listeners
     rootSelect.addEventListener('change', updateDisplay);
 
@@ -1828,6 +1971,21 @@
     });
 
     document.getElementById('playButton').addEventListener('click', playScale);
+
+    document.getElementById('exportButton').addEventListener('click', exportScale);
+
+    document.getElementById('importButton').addEventListener('click', () => {
+      document.getElementById('importFileInput').click();
+    });
+
+    document.getElementById('importFileInput').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        importScale(file);
+        // Reset the input so the same file can be imported again
+        e.target.value = '';
+      }
+    });
 
     document.getElementById('instrumentSelect').addEventListener('change', (e) => {
       initAudio(e.target.value);

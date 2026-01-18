@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "fmaj7_pos2",
+    "chord_name": "Fmaj7",
+    "root_note": "F",
+    "chord_type": "Major 7",
+    "starting_string": "6",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "chord_tones": [
+        "F",
+        "A",
+        "C",
+        "E"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "13",
+          "finger": 1,
+          "note": "F"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "14",
+          "finger": 2,
+          "note": "E"
+        },
+        "3": {
+          "fret": "14",
+          "finger": 3,
+          "note": "A"
+        },
+        "2": {
+          "fret": "13",
+          "finger": 1,
+          "note": "C"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Fmaj7 chord - barre voicing at 8th fret (8-x-9-9-8-x)"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c#7_pos2",
+    "chord_name": "C#7",
+    "root_note": "C#",
+    "chord_type": "Dominant 7",
+    "starting_string": "5",
+    "starting_fret": "9",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "C#",
+        "F",
+        "G#",
+        "B"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "9",
+          "finger": 1,
+          "note": "C#"
+        },
+        "4": "mute",
+        "3": {
+          "fret": "10",
+          "finger": 2,
+          "note": "B"
+        },
+        "2": {
+          "fret": "9",
+          "finger": 1,
+          "note": "F"
+        },
+        "1": {
+          "fret": "9",
+          "finger": 1,
+          "note": "G#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "C#7 chord - compact voicing at 8th fret"
+    }
+  }
+}

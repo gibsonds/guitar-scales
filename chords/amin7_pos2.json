@@ -1,0 +1,70 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "amin7_pos2",
+    "chord_name": "Amin7",
+    "root_note": "A",
+    "chord_type": "Minor 7",
+    "starting_string": "5",
+    "starting_fret": "12",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "A",
+        "C",
+        "E",
+        "G"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "12",
+          "finger": 1,
+          "note": "A"
+        },
+        "4": {
+          "fret": "14",
+          "finger": 3,
+          "note": "E"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 1,
+          "note": "G"
+        },
+        "2": {
+          "fret": "13",
+          "finger": 2,
+          "note": "C"
+        },
+        "1": {
+          "fret": "12",
+          "finger": 1,
+          "note": "E"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Amin7 chord - mid-neck voicing"
+    }
+  }
+}

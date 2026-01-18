@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "a#min7_pos5",
+    "chord_name": "A#min7",
+    "root_note": "A#",
+    "chord_type": "Minor 7",
+    "starting_string": "5",
+    "starting_fret": "23",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "A#",
+        "C#",
+        "F",
+        "G#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "25",
+          "finger": 3,
+          "note": "A#"
+        },
+        "4": {
+          "fret": "23",
+          "finger": 1,
+          "note": "G#"
+        },
+        "3": {
+          "fret": "23",
+          "finger": 1,
+          "note": "C#"
+        },
+        "2": {
+          "fret": "23",
+          "finger": 1,
+          "note": "F"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 5,
+      "description": "A#min7 chord - upper neck voicing (x-15-13-13-13-x)"
+    }
+  }
+}

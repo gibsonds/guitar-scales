@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c#min7_pos6",
+    "chord_name": "C#min7",
+    "root_note": "C#",
+    "chord_type": "Minor 7",
+    "starting_string": "4",
+    "starting_fret": "6",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "C#",
+        "E",
+        "G#",
+        "B"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "6",
+          "finger": 1,
+          "note": "G#"
+        },
+        "3": {
+          "fret": "4",
+          "finger": 1,
+          "note": "B"
+        },
+        "2": {
+          "fret": "5",
+          "finger": 2,
+          "note": "E"
+        },
+        "1": {
+          "fret": "4",
+          "finger": 1,
+          "note": "G#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 6,
+      "description": "C#min7 chord - compact voicing on top strings (x-x-5-3-4-3)"
+    }
+  }
+}

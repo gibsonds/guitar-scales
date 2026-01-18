@@ -1,0 +1,74 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "g#7_pos5",
+    "chord_name": "G#7",
+    "root_note": "G#",
+    "chord_type": "Dominant 7",
+    "starting_string": "6",
+    "starting_fret": "16",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "G#",
+        "C",
+        "D#",
+        "F#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "16",
+          "finger": 1,
+          "note": "G#"
+        },
+        "5": {
+          "fret": "18",
+          "finger": 3,
+          "note": "C"
+        },
+        "4": {
+          "fret": "16",
+          "finger": 1,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "16",
+          "finger": 1,
+          "note": "F#"
+        },
+        "2": {
+          "fret": "17",
+          "finger": 2,
+          "note": "C"
+        },
+        "1": {
+          "fret": "16",
+          "finger": 1,
+          "note": "D#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 5,
+      "description": "G#7 chord - full barre at 8th fret (8-10-8-8-9-8)"
+    }
+  }
+}

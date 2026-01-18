@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "a#maj7_pos4",
+    "chord_name": "A#maj7",
+    "root_note": "A#",
+    "chord_type": "Major 7",
+    "starting_string": "4",
+    "starting_fret": "17",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "chord_tones": [
+        "A#",
+        "D",
+        "F",
+        "A"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "20",
+          "finger": 3,
+          "note": "A#"
+        },
+        "3": {
+          "fret": "19",
+          "finger": 2,
+          "note": "D"
+        },
+        "2": {
+          "fret": "18",
+          "finger": 1,
+          "note": "F"
+        },
+        "1": {
+          "fret": "17",
+          "finger": 1,
+          "note": "A"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "A#maj7 chord - top four strings voicing (x-x-10-9-8-7)"
+    }
+  }
+}

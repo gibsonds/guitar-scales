@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bmaj7_pos2",
+    "chord_name": "Bmaj7",
+    "root_note": "B",
+    "chord_type": "Major 7",
+    "starting_string": "6",
+    "starting_fret": "19",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "chord_tones": [
+        "B",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "19",
+          "finger": 1,
+          "note": "B"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "20",
+          "finger": 2,
+          "note": "A#"
+        },
+        "3": {
+          "fret": "20",
+          "finger": 3,
+          "note": "D#"
+        },
+        "2": {
+          "fret": "19",
+          "finger": 1,
+          "note": "F#"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Bmaj7 chord - barre voicing at 8th fret (8-x-9-9-8-x)"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "dmin7_pos5",
+    "chord_name": "Dmin7",
+    "root_note": "D",
+    "chord_type": "Minor 7",
+    "starting_string": "5",
+    "starting_fret": "15",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "D",
+        "F",
+        "A",
+        "C"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "17",
+          "finger": 3,
+          "note": "D"
+        },
+        "4": {
+          "fret": "15",
+          "finger": 1,
+          "note": "C"
+        },
+        "3": {
+          "fret": "15",
+          "finger": 1,
+          "note": "F"
+        },
+        "2": {
+          "fret": "15",
+          "finger": 1,
+          "note": "A"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 5,
+      "description": "Dmin7 chord - upper neck voicing (x-15-13-13-13-x)"
+    }
+  }
+}

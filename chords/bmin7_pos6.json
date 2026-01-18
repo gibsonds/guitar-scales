@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bmin7_pos6",
+    "chord_name": "Bmin7",
+    "root_note": "B",
+    "chord_type": "Minor 7",
+    "starting_string": "4",
+    "starting_fret": "16",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "B",
+        "D",
+        "F#",
+        "A"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "16",
+          "finger": 1,
+          "note": "F#"
+        },
+        "3": {
+          "fret": "14",
+          "finger": 1,
+          "note": "A"
+        },
+        "2": {
+          "fret": "15",
+          "finger": 2,
+          "note": "D"
+        },
+        "1": {
+          "fret": "14",
+          "finger": 1,
+          "note": "F#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 6,
+      "description": "Bmin7 chord - compact voicing on top strings (x-x-5-3-4-3)"
+    }
+  }
+}

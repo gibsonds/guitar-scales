@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gmin7_pos6",
+    "chord_name": "Gmin7",
+    "root_note": "G",
+    "chord_type": "Minor 7",
+    "starting_string": "4",
+    "starting_fret": "12",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "D",
+        "F"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "12",
+          "finger": 1,
+          "note": "D"
+        },
+        "3": {
+          "fret": "10",
+          "finger": 1,
+          "note": "F"
+        },
+        "2": {
+          "fret": "11",
+          "finger": 2,
+          "note": "A#"
+        },
+        "1": {
+          "fret": "10",
+          "finger": 1,
+          "note": "D"
+        }
+      },
+      "category": "arpeggios",
+      "position": 6,
+      "description": "Gmin7 chord - compact voicing on top strings (x-x-5-3-4-3)"
+    }
+  }
+}

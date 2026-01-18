@@ -1,0 +1,74 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bmin7_pos1",
+    "chord_name": "Bmin7",
+    "root_note": "B",
+    "chord_type": "Minor 7",
+    "starting_string": "6",
+    "starting_fret": "19",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "B",
+        "D",
+        "F#",
+        "A"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "19",
+          "finger": 1,
+          "note": "B"
+        },
+        "5": {
+          "fret": "21",
+          "finger": 3,
+          "note": "D"
+        },
+        "4": {
+          "fret": "19",
+          "finger": 1,
+          "note": "F#"
+        },
+        "3": {
+          "fret": "19",
+          "finger": 1,
+          "note": "A"
+        },
+        "2": {
+          "fret": "19",
+          "finger": 1,
+          "note": "D"
+        },
+        "1": {
+          "fret": "19",
+          "finger": 1,
+          "note": "F#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "Bmin7 chord - barre voicing with root on 6th string, fret 8"
+    }
+  }
+}

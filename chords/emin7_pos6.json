@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "emin7_pos6",
+    "chord_name": "Emin7",
+    "root_note": "E",
+    "chord_type": "Minor 7",
+    "starting_string": "4",
+    "starting_fret": "9",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "E",
+        "G",
+        "B",
+        "D"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "9",
+          "finger": 1,
+          "note": "B"
+        },
+        "3": {
+          "fret": "7",
+          "finger": 1,
+          "note": "D"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 2,
+          "note": "G"
+        },
+        "1": {
+          "fret": "7",
+          "finger": 1,
+          "note": "B"
+        }
+      },
+      "category": "arpeggios",
+      "position": 6,
+      "description": "Emin7 chord - compact voicing on top strings (x-x-5-3-4-3)"
+    }
+  }
+}

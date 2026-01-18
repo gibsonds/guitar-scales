@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "fmin7_pos4",
+    "chord_name": "Fmin7",
+    "root_note": "F",
+    "chord_type": "Minor 7",
+    "starting_string": "4",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "F",
+        "Ab",
+        "C",
+        "Eb"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "15",
+          "finger": 3,
+          "note": "F"
+        },
+        "3": {
+          "fret": "13",
+          "finger": 1,
+          "note": "Eb"
+        },
+        "2": {
+          "fret": "13",
+          "finger": 1,
+          "note": "Ab"
+        },
+        "1": {
+          "fret": "13",
+          "finger": 1,
+          "note": "C"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "Fmin7 chord - top four strings (x-x-10-8-8-8)"
+    }
+  }
+}

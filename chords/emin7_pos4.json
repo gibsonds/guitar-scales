@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "emin7_pos4",
+    "chord_name": "Emin7",
+    "root_note": "E",
+    "chord_type": "Minor 7",
+    "starting_string": "4",
+    "starting_fret": "12",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "E",
+        "G",
+        "B",
+        "D"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "14",
+          "finger": 3,
+          "note": "E"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 1,
+          "note": "D"
+        },
+        "2": {
+          "fret": "12",
+          "finger": 1,
+          "note": "G"
+        },
+        "1": {
+          "fret": "12",
+          "finger": 1,
+          "note": "B"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "Emin7 chord - top four strings (x-x-10-8-8-8)"
+    }
+  }
+}

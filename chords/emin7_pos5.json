@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "emin7_pos5",
+    "chord_name": "Emin7",
+    "root_note": "E",
+    "chord_type": "Minor 7",
+    "starting_string": "5",
+    "starting_fret": "17",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "E",
+        "G",
+        "B",
+        "D"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "19",
+          "finger": 3,
+          "note": "E"
+        },
+        "4": {
+          "fret": "17",
+          "finger": 1,
+          "note": "D"
+        },
+        "3": {
+          "fret": "17",
+          "finger": 1,
+          "note": "G"
+        },
+        "2": {
+          "fret": "17",
+          "finger": 1,
+          "note": "B"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 5,
+      "description": "Emin7 chord - upper neck voicing (x-15-13-13-13-x)"
+    }
+  }
+}

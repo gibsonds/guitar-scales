@@ -1,0 +1,70 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "emin7_pos3",
+    "chord_name": "Emin7",
+    "root_note": "E",
+    "chord_type": "Minor 7",
+    "starting_string": "5",
+    "starting_fret": "4",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "E",
+        "G",
+        "B",
+        "D"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "7",
+          "finger": 2,
+          "note": "E"
+        },
+        "4": {
+          "fret": "9",
+          "finger": 4,
+          "note": "B"
+        },
+        "3": {
+          "fret": "7",
+          "finger": 1,
+          "note": "D"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 3,
+          "note": "G"
+        },
+        "1": {
+          "fret": "7",
+          "finger": 1,
+          "note": "B"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Emin7 chord - position voicing (x-3-5-3-4-3)"
+    }
+  }
+}

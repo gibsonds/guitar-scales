@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bmin7_pos5",
+    "chord_name": "Bmin7",
+    "root_note": "B",
+    "chord_type": "Minor 7",
+    "starting_string": "5",
+    "starting_fret": "24",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "B",
+        "D",
+        "F#",
+        "A"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "26",
+          "finger": 3,
+          "note": "B"
+        },
+        "4": {
+          "fret": "24",
+          "finger": 1,
+          "note": "A"
+        },
+        "3": {
+          "fret": "24",
+          "finger": 1,
+          "note": "D"
+        },
+        "2": {
+          "fret": "24",
+          "finger": 1,
+          "note": "F#"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 5,
+      "description": "Bmin7 chord - upper neck voicing (x-15-13-13-13-x)"
+    }
+  }
+}

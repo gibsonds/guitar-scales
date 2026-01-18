@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "dmin7_pos6",
+    "chord_name": "Dmin7",
+    "root_note": "D",
+    "chord_type": "Minor 7",
+    "starting_string": "4",
+    "starting_fret": "7",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "D",
+        "F",
+        "A",
+        "C"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "7",
+          "finger": 1,
+          "note": "A"
+        },
+        "3": {
+          "fret": "5",
+          "finger": 1,
+          "note": "C"
+        },
+        "2": {
+          "fret": "6",
+          "finger": 2,
+          "note": "F"
+        },
+        "1": {
+          "fret": "5",
+          "finger": 1,
+          "note": "A"
+        }
+      },
+      "category": "arpeggios",
+      "position": 6,
+      "description": "Dmin7 chord - compact voicing on top strings (x-x-5-3-4-3)"
+    }
+  }
+}

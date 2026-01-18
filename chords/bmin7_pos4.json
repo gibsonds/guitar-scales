@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bmin7_pos4",
+    "chord_name": "Bmin7",
+    "root_note": "B",
+    "chord_type": "Minor 7",
+    "starting_string": "4",
+    "starting_fret": "19",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "B",
+        "D",
+        "F#",
+        "A"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "21",
+          "finger": 3,
+          "note": "B"
+        },
+        "3": {
+          "fret": "19",
+          "finger": 1,
+          "note": "A"
+        },
+        "2": {
+          "fret": "19",
+          "finger": 1,
+          "note": "D"
+        },
+        "1": {
+          "fret": "19",
+          "finger": 1,
+          "note": "F#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "Bmin7 chord - top four strings (x-x-10-8-8-8)"
+    }
+  }
+}

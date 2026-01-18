@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "emaj7_pos2",
+    "chord_name": "Emaj7",
+    "root_note": "E",
+    "chord_type": "Major 7",
+    "starting_string": "6",
+    "starting_fret": "12",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "chord_tones": [
+        "E",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "12",
+          "finger": 1,
+          "note": "E"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "13",
+          "finger": 2,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "13",
+          "finger": 3,
+          "note": "G#"
+        },
+        "2": {
+          "fret": "12",
+          "finger": 1,
+          "note": "B"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Emaj7 chord - barre voicing at 8th fret (8-x-9-9-8-x)"
+    }
+  }
+}

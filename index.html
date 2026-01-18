@@ -1368,7 +1368,11 @@
         // Auto-load Cmaj7 chord voicings for default A Aeolian scale
         if (state.selectedScaleId === 'aeolian_3nps' && rootSelect.value === 'A') {
           setTimeout(() => {
-            loadChordVoicings('C', 'Cmaj7');
+            // Find Cmaj7 chord (degree III in A minor) and select it
+            const cmaj7Chord = state.diatonicChords.find(c => c.seventhSymbol === 'Cmaj7');
+            if (cmaj7Chord) {
+              selectChord(cmaj7Chord, 'seventh');
+            }
           }, 100);
         }
       }
@@ -2570,7 +2574,9 @@
         `${chordRoot.toLowerCase()}${filePrefix}_pos1`,
         `${chordRoot.toLowerCase()}${filePrefix}_pos2`,
         `${chordRoot.toLowerCase()}${filePrefix}_pos3`,
-        `${chordRoot.toLowerCase()}${filePrefix}_pos4`
+        `${chordRoot.toLowerCase()}${filePrefix}_pos4`,
+        `${chordRoot.toLowerCase()}${filePrefix}_pos5`,
+        `${chordRoot.toLowerCase()}${filePrefix}_pos6`
       ];
 
       try {

@@ -1,0 +1,74 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gmin7_pos1",
+    "chord_name": "Gmin7",
+    "root_note": "G",
+    "chord_type": "Minor 7",
+    "starting_string": "6",
+    "starting_fret": "15",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "D",
+        "F"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "15",
+          "finger": 1,
+          "note": "G"
+        },
+        "5": {
+          "fret": "17",
+          "finger": 3,
+          "note": "A#"
+        },
+        "4": {
+          "fret": "15",
+          "finger": 1,
+          "note": "D"
+        },
+        "3": {
+          "fret": "15",
+          "finger": 1,
+          "note": "F"
+        },
+        "2": {
+          "fret": "15",
+          "finger": 1,
+          "note": "A#"
+        },
+        "1": {
+          "fret": "15",
+          "finger": 1,
+          "note": "D"
+        }
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "Gmin7 chord - barre voicing with root on 6th string, fret 8"
+    }
+  }
+}

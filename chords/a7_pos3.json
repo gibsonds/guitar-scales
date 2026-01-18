@@ -1,0 +1,70 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "a7_pos3",
+    "chord_name": "A7",
+    "root_note": "A",
+    "chord_type": "Dominant 7",
+    "starting_string": "5",
+    "starting_fret": "12",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "A",
+        "C#",
+        "E",
+        "G"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "12",
+          "finger": 1,
+          "note": "A"
+        },
+        "4": {
+          "fret": "14",
+          "finger": 4,
+          "note": "E"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 1,
+          "note": "G"
+        },
+        "2": {
+          "fret": "14",
+          "finger": 3,
+          "note": "C#"
+        },
+        "1": {
+          "fret": "12",
+          "finger": 1,
+          "note": "E"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "A7 chord - barre voicing (x-3-5-3-5-3)"
+    }
+  }
+}

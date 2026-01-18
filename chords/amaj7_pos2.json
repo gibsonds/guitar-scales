@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "amaj7_pos2",
+    "chord_name": "Amaj7",
+    "root_note": "A",
+    "chord_type": "Major 7",
+    "starting_string": "6",
+    "starting_fret": "17",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "chord_tones": [
+        "A",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "17",
+          "finger": 1,
+          "note": "A"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "18",
+          "finger": 2,
+          "note": "G#"
+        },
+        "3": {
+          "fret": "18",
+          "finger": 3,
+          "note": "C#"
+        },
+        "2": {
+          "fret": "17",
+          "finger": 1,
+          "note": "E"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Amaj7 chord - barre voicing at 8th fret (8-x-9-9-8-x)"
+    }
+  }
+}

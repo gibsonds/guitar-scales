@@ -1,0 +1,74 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "d#min7_pos1",
+    "chord_name": "D#min7",
+    "root_note": "D#",
+    "chord_type": "Minor 7",
+    "starting_string": "6",
+    "starting_fret": "11",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "D#",
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "11",
+          "finger": 1,
+          "note": "D#"
+        },
+        "5": {
+          "fret": "13",
+          "finger": 3,
+          "note": "F#"
+        },
+        "4": {
+          "fret": "11",
+          "finger": 1,
+          "note": "A#"
+        },
+        "3": {
+          "fret": "11",
+          "finger": 1,
+          "note": "C#"
+        },
+        "2": {
+          "fret": "11",
+          "finger": 1,
+          "note": "F#"
+        },
+        "1": {
+          "fret": "11",
+          "finger": 1,
+          "note": "A#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "D#min7 chord - barre voicing with root on 6th string, fret 8"
+    }
+  }
+}

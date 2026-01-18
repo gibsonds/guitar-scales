@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gmin7_pos5",
+    "chord_name": "Gmin7",
+    "root_note": "G",
+    "chord_type": "Minor 7",
+    "starting_string": "5",
+    "starting_fret": "20",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "D",
+        "F"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "22",
+          "finger": 3,
+          "note": "G"
+        },
+        "4": {
+          "fret": "20",
+          "finger": 1,
+          "note": "F"
+        },
+        "3": {
+          "fret": "20",
+          "finger": 1,
+          "note": "A#"
+        },
+        "2": {
+          "fret": "20",
+          "finger": 1,
+          "note": "D"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 5,
+      "description": "Gmin7 chord - upper neck voicing (x-15-13-13-13-x)"
+    }
+  }
+}

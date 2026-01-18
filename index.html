@@ -2433,6 +2433,27 @@
     function createChordDiagram(chordData, root) {
       const voicing = chordData.properties.voicing;
       const chordName = chordData.chord_name || 'Chord';
+      const expectedChordTones = chordData.properties.chord_tones || [];
+
+      // Validate voicing notes match expected chord tones
+      const invalidNotes = [];
+      Object.entries(voicing).forEach(([stringKey, v]) => {
+        if (v !== 'mute' && typeof v === 'object') {
+          const note = v.note;
+          const normalizedNote = note.replace('b', 'flat').replace('#', 'sharp');
+          const noteIsValid = expectedChordTones.some(tone => {
+            const normalizedTone = tone.replace('b', 'flat').replace('#', 'sharp');
+            return normalizedNote === normalizedTone || normalizedNote.replace('flat', 'b').replace('sharp', '#') === normalizedTone;
+          });
+          if (!noteIsValid) {
+            invalidNotes.push(`String ${stringKey}: ${note} (expected one of ${expectedChordTones.join(', ')})`);
+          }
+        }
+      });
+
+      if (invalidNotes.length > 0) {
+        console.warn(`⚠️ Invalid notes in ${chordName} voicing:`, invalidNotes);
+      }
 
       // Find fret range for the diagram and check for open strings
       let minFret = 20, maxFret = 0;
@@ -2464,7 +2485,7 @@
 
       // Position indicator (always show for non-open position chords)
       if (!isOpenPosition) {
-        svg += `<text x="5" y="${margin + fretHeight/2 + 4}" font-family="sans-serif" font-size="10" fill="#8a8a9a">${startFret}fr</text>`;
+        svg += `<text x="5" y="${margin + fretHeight/2 + 4}" font-family="sans-serif" font-size="10" fill="#8a8a9a">${startFret}</text>`;
       }
 
       // Draw strings (vertical lines)

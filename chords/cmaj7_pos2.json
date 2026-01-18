@@ -5,7 +5,7 @@
     "chord_name": "Cmaj7",
     "root_note": "C",
     "chord_type": "Major 7",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "8",
     "tuning": [
       "E",
@@ -35,32 +35,32 @@
         "B"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "8",
           "finger": 1,
           "note": "C"
         },
-        "4": "mute",
-        "3": {
+        "5": "mute",
+        "4": {
           "fret": "9",
           "finger": 2,
           "note": "B"
         },
-        "2": {
+        "3": {
           "fret": "9",
           "finger": 3,
           "note": "E"
         },
-        "1": {
+        "2": {
           "fret": "8",
           "finger": 1,
           "note": "G"
-        }
+        },
+        "1": "mute"
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "Cmaj7 chord - compact voicing at 8th fret"
+      "description": "Cmaj7 chord - barre voicing at 8th fret (8-x-9-9-8-x)"
     }
   }
 }

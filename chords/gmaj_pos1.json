@@ -1,0 +1,67 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gmaj_pos1",
+    "chord_name": "G",
+    "root_note": "G",
+    "chord_type": "Major",
+    "starting_string": "5",
+    "starting_fret": "7",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5"
+      ],
+      "chord_tones": [
+        "G",
+        "B",
+        "D"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "10",
+          "finger": 3,
+          "note": "G"
+        },
+        "4": {
+          "fret": "9",
+          "finger": 2,
+          "note": "B"
+        },
+        "3": {
+          "fret": "7",
+          "finger": 0,
+          "note": "D"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 1,
+          "note": "G"
+        },
+        "1": {
+          "fret": "7",
+          "finger": 0,
+          "note": "B"
+        }
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "G chord - open position (x-3-2-0-1-0)"
+    }
+  }
+}

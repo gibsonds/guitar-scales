@@ -1,0 +1,67 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "fmin_pos1",
+    "chord_name": "Fm",
+    "root_note": "F",
+    "chord_type": "Minor",
+    "starting_string": "5",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "F",
+        "Ab",
+        "C"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "8",
+          "finger": 0,
+          "note": "F"
+        },
+        "4": {
+          "fret": "10",
+          "finger": 2,
+          "note": "C"
+        },
+        "3": {
+          "fret": "10",
+          "finger": 3,
+          "note": "F"
+        },
+        "2": {
+          "fret": "9",
+          "finger": 1,
+          "note": "Ab"
+        },
+        "1": {
+          "fret": "8",
+          "finger": 0,
+          "note": "C"
+        }
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "Fm chord - open position (x-0-2-2-1-0)"
+    }
+  }
+}

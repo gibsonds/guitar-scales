@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "fmin_pos3",
+    "chord_name": "Fm",
+    "root_note": "F",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "F",
+        "Ab",
+        "C"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "13",
+          "finger": 1,
+          "note": "F"
+        },
+        "5": {
+          "fret": "15",
+          "finger": 3,
+          "note": "C"
+        },
+        "4": {
+          "fret": "15",
+          "finger": 4,
+          "note": "F"
+        },
+        "3": {
+          "fret": "13",
+          "finger": 1,
+          "note": "Ab"
+        },
+        "2": {
+          "fret": "13",
+          "finger": 1,
+          "note": "C"
+        },
+        "1": {
+          "fret": "13",
+          "finger": 1,
+          "note": "F"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Fm chord - full barre at 5th fret (5-7-7-5-5-5)"
+    }
+  }
+}

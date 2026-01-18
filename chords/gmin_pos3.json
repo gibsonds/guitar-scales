@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gmin_pos3",
+    "chord_name": "Gm",
+    "root_note": "G",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "15",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "D"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "15",
+          "finger": 1,
+          "note": "G"
+        },
+        "5": {
+          "fret": "17",
+          "finger": 3,
+          "note": "D"
+        },
+        "4": {
+          "fret": "17",
+          "finger": 4,
+          "note": "G"
+        },
+        "3": {
+          "fret": "15",
+          "finger": 1,
+          "note": "A#"
+        },
+        "2": {
+          "fret": "15",
+          "finger": 1,
+          "note": "D"
+        },
+        "1": {
+          "fret": "15",
+          "finger": 1,
+          "note": "G"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Gm chord - full barre at 5th fret (5-7-7-5-5-5)"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gmin_pos4",
+    "chord_name": "Gm",
+    "root_note": "G",
+    "chord_type": "Minor",
+    "starting_string": "4",
+    "starting_fret": "17",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "D"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "17",
+          "finger": 1,
+          "note": "G"
+        },
+        "3": {
+          "fret": "19",
+          "finger": 3,
+          "note": "D"
+        },
+        "2": {
+          "fret": "20",
+          "finger": 4,
+          "note": "G"
+        },
+        "1": {
+          "fret": "18",
+          "finger": 2,
+          "note": "A#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "Gm chord - top strings voicing (x-x-7-9-10-8)"
+    }
+  }
+}

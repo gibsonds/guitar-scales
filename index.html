@@ -2496,7 +2496,7 @@
 
       // Position indicator (always show for non-open position chords)
       if (!isOpenPosition) {
-        svg += `<text x="5" y="${margin + fretHeight/2 + 4}" font-family="sans-serif" font-size="10" fill="#8a8a9a">${startFret}</text>`;
+        svg += `<text x="12" y="${margin + fretHeight/2 + 4}" font-family="sans-serif" font-size="10" fill="#8a8a9a" text-anchor="end">${startFret}</text>`;
       }
 
       // Draw strings (vertical lines)
@@ -2596,7 +2596,27 @@
           }
         });
 
-        const chords = (await Promise.all(chordPromises)).filter(c => c !== null);
+        let chords = (await Promise.all(chordPromises)).filter(c => c !== null);
+
+        // Filter out high-fret voicings (above fret 14) and remove duplicates
+        const MAX_FRET = 14;
+        const seenFrets = new Set();
+        chords = chords.filter(chord => {
+          const startingFret = parseInt(chord.starting_fret);
+
+          // Skip if too high on the neck
+          if (startingFret > MAX_FRET) {
+            return false;
+          }
+
+          // Skip if we've already seen this starting fret (duplicate)
+          if (seenFrets.has(startingFret)) {
+            return false;
+          }
+
+          seenFrets.add(startingFret);
+          return true;
+        });
 
         if (chords.length === 0) {
           container.innerHTML = '<div style="color: #8a8a9a; font-size: 0.875rem;">No chord voicings available yet. Use chord_input_tool.py to add them!</div>';

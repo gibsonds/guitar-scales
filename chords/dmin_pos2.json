@@ -1,0 +1,67 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "dmin_pos2",
+    "chord_name": "Dm",
+    "root_note": "D",
+    "chord_type": "Minor",
+    "starting_string": "5",
+    "starting_fret": "10",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "D",
+        "F",
+        "A"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "10",
+          "finger": 1,
+          "note": "D"
+        },
+        "4": {
+          "fret": "12",
+          "finger": 3,
+          "note": "A"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 4,
+          "note": "D"
+        },
+        "2": {
+          "fret": "10",
+          "finger": 1,
+          "note": "F"
+        },
+        "1": {
+          "fret": "10",
+          "finger": 1,
+          "note": "A"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Dm chord - barre at 5th fret (x-5-7-7-5-5)"
+    }
+  }
+}

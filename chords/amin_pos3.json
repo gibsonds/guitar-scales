@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "amin_pos3",
+    "chord_name": "Am",
+    "root_note": "A",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "5",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "A",
+        "C",
+        "E"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "5",
+          "finger": 1,
+          "note": "A"
+        },
+        "5": {
+          "fret": "7",
+          "finger": 3,
+          "note": "E"
+        },
+        "4": {
+          "fret": "7",
+          "finger": 4,
+          "note": "A"
+        },
+        "3": {
+          "fret": "5",
+          "finger": 1,
+          "note": "C"
+        },
+        "2": {
+          "fret": "5",
+          "finger": 1,
+          "note": "E"
+        },
+        "1": {
+          "fret": "5",
+          "finger": 1,
+          "note": "A"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "A minor - full barre at 5th fret (5-7-7-5-5-5)"
+    }
+  }
+}

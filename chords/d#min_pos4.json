@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "d#min_pos4",
+    "chord_name": "D#m",
+    "root_note": "D#",
+    "chord_type": "Minor",
+    "starting_string": "4",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "13",
+          "finger": 1,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "15",
+          "finger": 3,
+          "note": "A#"
+        },
+        "2": {
+          "fret": "16",
+          "finger": 4,
+          "note": "D#"
+        },
+        "1": {
+          "fret": "14",
+          "finger": 2,
+          "note": "F#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "D#m chord - top strings voicing (x-x-7-9-10-8)"
+    }
+  }
+}

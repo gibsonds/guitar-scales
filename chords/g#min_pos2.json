@@ -1,0 +1,67 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "g#min_pos2",
+    "chord_name": "G#m",
+    "root_note": "G#",
+    "chord_type": "Minor",
+    "starting_string": "5",
+    "starting_fret": "16",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "G#",
+        "B",
+        "D#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "16",
+          "finger": 1,
+          "note": "G#"
+        },
+        "4": {
+          "fret": "18",
+          "finger": 3,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "18",
+          "finger": 4,
+          "note": "G#"
+        },
+        "2": {
+          "fret": "16",
+          "finger": 1,
+          "note": "B"
+        },
+        "1": {
+          "fret": "16",
+          "finger": 1,
+          "note": "D#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "G#m chord - barre at 5th fret (x-5-7-7-5-5)"
+    }
+  }
+}

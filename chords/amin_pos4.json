@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "amin_pos4",
+    "chord_name": "Am",
+    "root_note": "A",
+    "chord_type": "Minor",
+    "starting_string": "4",
+    "starting_fret": "7",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "A",
+        "C",
+        "E"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "7",
+          "finger": 1,
+          "note": "A"
+        },
+        "3": {
+          "fret": "9",
+          "finger": 3,
+          "note": "E"
+        },
+        "2": {
+          "fret": "10",
+          "finger": 4,
+          "note": "A"
+        },
+        "1": {
+          "fret": "8",
+          "finger": 2,
+          "note": "C"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "A minor - top strings voicing (x-x-7-9-10-8)"
+    }
+  }
+}

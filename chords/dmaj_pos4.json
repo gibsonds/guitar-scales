@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "dmaj_pos4",
+    "chord_name": "D",
+    "root_note": "D",
+    "chord_type": "Major",
+    "starting_string": "4",
+    "starting_fret": "7",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5"
+      ],
+      "chord_tones": [
+        "D",
+        "F#",
+        "A"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "7",
+          "finger": 1,
+          "note": "A"
+        },
+        "3": {
+          "fret": "7",
+          "finger": 1,
+          "note": "D"
+        },
+        "2": {
+          "fret": "7",
+          "finger": 1,
+          "note": "F#"
+        },
+        "1": {
+          "fret": "7",
+          "finger": 1,
+          "note": "A"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "D chord - top strings barre (x-x-5-5-5-5)"
+    }
+  }
+}

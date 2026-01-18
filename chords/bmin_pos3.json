@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bmin_pos3",
+    "chord_name": "Bm",
+    "root_note": "B",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "7",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "B",
+        "D",
+        "F#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "7",
+          "finger": 1,
+          "note": "B"
+        },
+        "5": {
+          "fret": "9",
+          "finger": 3,
+          "note": "F#"
+        },
+        "4": {
+          "fret": "9",
+          "finger": 4,
+          "note": "B"
+        },
+        "3": {
+          "fret": "7",
+          "finger": 1,
+          "note": "D"
+        },
+        "2": {
+          "fret": "7",
+          "finger": 1,
+          "note": "F#"
+        },
+        "1": {
+          "fret": "7",
+          "finger": 1,
+          "note": "B"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Bm chord - full barre at 5th fret (5-7-7-5-5-5)"
+    }
+  }
+}

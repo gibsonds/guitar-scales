@@ -1,0 +1,67 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "cmin_pos2",
+    "chord_name": "Cm",
+    "root_note": "C",
+    "chord_type": "Minor",
+    "starting_string": "5",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "C",
+        "D#",
+        "G"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "8",
+          "finger": 1,
+          "note": "C"
+        },
+        "4": {
+          "fret": "10",
+          "finger": 3,
+          "note": "G"
+        },
+        "3": {
+          "fret": "10",
+          "finger": 4,
+          "note": "C"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 1,
+          "note": "D#"
+        },
+        "1": {
+          "fret": "8",
+          "finger": 1,
+          "note": "G"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Cm chord - barre at 5th fret (x-5-7-7-5-5)"
+    }
+  }
+}

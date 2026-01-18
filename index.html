@@ -445,6 +445,19 @@
       Drag the blue box to move your practice position
     </div>
 
+    <!-- Chord Voicings Display -->
+    <div id="chordVoicingsSection" style="display: none; padding: 1rem 1.25rem; background: #14141f; border-top: 1px solid #2a2a3a;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+        <div style="font-size: 0.75rem; font-weight: 600; color: #8a8a9a; text-transform: uppercase; letter-spacing: 0.08em;">
+          Chord Voicings
+        </div>
+        <button id="closeVoicingsBtn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: #2a2a3a; color: #8a8a9a; border: 1px solid #3a3a4a; border-radius: 4px; cursor: pointer;">
+          Close
+        </button>
+      </div>
+      <div id="chordDiagramsContainer" style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: flex-start;"></div>
+    </div>
+
     <div id="chordExplorerSection" style="display: none; padding: 1rem 1.25rem; background: #14141f; border-top: 1px solid #2a2a3a;">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
         <div style="font-size: 0.75rem; font-weight: 600; color: #8a8a9a; text-transform: uppercase; letter-spacing: 0.08em;">
@@ -1045,15 +1058,9 @@
       const intervals = (scaleData.properties?.intervals || scaleData.intervals || []).map(i => parseInt(i));
       const degrees = scaleData.properties?.scale_degrees || scaleData.scale_degrees || scaleData.degrees || [];
 
-      // Check if this is a chord (has voicing property)
-      const isChord = scaleData.properties?.voicing !== undefined;
-
       // Use fingering pattern positions if a pattern is selected, otherwise show all tones
       let allPositions;
-      if (isChord) {
-        // For chords, display the specific voicing
-        allPositions = calculateChordVoicingPositions(scaleData, root);
-      } else if (state.selectedFingeringPattern !== 'all') {
+      if (state.selectedFingeringPattern !== 'all') {
         allPositions = calculateFingeringPatternPositions(scaleData, root, state.selectedFingeringPattern);
       } else {
         allPositions = calculateFullFretboard(root, intervals, degrees);
@@ -1331,17 +1338,13 @@
         'super_locrian_bb7_3nps', 'whole_tone'
       ];
 
-      const chordFiles = [
-        'cmaj7_pos1', 'cmin7_pos1', 'c7_pos1'
-      ];
-
       const promises = scaleFiles.map(async (filename) => {
         try {
           const response = await fetch(`scales/${filename}.json`);
           const data = await response.json();
           return {
             id: filename,
-            name: data.Item.scale_type || data.Item.chord_name || filename,
+            name: data.Item.scale_type || filename,
             category: data.Item.properties?.category || 'other',
             data: data.Item
           };
@@ -1350,24 +1353,6 @@
           return null;
         }
       });
-
-      const chordPromises = chordFiles.map(async (filename) => {
-        try {
-          const response = await fetch(`chords/${filename}.json`);
-          const data = await response.json();
-          return {
-            id: filename,
-            name: data.Item.chord_name || data.Item.scale_type || filename,
-            category: data.Item.properties?.category || 'arpeggios',
-            data: data.Item
-          };
-        } catch (err) {
-          console.error(`Failed to load chord ${filename}:`, err);
-          return null;
-        }
-      });
-
-      promises.push(...chordPromises);
 
       state.scales = (await Promise.all(promises)).filter(s => s !== null);
 
@@ -1785,6 +1770,10 @@
         btn.style.color = '#ffffff';
       });
 
+      // Load chord voicings
+      const chordType = type === 'seventh' ? chord.seventhQuality : chord.quality;
+      loadChordVoicings(chord.root, chordType);
+
       drawFretboard();
     }
 
@@ -1798,6 +1787,9 @@
         btn.style.borderColor = '#3a3a4a';
         btn.style.color = '#e8e8eb';
       });
+
+      // Hide chord voicings section
+      document.getElementById('chordVoicingsSection').style.display = 'none';
 
       drawFretboard();
     }
@@ -2436,6 +2428,152 @@
       if (state.isDragging) {
         state.isDragging = false;
       }
+    });
+
+    /**
+     * Create an SVG chord diagram
+     */
+    function createChordDiagram(chordData, root) {
+      const voicing = chordData.properties.voicing;
+      const chordName = chordData.chord_name || 'Chord';
+
+      // Find fret range for the diagram
+      let minFret = 20, maxFret = 0;
+      Object.values(voicing).forEach(v => {
+        if (v !== 'mute' && v.fret !== '0') {
+          const fret = parseInt(v.fret);
+          minFret = Math.min(minFret, fret);
+          maxFret = Math.max(maxFret, fret);
+        }
+      });
+
+      // Determine if this is an open position chord
+      const isOpenPosition = minFret === 20 || minFret <= 3;
+      const startFret = isOpenPosition ? 0 : minFret;
+      const numFrets = isOpenPosition ? 4 : Math.max(4, maxFret - startFret + 1);
+
+      const width = 100;
+      const height = 130;
+      const margin = 15;
+      const stringSpacing = (width - 2 * margin) / 5;
+      const fretHeight = (height - 2 * margin - 20) / numFrets;
+
+      let svg = `<svg width="${width}" height="${height + 25}" xmlns="http://www.w3.org/2000/svg">`;
+
+      // Title
+      svg += `<text x="${width/2}" y="12" font-family="sans-serif" font-size="12" font-weight="600" fill="#e8e8eb" text-anchor="middle">${chordName}</text>`;
+
+      // Position indicator (if not open position)
+      if (!isOpenPosition) {
+        svg += `<text x="5" y="${margin + 20 + fretHeight/2 + 4}" font-family="sans-serif" font-size="10" fill="#8a8a9a">${startFret + 1}fr</text>`;
+      }
+
+      // Draw strings (vertical lines)
+      for (let i = 0; i < 6; i++) {
+        const x = margin + i * stringSpacing;
+        svg += `<line x1="${x}" y1="${margin + 20}" x2="${x}" y2="${margin + 20 + numFrets * fretHeight}" stroke="#4a4a5a" stroke-width="1.5"/>`;
+
+        // String numbers at bottom
+        svg += `<text x="${x}" y="${height + 20}" font-family="sans-serif" font-size="8" fill="#6a6a7a" text-anchor="middle">${6-i}</text>`;
+      }
+
+      // Draw frets (horizontal lines)
+      for (let i = 0; i <= numFrets; i++) {
+        const y = margin + 20 + i * fretHeight;
+        const strokeWidth = (i === 0 && startFret === 0) ? 4 : 1.5;
+        svg += `<line x1="${margin}" y1="${y}" x2="${margin + 5 * stringSpacing}" y2="${y}" stroke="#4a4a5a" stroke-width="${strokeWidth}"/>`;
+      }
+
+      // Draw notes/markers
+      Object.keys(voicing).forEach(stringKey => {
+        const stringNum = parseInt(stringKey);
+        const stringIndex = 6 - stringNum;
+        const x = margin + stringIndex * stringSpacing;
+        const voicingData = voicing[stringKey];
+
+        if (voicingData === 'mute') {
+          // X for muted string
+          svg += `<text x="${x}" y="${margin + 12}" font-family="sans-serif" font-size="14" font-weight="bold" fill="#d64545" text-anchor="middle">×</text>`;
+        } else if (voicingData.fret === '0') {
+          // O for open string
+          svg += `<circle cx="${x}" cy="${margin + 8}" r="5" fill="none" stroke="#4a9eff" stroke-width="2"/>`;
+        } else {
+          // Filled circle for fretted note
+          const fret = parseInt(voicingData.fret);
+          const fretPosition = fret - startFret;
+          const y = margin + 20 + (fretPosition - 0.5) * fretHeight;
+          const isRoot = voicingData.note === root;
+          const fill = isRoot ? '#4a9eff' : '#e8e8eb';
+          svg += `<circle cx="${x}" cy="${y}" r="6" fill="${fill}"/>`;
+
+          // Finger number
+          if (voicingData.finger > 0) {
+            svg += `<text x="${x}" y="${y + 4}" font-family="sans-serif" font-size="9" font-weight="bold" fill="#14141f" text-anchor="middle">${voicingData.finger}</text>`;
+          }
+        }
+      });
+
+      svg += `</svg>`;
+      return svg;
+    }
+
+    /**
+     * Load and display chord voicings
+     */
+    async function loadChordVoicings(chordRoot, chordType) {
+      const container = document.getElementById('chordDiagramsContainer');
+      const section = document.getElementById('chordVoicingsSection');
+
+      container.innerHTML = '<div style="color: #8a8a9a; font-size: 0.875rem;">Loading chord voicings...</div>';
+      section.style.display = 'block';
+
+      // Map chord types to file prefixes
+      const chordFileMap = {
+        'maj7': 'maj7',
+        'min7': 'min7',
+        '7': '7',
+        'maj': 'maj',
+        'min': 'min'
+      };
+
+      const filePrefix = chordFileMap[chordType] || chordType;
+      const chordFiles = [`${chordRoot.toLowerCase()}${filePrefix}_pos1`];
+
+      try {
+        const chordPromises = chordFiles.map(async (filename) => {
+          try {
+            const response = await fetch(`chords/${filename}.json`);
+            const data = await response.json();
+            return data.Item;
+          } catch (err) {
+            console.log(`Chord file ${filename} not found`);
+            return null;
+          }
+        });
+
+        const chords = (await Promise.all(chordPromises)).filter(c => c !== null);
+
+        if (chords.length === 0) {
+          container.innerHTML = '<div style="color: #8a8a9a; font-size: 0.875rem;">No chord voicings available yet. Use chord_input_tool.py to add them!</div>';
+          return;
+        }
+
+        container.innerHTML = '';
+        chords.forEach(chord => {
+          const diagram = createChordDiagram(chord, chordRoot);
+          const wrapper = document.createElement('div');
+          wrapper.innerHTML = diagram;
+          container.appendChild(wrapper);
+        });
+      } catch (err) {
+        console.error('Error loading chord voicings:', err);
+        container.innerHTML = '<div style="color: #d64545; font-size: 0.875rem;">Error loading chord voicings</div>';
+      }
+    }
+
+    // Close voicings section handler
+    document.getElementById('closeVoicingsBtn').addEventListener('click', () => {
+      document.getElementById('chordVoicingsSection').style.display = 'none';
     });
 
     // Initialize

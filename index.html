@@ -1364,6 +1364,13 @@
         state.selectedScaleId = state.scales[0].id;
         scaleSelectValue.textContent = state.scales[0].name;
         updateDisplay();
+
+        // Auto-load Cmaj7 chord voicings for default A Aeolian scale
+        if (state.selectedScaleId === 'aeolian_3nps' && rootSelect.value === 'A') {
+          setTimeout(() => {
+            loadChordVoicings('C', 'Cmaj7');
+          }, 100);
+        }
       }
     }
 

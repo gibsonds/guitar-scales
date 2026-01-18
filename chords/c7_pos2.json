@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c7_pos2",
+    "chord_name": "C7",
+    "root_note": "C",
+    "chord_type": "Dominant 7",
+    "starting_string": "5",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "C",
+        "E",
+        "G",
+        "Bb"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "8",
+          "finger": 1,
+          "note": "C"
+        },
+        "4": "mute",
+        "3": {
+          "fret": "9",
+          "finger": 2,
+          "note": "Bb"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 1,
+          "note": "E"
+        },
+        "1": {
+          "fret": "8",
+          "finger": 1,
+          "note": "G"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "C7 chord - compact voicing at 8th fret"
+    }
+  }
+}

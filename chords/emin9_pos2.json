@@ -1,0 +1,77 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "emin9_pos2",
+    "chord_name": "Emin9",
+    "root_note": "E",
+    "chord_type": "Minor 9",
+    "starting_string": "6",
+    "starting_fret": "12",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "E",
+        "G",
+        "B",
+        "D",
+        "F#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "12",
+          "finger": 1,
+          "note": "E"
+        },
+        "5": {
+          "fret": "14",
+          "finger": 3,
+          "note": "G"
+        },
+        "4": {
+          "fret": "12",
+          "finger": 1,
+          "note": "B"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 1,
+          "note": "D"
+        },
+        "2": {
+          "fret": "12",
+          "finger": 1,
+          "note": "G"
+        },
+        "1": {
+          "fret": "14",
+          "finger": 4,
+          "note": "F#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Emin9 chord - barre voicing (8-10-8-8-8-10)"
+    }
+  }
+}

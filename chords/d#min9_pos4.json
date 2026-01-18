@@ -1,0 +1,69 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "d#min9_pos4",
+    "chord_name": "D#min9",
+    "root_note": "D#",
+    "chord_type": "Minor 9",
+    "starting_string": "4",
+    "starting_fret": "4",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "D#",
+        "F#",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "4",
+          "finger": 1,
+          "note": "F#"
+        },
+        "3": {
+          "fret": "6",
+          "finger": 3,
+          "note": "C#"
+        },
+        "2": {
+          "fret": "6",
+          "finger": 3,
+          "note": "F"
+        },
+        "1": {
+          "fret": "6",
+          "finger": 3,
+          "note": "A#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "D#min9 chord - rootless voicing (x-x-1-3-3-3)"
+    }
+  }
+}

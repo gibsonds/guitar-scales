@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gmin13_pos3",
+    "chord_name": "Gmin13",
+    "root_note": "G",
+    "chord_type": "Minor 13",
+    "starting_string": "4",
+    "starting_fret": "17",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "D",
+        "F",
+        "A",
+        "E"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "17",
+          "finger": 1,
+          "note": "G"
+        },
+        "3": {
+          "fret": "17",
+          "finger": 1,
+          "note": "F"
+        },
+        "2": {
+          "fret": "18",
+          "finger": 2,
+          "note": "A#"
+        },
+        "1": {
+          "fret": "17",
+          "finger": 1,
+          "note": "D"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Gmin13 chord - compact upper voicing (x-x-10-10-11-10)"
+    }
+  }
+}

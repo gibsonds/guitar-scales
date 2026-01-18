@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "emaj13_pos2",
+    "chord_name": "Emaj13",
+    "root_note": "E",
+    "chord_type": "Major 13",
+    "starting_string": "4",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "E",
+        "G#",
+        "B",
+        "D#",
+        "F#",
+        "C#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "13",
+          "finger": 1,
+          "note": "E"
+        },
+        "3": {
+          "fret": "15",
+          "finger": 3,
+          "note": "F#"
+        },
+        "2": {
+          "fret": "14",
+          "finger": 2,
+          "note": "C#"
+        },
+        "1": {
+          "fret": "16",
+          "finger": 4,
+          "note": "G#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Emaj13 chord - upper position (x-x-9-11-10-12)"
+    }
+  }
+}

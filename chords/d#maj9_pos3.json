@@ -1,0 +1,69 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "d#maj9_pos3",
+    "chord_name": "D#maj9",
+    "root_note": "D#",
+    "chord_type": "Major 9",
+    "starting_string": "4",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9"
+      ],
+      "chord_tones": [
+        "D#",
+        "G",
+        "A#",
+        "D",
+        "F"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "13",
+          "finger": 1,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "14",
+          "finger": 2,
+          "note": "F"
+        },
+        "2": {
+          "fret": "15",
+          "finger": 3,
+          "note": "G"
+        },
+        "1": {
+          "fret": "13",
+          "finger": 1,
+          "note": "A#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "D#maj9 chord - upper position (x-x-10-11-12-10)"
+    }
+  }
+}

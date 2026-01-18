@@ -1,0 +1,69 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "emaj9_pos4",
+    "chord_name": "Emaj9",
+    "root_note": "E",
+    "chord_type": "Major 9",
+    "starting_string": "4",
+    "starting_fret": "6",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9"
+      ],
+      "chord_tones": [
+        "E",
+        "G#",
+        "B",
+        "D#",
+        "F#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "6",
+          "finger": 1,
+          "note": "G#"
+        },
+        "3": {
+          "fret": "8",
+          "finger": 3,
+          "note": "D#"
+        },
+        "2": {
+          "fret": "7",
+          "finger": 2,
+          "note": "F#"
+        },
+        "1": {
+          "fret": "9",
+          "finger": 4,
+          "note": "B"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "Emaj9 chord - rootless voicing (x-x-2-4-3-5)"
+    }
+  }
+}

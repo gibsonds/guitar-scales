@@ -1,0 +1,77 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "cmin9_pos2",
+    "chord_name": "Cmin9",
+    "root_note": "C",
+    "chord_type": "Minor 9",
+    "starting_string": "6",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "C",
+        "Eb",
+        "G",
+        "Bb",
+        "D"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "8",
+          "finger": 1,
+          "note": "C"
+        },
+        "5": {
+          "fret": "10",
+          "finger": 3,
+          "note": "Eb"
+        },
+        "4": {
+          "fret": "8",
+          "finger": 1,
+          "note": "G"
+        },
+        "3": {
+          "fret": "8",
+          "finger": 1,
+          "note": "Bb"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 1,
+          "note": "Eb"
+        },
+        "1": {
+          "fret": "10",
+          "finger": 4,
+          "note": "D"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Cmin9 chord - barre voicing (8-10-8-8-8-10)"
+    }
+  }
+}

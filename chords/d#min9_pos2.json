@@ -1,0 +1,77 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "d#min9_pos2",
+    "chord_name": "D#min9",
+    "root_note": "D#",
+    "chord_type": "Minor 9",
+    "starting_string": "6",
+    "starting_fret": "11",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "D#",
+        "F#",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "11",
+          "finger": 1,
+          "note": "D#"
+        },
+        "5": {
+          "fret": "13",
+          "finger": 3,
+          "note": "F#"
+        },
+        "4": {
+          "fret": "11",
+          "finger": 1,
+          "note": "A#"
+        },
+        "3": {
+          "fret": "11",
+          "finger": 1,
+          "note": "C#"
+        },
+        "2": {
+          "fret": "11",
+          "finger": 1,
+          "note": "F#"
+        },
+        "1": {
+          "fret": "13",
+          "finger": 4,
+          "note": "F"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "D#min9 chord - barre voicing (8-10-8-8-8-10)"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c13_pos3",
+    "chord_name": "C13",
+    "root_note": "C",
+    "chord_type": "Dominant 13",
+    "starting_string": "5",
+    "starting_fret": "7",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "C",
+        "E",
+        "G",
+        "Bb",
+        "D",
+        "A"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "10",
+          "finger": 4,
+          "note": "G"
+        },
+        "4": {
+          "fret": "9",
+          "finger": 3,
+          "note": "C"
+        },
+        "3": {
+          "fret": "11",
+          "finger": 4,
+          "note": "D"
+        },
+        "2": {
+          "fret": "9",
+          "finger": 2,
+          "note": "A"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "C13 chord - mid-neck voicing (x-10-9-11-9-x)"
+    }
+  }
+}

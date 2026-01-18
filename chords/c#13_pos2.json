@@ -1,0 +1,80 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c#13_pos2",
+    "chord_name": "C#13",
+    "root_note": "C#",
+    "chord_type": "Dominant 13",
+    "starting_string": "6",
+    "starting_fret": "9",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "C#",
+        "F",
+        "G#",
+        "B",
+        "D#",
+        "A#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "9",
+          "finger": 1,
+          "note": "C#"
+        },
+        "5": {
+          "fret": "11",
+          "finger": 3,
+          "note": "F"
+        },
+        "4": {
+          "fret": "11",
+          "finger": 4,
+          "note": "A#"
+        },
+        "3": {
+          "fret": "9",
+          "finger": 1,
+          "note": "B"
+        },
+        "2": {
+          "fret": "10",
+          "finger": 2,
+          "note": "F"
+        },
+        "1": {
+          "fret": "11",
+          "finger": 4,
+          "note": "D#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "C#13 chord - full voicing at 8th fret (8-10-10-8-9-10)"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bmaj9_pos4",
+    "chord_name": "Bmaj9",
+    "root_note": "B",
+    "chord_type": "Major 9",
+    "starting_string": "4",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9"
+      ],
+      "chord_tones": [
+        "B",
+        "D#",
+        "F#",
+        "A#",
+        "C#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "13",
+          "finger": 1,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "15",
+          "finger": 3,
+          "note": "A#"
+        },
+        "2": {
+          "fret": "14",
+          "finger": 2,
+          "note": "C#"
+        },
+        "1": {
+          "fret": "16",
+          "finger": 4,
+          "note": "F#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "Bmaj9 chord - rootless voicing (x-x-2-4-3-5)"
+    }
+  }
+}

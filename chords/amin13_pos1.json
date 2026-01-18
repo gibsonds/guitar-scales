@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "amin13_pos1",
+    "chord_name": "Amin13",
+    "root_note": "A",
+    "chord_type": "Minor 13",
+    "starting_string": "5",
+    "starting_fret": "12",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "A",
+        "C",
+        "E",
+        "G",
+        "B",
+        "F#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "12",
+          "finger": 1,
+          "note": "A"
+        },
+        "4": {
+          "fret": "12",
+          "finger": 1,
+          "note": "F#"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 1,
+          "note": "G"
+        },
+        "2": {
+          "fret": "13",
+          "finger": 2,
+          "note": "C"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "Amin13 chord - barre voicing (x-3-3-3-4-x)"
+    }
+  }
+}

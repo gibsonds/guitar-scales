@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "b13_pos4",
+    "chord_name": "B13",
+    "root_note": "B",
+    "chord_type": "Dominant 13",
+    "starting_string": "4",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "B",
+        "D#",
+        "F#",
+        "A",
+        "C#",
+        "G#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "13",
+          "finger": 1,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "14",
+          "finger": 2,
+          "note": "A"
+        },
+        "2": {
+          "fret": "14",
+          "finger": 2,
+          "note": "C#"
+        },
+        "1": {
+          "fret": "13",
+          "finger": 1,
+          "note": "G#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "B13 chord - rootless voicing (x-x-2-3-3-2)"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "a#min9_pos1",
+    "chord_name": "A#min9",
+    "root_note": "A#",
+    "chord_type": "Minor 9",
+    "starting_string": "5",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "A#",
+        "C#",
+        "F",
+        "G#",
+        "C"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "13",
+          "finger": 1,
+          "note": "A#"
+        },
+        "4": {
+          "fret": "15",
+          "finger": 3,
+          "note": "F"
+        },
+        "3": {
+          "fret": "13",
+          "finger": 1,
+          "note": "G#"
+        },
+        "2": {
+          "fret": "14",
+          "finger": 2,
+          "note": "C#"
+        },
+        "1": {
+          "fret": "15",
+          "finger": 4,
+          "note": "C"
+        }
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "A#min9 chord - mid-neck voicing (x-3-5-3-4-5)"
+    }
+  }
+}

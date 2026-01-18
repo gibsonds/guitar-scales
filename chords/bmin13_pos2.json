@@ -1,0 +1,80 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bmin13_pos2",
+    "chord_name": "Bmin13",
+    "root_note": "B",
+    "chord_type": "Minor 13",
+    "starting_string": "6",
+    "starting_fret": "19",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "B",
+        "D",
+        "F#",
+        "A",
+        "C#",
+        "G#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "19",
+          "finger": 1,
+          "note": "B"
+        },
+        "5": {
+          "fret": "21",
+          "finger": 3,
+          "note": "D"
+        },
+        "4": {
+          "fret": "21",
+          "finger": 4,
+          "note": "G#"
+        },
+        "3": {
+          "fret": "19",
+          "finger": 1,
+          "note": "A"
+        },
+        "2": {
+          "fret": "19",
+          "finger": 1,
+          "note": "D"
+        },
+        "1": {
+          "fret": "21",
+          "finger": 4,
+          "note": "C#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Bmin13 chord - full voicing at 8th fret (8-10-10-8-8-10)"
+    }
+  }
+}

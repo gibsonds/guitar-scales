@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "f#min13_pos1",
+    "chord_name": "F#min13",
+    "root_note": "F#",
+    "chord_type": "Minor 13",
+    "starting_string": "5",
+    "starting_fret": "9",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "F#",
+        "A",
+        "C#",
+        "E",
+        "G#",
+        "D#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "9",
+          "finger": 1,
+          "note": "F#"
+        },
+        "4": {
+          "fret": "9",
+          "finger": 1,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "9",
+          "finger": 1,
+          "note": "E"
+        },
+        "2": {
+          "fret": "10",
+          "finger": 2,
+          "note": "A"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "F#min13 chord - barre voicing (x-3-3-3-4-x)"
+    }
+  }
+}

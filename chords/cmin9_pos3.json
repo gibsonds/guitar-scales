@@ -1,0 +1,69 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "cmin9_pos3",
+    "chord_name": "Cmin9",
+    "root_note": "C",
+    "chord_type": "Minor 9",
+    "starting_string": "4",
+    "starting_fret": "10",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "C",
+        "Eb",
+        "G",
+        "Bb",
+        "D"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "10",
+          "finger": 1,
+          "note": "C"
+        },
+        "3": {
+          "fret": "10",
+          "finger": 1,
+          "note": "Bb"
+        },
+        "2": {
+          "fret": "11",
+          "finger": 2,
+          "note": "Eb"
+        },
+        "1": {
+          "fret": "10",
+          "finger": 1,
+          "note": "G"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Cmin9 chord - compact upper voicing (x-x-10-10-11-10)"
+    }
+  }
+}

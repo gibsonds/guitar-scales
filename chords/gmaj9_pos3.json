@@ -1,0 +1,69 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gmaj9_pos3",
+    "chord_name": "Gmaj9",
+    "root_note": "G",
+    "chord_type": "Major 9",
+    "starting_string": "4",
+    "starting_fret": "17",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9"
+      ],
+      "chord_tones": [
+        "G",
+        "B",
+        "D",
+        "F#",
+        "A"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "17",
+          "finger": 1,
+          "note": "G"
+        },
+        "3": {
+          "fret": "18",
+          "finger": 2,
+          "note": "A"
+        },
+        "2": {
+          "fret": "19",
+          "finger": 3,
+          "note": "B"
+        },
+        "1": {
+          "fret": "17",
+          "finger": 1,
+          "note": "D"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Gmaj9 chord - upper position (x-x-10-11-12-10)"
+    }
+  }
+}

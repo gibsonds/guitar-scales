@@ -1,0 +1,77 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "fmin9_pos2",
+    "chord_name": "Fmin9",
+    "root_note": "F",
+    "chord_type": "Minor 9",
+    "starting_string": "6",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "F",
+        "Ab",
+        "C",
+        "Eb",
+        "G"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "13",
+          "finger": 1,
+          "note": "F"
+        },
+        "5": {
+          "fret": "15",
+          "finger": 3,
+          "note": "Ab"
+        },
+        "4": {
+          "fret": "13",
+          "finger": 1,
+          "note": "C"
+        },
+        "3": {
+          "fret": "13",
+          "finger": 1,
+          "note": "Eb"
+        },
+        "2": {
+          "fret": "13",
+          "finger": 1,
+          "note": "Ab"
+        },
+        "1": {
+          "fret": "15",
+          "finger": 4,
+          "note": "G"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Fmin9 chord - barre voicing (8-10-8-8-8-10)"
+    }
+  }
+}

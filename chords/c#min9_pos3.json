@@ -1,0 +1,69 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c#min9_pos3",
+    "chord_name": "C#min9",
+    "root_note": "C#",
+    "chord_type": "Minor 9",
+    "starting_string": "4",
+    "starting_fret": "11",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "C#",
+        "E",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "11",
+          "finger": 1,
+          "note": "C#"
+        },
+        "3": {
+          "fret": "11",
+          "finger": 1,
+          "note": "B"
+        },
+        "2": {
+          "fret": "12",
+          "finger": 2,
+          "note": "E"
+        },
+        "1": {
+          "fret": "11",
+          "finger": 1,
+          "note": "G#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "C#min9 chord - compact upper voicing (x-x-10-10-11-10)"
+    }
+  }
+}

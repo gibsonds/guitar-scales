@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bmin13_pos3",
+    "chord_name": "Bmin13",
+    "root_note": "B",
+    "chord_type": "Minor 13",
+    "starting_string": "4",
+    "starting_fret": "21",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "B",
+        "D",
+        "F#",
+        "A",
+        "C#",
+        "G#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "21",
+          "finger": 1,
+          "note": "B"
+        },
+        "3": {
+          "fret": "21",
+          "finger": 1,
+          "note": "A"
+        },
+        "2": {
+          "fret": "22",
+          "finger": 2,
+          "note": "D"
+        },
+        "1": {
+          "fret": "21",
+          "finger": 1,
+          "note": "F#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Bmin13 chord - compact upper voicing (x-x-10-10-11-10)"
+    }
+  }
+}

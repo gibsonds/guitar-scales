@@ -2558,26 +2558,31 @@
       // Extract chord type from symbol (remove root note)
       const chordType = chordSymbol.replace(chordRoot, '');
 
-      // Map chord type suffixes to file prefixes
+      // Map chord type suffixes to file prefixes and number of positions
       const chordFileMap = {
-        'maj7': 'maj7',
-        'm7': 'min7',
-        '7': '7',
-        'm': 'min',
-        '': 'maj',  // Plain root letter = major triad
-        'dim': 'dim',
-        'aug': 'aug'
+        'maj7': { prefix: 'maj7', positions: 6 },
+        'm7': { prefix: 'min7', positions: 6 },
+        '7': { prefix: '7', positions: 6 },
+        'maj9': { prefix: 'maj9', positions: 4 },
+        'm9': { prefix: 'min9', positions: 4 },
+        '9': { prefix: '9', positions: 4 },
+        'maj13': { prefix: 'maj13', positions: 4 },
+        'm13': { prefix: 'min13', positions: 4 },
+        '13': { prefix: '13', positions: 4 },
+        'm': { prefix: 'min', positions: 6 },
+        '': { prefix: 'maj', positions: 6 },  // Plain root letter = major triad
+        'dim': { prefix: 'dim', positions: 6 },
+        'aug': { prefix: 'aug', positions: 6 }
       };
 
-      const filePrefix = chordFileMap[chordType] || chordType;
-      const chordFiles = [
-        `${chordRoot.toLowerCase()}${filePrefix}_pos1`,
-        `${chordRoot.toLowerCase()}${filePrefix}_pos2`,
-        `${chordRoot.toLowerCase()}${filePrefix}_pos3`,
-        `${chordRoot.toLowerCase()}${filePrefix}_pos4`,
-        `${chordRoot.toLowerCase()}${filePrefix}_pos5`,
-        `${chordRoot.toLowerCase()}${filePrefix}_pos6`
-      ];
+      const chordInfo = chordFileMap[chordType] || { prefix: chordType, positions: 6 };
+      const filePrefix = chordInfo.prefix;
+      const numPositions = chordInfo.positions;
+
+      const chordFiles = [];
+      for (let i = 1; i <= numPositions; i++) {
+        chordFiles.push(`${chordRoot.toLowerCase()}${filePrefix}_pos${i}`);
+      }
 
       try {
         const chordPromises = chordFiles.map(async (filename) => {

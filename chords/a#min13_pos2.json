@@ -1,0 +1,80 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "a#min13_pos2",
+    "chord_name": "A#min13",
+    "root_note": "A#",
+    "chord_type": "Minor 13",
+    "starting_string": "6",
+    "starting_fret": "18",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "A#",
+        "C#",
+        "F",
+        "G#",
+        "C",
+        "G"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "18",
+          "finger": 1,
+          "note": "A#"
+        },
+        "5": {
+          "fret": "20",
+          "finger": 3,
+          "note": "C#"
+        },
+        "4": {
+          "fret": "20",
+          "finger": 4,
+          "note": "G"
+        },
+        "3": {
+          "fret": "18",
+          "finger": 1,
+          "note": "G#"
+        },
+        "2": {
+          "fret": "18",
+          "finger": 1,
+          "note": "C#"
+        },
+        "1": {
+          "fret": "20",
+          "finger": 4,
+          "note": "C"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "A#min13 chord - full voicing at 8th fret (8-10-10-8-8-10)"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "cmin7_pos1",
+    "chord_name": "Cmin7",
+    "root_note": "C",
+    "chord_type": "Minor 7",
+    "starting_string": "6",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "C",
+        "Eb",
+        "G",
+        "Bb"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "8",
+          "finger": 1,
+          "note": "C"
+        },
+        "5": {
+          "fret": "10",
+          "finger": 3,
+          "note": "Eb"
+        },
+        "4": {
+          "fret": "8",
+          "finger": 1,
+          "note": "G"
+        },
+        "3": {
+          "fret": "8",
+          "finger": 1,
+          "note": "Bb"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 1,
+          "note": "Eb"
+        },
+        "1": {
+          "fret": "8",
+          "finger": 1,
+          "note": "G"
+        }
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "Cmin7 chord - barre voicing with root on 6th string, fret 8"
+    }
+  }
+}

@@ -989,6 +989,48 @@
       return positions;
     }
 
+    function calculateChordVoicingPositions(scaleData, root) {
+      const voicing = scaleData.properties?.voicing;
+      if (!voicing) {
+        return [];
+      }
+
+      const chordIntervals = (scaleData.properties?.intervals || []).map(i => parseInt(i));
+      const chordDegrees = scaleData.properties?.chord_degrees || scaleData.properties?.scale_degrees || [];
+      const positions = [];
+      const rootSemitone = NOTE_TO_SEMITONE[root];
+
+      Object.keys(voicing).forEach(stringKey => {
+        const stringNum = parseInt(stringKey);
+        const voicingData = voicing[stringKey];
+
+        if (voicingData !== "mute" && typeof voicingData === 'object') {
+          const fret = parseInt(voicingData.fret);
+          const note = voicingData.note;
+
+          // Calculate interval from root
+          const noteSemitone = NOTE_TO_SEMITONE[note.replace('b', 'flat').replace('#', 'sharp')] || NOTE_TO_SEMITONE[note];
+          const intervalFromRoot = (noteSemitone - rootSemitone + 12) % 12;
+
+          // Find the degree for this interval
+          const degreeIndex = chordIntervals.indexOf(intervalFromRoot);
+          const degree = degreeIndex !== -1 ? chordDegrees[degreeIndex] : '?';
+          const isRoot = note === root;
+
+          positions.push({
+            string: stringNum,
+            fret: fret,
+            note: note,
+            degree: degree,
+            isRoot: isRoot,
+            intervalFromRoot: intervalFromRoot
+          });
+        }
+      });
+
+      return positions;
+    }
+
     /**
      * Draw the fretboard
      */
@@ -1003,9 +1045,15 @@
       const intervals = (scaleData.properties?.intervals || scaleData.intervals || []).map(i => parseInt(i));
       const degrees = scaleData.properties?.scale_degrees || scaleData.scale_degrees || scaleData.degrees || [];
 
+      // Check if this is a chord (has voicing property)
+      const isChord = scaleData.properties?.voicing !== undefined;
+
       // Use fingering pattern positions if a pattern is selected, otherwise show all tones
       let allPositions;
-      if (state.selectedFingeringPattern !== 'all') {
+      if (isChord) {
+        // For chords, display the specific voicing
+        allPositions = calculateChordVoicingPositions(scaleData, root);
+      } else if (state.selectedFingeringPattern !== 'all') {
         allPositions = calculateFingeringPatternPositions(scaleData, root, state.selectedFingeringPattern);
       } else {
         allPositions = calculateFullFretboard(root, intervals, degrees);
@@ -1283,13 +1331,17 @@
         'super_locrian_bb7_3nps', 'whole_tone'
       ];
 
+      const chordFiles = [
+        'cmaj7_pos1', 'cmin7_pos1', 'c7_pos1'
+      ];
+
       const promises = scaleFiles.map(async (filename) => {
         try {
           const response = await fetch(`scales/${filename}.json`);
           const data = await response.json();
           return {
             id: filename,
-            name: data.Item.scale_type || filename,
+            name: data.Item.scale_type || data.Item.chord_name || filename,
             category: data.Item.properties?.category || 'other',
             data: data.Item
           };
@@ -1298,6 +1350,24 @@
           return null;
         }
       });
+
+      const chordPromises = chordFiles.map(async (filename) => {
+        try {
+          const response = await fetch(`chords/${filename}.json`);
+          const data = await response.json();
+          return {
+            id: filename,
+            name: data.Item.chord_name || data.Item.scale_type || filename,
+            category: data.Item.properties?.category || 'arpeggios',
+            data: data.Item
+          };
+        } catch (err) {
+          console.error(`Failed to load chord ${filename}:`, err);
+          return null;
+        }
+      });
+
+      promises.push(...chordPromises);
 
       state.scales = (await Promise.all(promises)).filter(s => s !== null);
 

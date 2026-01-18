@@ -5,7 +5,7 @@
     "chord_name": "Cmaj7",
     "root_note": "C",
     "chord_type": "Major 7",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "3",
     "tuning": [
       "E",
@@ -35,7 +35,11 @@
         "B"
       ],
       "voicing": {
-        "6": "mute",
+        "6": {
+          "fret": "3",
+          "finger": 2,
+          "note": "G"
+        },
         "5": {
           "fret": "3",
           "finger": 1,
@@ -43,12 +47,12 @@
         },
         "4": {
           "fret": "5",
-          "finger": 3,
+          "finger": 4,
           "note": "G"
         },
         "3": {
           "fret": "4",
-          "finger": 2,
+          "finger": 3,
           "note": "B"
         },
         "2": {
@@ -64,7 +68,7 @@
       },
       "category": "arpeggios",
       "position": 3,
-      "description": "Cmaj7 chord - mid-neck voicing"
+      "description": "Cmaj7 chord - full voicing (3-3-5-4-5-3)"
     }
   }
 }

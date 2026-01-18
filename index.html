@@ -2434,18 +2434,23 @@
       const voicing = chordData.properties.voicing;
       const chordName = chordData.chord_name || 'Chord';
 
-      // Find fret range for the diagram
+      // Find fret range for the diagram and check for open strings
       let minFret = 20, maxFret = 0;
+      let hasOpenStrings = false;
       Object.values(voicing).forEach(v => {
-        if (v !== 'mute' && v.fret !== '0') {
-          const fret = parseInt(v.fret);
-          minFret = Math.min(minFret, fret);
-          maxFret = Math.max(maxFret, fret);
+        if (v !== 'mute') {
+          if (v.fret === '0') {
+            hasOpenStrings = true;
+          } else {
+            const fret = parseInt(v.fret);
+            minFret = Math.min(minFret, fret);
+            maxFret = Math.max(maxFret, fret);
+          }
         }
       });
 
-      // Determine if this is an open position chord
-      const isOpenPosition = minFret === 20 || minFret <= 3;
+      // Determine if this is an open position chord (has open strings or starts at fret 0-1)
+      const isOpenPosition = hasOpenStrings || minFret <= 1;
       const startFret = isOpenPosition ? 0 : minFret;
       const numFrets = isOpenPosition ? 4 : Math.max(4, maxFret - startFret + 1);
 
@@ -2457,9 +2462,9 @@
 
       let svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">`;
 
-      // Position indicator (if not open position)
+      // Position indicator (always show for non-open position chords)
       if (!isOpenPosition) {
-        svg += `<text x="5" y="${margin + fretHeight/2 + 4}" font-family="sans-serif" font-size="10" fill="#8a8a9a">${startFret + 1}fr</text>`;
+        svg += `<text x="5" y="${margin + fretHeight/2 + 4}" font-family="sans-serif" font-size="10" fill="#8a8a9a">${startFret}fr</text>`;
       }
 
       // Draw strings (vertical lines)

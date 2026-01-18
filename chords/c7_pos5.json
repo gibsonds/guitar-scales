@@ -1,0 +1,74 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c7_pos5",
+    "chord_name": "C7",
+    "root_note": "C",
+    "chord_type": "Dominant 7",
+    "starting_string": "6",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "C",
+        "E",
+        "G",
+        "Bb"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "8",
+          "finger": 1,
+          "note": "C"
+        },
+        "5": {
+          "fret": "10",
+          "finger": 3,
+          "note": "E"
+        },
+        "4": {
+          "fret": "8",
+          "finger": 1,
+          "note": "G"
+        },
+        "3": {
+          "fret": "8",
+          "finger": 1,
+          "note": "Bb"
+        },
+        "2": {
+          "fret": "9",
+          "finger": 2,
+          "note": "E"
+        },
+        "1": {
+          "fret": "8",
+          "finger": 1,
+          "note": "G"
+        }
+      },
+      "category": "arpeggios",
+      "position": 5,
+      "description": "C7 chord - full barre at 8th fret (8-10-8-8-9-8)"
+    }
+  }
+}

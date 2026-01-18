@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "cmin7_pos4",
+    "chord_name": "Cmin7",
+    "root_note": "C",
+    "chord_type": "Minor 7",
+    "starting_string": "4",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "C",
+        "Eb",
+        "G",
+        "Bb"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "10",
+          "finger": 3,
+          "note": "C"
+        },
+        "3": {
+          "fret": "8",
+          "finger": 1,
+          "note": "Bb"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 1,
+          "note": "Eb"
+        },
+        "1": {
+          "fret": "8",
+          "finger": 1,
+          "note": "G"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "Cmin7 chord - top four strings (x-x-10-8-8-8)"
+    }
+  }
+}

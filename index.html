@@ -1770,9 +1770,9 @@
         btn.style.color = '#ffffff';
       });
 
-      // Load chord voicings
-      const chordType = type === 'seventh' ? chord.seventhQuality : chord.quality;
-      loadChordVoicings(chord.root, chordType);
+      // Load chord voicings - extract chord type from symbol
+      const symbol = type === 'seventh' ? chord.seventhSymbol : chord.triadSymbol;
+      loadChordVoicings(chord.root, symbol);
 
       drawFretboard();
     }
@@ -2520,20 +2520,25 @@
     /**
      * Load and display chord voicings
      */
-    async function loadChordVoicings(chordRoot, chordType) {
+    async function loadChordVoicings(chordRoot, chordSymbol) {
       const container = document.getElementById('chordDiagramsContainer');
       const section = document.getElementById('chordVoicingsSection');
 
       container.innerHTML = '<div style="color: #8a8a9a; font-size: 0.875rem;">Loading chord voicings...</div>';
       section.style.display = 'block';
 
-      // Map chord types to file prefixes
+      // Extract chord type from symbol (remove root note)
+      const chordType = chordSymbol.replace(chordRoot, '');
+
+      // Map chord type suffixes to file prefixes
       const chordFileMap = {
         'maj7': 'maj7',
-        'min7': 'min7',
+        'm7': 'min7',
         '7': '7',
-        'maj': 'maj',
-        'min': 'min'
+        'm': 'min',
+        '': 'maj',  // Plain root letter = major triad
+        'dim': 'dim',
+        'aug': 'aug'
       };
 
       const filePrefix = chordFileMap[chordType] || chordType;

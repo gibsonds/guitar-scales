@@ -2518,7 +2518,7 @@
           // Filled circle for fretted note
           const fret = parseInt(voicingData.fret);
           const fretPosition = fret - startFret;
-          const y = margin + (fretPosition - 0.5) * fretHeight;
+          const y = margin + (fretPosition + 0.5) * fretHeight;
           const isRoot = voicingData.note === root;
           const fill = isRoot ? '#4a9eff' : '#e8e8eb';
           svg += `<circle cx="${x}" cy="${y}" r="6" fill="${fill}"/>`;

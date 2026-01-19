@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bm7b5_pos2",
+    "chord_name": "Bm7b5",
+    "root_note": "B",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "4",
+    "starting_fret": "0",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "B",
+        "D",
+        "F",
+        "A"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "0",
+          "finger": 0,
+          "note": "D"
+        },
+        "3": {
+          "fret": "1",
+          "finger": 1,
+          "note": "F"
+        },
+        "2": {
+          "fret": "0",
+          "finger": 0,
+          "note": "B"
+        },
+        "1": {
+          "fret": "1",
+          "finger": 2,
+          "note": "F"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Bm7b5 - open strings voicing (x-x-0-1-0-1)"
+    }
+  }
+}

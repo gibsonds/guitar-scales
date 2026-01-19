@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gdim_pos2",
+    "chord_name": "Gdim",
+    "root_note": "G",
+    "chord_type": "Diminished",
+    "starting_string": "6",
+    "starting_fret": "15",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "C#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "15",
+          "finger": 1,
+          "note": "G"
+        },
+        "5": {
+          "fret": "17",
+          "finger": 3,
+          "note": "A#"
+        },
+        "4": {
+          "fret": "17",
+          "finger": 4,
+          "note": "C#"
+        },
+        "3": {
+          "fret": "15",
+          "finger": 1,
+          "note": "G"
+        },
+        "2": {
+          "fret": "15",
+          "finger": 1,
+          "note": "A#"
+        },
+        "1": {
+          "fret": "15",
+          "finger": 1,
+          "note": "C#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Gdim chord - barre at 7th fret (7-9-9-7-7-7)"
+    }
+  }
+}

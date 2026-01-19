@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gdim_pos3",
+    "chord_name": "Gdim",
+    "root_note": "G",
+    "chord_type": "Diminished",
+    "starting_string": "4",
+    "starting_fret": "17",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "C#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "17",
+          "finger": 1,
+          "note": "C#"
+        },
+        "3": {
+          "fret": "18",
+          "finger": 2,
+          "note": "G"
+        },
+        "2": {
+          "fret": "18",
+          "finger": 3,
+          "note": "A#"
+        },
+        "1": {
+          "fret": "18",
+          "finger": 4,
+          "note": "C#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Gdim chord - top strings (x-x-9-10-10-10)"
+    }
+  }
+}

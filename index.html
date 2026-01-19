@@ -2569,9 +2569,10 @@
         'maj13': { prefix: 'maj13', positions: 4 },
         'm13': { prefix: 'min13', positions: 4 },
         '13': { prefix: '13', positions: 4 },
-        'm': { prefix: 'min', positions: 6 },
-        '': { prefix: 'maj', positions: 6 },  // Plain root letter = major triad
-        'dim': { prefix: 'dim', positions: 6 },
+        'm': { prefix: 'min', positions: 4 },
+        '': { prefix: 'maj', positions: 4 },  // Plain root letter = major triad
+        'dim': { prefix: 'dim', positions: 4 },
+        'm7b5': { prefix: 'm7b5', positions: 4 },
         'aug': { prefix: 'aug', positions: 6 }
       };
 
@@ -2600,7 +2601,7 @@
 
         // Filter out high-fret voicings (above fret 14) and remove duplicates
         const MAX_FRET = 14;
-        const seenFrets = new Set();
+        const seenVoicings = new Set();
         chords = chords.filter(chord => {
           const startingFret = parseInt(chord.starting_fret);
 
@@ -2609,12 +2610,20 @@
             return false;
           }
 
-          // Skip if we've already seen this starting fret (duplicate)
-          if (seenFrets.has(startingFret)) {
+          // Create a unique signature for this voicing based on fret positions
+          const voicing = chord.properties.voicing;
+          const signature = Object.keys(voicing).sort().map(stringKey => {
+            const v = voicing[stringKey];
+            if (v === 'mute') return 'x';
+            return v.fret;
+          }).join('-');
+
+          // Skip if we've already seen this exact voicing (duplicate)
+          if (seenVoicings.has(signature)) {
             return false;
           }
 
-          seenFrets.add(startingFret);
+          seenVoicings.add(signature);
           return true;
         });
 

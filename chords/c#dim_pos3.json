@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c#dim_pos3",
+    "chord_name": "C#dim",
+    "root_note": "C#",
+    "chord_type": "Diminished",
+    "starting_string": "4",
+    "starting_fret": "11",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "C#",
+        "E",
+        "G"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "11",
+          "finger": 1,
+          "note": "G"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 2,
+          "note": "C#"
+        },
+        "2": {
+          "fret": "12",
+          "finger": 3,
+          "note": "E"
+        },
+        "1": {
+          "fret": "12",
+          "finger": 4,
+          "note": "G"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "C#dim chord - top strings (x-x-9-10-10-10)"
+    }
+  }
+}

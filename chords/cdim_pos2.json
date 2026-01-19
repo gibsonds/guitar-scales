@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "cdim_pos2",
+    "chord_name": "Cdim",
+    "root_note": "C",
+    "chord_type": "Diminished",
+    "starting_string": "6",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "C",
+        "D#",
+        "F#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "8",
+          "finger": 1,
+          "note": "C"
+        },
+        "5": {
+          "fret": "10",
+          "finger": 3,
+          "note": "D#"
+        },
+        "4": {
+          "fret": "10",
+          "finger": 4,
+          "note": "F#"
+        },
+        "3": {
+          "fret": "8",
+          "finger": 1,
+          "note": "C"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 1,
+          "note": "D#"
+        },
+        "1": {
+          "fret": "8",
+          "finger": 1,
+          "note": "F#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Cdim chord - barre at 7th fret (7-9-9-7-7-7)"
+    }
+  }
+}

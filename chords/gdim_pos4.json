@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gdim_pos4",
+    "chord_name": "Gdim",
+    "root_note": "G",
+    "chord_type": "Diminished",
+    "starting_string": "5",
+    "starting_fret": "10",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "C#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "10",
+          "finger": 2,
+          "note": "G"
+        },
+        "4": {
+          "fret": "8",
+          "finger": 0,
+          "note": "A#"
+        },
+        "3": {
+          "fret": "9",
+          "finger": 1,
+          "note": "C#"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 0,
+          "note": "G"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "Gdim chord - open strings voicing (x-2-0-1-0-x)"
+    }
+  }
+}

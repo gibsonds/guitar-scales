@@ -1,0 +1,70 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "fm7b5_pos1",
+    "chord_name": "Fm7b5",
+    "root_note": "F",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "5",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "F",
+        "Ab",
+        "B",
+        "Eb"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "8",
+          "finger": 1,
+          "note": "F"
+        },
+        "4": {
+          "fret": "9",
+          "finger": 2,
+          "note": "B"
+        },
+        "3": {
+          "fret": "8",
+          "finger": 1,
+          "note": "Eb"
+        },
+        "2": {
+          "fret": "9",
+          "finger": 3,
+          "note": "Ab"
+        },
+        "1": {
+          "fret": "8",
+          "finger": 1,
+          "note": "B"
+        }
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "Fm7b5 chord - barre at 2nd fret (x-2-3-2-3-2)"
+    }
+  }
+}

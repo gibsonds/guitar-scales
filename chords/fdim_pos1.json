@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "fdim_pos1",
+    "chord_name": "Fdim",
+    "root_note": "F",
+    "chord_type": "Diminished",
+    "starting_string": "5",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "F",
+        "Ab",
+        "B"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "8",
+          "finger": 1,
+          "note": "F"
+        },
+        "4": {
+          "fret": "9",
+          "finger": 2,
+          "note": "B"
+        },
+        "3": {
+          "fret": "10",
+          "finger": 3,
+          "note": "F"
+        },
+        "2": {
+          "fret": "9",
+          "finger": 2,
+          "note": "Ab"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "Fdim chord - mid-neck voicing (x-2-3-4-3-x)"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "dm7b5_pos3",
+    "chord_name": "Dm7b5",
+    "root_note": "D",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "6",
+    "starting_fret": "10",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "D",
+        "F",
+        "G#",
+        "C"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "10",
+          "finger": 1,
+          "note": "D"
+        },
+        "5": {
+          "fret": "11",
+          "finger": 2,
+          "note": "G#"
+        },
+        "4": {
+          "fret": "10",
+          "finger": 1,
+          "note": "C"
+        },
+        "3": {
+          "fret": "10",
+          "finger": 1,
+          "note": "F"
+        },
+        "2": "mute",
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Dm7b5 chord - root position on lower strings (7-8-7-7-x-x)"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "ddim_pos4",
+    "chord_name": "Ddim",
+    "root_note": "D",
+    "chord_type": "Diminished",
+    "starting_string": "5",
+    "starting_fret": "5",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "D",
+        "F",
+        "G#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "5",
+          "finger": 2,
+          "note": "D"
+        },
+        "4": {
+          "fret": "3",
+          "finger": 0,
+          "note": "F"
+        },
+        "3": {
+          "fret": "4",
+          "finger": 1,
+          "note": "G#"
+        },
+        "2": {
+          "fret": "3",
+          "finger": 0,
+          "note": "D"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "Ddim chord - open strings voicing (x-2-0-1-0-x)"
+    }
+  }
+}

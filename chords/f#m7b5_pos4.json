@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "f#m7b5_pos4",
+    "chord_name": "F#m7b5",
+    "root_note": "F#",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "4",
+    "starting_fret": "16",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "F#",
+        "A",
+        "C",
+        "E"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "16",
+          "finger": 1,
+          "note": "F#"
+        },
+        "3": {
+          "fret": "17",
+          "finger": 2,
+          "note": "C"
+        },
+        "2": {
+          "fret": "17",
+          "finger": 3,
+          "note": "A"
+        },
+        "1": {
+          "fret": "17",
+          "finger": 4,
+          "note": "C"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "F#m7b5 chord - top strings voicing (x-x-9-10-10-10)"
+    }
+  }
+}

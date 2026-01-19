@@ -1,0 +1,70 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "cm7b5_pos1",
+    "chord_name": "Cm7b5",
+    "root_note": "C",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "5",
+    "starting_fret": "3",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "C",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "3",
+          "finger": 1,
+          "note": "C"
+        },
+        "4": {
+          "fret": "4",
+          "finger": 2,
+          "note": "F#"
+        },
+        "3": {
+          "fret": "3",
+          "finger": 1,
+          "note": "A#"
+        },
+        "2": {
+          "fret": "4",
+          "finger": 3,
+          "note": "D#"
+        },
+        "1": {
+          "fret": "3",
+          "finger": 1,
+          "note": "F#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "Cm7b5 chord - barre at 2nd fret (x-2-3-2-3-2)"
+    }
+  }
+}

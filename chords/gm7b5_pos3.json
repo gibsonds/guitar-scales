@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gm7b5_pos3",
+    "chord_name": "Gm7b5",
+    "root_note": "G",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "6",
+    "starting_fret": "15",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "15",
+          "finger": 1,
+          "note": "G"
+        },
+        "5": {
+          "fret": "16",
+          "finger": 2,
+          "note": "C#"
+        },
+        "4": {
+          "fret": "15",
+          "finger": 1,
+          "note": "F"
+        },
+        "3": {
+          "fret": "15",
+          "finger": 1,
+          "note": "A#"
+        },
+        "2": "mute",
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Gm7b5 chord - root position on lower strings (7-8-7-7-x-x)"
+    }
+  }
+}

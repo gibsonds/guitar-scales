@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "edim_pos2",
+    "chord_name": "Edim",
+    "root_note": "E",
+    "chord_type": "Diminished",
+    "starting_string": "6",
+    "starting_fret": "12",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "E",
+        "G",
+        "A#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "12",
+          "finger": 1,
+          "note": "E"
+        },
+        "5": {
+          "fret": "14",
+          "finger": 3,
+          "note": "G"
+        },
+        "4": {
+          "fret": "14",
+          "finger": 4,
+          "note": "A#"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 1,
+          "note": "E"
+        },
+        "2": {
+          "fret": "12",
+          "finger": 1,
+          "note": "G"
+        },
+        "1": {
+          "fret": "12",
+          "finger": 1,
+          "note": "A#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Edim chord - barre at 7th fret (7-9-9-7-7-7)"
+    }
+  }
+}

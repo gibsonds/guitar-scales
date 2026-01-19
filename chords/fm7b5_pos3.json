@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "fm7b5_pos3",
+    "chord_name": "Fm7b5",
+    "root_note": "F",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "6",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "F",
+        "Ab",
+        "B",
+        "Eb"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "13",
+          "finger": 1,
+          "note": "F"
+        },
+        "5": {
+          "fret": "14",
+          "finger": 2,
+          "note": "B"
+        },
+        "4": {
+          "fret": "13",
+          "finger": 1,
+          "note": "Eb"
+        },
+        "3": {
+          "fret": "13",
+          "finger": 1,
+          "note": "Ab"
+        },
+        "2": "mute",
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Fm7b5 chord - root position on lower strings (7-8-7-7-x-x)"
+    }
+  }
+}

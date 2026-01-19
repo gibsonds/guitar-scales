@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "em7b5_pos3",
+    "chord_name": "Em7b5",
+    "root_note": "E",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "6",
+    "starting_fret": "12",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "E",
+        "G",
+        "A#",
+        "D"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "12",
+          "finger": 1,
+          "note": "E"
+        },
+        "5": {
+          "fret": "13",
+          "finger": 2,
+          "note": "A#"
+        },
+        "4": {
+          "fret": "12",
+          "finger": 1,
+          "note": "D"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 1,
+          "note": "G"
+        },
+        "2": "mute",
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "Em7b5 chord - root position on lower strings (7-8-7-7-x-x)"
+    }
+  }
+}

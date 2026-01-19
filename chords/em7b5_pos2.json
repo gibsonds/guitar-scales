@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "em7b5_pos2",
+    "chord_name": "Em7b5",
+    "root_note": "E",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "4",
+    "starting_fret": "5",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "E",
+        "G",
+        "A#",
+        "D"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "5",
+          "finger": 0,
+          "note": "G"
+        },
+        "3": {
+          "fret": "6",
+          "finger": 1,
+          "note": "A#"
+        },
+        "2": {
+          "fret": "5",
+          "finger": 0,
+          "note": "E"
+        },
+        "1": {
+          "fret": "6",
+          "finger": 2,
+          "note": "A#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Em7b5 chord - open strings voicing (x-x-0-1-0-1)"
+    }
+  }
+}

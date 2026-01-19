@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "a#dim_pos1",
+    "chord_name": "A#dim",
+    "root_note": "A#",
+    "chord_type": "Diminished",
+    "starting_string": "5",
+    "starting_fret": "13",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "A#",
+        "C#",
+        "E"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "13",
+          "finger": 1,
+          "note": "A#"
+        },
+        "4": {
+          "fret": "14",
+          "finger": 2,
+          "note": "E"
+        },
+        "3": {
+          "fret": "15",
+          "finger": 3,
+          "note": "A#"
+        },
+        "2": {
+          "fret": "14",
+          "finger": 2,
+          "note": "C#"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "A#dim chord - mid-neck voicing (x-2-3-4-3-x)"
+    }
+  }
+}

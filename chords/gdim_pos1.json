@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gdim_pos1",
+    "chord_name": "Gdim",
+    "root_note": "G",
+    "chord_type": "Diminished",
+    "starting_string": "5",
+    "starting_fret": "10",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "C#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "10",
+          "finger": 1,
+          "note": "G"
+        },
+        "4": {
+          "fret": "11",
+          "finger": 2,
+          "note": "C#"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 3,
+          "note": "G"
+        },
+        "2": {
+          "fret": "11",
+          "finger": 2,
+          "note": "A#"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "Gdim chord - mid-neck voicing (x-2-3-4-3-x)"
+    }
+  }
+}

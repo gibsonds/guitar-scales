@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gm7b5_pos2",
+    "chord_name": "Gm7b5",
+    "root_note": "G",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "4",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "C#",
+        "F"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "8",
+          "finger": 0,
+          "note": "A#"
+        },
+        "3": {
+          "fret": "9",
+          "finger": 1,
+          "note": "C#"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 0,
+          "note": "G"
+        },
+        "1": {
+          "fret": "9",
+          "finger": 2,
+          "note": "C#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Gm7b5 chord - open strings voicing (x-x-0-1-0-1)"
+    }
+  }
+}

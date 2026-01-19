@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "a#m7b5_pos3",
+    "chord_name": "A#m7b5",
+    "root_note": "A#",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "6",
+    "starting_fret": "18",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "A#",
+        "C#",
+        "E",
+        "G#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "18",
+          "finger": 1,
+          "note": "A#"
+        },
+        "5": {
+          "fret": "19",
+          "finger": 2,
+          "note": "E"
+        },
+        "4": {
+          "fret": "18",
+          "finger": 1,
+          "note": "G#"
+        },
+        "3": {
+          "fret": "18",
+          "finger": 1,
+          "note": "C#"
+        },
+        "2": "mute",
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "A#m7b5 chord - root position on lower strings (7-8-7-7-x-x)"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bm7b5_pos4",
+    "chord_name": "Bm7b5",
+    "root_note": "B",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "4",
+    "starting_fret": "9",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "B",
+        "D",
+        "F",
+        "A"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "9",
+          "finger": 1,
+          "note": "B"
+        },
+        "3": {
+          "fret": "10",
+          "finger": 2,
+          "note": "F"
+        },
+        "2": {
+          "fret": "10",
+          "finger": 3,
+          "note": "D"
+        },
+        "1": {
+          "fret": "10",
+          "finger": 4,
+          "note": "F"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "Bm7b5 - top strings voicing (x-x-9-10-10-10)"
+    }
+  }
+}

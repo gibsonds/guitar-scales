@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c#dim_pos2",
+    "chord_name": "C#dim",
+    "root_note": "C#",
+    "chord_type": "Diminished",
+    "starting_string": "6",
+    "starting_fret": "9",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "C#",
+        "E",
+        "G"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "9",
+          "finger": 1,
+          "note": "C#"
+        },
+        "5": {
+          "fret": "11",
+          "finger": 3,
+          "note": "E"
+        },
+        "4": {
+          "fret": "11",
+          "finger": 4,
+          "note": "G"
+        },
+        "3": {
+          "fret": "9",
+          "finger": 1,
+          "note": "C#"
+        },
+        "2": {
+          "fret": "9",
+          "finger": 1,
+          "note": "E"
+        },
+        "1": {
+          "fret": "9",
+          "finger": 1,
+          "note": "G"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "C#dim chord - barre at 7th fret (7-9-9-7-7-7)"
+    }
+  }
+}

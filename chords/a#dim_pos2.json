@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "a#dim_pos2",
+    "chord_name": "A#dim",
+    "root_note": "A#",
+    "chord_type": "Diminished",
+    "starting_string": "6",
+    "starting_fret": "18",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "A#",
+        "C#",
+        "E"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "18",
+          "finger": 1,
+          "note": "A#"
+        },
+        "5": {
+          "fret": "20",
+          "finger": 3,
+          "note": "C#"
+        },
+        "4": {
+          "fret": "20",
+          "finger": 4,
+          "note": "E"
+        },
+        "3": {
+          "fret": "18",
+          "finger": 1,
+          "note": "A#"
+        },
+        "2": {
+          "fret": "18",
+          "finger": 1,
+          "note": "C#"
+        },
+        "1": {
+          "fret": "18",
+          "finger": 1,
+          "note": "E"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "A#dim chord - barre at 7th fret (7-9-9-7-7-7)"
+    }
+  }
+}

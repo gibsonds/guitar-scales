@@ -1,0 +1,63 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "edim_pos1",
+    "chord_name": "Edim",
+    "root_note": "E",
+    "chord_type": "Diminished",
+    "starting_string": "5",
+    "starting_fret": "7",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "E",
+        "G",
+        "A#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "7",
+          "finger": 1,
+          "note": "E"
+        },
+        "4": {
+          "fret": "8",
+          "finger": 2,
+          "note": "A#"
+        },
+        "3": {
+          "fret": "9",
+          "finger": 3,
+          "note": "E"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 2,
+          "note": "G"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "Edim chord - mid-neck voicing (x-2-3-4-3-x)"
+    }
+  }
+}

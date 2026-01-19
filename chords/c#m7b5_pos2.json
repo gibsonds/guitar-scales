@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c#m7b5_pos2",
+    "chord_name": "C#m7b5",
+    "root_note": "C#",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "4",
+    "starting_fret": "2",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "C#",
+        "E",
+        "G",
+        "B"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "2",
+          "finger": 0,
+          "note": "E"
+        },
+        "3": {
+          "fret": "3",
+          "finger": 1,
+          "note": "G"
+        },
+        "2": {
+          "fret": "2",
+          "finger": 0,
+          "note": "C#"
+        },
+        "1": {
+          "fret": "3",
+          "finger": 2,
+          "note": "G"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "C#m7b5 chord - open strings voicing (x-x-0-1-0-1)"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "ddim_pos2",
+    "chord_name": "Ddim",
+    "root_note": "D",
+    "chord_type": "Diminished",
+    "starting_string": "6",
+    "starting_fret": "10",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "D",
+        "F",
+        "G#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "10",
+          "finger": 1,
+          "note": "D"
+        },
+        "5": {
+          "fret": "12",
+          "finger": 3,
+          "note": "F"
+        },
+        "4": {
+          "fret": "12",
+          "finger": 4,
+          "note": "G#"
+        },
+        "3": {
+          "fret": "10",
+          "finger": 1,
+          "note": "D"
+        },
+        "2": {
+          "fret": "10",
+          "finger": 1,
+          "note": "F"
+        },
+        "1": {
+          "fret": "10",
+          "finger": 1,
+          "note": "G#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "Ddim chord - barre at 7th fret (7-9-9-7-7-7)"
+    }
+  }
+}

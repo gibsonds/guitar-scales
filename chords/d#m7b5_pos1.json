@@ -1,0 +1,70 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "d#m7b5_pos1",
+    "chord_name": "D#m7b5",
+    "root_note": "D#",
+    "chord_type": "Half-Diminished 7",
+    "starting_string": "5",
+    "starting_fret": "6",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5",
+        "b7"
+      ],
+      "chord_tones": [
+        "D#",
+        "F#",
+        "A",
+        "C#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "6",
+          "finger": 1,
+          "note": "D#"
+        },
+        "4": {
+          "fret": "7",
+          "finger": 2,
+          "note": "A"
+        },
+        "3": {
+          "fret": "6",
+          "finger": 1,
+          "note": "C#"
+        },
+        "2": {
+          "fret": "7",
+          "finger": 3,
+          "note": "F#"
+        },
+        "1": {
+          "fret": "6",
+          "finger": 1,
+          "note": "A"
+        }
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "D#m7b5 chord - barre at 2nd fret (x-2-3-2-3-2)"
+    }
+  }
+}

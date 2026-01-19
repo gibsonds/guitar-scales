@@ -2601,7 +2601,9 @@
             console.log(`[DEBUG] Fetching: ${url}`);
             const response = await fetch(url);
             const data = await response.json();
-            console.log(`[DEBUG] Loaded ${filename}: root="${data.Item.root_note}", starting_fret="${data.Item.starting_fret}"`);
+            const voicing = data.Item.properties.voicing;
+            const aStringData = voicing['5'] !== 'mute' ? `A string fret ${voicing['5'].fret} (${voicing['5'].note})` : 'A string muted';
+            console.log(`[DEBUG] Loaded ${filename}: root="${data.Item.root_note}", starting_fret="${data.Item.starting_fret}", ${aStringData}`);
             return data.Item;
           } catch (err) {
             console.log(`[DEBUG] Failed to load ${filename}:`, err.message);

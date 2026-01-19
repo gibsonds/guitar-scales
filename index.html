@@ -1873,7 +1873,7 @@
           seventhSymbol = chordRoot + 'maj7#5';
         }
 
-        const chordData = {
+        chords.push({
           root: chordRoot,
           triadSymbol: triadSymbol,
           seventhSymbol: seventhSymbol,
@@ -1881,11 +1881,7 @@
           intervals: [rootInterval, third, fifth],
           intervalsWithSeventh: [rootInterval, third, fifth, seventh],
           degree: index + 1
-        };
-
-        console.log(`[DEBUG] Degree ${index + 1}: root="${chordRoot}", triad="${triadSymbol}", seventh="${seventhSymbol}"`);
-
-        chords.push(chordData);
+        });
       });
 
       return chords;
@@ -2450,8 +2446,6 @@
       const chordName = chordData.chord_name || 'Chord';
       const expectedChordTones = chordData.properties.chord_tones || [];
 
-      console.log(`[DEBUG] createChordDiagram for ${chordName}, root=${root}`);
-
       // Validate voicing notes match expected chord tones
       const invalidNotes = [];
       Object.entries(voicing).forEach(([stringKey, v]) => {
@@ -2491,9 +2485,6 @@
       const isOpenPosition = hasOpenStrings || minFret <= 1;
       const startFret = isOpenPosition ? 0 : minFret;
       const numFrets = isOpenPosition ? 4 : Math.max(4, maxFret - startFret + 1);
-
-      const aStringData = voicing['5'] !== 'mute' ? `fret ${voicing['5'].fret} (${voicing['5'].note})` : 'muted';
-      console.log(`[DEBUG]   minFret=${minFret}, maxFret=${maxFret}, isOpenPosition=${isOpenPosition}, startFret=${startFret}, A string=${aStringData}`);
 
       const width = 100;
       const height = 120;
@@ -2543,11 +2534,6 @@
           const y = margin + (fretPosition + 0.5) * fretHeight;
           const isRoot = voicingData.note === root;
           const fill = isRoot ? '#4a9eff' : '#e8e8eb';
-
-          if (stringKey === '5') {  // A string
-            console.log(`[DEBUG]   Drawing A string: fret=${fret}, startFret=${startFret}, isOpenPosition=${isOpenPosition}, fretPosition=${fretPosition}, note=${voicingData.note}`);
-          }
-
           svg += `<circle cx="${x}" cy="${y}" r="6" fill="${fill}"/>`;
 
           // Finger number
@@ -2568,14 +2554,11 @@
       const container = document.getElementById('chordDiagramsContainer');
       const section = document.getElementById('chordVoicingsSection');
 
-      console.log(`[DEBUG] loadChordVoicings called with root="${chordRoot}", symbol="${chordSymbol}"`);
-
       container.innerHTML = '<div style="color: #8a8a9a; font-size: 0.875rem;">Loading chord voicings...</div>';
       section.style.display = 'block';
 
       // Extract chord type from symbol (remove root note)
       const chordType = chordSymbol.replace(chordRoot, '');
-      console.log(`[DEBUG] Extracted chordType="${chordType}" from symbol="${chordSymbol}" and root="${chordRoot}"`);
 
       // Map chord type suffixes to file prefixes and number of positions
       const chordFileMap = {
@@ -2604,21 +2587,13 @@
         chordFiles.push(`${chordRoot.toLowerCase()}${filePrefix}_pos${i}`);
       }
 
-      console.log(`[DEBUG] Generated file list:`, chordFiles);
-
       try {
         const chordPromises = chordFiles.map(async (filename) => {
           try {
-            const url = `chords/${filename}.json`;
-            console.log(`[DEBUG] Fetching: ${url}`);
-            const response = await fetch(url);
+            const response = await fetch(`chords/${filename}.json`);
             const data = await response.json();
-            const voicing = data.Item.properties.voicing;
-            const aStringData = voicing['5'] !== 'mute' ? `A string fret ${voicing['5'].fret} (${voicing['5'].note})` : 'A string muted';
-            console.log(`[DEBUG] Loaded ${filename}: root="${data.Item.root_note}", starting_fret="${data.Item.starting_fret}", ${aStringData}`);
             return data.Item;
           } catch (err) {
-            console.log(`[DEBUG] Failed to load ${filename}:`, err.message);
             // Silently ignore missing files
             return null;
           }

@@ -905,6 +905,31 @@
 
       document.getElementById('themeIcon').textContent = state.theme === 'dark' ? '☀️' : '🌙';
 
+      // Chord sections
+      const chordExplorerSection = document.getElementById('chordExplorerSection');
+      if (chordExplorerSection) {
+        chordExplorerSection.style.background = theme.controlBg;
+        chordExplorerSection.style.borderColor = theme.cardBorder;
+      }
+
+      const chordVoicingsSection = document.getElementById('chordVoicingsSection');
+      if (chordVoicingsSection) {
+        chordVoicingsSection.style.background = theme.controlBg;
+        chordVoicingsSection.style.borderColor = theme.cardBorder;
+      }
+
+      // Chord buttons (Clear and Close)
+      document.querySelectorAll('#clearChordBtn, #closeVoicingsBtn').forEach(btn => {
+        btn.style.background = theme.buttonBg;
+        btn.style.borderColor = theme.buttonBorder;
+        btn.style.color = theme.textMuted;
+      });
+
+      // Chord section headers
+      document.querySelectorAll('#chordExplorerSection .scale-selector > div, #chordVoicingsSection .scale-selector > div').forEach(el => {
+        el.style.color = theme.textMuted;
+      });
+
       drawFretboard();
     }
 
@@ -2507,12 +2532,12 @@
           const y = margin + (fretPosition + 0.5) * fretHeight;
           const isRoot = voicingData.note === root;
           const fill = isRoot ? theme.noteColor : theme.textSecondary;
-          const fingerColor = themeName === 'dark' ? '#14141f' : '#ffffff';
+          const fingerColor = themeName === 'dark' ? '#14141f' : '#14141f';
           svg += `<circle cx="${x}" cy="${y}" r="6" fill="${fill}"/>`;
 
           // Finger number
           if (voicingData.finger > 0) {
-            svg += `<text x="${x}" y="${y + 4}" font-family="sans-serif" font-size="9" font-weight="bold" fill="${fingerColor}" text-anchor="middle">${voicingData.finger}</text>`;
+            svg += `<text x="${x}" y="${y + 4}" font-family="sans-serif" font-size="12" font-weight="bold" fill="${fingerColor}" text-anchor="middle">${voicingData.finger}</text>`;
           }
         }
       });

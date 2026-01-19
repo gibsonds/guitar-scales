@@ -2413,7 +2413,8 @@
     /**
      * Create an SVG chord diagram
      */
-    function createChordDiagram(chordData, root) {
+    function createChordDiagram(chordData, root, themeName = 'dark') {
+      const theme = themes[themeName];
       const voicing = chordData.properties.voicing;
       const chordName = chordData.chord_name || 'Chord';
       const expectedChordTones = chordData.properties.chord_tones || [];
@@ -2468,20 +2469,20 @@
 
       // Position indicator (always show for non-open position chords)
       if (!isOpenPosition) {
-        svg += `<text x="8" y="${margin + fretHeight * 0.5 + 3}" font-family="sans-serif" font-size="10" fill="#d0d0d5" text-anchor="end">${startFret}</text>`;
+        svg += `<text x="8" y="${margin + fretHeight * 0.5 + 3}" font-family="monospace" font-size="11" font-weight="bold" fill="${theme.textSecondary}" text-anchor="end">${startFret}</text>`;
       }
 
       // Draw strings (vertical lines)
       for (let i = 0; i < 6; i++) {
         const x = margin + i * stringSpacing;
-        svg += `<line x1="${x}" y1="${margin}" x2="${x}" y2="${margin + numFrets * fretHeight}" stroke="#4a4a5a" stroke-width="1.5"/>`;
+        svg += `<line x1="${x}" y1="${margin}" x2="${x}" y2="${margin + numFrets * fretHeight}" stroke="${theme.stringColor}" stroke-width="1.5"/>`;
       }
 
       // Draw frets (horizontal lines)
       for (let i = 0; i <= numFrets; i++) {
         const y = margin + i * fretHeight;
         const strokeWidth = (i === 0 && startFret === 0) ? 4 : 1.5;
-        svg += `<line x1="${margin}" y1="${y}" x2="${margin + 5 * stringSpacing}" y2="${y}" stroke="#4a4a5a" stroke-width="${strokeWidth}"/>`;
+        svg += `<line x1="${margin}" y1="${y}" x2="${margin + 5 * stringSpacing}" y2="${y}" stroke="${theme.fretColor}" stroke-width="${strokeWidth}"/>`;
       }
 
       // Draw notes/markers
@@ -2496,7 +2497,7 @@
           svg += `<text x="${x}" y="${margin - 4}" font-family="sans-serif" font-size="14" font-weight="bold" fill="#d64545" text-anchor="middle">×</text>`;
         } else if (voicingData.fret === '0') {
           // O for open string
-          svg += `<circle cx="${x}" cy="${margin - 8}" r="5" fill="none" stroke="#4a9eff" stroke-width="2"/>`;
+          svg += `<circle cx="${x}" cy="${margin - 8}" r="5" fill="none" stroke="${theme.noteColor}" stroke-width="2"/>`;
         } else {
           // Filled circle for fretted note
           const fret = parseInt(voicingData.fret);
@@ -2505,12 +2506,13 @@
           const fretPosition = isOpenPosition ? fret - 1 : fret - startFret;
           const y = margin + (fretPosition + 0.5) * fretHeight;
           const isRoot = voicingData.note === root;
-          const fill = isRoot ? '#4a9eff' : '#e8e8eb';
+          const fill = isRoot ? theme.noteColor : theme.textSecondary;
+          const fingerColor = themeName === 'dark' ? '#14141f' : '#ffffff';
           svg += `<circle cx="${x}" cy="${y}" r="6" fill="${fill}"/>`;
 
           // Finger number
           if (voicingData.finger > 0) {
-            svg += `<text x="${x}" y="${y + 4}" font-family="sans-serif" font-size="9" font-weight="bold" fill="#14141f" text-anchor="middle">${voicingData.finger}</text>`;
+            svg += `<text x="${x}" y="${y + 4}" font-family="sans-serif" font-size="9" font-weight="bold" fill="${fingerColor}" text-anchor="middle">${voicingData.finger}</text>`;
           }
         }
       });
@@ -2523,8 +2525,10 @@
      * Display a progression with chord diagrams arranged in rows (staves)
      */
     async function displayProgressionWithDiagrams(prog, scaleRoot, container) {
+      const theme = themes[state.theme];
+
       const progItem = document.createElement('div');
-      progItem.style.cssText = 'display: flex; flex-direction: column; gap: 0.75rem; padding: 0.75rem; background: #1a1a27; border-radius: 8px; border: 1px solid #2a2a3a;';
+      progItem.style.cssText = `display: flex; flex-direction: column; gap: 0.75rem; padding: 0.75rem; background: ${theme.cardBg}; border-radius: 8px; border: 1px solid ${theme.cardBorder};`;
 
       // Header with progression name and description
       const progHeader = document.createElement('div');
@@ -2536,14 +2540,14 @@
 
       const progName = document.createElement('span');
       progName.textContent = prog.name;
-      progName.style.cssText = 'font-size: 0.875rem; font-weight: 600; color: #e8e8eb;';
+      progName.style.cssText = `font-size: 0.875rem; font-weight: 600; color: ${theme.textSecondary};`;
 
       progHeader.appendChild(progIcon);
       progHeader.appendChild(progName);
 
       const progDesc = document.createElement('div');
       progDesc.textContent = prog.description;
-      progDesc.style.cssText = 'font-size: 0.75rem; color: #8a8a9a; margin-left: 1.5rem;';
+      progDesc.style.cssText = `font-size: 0.75rem; color: ${theme.textMuted}; margin-left: 1.5rem;`;
 
       progItem.appendChild(progHeader);
       progItem.appendChild(progDesc);
@@ -2557,7 +2561,7 @@
         // Fallback to text display if no chords found
         const progChords = document.createElement('div');
         progChords.textContent = prog.progression;
-        progChords.style.cssText = 'font-size: 0.813rem; color: #4a9eff; font-family: monospace; margin-left: 1.5rem;';
+        progChords.style.cssText = `font-size: 0.813rem; color: ${theme.noteColor}; font-family: monospace; margin-left: 1.5rem;`;
         progItem.appendChild(progChords);
         container.appendChild(progItem);
         return;
@@ -2589,7 +2593,7 @@
       // Add opening repeat sign if present
       if (hasRepeat) {
         const repeatStart = document.createElement('div');
-        repeatStart.style.cssText = 'display: flex; align-items: center; font-size: 2rem; color: #4a9eff; font-weight: bold; height: 120px;';
+        repeatStart.style.cssText = `display: flex; align-items: center; font-size: 2rem; color: ${theme.noteColor}; font-weight: bold; height: 120px;`;
         repeatStart.textContent = '𝄆';
         row.appendChild(repeatStart);
       }
@@ -2604,20 +2608,20 @@
         // Chord name above diagram
         const chordLabel = document.createElement('div');
         chordLabel.textContent = chordSymbol;
-        chordLabel.style.cssText = 'font-size: 0.75rem; font-weight: 600; color: #e8e8eb;';
+        chordLabel.style.cssText = `font-size: 0.75rem; font-weight: 600; color: ${theme.textSecondary};`;
         chordWrapper.appendChild(chordLabel);
 
         if (chordData) {
           // Extract root note from chord symbol
           const chordRoot = chordSymbol.match(/^[A-G][#b]?/)[0];
-          const diagram = createChordDiagram(chordData, chordRoot);
+          const diagram = createChordDiagram(chordData, chordRoot, state.theme);
           const diagramDiv = document.createElement('div');
           diagramDiv.innerHTML = diagram;
           chordWrapper.appendChild(diagramDiv);
         } else {
           // Show placeholder if chord data not found
           const placeholder = document.createElement('div');
-          placeholder.style.cssText = 'width: 100px; height: 120px; display: flex; align-items: center; justify-content: center; background: #14141f; border-radius: 4px; border: 1px dashed #4a4a5a; color: #8a8a9a; font-size: 0.75rem; text-align: center;';
+          placeholder.style.cssText = `width: 100px; height: 120px; display: flex; align-items: center; justify-content: center; background: ${theme.controlBg}; border-radius: 4px; border: 1px dashed ${theme.cardBorder}; color: ${theme.textMuted}; font-size: 0.75rem; text-align: center;`;
           placeholder.textContent = 'N/A';
           chordWrapper.appendChild(placeholder);
         }
@@ -2627,7 +2631,7 @@
         // Add bar line after every 4 chords (except at the end)
         if ((index + 1) % 4 === 0 && index < matches.length - 1) {
           const barLine = document.createElement('div');
-          barLine.style.cssText = 'width: 2px; height: 120px; background: #4a4a5a; margin: 0 0.5rem;';
+          barLine.style.cssText = `width: 2px; height: 120px; background: ${theme.fretColor}; margin: 0 0.5rem;`;
           row.appendChild(barLine);
         }
       });
@@ -2635,7 +2639,7 @@
       // Add closing repeat sign if present
       if (hasRepeat) {
         const repeatEnd = document.createElement('div');
-        repeatEnd.style.cssText = 'display: flex; align-items: center; font-size: 2rem; color: #4a9eff; font-weight: bold; height: 120px;';
+        repeatEnd.style.cssText = `display: flex; align-items: center; font-size: 2rem; color: ${theme.noteColor}; font-weight: bold; height: 120px;`;
         repeatEnd.textContent = '𝄇';
         row.appendChild(repeatEnd);
       }
@@ -2776,7 +2780,7 @@
 
         container.innerHTML = '';
         chords.forEach(chord => {
-          const diagram = createChordDiagram(chord, chordRoot);
+          const diagram = createChordDiagram(chord, chordRoot, state.theme);
           const wrapper = document.createElement('div');
           wrapper.innerHTML = diagram;
           container.appendChild(wrapper);

@@ -2533,11 +2533,11 @@
           const isRoot = voicingData.note === root;
           const fill = isRoot ? theme.noteColor : theme.textSecondary;
           const fingerColor = themeName === 'dark' ? '#14141f' : '#14141f';
-          svg += `<circle cx="${x}" cy="${y}" r="6" fill="${fill}"/>`;
+          svg += `<circle cx="${x}" cy="${y}" r="8" fill="${fill}"/>`;
 
           // Finger number
           if (voicingData.finger > 0) {
-            svg += `<text x="${x}" y="${y + 4}" font-family="sans-serif" font-size="12" font-weight="bold" fill="${fingerColor}" text-anchor="middle">${voicingData.finger}</text>`;
+            svg += `<text x="${x}" y="${y + 5}" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="${fingerColor}" text-anchor="middle">${voicingData.finger}</text>`;
           }
         }
       });

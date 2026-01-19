@@ -2450,6 +2450,8 @@
       const chordName = chordData.chord_name || 'Chord';
       const expectedChordTones = chordData.properties.chord_tones || [];
 
+      console.log(`[DEBUG] createChordDiagram for ${chordName}, root=${root}`);
+
       // Validate voicing notes match expected chord tones
       const invalidNotes = [];
       Object.entries(voicing).forEach(([stringKey, v]) => {
@@ -2489,6 +2491,9 @@
       const isOpenPosition = hasOpenStrings || minFret <= 1;
       const startFret = isOpenPosition ? 0 : minFret;
       const numFrets = isOpenPosition ? 4 : Math.max(4, maxFret - startFret + 1);
+
+      const aStringData = voicing['5'] !== 'mute' ? `fret ${voicing['5'].fret} (${voicing['5'].note})` : 'muted';
+      console.log(`[DEBUG]   minFret=${minFret}, maxFret=${maxFret}, isOpenPosition=${isOpenPosition}, startFret=${startFret}, A string=${aStringData}`);
 
       const width = 100;
       const height = 120;
@@ -2536,6 +2541,11 @@
           const y = margin + (fretPosition + 0.5) * fretHeight;
           const isRoot = voicingData.note === root;
           const fill = isRoot ? '#4a9eff' : '#e8e8eb';
+
+          if (stringKey === '5') {  // A string
+            console.log(`[DEBUG]   Drawing A string: fret=${fret}, startFret=${startFret}, fretPosition=${fretPosition}, note=${voicingData.note}`);
+          }
+
           svg += `<circle cx="${x}" cy="${y}" r="6" fill="${fill}"/>`;
 
           // Finger number

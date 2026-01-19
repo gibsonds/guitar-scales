@@ -44,20 +44,24 @@
           "note": "C"
         },
         "3": {
+          "fret": "14",
+          "finger": 4,
+          "note": "A"
+        },
+        "2": {
+          "fret": "13",
+          "finger": 3,
+          "note": "C"
+        },
+        "1": {
           "fret": "11",
           "finger": 1,
           "note": "D#"
-        },
-        "2": {
-          "fret": "10",
-          "finger": 0,
-          "note": "A"
-        },
-        "1": "mute"
+        }
       },
       "category": "arpeggios",
       "position": 4,
-      "description": "Adim chord - open strings voicing (x-2-0-1-0-x)"
+      "description": "Adim chord - mid voicing (x-2-0-4-3-1)"
     }
   }
 }

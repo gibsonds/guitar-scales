@@ -57,14 +57,14 @@
           "note": "F"
         },
         "1": {
-          "fret": "5",
+          "fret": "4",
           "finger": 1,
           "note": "G#"
         }
       },
       "category": "arpeggios",
       "position": 1,
-      "description": "Dm7b5 chord - barre at 2nd fret (x-2-3-2-3-2)"
+      "description": "Dm7b5 chord - barre at 2nd fret (x-2-3-2-3-1)"
     }
   }
 }

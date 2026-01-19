@@ -38,34 +38,34 @@
           "note": "A"
         },
         "5": {
-          "fret": "19",
-          "finger": 3,
-          "note": "C"
+          "fret": "18",
+          "finger": 2,
+          "note": "D#"
         },
         "4": {
           "fret": "19",
           "finger": 4,
-          "note": "D#"
+          "note": "A"
         },
         "3": {
           "fret": "17",
           "finger": 1,
-          "note": "A"
+          "note": "C"
         },
         "2": {
-          "fret": "17",
-          "finger": 1,
-          "note": "C"
+          "fret": "16",
+          "finger": 0,
+          "note": "D#"
         },
         "1": {
           "fret": "17",
           "finger": 1,
-          "note": "D#"
+          "note": "A"
         }
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "Adim chord - barre at 7th fret (7-9-9-7-7-7)"
+      "description": "Adim chord - barre voicing (7-8-9-7-6-7)"
     }
   }
 }

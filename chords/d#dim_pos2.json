@@ -38,34 +38,34 @@
           "note": "D#"
         },
         "5": {
-          "fret": "13",
-          "finger": 3,
-          "note": "F#"
+          "fret": "12",
+          "finger": 2,
+          "note": "A"
         },
         "4": {
           "fret": "13",
           "finger": 4,
-          "note": "A"
+          "note": "D#"
         },
         "3": {
           "fret": "11",
           "finger": 1,
-          "note": "D#"
+          "note": "F#"
         },
         "2": {
-          "fret": "11",
-          "finger": 1,
-          "note": "F#"
+          "fret": "10",
+          "finger": 0,
+          "note": "A"
         },
         "1": {
           "fret": "11",
           "finger": 1,
-          "note": "A"
+          "note": "D#"
         }
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "D#dim chord - barre at 7th fret (7-9-9-7-7-7)"
+      "description": "D#dim chord - barre voicing (7-8-9-7-6-7)"
     }
   }
 }

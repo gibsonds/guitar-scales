@@ -5,8 +5,8 @@
     "chord_name": "Am7b5",
     "root_note": "A",
     "chord_type": "Half-Diminished 7",
-    "starting_string": "6",
-    "starting_fret": "17",
+    "starting_string": "4",
+    "starting_fret": "19",
     "tuning": [
       "E",
       "A",
@@ -35,32 +35,32 @@
         "G"
       ],
       "voicing": {
-        "6": {
-          "fret": "17",
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "19",
           "finger": 1,
           "note": "A"
         },
-        "5": {
-          "fret": "18",
+        "3": {
+          "fret": "20",
           "finger": 2,
           "note": "D#"
         },
-        "4": {
-          "fret": "17",
-          "finger": 1,
+        "2": {
+          "fret": "20",
+          "finger": 3,
           "note": "G"
         },
-        "3": {
-          "fret": "17",
+        "1": {
+          "fret": "19",
           "finger": 1,
           "note": "C"
-        },
-        "2": "mute",
-        "1": "mute"
+        }
       },
       "category": "arpeggios",
       "position": 3,
-      "description": "Am7b5 chord - root position on lower strings (7-8-7-7-x-x)"
+      "description": "Am7b5 chord - top strings voicing (x-x-9-10-10-9)"
     }
   }
 }

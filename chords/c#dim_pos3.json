@@ -37,27 +37,23 @@
         "4": {
           "fret": "11",
           "finger": 1,
-          "note": "G"
+          "note": "C#"
         },
         "3": {
           "fret": "12",
           "finger": 2,
-          "note": "C#"
-        },
-        "2": {
-          "fret": "12",
-          "finger": 3,
-          "note": "E"
-        },
-        "1": {
-          "fret": "12",
-          "finger": 4,
           "note": "G"
+        },
+        "2": "mute",
+        "1": {
+          "fret": "11",
+          "finger": 1,
+          "note": "E"
         }
       },
       "category": "arpeggios",
       "position": 3,
-      "description": "C#dim chord - top strings (x-x-9-10-10-10)"
+      "description": "C#dim chord - top strings (x-x-9-10-x-9)"
     }
   }
 }

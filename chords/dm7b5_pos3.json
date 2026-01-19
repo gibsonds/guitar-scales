@@ -5,8 +5,8 @@
     "chord_name": "Dm7b5",
     "root_note": "D",
     "chord_type": "Half-Diminished 7",
-    "starting_string": "6",
-    "starting_fret": "10",
+    "starting_string": "4",
+    "starting_fret": "12",
     "tuning": [
       "E",
       "A",
@@ -35,32 +35,32 @@
         "C"
       ],
       "voicing": {
-        "6": {
-          "fret": "10",
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "12",
           "finger": 1,
           "note": "D"
         },
-        "5": {
-          "fret": "11",
+        "3": {
+          "fret": "13",
           "finger": 2,
           "note": "G#"
         },
-        "4": {
-          "fret": "10",
-          "finger": 1,
+        "2": {
+          "fret": "13",
+          "finger": 3,
           "note": "C"
         },
-        "3": {
-          "fret": "10",
+        "1": {
+          "fret": "12",
           "finger": 1,
           "note": "F"
-        },
-        "2": "mute",
-        "1": "mute"
+        }
       },
       "category": "arpeggios",
       "position": 3,
-      "description": "Dm7b5 chord - root position on lower strings (7-8-7-7-x-x)"
+      "description": "Dm7b5 chord - top strings voicing (x-x-9-10-10-9)"
     }
   }
 }

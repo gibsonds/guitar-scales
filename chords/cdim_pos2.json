@@ -38,34 +38,34 @@
           "note": "C"
         },
         "5": {
-          "fret": "10",
-          "finger": 3,
-          "note": "D#"
+          "fret": "9",
+          "finger": 2,
+          "note": "F#"
         },
         "4": {
           "fret": "10",
           "finger": 4,
-          "note": "F#"
+          "note": "C"
         },
         "3": {
           "fret": "8",
           "finger": 1,
-          "note": "C"
+          "note": "D#"
         },
         "2": {
-          "fret": "8",
-          "finger": 1,
-          "note": "D#"
+          "fret": "7",
+          "finger": 0,
+          "note": "F#"
         },
         "1": {
           "fret": "8",
           "finger": 1,
-          "note": "F#"
+          "note": "C"
         }
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "Cdim chord - barre at 7th fret (7-9-9-7-7-7)"
+      "description": "Cdim chord - barre voicing (7-8-9-7-6-7)"
     }
   }
 }

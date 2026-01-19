@@ -44,20 +44,24 @@
           "note": "D#"
         },
         "3": {
+          "fret": "5",
+          "finger": 4,
+          "note": "C"
+        },
+        "2": {
+          "fret": "4",
+          "finger": 3,
+          "note": "D#"
+        },
+        "1": {
           "fret": "2",
           "finger": 1,
           "note": "F#"
-        },
-        "2": {
-          "fret": "1",
-          "finger": 0,
-          "note": "C"
-        },
-        "1": "mute"
+        }
       },
       "category": "arpeggios",
       "position": 4,
-      "description": "Cdim chord - open strings voicing (x-2-0-1-0-x)"
+      "description": "Cdim chord - mid voicing (x-2-0-4-3-1)"
     }
   }
 }

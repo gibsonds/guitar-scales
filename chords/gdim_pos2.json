@@ -38,34 +38,34 @@
           "note": "G"
         },
         "5": {
-          "fret": "17",
-          "finger": 3,
-          "note": "A#"
+          "fret": "16",
+          "finger": 2,
+          "note": "C#"
         },
         "4": {
           "fret": "17",
           "finger": 4,
-          "note": "C#"
+          "note": "G"
         },
         "3": {
           "fret": "15",
           "finger": 1,
-          "note": "G"
+          "note": "A#"
         },
         "2": {
-          "fret": "15",
-          "finger": 1,
-          "note": "A#"
+          "fret": "14",
+          "finger": 0,
+          "note": "C#"
         },
         "1": {
           "fret": "15",
           "finger": 1,
-          "note": "C#"
+          "note": "G"
         }
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "Gdim chord - barre at 7th fret (7-9-9-7-7-7)"
+      "description": "Gdim chord - barre voicing (7-8-9-7-6-7)"
     }
   }
 }

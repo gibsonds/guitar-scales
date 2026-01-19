@@ -44,20 +44,24 @@
           "note": "G"
         },
         "3": {
+          "fret": "9",
+          "finger": 4,
+          "note": "E"
+        },
+        "2": {
+          "fret": "8",
+          "finger": 3,
+          "note": "G"
+        },
+        "1": {
           "fret": "6",
           "finger": 1,
           "note": "A#"
-        },
-        "2": {
-          "fret": "5",
-          "finger": 0,
-          "note": "E"
-        },
-        "1": "mute"
+        }
       },
       "category": "arpeggios",
       "position": 4,
-      "description": "Edim chord - open strings voicing (x-2-0-1-0-x)"
+      "description": "Edim chord - mid voicing (x-2-0-4-3-1)"
     }
   }
 }

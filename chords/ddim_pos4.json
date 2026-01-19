@@ -44,20 +44,24 @@
           "note": "F"
         },
         "3": {
+          "fret": "7",
+          "finger": 4,
+          "note": "D"
+        },
+        "2": {
+          "fret": "6",
+          "finger": 3,
+          "note": "F"
+        },
+        "1": {
           "fret": "4",
           "finger": 1,
           "note": "G#"
-        },
-        "2": {
-          "fret": "3",
-          "finger": 0,
-          "note": "D"
-        },
-        "1": "mute"
+        }
       },
       "category": "arpeggios",
       "position": 4,
-      "description": "Ddim chord - open strings voicing (x-2-0-1-0-x)"
+      "description": "Ddim chord - mid voicing (x-2-0-4-3-1)"
     }
   }
 }

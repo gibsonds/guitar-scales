@@ -38,34 +38,34 @@
           "note": "D"
         },
         "5": {
-          "fret": "12",
-          "finger": 3,
-          "note": "F"
+          "fret": "11",
+          "finger": 2,
+          "note": "G#"
         },
         "4": {
           "fret": "12",
           "finger": 4,
-          "note": "G#"
+          "note": "D"
         },
         "3": {
           "fret": "10",
           "finger": 1,
-          "note": "D"
+          "note": "F"
         },
         "2": {
-          "fret": "10",
-          "finger": 1,
-          "note": "F"
+          "fret": "9",
+          "finger": 0,
+          "note": "G#"
         },
         "1": {
           "fret": "10",
           "finger": 1,
-          "note": "G#"
+          "note": "D"
         }
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "Ddim chord - barre at 7th fret (7-9-9-7-7-7)"
+      "description": "Ddim chord - barre voicing (7-8-9-7-6-7)"
     }
   }
 }

@@ -44,20 +44,24 @@
           "note": "Ab"
         },
         "3": {
+          "fret": "10",
+          "finger": 4,
+          "note": "F"
+        },
+        "2": {
+          "fret": "9",
+          "finger": 3,
+          "note": "Ab"
+        },
+        "1": {
           "fret": "7",
           "finger": 1,
           "note": "B"
-        },
-        "2": {
-          "fret": "6",
-          "finger": 0,
-          "note": "F"
-        },
-        "1": "mute"
+        }
       },
       "category": "arpeggios",
       "position": 4,
-      "description": "Fdim chord - open strings voicing (x-2-0-1-0-x)"
+      "description": "Fdim chord - mid voicing (x-2-0-4-3-1)"
     }
   }
 }

@@ -38,34 +38,34 @@
           "note": "B"
         },
         "5": {
-          "fret": "9",
-          "finger": 3,
-          "note": "D"
+          "fret": "8",
+          "finger": 2,
+          "note": "F"
         },
         "4": {
           "fret": "9",
           "finger": 4,
-          "note": "F"
+          "note": "B"
         },
         "3": {
           "fret": "7",
           "finger": 1,
-          "note": "B"
+          "note": "D"
         },
         "2": {
-          "fret": "7",
-          "finger": 1,
-          "note": "D"
+          "fret": "6",
+          "finger": 0,
+          "note": "F"
         },
         "1": {
           "fret": "7",
           "finger": 1,
-          "note": "F"
+          "note": "B"
         }
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "B diminished - barre at 7th fret (7-9-9-7-7-7)"
+      "description": "B diminished - barre voicing (7-8-9-7-6-7)"
     }
   }
 }

@@ -5,8 +5,8 @@
     "chord_name": "D#m7b5",
     "root_note": "D#",
     "chord_type": "Half-Diminished 7",
-    "starting_string": "4",
-    "starting_fret": "4",
+    "starting_string": "6",
+    "starting_fret": "11",
     "tuning": [
       "E",
       "A",
@@ -35,32 +35,32 @@
         "C#"
       ],
       "voicing": {
-        "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "4",
-          "finger": 0,
-          "note": "F#"
-        },
-        "3": {
-          "fret": "5",
+        "6": {
+          "fret": "11",
           "finger": 1,
-          "note": "A"
-        },
-        "2": {
-          "fret": "4",
-          "finger": 0,
           "note": "D#"
         },
-        "1": {
-          "fret": "5",
+        "5": {
+          "fret": "12",
           "finger": 2,
           "note": "A"
-        }
+        },
+        "4": {
+          "fret": "11",
+          "finger": 1,
+          "note": "C#"
+        },
+        "3": {
+          "fret": "11",
+          "finger": 1,
+          "note": "F#"
+        },
+        "2": "mute",
+        "1": "mute"
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "D#m7b5 chord - open strings voicing (x-x-0-1-0-1)"
+      "description": "D#m7b5 chord - root position on lower strings (7-8-7-7-x-x)"
     }
   }
 }

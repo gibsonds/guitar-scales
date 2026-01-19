@@ -5,8 +5,8 @@
     "chord_name": "Fm7b5",
     "root_note": "F",
     "chord_type": "Half-Diminished 7",
-    "starting_string": "4",
-    "starting_fret": "6",
+    "starting_string": "6",
+    "starting_fret": "13",
     "tuning": [
       "E",
       "A",
@@ -35,32 +35,32 @@
         "Eb"
       ],
       "voicing": {
-        "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "6",
-          "finger": 0,
-          "note": "Ab"
-        },
-        "3": {
-          "fret": "7",
+        "6": {
+          "fret": "13",
           "finger": 1,
-          "note": "B"
-        },
-        "2": {
-          "fret": "6",
-          "finger": 0,
           "note": "F"
         },
-        "1": {
-          "fret": "7",
+        "5": {
+          "fret": "14",
           "finger": 2,
           "note": "B"
-        }
+        },
+        "4": {
+          "fret": "13",
+          "finger": 1,
+          "note": "Eb"
+        },
+        "3": {
+          "fret": "13",
+          "finger": 1,
+          "note": "Ab"
+        },
+        "2": "mute",
+        "1": "mute"
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "Fm7b5 chord - open strings voicing (x-x-0-1-0-1)"
+      "description": "Fm7b5 chord - root position on lower strings (7-8-7-7-x-x)"
     }
   }
 }

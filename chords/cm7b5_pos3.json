@@ -5,8 +5,8 @@
     "chord_name": "Cm7b5",
     "root_note": "C",
     "chord_type": "Half-Diminished 7",
-    "starting_string": "6",
-    "starting_fret": "8",
+    "starting_string": "4",
+    "starting_fret": "10",
     "tuning": [
       "E",
       "A",
@@ -35,32 +35,32 @@
         "A#"
       ],
       "voicing": {
-        "6": {
-          "fret": "8",
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "10",
           "finger": 1,
           "note": "C"
         },
-        "5": {
-          "fret": "9",
+        "3": {
+          "fret": "11",
           "finger": 2,
           "note": "F#"
         },
-        "4": {
-          "fret": "8",
-          "finger": 1,
+        "2": {
+          "fret": "11",
+          "finger": 3,
           "note": "A#"
         },
-        "3": {
-          "fret": "8",
+        "1": {
+          "fret": "10",
           "finger": 1,
           "note": "D#"
-        },
-        "2": "mute",
-        "1": "mute"
+        }
       },
       "category": "arpeggios",
       "position": 3,
-      "description": "Cm7b5 chord - root position on lower strings (7-8-7-7-x-x)"
+      "description": "Cm7b5 chord - top strings voicing (x-x-9-10-10-9)"
     }
   }
 }

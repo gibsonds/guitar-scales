@@ -57,14 +57,14 @@
           "note": "C"
         },
         "1": {
-          "fret": "12",
+          "fret": "11",
           "finger": 1,
           "note": "D#"
         }
       },
       "category": "arpeggios",
       "position": 1,
-      "description": "Am7b5 chord - barre at 2nd fret (x-2-3-2-3-2)"
+      "description": "Am7b5 chord - barre at 2nd fret (x-2-3-2-3-1)"
     }
   }
 }

@@ -44,20 +44,24 @@
           "note": "B"
         },
         "3": {
+          "fret": "13",
+          "finger": 4,
+          "note": "G#"
+        },
+        "2": {
+          "fret": "12",
+          "finger": 3,
+          "note": "B"
+        },
+        "1": {
           "fret": "10",
           "finger": 1,
           "note": "D"
-        },
-        "2": {
-          "fret": "9",
-          "finger": 0,
-          "note": "G#"
-        },
-        "1": "mute"
+        }
       },
       "category": "arpeggios",
       "position": 4,
-      "description": "G#dim chord - open strings voicing (x-2-0-1-0-x)"
+      "description": "G#dim chord - mid voicing (x-2-0-4-3-1)"
     }
   }
 }

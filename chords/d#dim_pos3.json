@@ -37,27 +37,23 @@
         "4": {
           "fret": "13",
           "finger": 1,
-          "note": "A"
+          "note": "D#"
         },
         "3": {
           "fret": "14",
           "finger": 2,
-          "note": "D#"
-        },
-        "2": {
-          "fret": "14",
-          "finger": 3,
-          "note": "F#"
-        },
-        "1": {
-          "fret": "14",
-          "finger": 4,
           "note": "A"
+        },
+        "2": "mute",
+        "1": {
+          "fret": "13",
+          "finger": 1,
+          "note": "F#"
         }
       },
       "category": "arpeggios",
       "position": 3,
-      "description": "D#dim chord - top strings (x-x-9-10-10-10)"
+      "description": "D#dim chord - top strings (x-x-9-10-x-9)"
     }
   }
 }

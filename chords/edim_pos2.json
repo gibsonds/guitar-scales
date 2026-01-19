@@ -38,34 +38,34 @@
           "note": "E"
         },
         "5": {
-          "fret": "14",
-          "finger": 3,
-          "note": "G"
+          "fret": "13",
+          "finger": 2,
+          "note": "A#"
         },
         "4": {
           "fret": "14",
           "finger": 4,
-          "note": "A#"
+          "note": "E"
         },
         "3": {
           "fret": "12",
           "finger": 1,
-          "note": "E"
+          "note": "G"
         },
         "2": {
-          "fret": "12",
-          "finger": 1,
-          "note": "G"
+          "fret": "11",
+          "finger": 0,
+          "note": "A#"
         },
         "1": {
           "fret": "12",
           "finger": 1,
-          "note": "A#"
+          "note": "E"
         }
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "Edim chord - barre at 7th fret (7-9-9-7-7-7)"
+      "description": "Edim chord - barre voicing (7-8-9-7-6-7)"
     }
   }
 }

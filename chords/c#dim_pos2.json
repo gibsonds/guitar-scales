@@ -38,34 +38,34 @@
           "note": "C#"
         },
         "5": {
-          "fret": "11",
-          "finger": 3,
-          "note": "E"
+          "fret": "10",
+          "finger": 2,
+          "note": "G"
         },
         "4": {
           "fret": "11",
           "finger": 4,
-          "note": "G"
+          "note": "C#"
         },
         "3": {
           "fret": "9",
           "finger": 1,
-          "note": "C#"
+          "note": "E"
         },
         "2": {
-          "fret": "9",
-          "finger": 1,
-          "note": "E"
+          "fret": "8",
+          "finger": 0,
+          "note": "G"
         },
         "1": {
           "fret": "9",
           "finger": 1,
-          "note": "G"
+          "note": "C#"
         }
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "C#dim chord - barre at 7th fret (7-9-9-7-7-7)"
+      "description": "C#dim chord - barre voicing (7-8-9-7-6-7)"
     }
   }
 }

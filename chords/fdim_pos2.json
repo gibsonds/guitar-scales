@@ -38,34 +38,34 @@
           "note": "F"
         },
         "5": {
-          "fret": "15",
-          "finger": 3,
-          "note": "Ab"
+          "fret": "14",
+          "finger": 2,
+          "note": "B"
         },
         "4": {
           "fret": "15",
           "finger": 4,
-          "note": "B"
+          "note": "F"
         },
         "3": {
           "fret": "13",
           "finger": 1,
-          "note": "F"
+          "note": "Ab"
         },
         "2": {
-          "fret": "13",
-          "finger": 1,
-          "note": "Ab"
+          "fret": "12",
+          "finger": 0,
+          "note": "B"
         },
         "1": {
           "fret": "13",
           "finger": 1,
-          "note": "B"
+          "note": "F"
         }
       },
       "category": "arpeggios",
       "position": 2,
-      "description": "Fdim chord - barre at 7th fret (7-9-9-7-7-7)"
+      "description": "Fdim chord - barre voicing (7-8-9-7-6-7)"
     }
   }
 }

@@ -57,14 +57,14 @@
           "note": "G"
         },
         "1": {
-          "fret": "7",
+          "fret": "6",
           "finger": 1,
           "note": "A#"
         }
       },
       "category": "arpeggios",
       "position": 1,
-      "description": "Em7b5 chord - barre at 2nd fret (x-2-3-2-3-2)"
+      "description": "Em7b5 chord - barre at 2nd fret (x-2-3-2-3-1)"
     }
   }
 }

@@ -57,14 +57,14 @@
           "note": "Ab"
         },
         "1": {
-          "fret": "8",
+          "fret": "7",
           "finger": 1,
           "note": "B"
         }
       },
       "category": "arpeggios",
       "position": 1,
-      "description": "Fm7b5 chord - barre at 2nd fret (x-2-3-2-3-2)"
+      "description": "Fm7b5 chord - barre at 2nd fret (x-2-3-2-3-1)"
     }
   }
 }

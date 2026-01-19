@@ -1911,35 +1911,7 @@
       if (progressions.length > 0) {
         progressionsList.innerHTML = '';
         progressions.forEach(prog => {
-          const progItem = document.createElement('div');
-          progItem.style.cssText = 'display: flex; flex-direction: column; gap: 0.25rem; padding: 0.75rem; background: #1a1a27; border-radius: 8px; border: 1px solid #2a2a3a;';
-
-          const progHeader = document.createElement('div');
-          progHeader.style.cssText = 'display: flex; align-items: center; gap: 0.5rem;';
-
-          const progIcon = document.createElement('span');
-          progIcon.textContent = '🎵';
-          progIcon.style.fontSize = '1rem';
-
-          const progName = document.createElement('span');
-          progName.textContent = prog.name;
-          progName.style.cssText = 'font-size: 0.875rem; font-weight: 600; color: #e8e8eb;';
-
-          progHeader.appendChild(progIcon);
-          progHeader.appendChild(progName);
-
-          const progChords = document.createElement('div');
-          progChords.textContent = prog.progression;
-          progChords.style.cssText = 'font-size: 0.813rem; color: #4a9eff; font-family: monospace; margin-left: 1.5rem;';
-
-          const progDesc = document.createElement('div');
-          progDesc.textContent = prog.description;
-          progDesc.style.cssText = 'font-size: 0.75rem; color: #8a8a9a; margin-left: 1.5rem;';
-
-          progItem.appendChild(progHeader);
-          progItem.appendChild(progChords);
-          progItem.appendChild(progDesc);
-          progressionsList.appendChild(progItem);
+          displayProgressionWithDiagrams(prog, root, progressionsList);
         });
         progressionsSection.style.display = 'block';
       } else {
@@ -2545,6 +2517,174 @@
 
       svg += `</svg>`;
       return svg;
+    }
+
+    /**
+     * Display a progression with chord diagrams arranged in rows (staves)
+     */
+    async function displayProgressionWithDiagrams(prog, scaleRoot, container) {
+      const progItem = document.createElement('div');
+      progItem.style.cssText = 'display: flex; flex-direction: column; gap: 0.75rem; padding: 0.75rem; background: #1a1a27; border-radius: 8px; border: 1px solid #2a2a3a;';
+
+      // Header with progression name and description
+      const progHeader = document.createElement('div');
+      progHeader.style.cssText = 'display: flex; align-items: center; gap: 0.5rem;';
+
+      const progIcon = document.createElement('span');
+      progIcon.textContent = '🎵';
+      progIcon.style.fontSize = '1rem';
+
+      const progName = document.createElement('span');
+      progName.textContent = prog.name;
+      progName.style.cssText = 'font-size: 0.875rem; font-weight: 600; color: #e8e8eb;';
+
+      progHeader.appendChild(progIcon);
+      progHeader.appendChild(progName);
+
+      const progDesc = document.createElement('div');
+      progDesc.textContent = prog.description;
+      progDesc.style.cssText = 'font-size: 0.75rem; color: #8a8a9a; margin-left: 1.5rem;';
+
+      progItem.appendChild(progHeader);
+      progItem.appendChild(progDesc);
+
+      // Parse chord symbols from progression string
+      // Example: "||: Cmaj7 | Fmaj7 | G7 | G7 :||" or "||: Am7 | Am7 | Dm7 | Dm7 :||"
+      const chordPattern = /([A-G][#b]?(?:maj7|maj9|maj13|m7b5|m7|m9|m13|7|9|13|maj|min|dim|aug|m)?)/g;
+      const matches = prog.progression.match(chordPattern) || [];
+
+      if (matches.length === 0) {
+        // Fallback to text display if no chords found
+        const progChords = document.createElement('div');
+        progChords.textContent = prog.progression;
+        progChords.style.cssText = 'font-size: 0.813rem; color: #4a9eff; font-family: monospace; margin-left: 1.5rem;';
+        progItem.appendChild(progChords);
+        container.appendChild(progItem);
+        return;
+      }
+
+      // Get unique chord symbols to load
+      const uniqueChords = [...new Set(matches)];
+
+      // Load chord data for all unique chords
+      const chordDataMap = {};
+      await Promise.all(uniqueChords.map(async (chordSymbol) => {
+        const chordData = await loadSingleChordDiagram(chordSymbol);
+        if (chordData) {
+          chordDataMap[chordSymbol] = chordData;
+        }
+      }));
+
+      // Create diagram display area with rows (staves)
+      const diagramsContainer = document.createElement('div');
+      diagramsContainer.style.cssText = 'display: flex; flex-direction: column; gap: 1rem; margin-left: 1.5rem;';
+
+      // Check if progression has repeat markers
+      const hasRepeat = prog.progression.includes('||:') || prog.progression.includes(':||');
+
+      // Create a row for chord diagrams
+      const row = document.createElement('div');
+      row.style.cssText = 'display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start;';
+
+      // Add opening repeat sign if present
+      if (hasRepeat) {
+        const repeatStart = document.createElement('div');
+        repeatStart.style.cssText = 'display: flex; align-items: center; font-size: 2rem; color: #4a9eff; font-weight: bold; height: 120px;';
+        repeatStart.textContent = '𝄆';
+        row.appendChild(repeatStart);
+      }
+
+      // Add chord diagrams
+      matches.forEach((chordSymbol, index) => {
+        const chordData = chordDataMap[chordSymbol];
+
+        const chordWrapper = document.createElement('div');
+        chordWrapper.style.cssText = 'display: flex; flex-direction: column; align-items: center; gap: 0.25rem;';
+
+        // Chord name above diagram
+        const chordLabel = document.createElement('div');
+        chordLabel.textContent = chordSymbol;
+        chordLabel.style.cssText = 'font-size: 0.75rem; font-weight: 600; color: #e8e8eb;';
+        chordWrapper.appendChild(chordLabel);
+
+        if (chordData) {
+          // Extract root note from chord symbol
+          const chordRoot = chordSymbol.match(/^[A-G][#b]?/)[0];
+          const diagram = createChordDiagram(chordData, chordRoot);
+          const diagramDiv = document.createElement('div');
+          diagramDiv.innerHTML = diagram;
+          chordWrapper.appendChild(diagramDiv);
+        } else {
+          // Show placeholder if chord data not found
+          const placeholder = document.createElement('div');
+          placeholder.style.cssText = 'width: 100px; height: 120px; display: flex; align-items: center; justify-content: center; background: #14141f; border-radius: 4px; border: 1px dashed #4a4a5a; color: #8a8a9a; font-size: 0.75rem; text-align: center;';
+          placeholder.textContent = 'N/A';
+          chordWrapper.appendChild(placeholder);
+        }
+
+        row.appendChild(chordWrapper);
+
+        // Add bar line after every 4 chords (except at the end)
+        if ((index + 1) % 4 === 0 && index < matches.length - 1) {
+          const barLine = document.createElement('div');
+          barLine.style.cssText = 'width: 2px; height: 120px; background: #4a4a5a; margin: 0 0.5rem;';
+          row.appendChild(barLine);
+        }
+      });
+
+      // Add closing repeat sign if present
+      if (hasRepeat) {
+        const repeatEnd = document.createElement('div');
+        repeatEnd.style.cssText = 'display: flex; align-items: center; font-size: 2rem; color: #4a9eff; font-weight: bold; height: 120px;';
+        repeatEnd.textContent = '𝄇';
+        row.appendChild(repeatEnd);
+      }
+
+      diagramsContainer.appendChild(row);
+      progItem.appendChild(diagramsContainer);
+      container.appendChild(progItem);
+    }
+
+    /**
+     * Load a single chord diagram (first position only)
+     */
+    async function loadSingleChordDiagram(chordSymbol) {
+      // Extract root note and chord type
+      const chordRoot = chordSymbol.match(/^[A-G][#b]?/)[0];
+      const chordType = chordSymbol.replace(chordRoot, '');
+
+      // Map chord type to file prefix
+      const chordFileMap = {
+        'maj7': 'maj7',
+        'm7': 'min7',
+        '7': '7',
+        'maj9': 'maj9',
+        'm9': 'min9',
+        '9': '9',
+        'maj13': 'maj13',
+        'm13': 'min13',
+        '13': '13',
+        'm': 'min',
+        '': 'maj',
+        'dim': 'dim',
+        'm7b5': 'm7b5',
+        'aug': 'aug'
+      };
+
+      const filePrefix = chordFileMap[chordType] || chordType;
+
+      // Try to load position 1 (lowest/easiest position)
+      try {
+        const response = await fetch(`chords/${chordRoot.toLowerCase()}${filePrefix}_pos1.json`);
+        if (response.ok) {
+          const data = await response.json();
+          return data.Item;
+        }
+      } catch (err) {
+        console.warn(`Could not load chord diagram for ${chordSymbol}`);
+      }
+
+      return null;
     }
 
     /**

@@ -1873,7 +1873,7 @@
           seventhSymbol = chordRoot + 'maj7#5';
         }
 
-        chords.push({
+        const chordData = {
           root: chordRoot,
           triadSymbol: triadSymbol,
           seventhSymbol: seventhSymbol,
@@ -1881,7 +1881,11 @@
           intervals: [rootInterval, third, fifth],
           intervalsWithSeventh: [rootInterval, third, fifth, seventh],
           degree: index + 1
-        });
+        };
+
+        console.log(`[DEBUG] Degree ${index + 1}: root="${chordRoot}", triad="${triadSymbol}", seventh="${seventhSymbol}"`);
+
+        chords.push(chordData);
       });
 
       return chords;
@@ -2552,11 +2556,14 @@
       const container = document.getElementById('chordDiagramsContainer');
       const section = document.getElementById('chordVoicingsSection');
 
+      console.log(`[DEBUG] loadChordVoicings called with root="${chordRoot}", symbol="${chordSymbol}"`);
+
       container.innerHTML = '<div style="color: #8a8a9a; font-size: 0.875rem;">Loading chord voicings...</div>';
       section.style.display = 'block';
 
       // Extract chord type from symbol (remove root note)
       const chordType = chordSymbol.replace(chordRoot, '');
+      console.log(`[DEBUG] Extracted chordType="${chordType}" from symbol="${chordSymbol}" and root="${chordRoot}"`);
 
       // Map chord type suffixes to file prefixes and number of positions
       const chordFileMap = {

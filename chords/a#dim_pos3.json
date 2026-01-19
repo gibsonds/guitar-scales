@@ -46,14 +46,14 @@
         },
         "2": "mute",
         "1": {
-          "fret": "20",
-          "finger": 1,
+          "fret": "21",
+          "finger": 2,
           "note": "C#"
         }
       },
       "category": "arpeggios",
       "position": 3,
-      "description": "A#dim chord - top strings (x-x-9-10-x-9)"
+      "description": "A#dim chord - top strings (x-x-9-10-x-10)"
     }
   }
 }

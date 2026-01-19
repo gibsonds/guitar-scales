@@ -53,14 +53,14 @@
           "note": "G#"
         },
         "1": {
-          "fret": "20",
-          "finger": 1,
+          "fret": "21",
+          "finger": 2,
           "note": "C#"
         }
       },
       "category": "arpeggios",
       "position": 3,
-      "description": "A#m7b5 chord - top strings voicing (x-x-9-10-10-9)"
+      "description": "A#m7b5 chord - top strings voicing (x-x-9-10-10-10)"
     }
   }
 }

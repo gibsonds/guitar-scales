@@ -46,14 +46,14 @@
         },
         "2": "mute",
         "1": {
-          "fret": "15",
-          "finger": 1,
+          "fret": "16",
+          "finger": 2,
           "note": "Ab"
         }
       },
       "category": "arpeggios",
       "position": 3,
-      "description": "Fdim chord - top strings (x-x-9-10-x-9)"
+      "description": "Fdim chord - top strings (x-x-9-10-x-10)"
     }
   }
 }

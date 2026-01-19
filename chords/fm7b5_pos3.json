@@ -53,14 +53,14 @@
           "note": "Eb"
         },
         "1": {
-          "fret": "15",
-          "finger": 1,
+          "fret": "16",
+          "finger": 2,
           "note": "Ab"
         }
       },
       "category": "arpeggios",
       "position": 3,
-      "description": "Fm7b5 chord - top strings voicing (x-x-9-10-10-9)"
+      "description": "Fm7b5 chord - top strings voicing (x-x-9-10-10-10)"
     }
   }
 }

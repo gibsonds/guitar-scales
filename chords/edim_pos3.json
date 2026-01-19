@@ -46,14 +46,14 @@
         },
         "2": "mute",
         "1": {
-          "fret": "14",
-          "finger": 1,
+          "fret": "15",
+          "finger": 2,
           "note": "G"
         }
       },
       "category": "arpeggios",
       "position": 3,
-      "description": "Edim chord - top strings (x-x-9-10-x-9)"
+      "description": "Edim chord - top strings (x-x-9-10-x-10)"
     }
   }
 }

@@ -2592,13 +2592,19 @@
         chordFiles.push(`${chordRoot.toLowerCase()}${filePrefix}_pos${i}`);
       }
 
+      console.log(`[DEBUG] Generated file list:`, chordFiles);
+
       try {
         const chordPromises = chordFiles.map(async (filename) => {
           try {
-            const response = await fetch(`chords/${filename}.json`);
+            const url = `chords/${filename}.json`;
+            console.log(`[DEBUG] Fetching: ${url}`);
+            const response = await fetch(url);
             const data = await response.json();
+            console.log(`[DEBUG] Loaded ${filename}: root="${data.Item.root_note}", starting_fret="${data.Item.starting_fret}"`);
             return data.Item;
           } catch (err) {
+            console.log(`[DEBUG] Failed to load ${filename}:`, err.message);
             // Silently ignore missing files
             return null;
           }

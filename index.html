@@ -2537,13 +2537,15 @@
         } else {
           // Filled circle for fretted note
           const fret = parseInt(voicingData.fret);
-          const fretPosition = fret - startFret;
+          // For open position chords, fret lines start at 0 (nut), so fret 1 is between line 0 and 1
+          // For non-open position, fret lines start at startFret, so startFret is between line 0 and 1
+          const fretPosition = isOpenPosition ? fret - 1 : fret - startFret;
           const y = margin + (fretPosition + 0.5) * fretHeight;
           const isRoot = voicingData.note === root;
           const fill = isRoot ? '#4a9eff' : '#e8e8eb';
 
           if (stringKey === '5') {  // A string
-            console.log(`[DEBUG]   Drawing A string: fret=${fret}, startFret=${startFret}, fretPosition=${fretPosition}, note=${voicingData.note}`);
+            console.log(`[DEBUG]   Drawing A string: fret=${fret}, startFret=${startFret}, isOpenPosition=${isOpenPosition}, fretPosition=${fretPosition}, note=${voicingData.note}`);
           }
 
           svg += `<circle cx="${x}" cy="${y}" r="6" fill="${fill}"/>`;

@@ -483,11 +483,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.1.19 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.1.19 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -2533,11 +2533,11 @@
           const isRoot = voicingData.note === root;
           const fill = isRoot ? theme.noteColor : theme.textSecondary;
           const fingerColor = themeName === 'dark' ? '#14141f' : '#14141f';
-          svg += `<circle cx="${x}" cy="${y}" r="8" fill="${fill}"/>`;
+          svg += `<circle cx="${x}" cy="${y}" r="6" fill="${fill}"/>`;
 
           // Finger number
           if (voicingData.finger > 0) {
-            svg += `<text x="${x}" y="${y + 5}" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="${fingerColor}" text-anchor="middle">${voicingData.finger}</text>`;
+            svg += `<text x="${x}" y="${y + 4.5}" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="${fingerColor}" text-anchor="middle">${voicingData.finger}</text>`;
           }
         }
       });

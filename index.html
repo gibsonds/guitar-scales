@@ -483,11 +483,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.1.19 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.1.20 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.1.19 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.1.20 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -928,6 +928,34 @@
       // Chord section headers
       document.querySelectorAll('#chordExplorerSection .scale-selector > div, #chordVoicingsSection .scale-selector > div').forEach(el => {
         el.style.color = theme.textMuted;
+      });
+
+      // Canvas background
+      const canvas = document.getElementById('fretboardCanvas');
+      if (canvas) {
+        canvas.style.background = theme.canvasBg;
+      }
+
+      // Progressions section
+      const progressionsSection = document.getElementById('progressionsSection');
+      if (progressionsSection) {
+        progressionsSection.style.background = theme.controlBg;
+        progressionsSection.style.borderColor = theme.cardBorder;
+      }
+
+      // Progressions section header
+      const progressionsHeader = progressionsSection?.querySelector('div');
+      if (progressionsHeader) {
+        progressionsHeader.style.color = theme.textMuted;
+      }
+
+      // Chord explorer buttons
+      document.querySelectorAll('#chordExplorerSection .control-btn').forEach(btn => {
+        if (!btn.classList.contains('active')) {
+          btn.style.background = theme.buttonBg;
+          btn.style.borderColor = theme.buttonBorder;
+          btn.style.color = theme.buttonText;
+        }
       });
 
       drawFretboard();
@@ -2494,7 +2522,7 @@
 
       // Position indicator (always show for non-open position chords)
       if (!isOpenPosition) {
-        svg += `<text x="8" y="${margin + fretHeight * 0.5 + 3}" font-family="monospace" font-size="11" font-weight="bold" fill="${theme.textSecondary}" text-anchor="end">${startFret}</text>`;
+        svg += `<text x="8" y="${margin + fretHeight * 0.5 + 3}" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="${theme.textPrimary}" text-anchor="end">${startFret}</text>`;
       }
 
       // Draw strings (vertical lines)

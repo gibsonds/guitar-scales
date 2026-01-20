@@ -482,11 +482,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.1.29 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.1.30 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.1.29 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.1.30 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -885,6 +885,32 @@
       document.querySelector('h1').style.color = theme.textPrimary;
       document.querySelector('footer').style.color = theme.textMuted;
       document.getElementById('fretRangeDisplay').style.color = theme.textSecondary;
+
+      // Scale selector custom dropdown
+      const scaleSelectButton = document.getElementById('scaleSelectButton');
+      if (scaleSelectButton) {
+        scaleSelectButton.style.background = theme.selectBg;
+        scaleSelectButton.style.borderColor = theme.selectBorder;
+        scaleSelectButton.style.color = theme.textSecondary;
+      }
+
+      const scaleSelectDropdown = document.getElementById('scaleSelectDropdown');
+      if (scaleSelectDropdown) {
+        scaleSelectDropdown.style.background = theme.selectBg;
+        scaleSelectDropdown.style.borderColor = theme.selectBorder;
+      }
+
+      // Category headers in dropdown
+      document.querySelectorAll('.category-header').forEach(header => {
+        header.style.background = theme.controlBg;
+        header.style.borderColor = theme.cardBorder;
+        header.style.color = theme.textMuted;
+      });
+
+      // Scale options in dropdown
+      document.querySelectorAll('.scale-option:not(.selected)').forEach(option => {
+        option.style.color = theme.textSecondary;
+      });
 
       // Metronome BPM input
       const bpmInput = document.getElementById('metronomeBpm');

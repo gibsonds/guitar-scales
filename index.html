@@ -541,11 +541,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.3.0 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.3.1 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.3.0 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.3.1 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -1127,10 +1127,10 @@
         ctx.textAlign = 'left';
         ctx.fillText(`Position ${varIndex + 1}: ${variation.description || variationKey}`, margin, currentY - 10);
 
-        // Draw strings (E-A-D-G-B-e from top to bottom)
-        const stringNames = ['E', 'A', 'D', 'G', 'B', 'e'];
+        // Draw strings (e-B-G-D-A-E from top to bottom, standard tab format)
+        const stringNames = ['e', 'B', 'G', 'D', 'A', 'E'];
         for (let i = 0; i < 6; i++) {
-          const stringNum = 6 - i; // 6, 5, 4, 3, 2, 1
+          const stringNum = i + 1; // 1, 2, 3, 4, 5, 6 (high e to low E)
           const y = currentY + i * stringSpacing;
 
           // Draw string line
@@ -1151,7 +1151,7 @@
 
         // Draw notes
         notesWithSequence.forEach(note => {
-          const stringIndex = 6 - note.string; // Convert string number to index (0-5)
+          const stringIndex = note.string - 1; // Convert string number to index (0-5)
           const y = currentY + stringIndex * stringSpacing;
           const x = margin + 60 + (note.sequence - 1) * noteSpacing;
 

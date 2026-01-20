@@ -483,11 +483,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.1.21 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.1.22 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.1.21 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.1.22 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -2703,44 +2703,56 @@
     }
 
     /**
-     * Load a single chord diagram (first position only)
+     * Load a single chord diagram (first position below fret 12)
      */
     async function loadSingleChordDiagram(chordSymbol) {
       // Extract root note and chord type
       const chordRoot = chordSymbol.match(/^[A-G][#b]?/)[0];
       const chordType = chordSymbol.replace(chordRoot, '');
 
-      // Map chord type to file prefix
+      // Map chord type to file prefix and number of positions
       const chordFileMap = {
-        'maj7': 'maj7',
-        'm7': 'min7',
-        '7': '7',
-        'maj9': 'maj9',
-        'm9': 'min9',
-        '9': '9',
-        'maj13': 'maj13',
-        'm13': 'min13',
-        '13': '13',
-        'm': 'min',
-        '': 'maj',
-        'dim': 'dim',
-        'm7b5': 'm7b5',
-        'aug': 'aug'
+        'maj7': { prefix: 'maj7', positions: 6 },
+        'm7': { prefix: 'min7', positions: 6 },
+        '7': { prefix: '7', positions: 6 },
+        'maj9': { prefix: 'maj9', positions: 4 },
+        'm9': { prefix: 'min9', positions: 4 },
+        '9': { prefix: '9', positions: 4 },
+        'maj13': { prefix: 'maj13', positions: 4 },
+        'm13': { prefix: 'min13', positions: 4 },
+        '13': { prefix: '13', positions: 4 },
+        'm': { prefix: 'min', positions: 4 },
+        '': { prefix: 'maj', positions: 4 },
+        'dim': { prefix: 'dim', positions: 4 },
+        'm7b5': { prefix: 'm7b5', positions: 4 },
+        'aug': { prefix: 'aug', positions: 6 }
       };
 
-      const filePrefix = chordFileMap[chordType] || chordType;
+      const chordInfo = chordFileMap[chordType] || { prefix: chordType, positions: 6 };
+      const filePrefix = chordInfo.prefix;
+      const numPositions = chordInfo.positions;
+      const MAX_FRET = 12;
 
-      // Try to load position 1 (lowest/easiest position)
-      try {
-        const response = await fetch(`chords/${chordRoot.toLowerCase()}${filePrefix}_pos1.json`);
-        if (response.ok) {
-          const data = await response.json();
-          return data.Item;
+      // Try positions 1 through numPositions, return first one below fret 12
+      for (let pos = 1; pos <= numPositions; pos++) {
+        try {
+          const response = await fetch(`chords/${chordRoot.toLowerCase()}${filePrefix}_pos${pos}.json`);
+          if (response.ok) {
+            const data = await response.json();
+            const chord = data.Item;
+            const startingFret = parseInt(chord.starting_fret);
+
+            // Return first chord that starts at or below fret 12
+            if (startingFret <= MAX_FRET) {
+              return chord;
+            }
+          }
+        } catch (err) {
+          // Continue to next position
         }
-      } catch (err) {
-        console.warn(`Could not load chord diagram for ${chordSymbol}`);
       }
 
+      console.warn(`Could not find chord diagram for ${chordSymbol} below fret ${MAX_FRET}`);
       return null;
     }
 

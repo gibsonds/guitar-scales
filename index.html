@@ -402,9 +402,9 @@
       <div class="control-section">
         <span class="control-label">Span</span>
         <button class="control-btn" data-span="4" title="4 frets">4</button>
-        <button class="control-btn active" data-span="5" title="5 frets">5</button>
+        <button class="control-btn" data-span="5" title="5 frets">5</button>
         <button class="control-btn" data-span="6" title="6 frets">6</button>
-        <button class="control-btn" data-span="0" title="Show all notes">Off</button>
+        <button class="control-btn active" data-span="0" title="Show all notes">Off</button>
       </div>
 
       <div class="divider"></div>
@@ -482,11 +482,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.1.30 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.1.31 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.1.30 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.1.31 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -524,7 +524,7 @@
       fretMin: 0,
       fretMax: 24,
       practicePositionStart: 0,
-      handSpan: 5,
+      handSpan: 0,
       zoom: 1.0,
       showDegrees: false, // true = show degrees (#), false = show note names (♪)
       isDragging: false,
@@ -1456,9 +1456,10 @@
       populateRootSelect();
 
       if (state.scales.length > 0) {
-        // Set initial selection
-        state.selectedScaleId = state.scales[0].id;
-        scaleSelectValue.textContent = state.scales[0].name;
+        // Set initial selection to Minor Blues Box, fallback to first scale
+        const defaultScale = state.scales.find(s => s.id === 'minor_blues_box') || state.scales[0];
+        state.selectedScaleId = defaultScale.id;
+        scaleSelectValue.textContent = defaultScale.name;
         updateDisplay();
       }
     }

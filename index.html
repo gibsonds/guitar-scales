@@ -482,11 +482,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.1.25 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.1.27 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.1.25 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.1.27 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -984,7 +984,7 @@
             const noteNames = state.enharmonicPreference === 'sharps' ? NOTE_NAMES_SHARPS : NOTE_NAMES_FLATS;
             const note = noteNames[noteSemitone];
             const degree = scaleDegrees[degreeIndex];
-            const isRoot = note === root;
+            const isRoot = intervalFromRoot === 0;
 
             positions.push({
               string: string,
@@ -1039,7 +1039,7 @@
             const noteNames = state.enharmonicPreference === 'sharps' ? NOTE_NAMES_SHARPS : NOTE_NAMES_FLATS;
             const note = noteNames[noteSemitone];
             const degree = scaleDegrees[degreeIndex];
-            const isRoot = note === root;
+            const isRoot = intervalFromRoot === 0;
 
             positions.push({
               string: stringNum,
@@ -1082,7 +1082,7 @@
           // Find the degree for this interval
           const degreeIndex = chordIntervals.indexOf(intervalFromRoot);
           const degree = degreeIndex !== -1 ? chordDegrees[degreeIndex] : '?';
-          const isRoot = note === root;
+          const isRoot = intervalFromRoot === 0;
 
           positions.push({
             string: stringNum,
@@ -1759,11 +1759,7 @@
       }
 
       chordExplorerSection.style.display = 'block';
-
-      // Apply theme to newly shown section
-      const theme = themes[state.theme];
-      chordExplorerSection.style.background = theme.controlBg;
-      chordExplorerSection.style.borderTop = `1px solid ${theme.cardBorder}`;
+      applyTheme(); // Apply theme after showing section
 
       // Clear existing chords
       chordsTriadsList.innerHTML = '';
@@ -1976,11 +1972,7 @@
           displayProgressionWithDiagrams(prog, root, progressionsList);
         });
         progressionsSection.style.display = 'block';
-
-        // Apply theme to newly shown section
-        const theme = themes[state.theme];
-        progressionsSection.style.background = theme.controlBg;
-        progressionsSection.style.borderTop = `1px solid ${theme.cardBorder}`;
+        applyTheme(); // Apply theme after showing section
       } else {
         progressionsSection.style.display = 'none';
       }
@@ -2776,14 +2768,10 @@
     async function loadChordVoicings(chordRoot, chordSymbol) {
       const container = document.getElementById('chordDiagramsContainer');
       const section = document.getElementById('chordVoicingsSection');
-      const theme = themes[state.theme];
 
-      container.innerHTML = `<div style="color: ${theme.textMuted}; font-size: 0.875rem;">Loading chord voicings...</div>`;
+      container.innerHTML = '<div style="font-size: 0.875rem;">Loading chord voicings...</div>';
       section.style.display = 'block';
-
-      // Apply theme to newly shown section
-      section.style.background = theme.controlBg;
-      section.style.borderTop = `1px solid ${theme.cardBorder}`;
+      applyTheme(); // Apply theme after showing section
 
       // Extract chord type from symbol (remove root note)
       const chordType = chordSymbol.replace(chordRoot, '');
@@ -2858,7 +2846,8 @@
         });
 
         if (chords.length === 0) {
-          container.innerHTML = `<div style="color: ${theme.textMuted}; font-size: 0.875rem;">No chord voicings available yet. Use chord_input_tool.py to add them!</div>`;
+          container.innerHTML = '<div style="font-size: 0.875rem;">No chord voicings available yet. Use chord_input_tool.py to add them!</div>';
+          applyTheme(); // Apply theme colors to the message
           return;
         }
 

@@ -342,9 +342,14 @@
 <body>
   <div class="header-row">
     <h1>🎸 Guitar Scale Explorer</h1>
-    <button id="themeToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Toggle theme">
-      <span id="themeIcon">☀️</span>
-    </button>
+    <div style="display: flex; gap: 0.5rem;">
+      <button id="viewModeToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Toggle view mode">
+        <span id="viewModeIcon">🎼</span>
+      </button>
+      <button id="themeToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Toggle theme">
+        <span id="themeIcon">☀️</span>
+      </button>
+    </div>
   </div>
 
   <div class="scale-selector">
@@ -536,11 +541,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.2.0 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.3.0 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.2.0 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.3.0 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -588,7 +593,8 @@
       markerStyle: 'dots',
       metronomeEnabled: false,
       metronomeBpm: 72,
-      metronomeSound: 'woodblock'
+      metronomeSound: 'woodblock',
+      viewMode: 'fretboard' // 'fretboard' or 'position'
     };
 
     // Theme colors
@@ -1035,9 +1041,153 @@
     }
 
     /**
-     * Draw the fretboard
+     * Draw the fretboard (routes to different views based on viewMode)
      */
     function drawFretboard() {
+      if (!state.currentScaleData) return;
+
+      if (state.viewMode === 'position') {
+        drawPositionView();
+      } else {
+        drawFretboardView();
+      }
+    }
+
+    /**
+     * Draw position-based staves view (tablature style)
+     */
+    function drawPositionView() {
+      if (!state.currentScaleData) return;
+
+      const { showDegrees, theme } = state;
+      const colors = themes[theme];
+      const scaleData = state.currentScaleData;
+      const root = scaleData.root;
+
+      // Check if scale has fingering variations
+      const fingeringVariations = scaleData.properties?.fingering_variations;
+      if (!fingeringVariations || Object.keys(fingeringVariations).length === 0) {
+        // No fingering data - show message
+        const width = canvas.width;
+        const height = canvas.height;
+        ctx.fillStyle = colors.canvasBg;
+        ctx.fillRect(0, 0, width, height);
+        ctx.fillStyle = colors.textMuted;
+        ctx.font = '16px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Position view requires fingering variation data', width / 2, height / 2);
+        ctx.font = '14px sans-serif';
+        ctx.fillText('Switch to fretboard view (🎸 button)', width / 2, height / 2 + 25);
+        return;
+      }
+
+      const width = canvas.width;
+      const height = canvas.height;
+
+      ctx.fillStyle = colors.canvasBg;
+      ctx.fillRect(0, 0, width, height);
+
+      const margin = 60;
+      const staveHeight = 200; // Height for each position stave
+      const stringSpacing = 25; // Vertical spacing between strings
+      const noteSpacing = 50; // Horizontal spacing between notes in sequence
+
+      // Get all fingering variations
+      const variations = Object.keys(fingeringVariations);
+      let currentY = margin;
+
+      variations.forEach((variationKey, varIndex) => {
+        const variation = fingeringVariations[variationKey];
+        const frets = variation.frets;
+
+        // Calculate sequence for this variation
+        // Play from low E (string 6) to high e (string 1)
+        const notesWithSequence = [];
+        let sequence = 1;
+
+        // Iterate strings from 6 to 1 (low E to high e)
+        for (let stringNum = 6; stringNum >= 1; stringNum--) {
+          const stringKey = String(stringNum);
+          if (frets[stringKey]) {
+            const stringFrets = frets[stringKey];
+            stringFrets.forEach(fretStr => {
+              const fret = parseInt(fretStr);
+              notesWithSequence.push({
+                string: stringNum,
+                fret: fret,
+                sequence: sequence++
+              });
+            });
+          }
+        }
+
+        // Draw position label
+        ctx.fillStyle = colors.textPrimary;
+        ctx.font = 'bold 14px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(`Position ${varIndex + 1}: ${variation.description || variationKey}`, margin, currentY - 10);
+
+        // Draw strings (E-A-D-G-B-e from top to bottom)
+        const stringNames = ['E', 'A', 'D', 'G', 'B', 'e'];
+        for (let i = 0; i < 6; i++) {
+          const stringNum = 6 - i; // 6, 5, 4, 3, 2, 1
+          const y = currentY + i * stringSpacing;
+
+          // Draw string line
+          ctx.strokeStyle = colors.stringColor;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(margin + 40, y);
+          ctx.lineTo(width - margin, y);
+          ctx.stroke();
+
+          // Draw string label
+          ctx.fillStyle = colors.textMuted;
+          ctx.font = 'bold 12px sans-serif';
+          ctx.textAlign = 'right';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(stringNames[i], margin + 30, y);
+        }
+
+        // Draw notes
+        notesWithSequence.forEach(note => {
+          const stringIndex = 6 - note.string; // Convert string number to index (0-5)
+          const y = currentY + stringIndex * stringSpacing;
+          const x = margin + 60 + (note.sequence - 1) * noteSpacing;
+
+          // Draw note circle
+          const radius = 10;
+          ctx.fillStyle = colors.noteColor;
+          ctx.beginPath();
+          ctx.arc(x, y, radius, 0, 2 * Math.PI);
+          ctx.fill();
+
+          // Draw fret number inside circle
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 11px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(note.fret, x, y);
+
+          // Draw sequence number above circle
+          ctx.fillStyle = colors.textMuted;
+          ctx.font = '10px sans-serif';
+          ctx.fillText(note.sequence, x, y - 18);
+        });
+
+        currentY += staveHeight;
+
+        // Check if we have room for another stave
+        if (currentY + staveHeight > height) {
+          return; // Stop drawing more staves if we run out of space
+        }
+      });
+    }
+
+    /**
+     * Draw the traditional fretboard view
+     */
+    function drawFretboardView() {
       if (!state.currentScaleData) return;
 
       const { fretMin, fretMax, zoom, showDegrees, theme } = state;
@@ -2251,6 +2401,12 @@
         state.markerStyle = btn.dataset.markers;
         drawFretboard();
       });
+    });
+
+    document.getElementById('viewModeToggle').addEventListener('click', () => {
+      state.viewMode = state.viewMode === 'fretboard' ? 'position' : 'fretboard';
+      document.getElementById('viewModeIcon').textContent = state.viewMode === 'fretboard' ? '🎼' : '🎸';
+      drawFretboard(); // Redraw with new view mode
     });
 
     document.getElementById('themeToggle').addEventListener('click', () => {

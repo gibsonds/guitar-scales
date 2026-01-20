@@ -482,11 +482,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.1.27 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.1.28 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.1.27 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.1.28 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -960,6 +960,13 @@
           btn.style.borderColor = theme.buttonBorder;
           btn.style.color = theme.buttonText;
         }
+      });
+
+      // Chord selection buttons (triads and 7ths)
+      document.querySelectorAll('.chord-btn:not(.selected-chord)').forEach(btn => {
+        btn.style.background = theme.buttonBg;
+        btn.style.borderColor = theme.buttonBorder;
+        btn.style.color = theme.buttonText;
       });
 
       drawFretboard();
@@ -1766,24 +1773,28 @@
       chords7thList.innerHTML = '';
 
       // Populate triads
+      const theme = themes[state.theme];
       state.diatonicChords.forEach((chord, index) => {
         if (chord.triadSymbol) {
           const btn = document.createElement('button');
           btn.textContent = chord.triadSymbol;
           btn.dataset.chordIndex = index;
           btn.dataset.chordType = 'triad';
-          btn.style.cssText = 'padding: 0.375rem 0.75rem; font-size: 0.813rem; background: #2a2a3a; color: #e8e8eb; border: 1px solid #3a3a4a; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-weight: 500;';
+          btn.className = 'chord-btn';
+          btn.style.cssText = `padding: 0.375rem 0.75rem; font-size: 0.813rem; background: ${theme.buttonBg}; color: ${theme.buttonText}; border: 1px solid ${theme.buttonBorder}; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-weight: 500;`;
           btn.addEventListener('click', () => selectChord(chord, 'triad'));
           btn.addEventListener('mouseenter', function() {
             if (!this.classList.contains('selected-chord')) {
-              this.style.background = '#3a3a4a';
+              const hoverTheme = themes[state.theme];
+              this.style.background = hoverTheme.buttonBgHover || hoverTheme.buttonBg;
               this.style.borderColor = '#4a9eff';
             }
           });
           btn.addEventListener('mouseleave', function() {
             if (!this.classList.contains('selected-chord')) {
-              this.style.background = '#2a2a3a';
-              this.style.borderColor = '#3a3a4a';
+              const defaultTheme = themes[state.theme];
+              this.style.background = defaultTheme.buttonBg;
+              this.style.borderColor = defaultTheme.buttonBorder;
             }
           });
           chordsTriadsList.appendChild(btn);
@@ -1797,18 +1808,21 @@
           btn.textContent = chord.seventhSymbol;
           btn.dataset.chordIndex = index;
           btn.dataset.chordType = 'seventh';
-          btn.style.cssText = 'padding: 0.375rem 0.75rem; font-size: 0.813rem; background: #2a2a3a; color: #e8e8eb; border: 1px solid #3a3a4a; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-weight: 500;';
+          btn.className = 'chord-btn';
+          btn.style.cssText = `padding: 0.375rem 0.75rem; font-size: 0.813rem; background: ${theme.buttonBg}; color: ${theme.buttonText}; border: 1px solid ${theme.buttonBorder}; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-weight: 500;`;
           btn.addEventListener('click', () => selectChord(chord, 'seventh'));
           btn.addEventListener('mouseenter', function() {
             if (!this.classList.contains('selected-chord')) {
-              this.style.background = '#3a3a4a';
+              const hoverTheme = themes[state.theme];
+              this.style.background = hoverTheme.buttonBgHover || hoverTheme.buttonBg;
               this.style.borderColor = '#4a9eff';
             }
           });
           btn.addEventListener('mouseleave', function() {
             if (!this.classList.contains('selected-chord')) {
-              this.style.background = '#2a2a3a';
-              this.style.borderColor = '#3a3a4a';
+              const defaultTheme = themes[state.theme];
+              this.style.background = defaultTheme.buttonBg;
+              this.style.borderColor = defaultTheme.buttonBorder;
             }
           });
           chords7thList.appendChild(btn);
@@ -1819,12 +1833,14 @@
     function selectChord(chord, type) {
       state.selectedChord = { ...chord, type };
 
+      const theme = themes[state.theme];
+
       // Update button styles
       document.querySelectorAll('#chordsTriadsList button, #chords7thList button').forEach(btn => {
         btn.classList.remove('selected-chord');
-        btn.style.background = '#2a2a3a';
-        btn.style.borderColor = '#3a3a4a';
-        btn.style.color = '#e8e8eb';
+        btn.style.background = theme.buttonBg;
+        btn.style.borderColor = theme.buttonBorder;
+        btn.style.color = theme.buttonText;
       });
 
       // Highlight selected button
@@ -1846,12 +1862,14 @@
     function clearChordSelection() {
       state.selectedChord = null;
 
+      const theme = themes[state.theme];
+
       // Reset button styles
       document.querySelectorAll('#chordsTriadsList button, #chords7thList button').forEach(btn => {
         btn.classList.remove('selected-chord');
-        btn.style.background = '#2a2a3a';
-        btn.style.borderColor = '#3a3a4a';
-        btn.style.color = '#e8e8eb';
+        btn.style.background = theme.buttonBg;
+        btn.style.borderColor = theme.buttonBorder;
+        btn.style.color = theme.buttonText;
       });
 
       // Hide chord voicings section

@@ -482,11 +482,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.1.24 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.1.25 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.1.24 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.1.25 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -1760,6 +1760,11 @@
 
       chordExplorerSection.style.display = 'block';
 
+      // Apply theme to newly shown section
+      const theme = themes[state.theme];
+      chordExplorerSection.style.background = theme.controlBg;
+      chordExplorerSection.style.borderTop = `1px solid ${theme.cardBorder}`;
+
       // Clear existing chords
       chordsTriadsList.innerHTML = '';
       chords7thList.innerHTML = '';
@@ -1971,6 +1976,11 @@
           displayProgressionWithDiagrams(prog, root, progressionsList);
         });
         progressionsSection.style.display = 'block';
+
+        // Apply theme to newly shown section
+        const theme = themes[state.theme];
+        progressionsSection.style.background = theme.controlBg;
+        progressionsSection.style.borderTop = `1px solid ${theme.cardBorder}`;
       } else {
         progressionsSection.style.display = 'none';
       }
@@ -2766,9 +2776,14 @@
     async function loadChordVoicings(chordRoot, chordSymbol) {
       const container = document.getElementById('chordDiagramsContainer');
       const section = document.getElementById('chordVoicingsSection');
+      const theme = themes[state.theme];
 
-      container.innerHTML = '<div style="color: #8a8a9a; font-size: 0.875rem;">Loading chord voicings...</div>';
+      container.innerHTML = `<div style="color: ${theme.textMuted}; font-size: 0.875rem;">Loading chord voicings...</div>`;
       section.style.display = 'block';
+
+      // Apply theme to newly shown section
+      section.style.background = theme.controlBg;
+      section.style.borderTop = `1px solid ${theme.cardBorder}`;
 
       // Extract chord type from symbol (remove root note)
       const chordType = chordSymbol.replace(chordRoot, '');
@@ -2843,7 +2858,7 @@
         });
 
         if (chords.length === 0) {
-          container.innerHTML = '<div style="color: #8a8a9a; font-size: 0.875rem;">No chord voicings available yet. Use chord_input_tool.py to add them!</div>';
+          container.innerHTML = `<div style="color: ${theme.textMuted}; font-size: 0.875rem;">No chord voicings available yet. Use chord_input_tool.py to add them!</div>`;
           return;
         }
 

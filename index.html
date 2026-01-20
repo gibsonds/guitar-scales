@@ -446,12 +446,12 @@
     </div>
 
     <!-- Chord Explorer -->
-    <div id="chordExplorerSection" style="display: none; padding: 1rem 1.25rem; background: #14141f; border-top: 1px solid #2a2a3a;">
+    <div id="chordExplorerSection" style="display: none; padding: 1rem 1.25rem;">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-        <div style="font-size: 0.75rem; font-weight: 600; color: #8a8a9a; text-transform: uppercase; letter-spacing: 0.08em;">
+        <div id="chordExplorerHeader" style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;">
           Chord Explorer
         </div>
-        <button id="clearChordBtn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: #2a2a3a; color: #8a8a9a; border: 1px solid #3a3a4a; border-radius: 4px; cursor: pointer;">
+        <button id="clearChordBtn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 4px; cursor: pointer;">
           Show All Scale Tones
         </button>
       </div>
@@ -462,20 +462,20 @@
     </div>
 
     <!-- Chord Voicings Display -->
-    <div id="chordVoicingsSection" style="display: none; padding: 1rem 1.25rem; background: #14141f; border-top: 1px solid #2a2a3a;">
+    <div id="chordVoicingsSection" style="display: none; padding: 1rem 1.25rem;">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-        <div style="font-size: 0.75rem; font-weight: 600; color: #8a8a9a; text-transform: uppercase; letter-spacing: 0.08em;">
+        <div id="chordVoicingsHeader" style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;">
           Chord Voicings
         </div>
-        <button id="closeVoicingsBtn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; background: #2a2a3a; color: #8a8a9a; border: 1px solid #3a3a4a; border-radius: 4px; cursor: pointer;">
+        <button id="closeVoicingsBtn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 4px; cursor: pointer;">
           Close
         </button>
       </div>
       <div id="chordDiagramsContainer" style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: flex-start;"></div>
     </div>
 
-    <div id="progressionsSection" style="display: none; padding: 1rem 1.25rem; background: #14141f; border-top: 1px solid #2a2a3a;">
-      <div style="font-size: 0.75rem; font-weight: 600; color: #8a8a9a; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">
+    <div id="progressionsSection" style="display: none; padding: 1rem 1.25rem;">
+      <div id="progressionsHeader" style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;">
         Practice Over
       </div>
       <div id="progressionsList" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
@@ -483,11 +483,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.1.22 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.1.23 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.1.22 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.1.23 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -909,25 +909,36 @@
       const chordExplorerSection = document.getElementById('chordExplorerSection');
       if (chordExplorerSection) {
         chordExplorerSection.style.background = theme.controlBg;
-        chordExplorerSection.style.borderColor = theme.cardBorder;
+        chordExplorerSection.style.borderTop = `1px solid ${theme.cardBorder}`;
       }
 
       const chordVoicingsSection = document.getElementById('chordVoicingsSection');
       if (chordVoicingsSection) {
         chordVoicingsSection.style.background = theme.controlBg;
-        chordVoicingsSection.style.borderColor = theme.cardBorder;
+        chordVoicingsSection.style.borderTop = `1px solid ${theme.cardBorder}`;
+      }
+
+      // Chord section headers
+      const chordExplorerHeader = document.getElementById('chordExplorerHeader');
+      if (chordExplorerHeader) {
+        chordExplorerHeader.style.color = theme.textMuted;
+      }
+
+      const chordVoicingsHeader = document.getElementById('chordVoicingsHeader');
+      if (chordVoicingsHeader) {
+        chordVoicingsHeader.style.color = theme.textMuted;
+      }
+
+      const progressionsHeader = document.getElementById('progressionsHeader');
+      if (progressionsHeader) {
+        progressionsHeader.style.color = theme.textMuted;
       }
 
       // Chord buttons (Clear and Close)
       document.querySelectorAll('#clearChordBtn, #closeVoicingsBtn').forEach(btn => {
         btn.style.background = theme.buttonBg;
         btn.style.borderColor = theme.buttonBorder;
-        btn.style.color = theme.textMuted;
-      });
-
-      // Chord section headers
-      document.querySelectorAll('#chordExplorerSection .scale-selector > div, #chordVoicingsSection .scale-selector > div').forEach(el => {
-        el.style.color = theme.textMuted;
+        btn.style.color = theme.buttonText;
       });
 
       // Canvas background
@@ -940,13 +951,7 @@
       const progressionsSection = document.getElementById('progressionsSection');
       if (progressionsSection) {
         progressionsSection.style.background = theme.controlBg;
-        progressionsSection.style.borderColor = theme.cardBorder;
-      }
-
-      // Progressions section header
-      const progressionsHeader = progressionsSection?.querySelector('div');
-      if (progressionsHeader) {
-        progressionsHeader.style.color = theme.textMuted;
+        progressionsSection.style.borderTop = `1px solid ${theme.cardBorder}`;
       }
 
       // Chord explorer buttons

@@ -14,22 +14,76 @@
     :root {
       color-scheme: dark;
       font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif;
-      background: #0a0a0f;
-      color: #e8e8eb;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+
+      /* CSS Custom Properties - Dark Theme (default) */
+      --body-bg: linear-gradient(135deg, #0a0a0f 0%, #14141f 100%);
+      --card-bg: #1a1a27;
+      --card-border: #2a2a3a;
+      --control-bg: #14141f;
+      --text-primary: #ffffff;
+      --text-secondary: #e8e8eb;
+      --text-muted: #8a8a9a;
+      --button-bg: #1a1a27;
+      --button-border: #2a2a3a;
+      --button-text: #b8b8c8;
+      --button-hover-bg: #24243a;
+      --button-hover-border: #3a3a4a;
+      --select-bg: #14141f;
+      --select-border: #2a2a3a;
+      --canvas-bg: #1a1a27;
+      --dropdown-bg: #14141f;
+      --dropdown-border: #2a2a3a;
+      --category-bg: #1a1a27;
+      --category-hover-bg: #1f1f2c;
+      --option-hover-bg: #1f1f2c;
+      --option-selected-bg: #2a3a4a;
+
+      background: var(--body-bg);
+      color: var(--text-secondary);
+    }
+
+    [data-theme="light"] {
+      color-scheme: light;
+
+      /* CSS Custom Properties - Light Theme */
+      --body-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      --card-bg: #ffffff;
+      --card-border: #dee2e6;
+      --control-bg: #f8f9fa;
+      --text-primary: #1a1a1a;
+      --text-secondary: #343a40;
+      --text-muted: #6c757d;
+      --button-bg: #ffffff;
+      --button-border: #dee2e6;
+      --button-text: #495057;
+      --button-hover-bg: #e9ecef;
+      --button-hover-border: #adb5bd;
+      --select-bg: #ffffff;
+      --select-border: #dee2e6;
+      --canvas-bg: #ffffff;
+      --dropdown-bg: #ffffff;
+      --dropdown-border: #dee2e6;
+      --category-bg: #f8f9fa;
+      --category-hover-bg: #e9ecef;
+      --option-hover-bg: #e9ecef;
+      --option-selected-bg: #d7e3f5;
+
+      background: var(--body-bg);
+      color: var(--text-secondary);
     }
     body {
       margin: 0;
       padding: 2rem;
       min-height: 100vh;
-      background: linear-gradient(135deg, #0a0a0f 0%, #14141f 100%);
+      background: var(--body-bg);
     }
     h1 {
       margin: 0 0 1.5rem 0;
       font-size: 1.75rem;
       font-weight: 700;
-      color: #ffffff;
+      color: var(--text-primary);
       letter-spacing: -0.03em;
     }
     .header-row {
@@ -39,8 +93,8 @@
       margin-bottom: 1.5rem;
     }
     .scale-selector {
-      background: #1a1a27;
-      border: 1px solid #2a2a3a;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 12px;
       padding: 1rem 1.25rem;
       margin-bottom: 1.5rem;
@@ -84,19 +138,19 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.5rem 0.75rem;
-      border: 1px solid #2a2a3a;
+      border: 1px solid var(--select-border);
       border-radius: 8px;
       font-size: 0.875rem;
       font-weight: 500;
-      background: #14141f;
-      color: #e8e8eb;
+      background: var(--select-bg);
+      color: var(--text-secondary);
       cursor: pointer;
       transition: all 0.2s;
       user-select: none;
     }
     .custom-select-button:hover {
-      border-color: #3a3a4a;
-      background: #1a1a27;
+      border-color: var(--button-hover-border);
+      background: var(--button-hover-bg);
     }
     .custom-select-button:focus {
       outline: none;
@@ -105,7 +159,7 @@
     }
     .dropdown-arrow {
       font-size: 0.625rem;
-      color: #8a8a9a;
+      color: var(--text-muted);
       transition: transform 0.2s;
     }
     .custom-select-button[aria-expanded="true"] .dropdown-arrow {
@@ -116,8 +170,8 @@
       top: calc(100% + 0.25rem);
       left: 0;
       right: 0;
-      background: #14141f;
-      border: 1px solid #2a2a3a;
+      background: var(--dropdown-bg);
+      border: 1px solid var(--dropdown-border);
       border-radius: 8px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       max-height: 700px;
@@ -128,15 +182,15 @@
       width: 8px;
     }
     .custom-select-dropdown::-webkit-scrollbar-track {
-      background: #0a0a0f;
+      background: var(--control-bg);
       border-radius: 4px;
     }
     .custom-select-dropdown::-webkit-scrollbar-thumb {
-      background: #2a2a3a;
+      background: var(--card-border);
       border-radius: 4px;
     }
     .custom-select-dropdown::-webkit-scrollbar-thumb:hover {
-      background: #3a3a4a;
+      background: var(--button-hover-border);
     }
     .category-header {
       display: flex;
@@ -145,17 +199,17 @@
       padding: 0.625rem 0.75rem;
       font-size: 0.75rem;
       font-weight: 600;
-      color: #8a8a9a;
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      background: #1a1a27;
+      background: var(--category-bg);
       cursor: pointer;
       user-select: none;
-      border-bottom: 1px solid #2a2a3a;
+      border-bottom: 1px solid var(--card-border);
     }
     .category-header:hover {
-      background: #1f1f2c;
-      color: #9a9aaa;
+      background: var(--category-hover-bg);
+      color: var(--text-muted);
     }
     .category-header:first-child {
       border-top-left-radius: 7px;
@@ -171,7 +225,7 @@
     }
     .category-items {
       display: block;
-      border-bottom: 1px solid #2a2a3a;
+      border-bottom: 1px solid var(--card-border);
     }
     .category-items.collapsed {
       display: none;
@@ -179,29 +233,29 @@
     .scale-option {
       padding: 0.5rem 0.75rem 0.5rem 1.5rem;
       font-size: 0.875rem;
-      color: #e8e8eb;
+      color: var(--text-secondary);
       cursor: pointer;
       transition: background 0.15s;
     }
     .scale-option:hover {
-      background: #1f1f2c;
+      background: var(--option-hover-bg);
     }
     .scale-option.selected {
-      background: #2a3a4a;
+      background: var(--option-selected-bg);
       color: #4a9eff;
       font-weight: 500;
     }
     .scale-selector label {
       font-size: 0.75rem;
       font-weight: 600;
-      color: #8a8a9a;
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
     .fretboard-container {
       position: relative;
-      background: #1a1a27;
-      border: 1px solid #2a2a3a;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 12px;
       padding: 0;
       overflow: hidden;
@@ -212,8 +266,8 @@
       align-items: center;
       gap: 1.5rem;
       padding: 0.875rem 1.25rem;
-      background: #14141f;
-      border-bottom: 1px solid #2a2a3a;
+      background: var(--control-bg);
+      border-bottom: 1px solid var(--card-border);
       flex-wrap: wrap;
     }
     .control-section {
@@ -224,7 +278,7 @@
     .control-label {
       font-size: 0.75rem;
       font-weight: 600;
-      color: #8a8a9a;
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       white-space: nowrap;
@@ -236,9 +290,9 @@
       font-size: 15px;
       font-weight: 600;
       line-height: 1;
-      border: 1px solid #2a2a3a;
-      background: #1a1a27;
-      color: #b8b8c8;
+      border: 1px solid var(--button-border);
+      background: var(--button-bg);
+      color: var(--button-text);
       border-radius: 7px;
       cursor: pointer;
       display: flex;
@@ -247,9 +301,9 @@
       transition: all 0.2s;
     }
     .control-btn:hover {
-      background: #24243a;
-      border-color: #3a3a4a;
-      color: #e8e8eb;
+      background: var(--button-hover-bg);
+      border-color: var(--button-hover-border);
+      color: var(--text-secondary);
     }
     .control-btn.active {
       background: linear-gradient(135deg, #4a9eff 0%, #3b7dd6 100%);
@@ -272,14 +326,14 @@
       padding: 0.75rem 1rem;
       font-size: 0.813rem;
       font-weight: 500;
-      color: #8a8a9a;
-      background: #14141f;
-      border-top: 1px solid #2a2a3a;
+      color: var(--text-muted);
+      background: var(--control-bg);
+      border-top: 1px solid var(--card-border);
       text-align: center;
     }
     footer {
       text-align: center;
-      color: #8a8a9a;
+      color: var(--text-muted);
       font-size: 0.813rem;
       padding: 2rem 0 1rem;
     }
@@ -482,11 +536,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.1.31 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.2.0 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.1.31 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.2.0 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -834,173 +888,16 @@
     }
 
     /**
-     * Apply theme colors to UI
+     * Apply theme by toggling data-theme attribute
      */
     function applyTheme() {
-      const theme = themes[state.theme];
+      // Set theme attribute on root element for CSS variables
+      document.documentElement.setAttribute('data-theme', state.theme);
 
-      document.body.style.background = theme.bodyBg;
-
-      document.querySelectorAll('.scale-selector').forEach(el => {
-        el.style.background = theme.cardBg;
-        el.style.borderColor = theme.cardBorder;
-      });
-
-      document.querySelectorAll('.scale-selector select').forEach(el => {
-        el.style.background = theme.selectBg;
-        el.style.borderColor = theme.selectBorder;
-        el.style.color = theme.textSecondary;
-      });
-
-      document.querySelectorAll('.scale-selector label').forEach(el => {
-        el.style.color = theme.textMuted;
-      });
-
-      document.querySelectorAll('.fretboard-container').forEach(el => {
-        el.style.background = theme.cardBg;
-        el.style.borderColor = theme.cardBorder;
-      });
-
-      document.querySelectorAll('.fretboard-controls').forEach(el => {
-        el.style.background = theme.controlBg;
-        el.style.borderColor = theme.cardBorder;
-      });
-
-      document.querySelectorAll('.control-label').forEach(el => {
-        el.style.color = theme.textMuted;
-      });
-
-      document.querySelectorAll('.control-btn:not(.active)').forEach(el => {
-        el.style.background = theme.buttonBg;
-        el.style.borderColor = theme.buttonBorder;
-        el.style.color = theme.buttonText;
-      });
-
-      document.querySelectorAll('.info').forEach(el => {
-        el.style.background = theme.controlBg;
-        el.style.borderColor = theme.cardBorder;
-        el.style.color = theme.textMuted;
-      });
-
-      document.querySelector('h1').style.color = theme.textPrimary;
-      document.querySelector('footer').style.color = theme.textMuted;
-      document.getElementById('fretRangeDisplay').style.color = theme.textSecondary;
-
-      // Scale selector custom dropdown
-      const scaleSelectButton = document.getElementById('scaleSelectButton');
-      if (scaleSelectButton) {
-        scaleSelectButton.style.background = theme.selectBg;
-        scaleSelectButton.style.borderColor = theme.selectBorder;
-        scaleSelectButton.style.color = theme.textSecondary;
-      }
-
-      const scaleSelectDropdown = document.getElementById('scaleSelectDropdown');
-      if (scaleSelectDropdown) {
-        scaleSelectDropdown.style.background = theme.selectBg;
-        scaleSelectDropdown.style.borderColor = theme.selectBorder;
-      }
-
-      // Category headers in dropdown
-      document.querySelectorAll('.category-header').forEach(header => {
-        header.style.background = theme.controlBg;
-        header.style.borderColor = theme.cardBorder;
-        header.style.color = theme.textMuted;
-      });
-
-      // Scale options in dropdown
-      document.querySelectorAll('.scale-option:not(.selected)').forEach(option => {
-        option.style.color = theme.textSecondary;
-      });
-
-      // Metronome BPM input
-      const bpmInput = document.getElementById('metronomeBpm');
-      if (bpmInput) {
-        bpmInput.style.background = theme.selectBg;
-        bpmInput.style.borderColor = theme.selectBorder;
-        bpmInput.style.color = theme.textSecondary;
-      }
-
-      // Pattern search input
-      const patternSearch = document.getElementById('patternSearch');
-      if (patternSearch) {
-        patternSearch.style.background = theme.selectBg;
-        patternSearch.style.borderColor = theme.selectBorder;
-        patternSearch.style.color = theme.textSecondary;
-      }
-
+      // Update theme toggle icon
       document.getElementById('themeIcon').textContent = state.theme === 'dark' ? '☀️' : '🌙';
 
-      // Chord sections
-      const chordExplorerSection = document.getElementById('chordExplorerSection');
-      if (chordExplorerSection) {
-        chordExplorerSection.style.background = theme.controlBg;
-        chordExplorerSection.style.borderTop = `1px solid ${theme.cardBorder}`;
-      }
-
-      const chordVoicingsSection = document.getElementById('chordVoicingsSection');
-      if (chordVoicingsSection) {
-        chordVoicingsSection.style.background = theme.controlBg;
-        chordVoicingsSection.style.borderTop = `1px solid ${theme.cardBorder}`;
-      }
-
-      // Chord section headers
-      const chordExplorerHeader = document.getElementById('chordExplorerHeader');
-      if (chordExplorerHeader) {
-        chordExplorerHeader.style.color = theme.textMuted;
-      }
-
-      const chordVoicingsHeader = document.getElementById('chordVoicingsHeader');
-      if (chordVoicingsHeader) {
-        chordVoicingsHeader.style.color = theme.textMuted;
-      }
-
-      const progressionsHeader = document.getElementById('progressionsHeader');
-      if (progressionsHeader) {
-        progressionsHeader.style.color = theme.textMuted;
-      }
-
-      // Chord buttons (Clear and Close)
-      document.querySelectorAll('#clearChordBtn, #closeVoicingsBtn').forEach(btn => {
-        btn.style.background = theme.buttonBg;
-        btn.style.borderColor = theme.buttonBorder;
-        btn.style.color = theme.buttonText;
-      });
-
-      // Canvas background
-      const canvas = document.getElementById('fretboardCanvas');
-      if (canvas) {
-        canvas.style.background = theme.canvasBg;
-      }
-
-      // Progressions section
-      const progressionsSection = document.getElementById('progressionsSection');
-      if (progressionsSection) {
-        progressionsSection.style.background = theme.controlBg;
-        progressionsSection.style.borderTop = `1px solid ${theme.cardBorder}`;
-      }
-
-      // Progression items
-      document.querySelectorAll('.progression-item').forEach(item => {
-        item.style.background = theme.cardBg;
-        item.style.borderColor = theme.cardBorder;
-      });
-
-      // Chord explorer buttons
-      document.querySelectorAll('#chordExplorerSection .control-btn').forEach(btn => {
-        if (!btn.classList.contains('active')) {
-          btn.style.background = theme.buttonBg;
-          btn.style.borderColor = theme.buttonBorder;
-          btn.style.color = theme.buttonText;
-        }
-      });
-
-      // Chord selection buttons (triads and 7ths)
-      document.querySelectorAll('.chord-btn:not(.selected-chord)').forEach(btn => {
-        btn.style.background = theme.buttonBg;
-        btn.style.borderColor = theme.buttonBorder;
-        btn.style.color = theme.buttonText;
-      });
-
+      // Redraw canvas with new theme colors
       drawFretboard();
     }
 

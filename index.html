@@ -541,11 +541,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.3.2 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.3.3 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.3.2 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.3.3 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -1092,8 +1092,8 @@
       const stringSpacing = 25; // Vertical spacing between strings
       const noteSpacing = 50; // Horizontal spacing between notes in sequence
 
-      // Calculate transposition offset
-      const originalRoot = scaleData.starting_tone || 'A';
+      // Calculate transposition offset from ORIGINAL scale data
+      const originalRoot = state.currentScale.data.starting_tone || 'A';
       const semitoneShift = (NOTE_TO_SEMITONE[root] - NOTE_TO_SEMITONE[originalRoot] + 12) % 12;
       const intervals = (scaleData.properties?.intervals || []).map(i => parseInt(i));
       const rootSemitone = NOTE_TO_SEMITONE[root];

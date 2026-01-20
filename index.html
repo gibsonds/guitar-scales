@@ -541,11 +541,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.3.1 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.3.2 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.3.1 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.3.2 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -1092,6 +1092,12 @@
       const stringSpacing = 25; // Vertical spacing between strings
       const noteSpacing = 50; // Horizontal spacing between notes in sequence
 
+      // Calculate transposition offset
+      const originalRoot = scaleData.starting_tone || 'A';
+      const semitoneShift = (NOTE_TO_SEMITONE[root] - NOTE_TO_SEMITONE[originalRoot] + 12) % 12;
+      const intervals = (scaleData.properties?.intervals || []).map(i => parseInt(i));
+      const rootSemitone = NOTE_TO_SEMITONE[root];
+
       // Get all fingering variations
       const variations = Object.keys(fingeringVariations);
       let currentY = margin;
@@ -1111,11 +1117,20 @@
           if (frets[stringKey]) {
             const stringFrets = frets[stringKey];
             stringFrets.forEach(fretStr => {
-              const fret = parseInt(fretStr);
+              const originalFret = parseInt(fretStr);
+              const transposedFret = originalFret + semitoneShift;
+
+              // Calculate the note at this position to determine if it's a root
+              const openStringSemitone = STANDARD_TUNING[6 - stringNum];
+              const noteSemitone = (openStringSemitone + transposedFret) % 12;
+              const intervalFromRoot = (noteSemitone - rootSemitone + 12) % 12;
+              const isRoot = intervalFromRoot === 0;
+
               notesWithSequence.push({
                 string: stringNum,
-                fret: fret,
-                sequence: sequence++
+                fret: transposedFret,
+                sequence: sequence++,
+                isRoot: isRoot
               });
             });
           }
@@ -1157,7 +1172,7 @@
 
           // Draw note circle
           const radius = 10;
-          ctx.fillStyle = colors.noteColor;
+          ctx.fillStyle = note.isRoot ? colors.rootColor : colors.noteColor;
           ctx.beginPath();
           ctx.arc(x, y, radius, 0, 2 * Math.PI);
           ctx.fill();
@@ -1168,11 +1183,6 @@
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(note.fret, x, y);
-
-          // Draw sequence number above circle
-          ctx.fillStyle = colors.textMuted;
-          ctx.font = '10px sans-serif';
-          ctx.fillText(note.sequence, x, y - 18);
         });
 
         currentY += staveHeight;

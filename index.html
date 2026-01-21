@@ -379,9 +379,9 @@
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 0.25rem;">
-      <label style="text-transform: uppercase; font-size: 0.75rem; font-weight: 600; color: #8a8a9a; letter-spacing: 0.08em;">Root</label>
+      <label style="text-transform: uppercase; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em;">Root</label>
       <div style="display: flex; gap: 0.5rem; align-items: center;">
-        <select id="rootSelect" style="width: 60px !important; min-width: 60px !important; padding: 0.5rem 0.5rem; border: 1px solid #2a2a3a; border-radius: 8px; font-size: 0.875rem; font-weight: 500; background: #14141f; color: #e8e8eb; cursor: pointer; transition: all 0.2s; height: 38px;"></select>
+        <select id="rootSelect" style="width: 60px !important; min-width: 60px !important; padding: 0.5rem 0.5rem; border: 1px solid var(--select-border); border-radius: 8px; font-size: 0.875rem; font-weight: 500; background: var(--select-bg); color: var(--text-secondary); cursor: pointer; transition: all 0.2s; height: 38px;"></select>
         <button id="enharmonicToggle" class="control-btn" title="Showing sharps (click for flats)" style="height: 38px; width: 38px; padding: 0;">♯</button>
       </div>
     </div>
@@ -394,8 +394,8 @@
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 0.25rem;">
-      <label style="text-transform: uppercase; font-size: 0.75rem; font-weight: 600; color: #8a8a9a; letter-spacing: 0.08em;">Instrument</label>
-      <select id="instrumentSelect" style="padding: 0.5rem 0.75rem; border: 1px solid #2a2a3a; border-radius: 8px; font-size: 0.875rem; font-weight: 500; background: #14141f; color: #e8e8eb; cursor: pointer; transition: all 0.2s; height: 38px;">
+      <label style="text-transform: uppercase; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em;">Instrument</label>
+      <select id="instrumentSelect" style="padding: 0.5rem 0.75rem; border: 1px solid var(--select-border); border-radius: 8px; font-size: 0.875rem; font-weight: 500; background: var(--select-bg); color: var(--text-secondary); cursor: pointer; transition: all 0.2s; height: 38px;">
         <option value="guitar">Guitar</option>
         <option value="cello">Cello</option>
       </select>
@@ -422,12 +422,12 @@
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 0.25rem;">
-      <label style="text-transform: uppercase; font-size: 0.75rem; font-weight: 600; color: #8a8a9a; letter-spacing: 0.08em;">Metronome</label>
+      <label style="text-transform: uppercase; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.08em;">Metronome</label>
       <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
         <button id="metronomeToggle" class="control-btn" style="width: auto; padding: 0 0.75rem; height: 38px;" title="Toggle metronome">
           Off
         </button>
-        <select id="metronomeSound" style="padding: 0.5rem 0.75rem; border: 1px solid #2a2a3a; border-radius: 8px; font-size: 0.875rem; font-weight: 500; background: #14141f; color: #e8e8eb; cursor: pointer; transition: all 0.2s; height: 38px; min-width: 100px;">
+        <select id="metronomeSound" style="padding: 0.5rem 0.75rem; border: 1px solid var(--select-border); border-radius: 8px; font-size: 0.875rem; font-weight: 500; background: var(--select-bg); color: var(--text-secondary); cursor: pointer; transition: all 0.2s; height: 38px; min-width: 100px;">
           <option value="woodblock">Woodblock</option>
           <option value="click">Click</option>
           <option value="beep">Beep</option>
@@ -441,10 +441,10 @@
             value="72"
             min="30"
             max="240"
-            style="width: 50px; padding: 0.5rem 0.25rem; border: 1px solid #2a2a3a; border-radius: 8px; font-size: 0.875rem; background: #14141f; color: #e8e8eb; text-align: center;"
+            style="width: 50px; padding: 0.5rem 0.25rem; border: 1px solid var(--select-border); border-radius: 8px; font-size: 0.875rem; background: var(--select-bg); color: var(--text-secondary); text-align: center;"
           />
           <button id="metronomeBpmUp" class="control-btn" style="width: 28px; height: 38px; padding: 0; font-size: 16px;" title="Increase BPM">+</button>
-          <span style="font-size: 0.75rem; color: #8a8a9a;">BPM</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">BPM</span>
         </div>
       </div>
     </div>

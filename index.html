@@ -1088,15 +1088,25 @@
       }
 
       const width = canvas.width;
-      const height = canvas.height;
-
-      ctx.fillStyle = colors.canvasBg;
-      ctx.fillRect(0, 0, width, height);
 
       const margin = 60;
       const staveHeight = 200; // Height for each position stave
       const stringSpacing = 25; // Vertical spacing between strings
       const noteSpacing = 50; // Horizontal spacing between notes in sequence
+
+      // Calculate required height based on number of variations
+      const variationCount = Object.keys(fingeringVariations).length;
+      const requiredHeight = margin + (variationCount * staveHeight) + margin;
+
+      // Resize canvas if needed
+      if (canvas.height !== requiredHeight) {
+        canvas.height = requiredHeight;
+      }
+
+      const height = canvas.height;
+
+      ctx.fillStyle = colors.canvasBg;
+      ctx.fillRect(0, 0, width, height);
 
       // Calculate transposition offset from ORIGINAL scale data
       const originalRoot = state.currentScale.data.starting_tone || 'A';
@@ -1220,12 +1230,28 @@
           ctx.arc(x, y, radius, 0, 2 * Math.PI);
           ctx.fill();
 
-          // Draw fret number inside circle
+          // Calculate what to display inside circle
+          const openStringSemitone = STANDARD_TUNING[6 - note.string];
+          const noteSemitone = (openStringSemitone + note.fret) % 12;
+          const intervalFromRoot = (noteSemitone - rootSemitone + 12) % 12;
+
+          let displayText;
+          if (showDegrees) {
+            // Show scale degree
+            const degreeIndex = intervals.indexOf(intervalFromRoot);
+            displayText = degreeIndex >= 0 ? (scaleData.properties?.scale_degrees || [])[degreeIndex] || note.fret : note.fret;
+          } else {
+            // Show note name
+            const noteNames = state.enharmonicPreference === 'sharps' ? NOTE_NAMES_SHARPS : NOTE_NAMES_FLATS;
+            displayText = noteNames[noteSemitone];
+          }
+
+          // Draw text inside circle
           ctx.fillStyle = '#ffffff';
           ctx.font = 'bold 11px sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.fillText(note.fret, x, y);
+          ctx.fillText(displayText, x, y);
         });
 
         currentY += staveHeight;
@@ -1242,6 +1268,11 @@
      */
     function drawFretboardView() {
       if (!state.currentScaleData) return;
+
+      // Reset canvas to standard height for fretboard view
+      if (canvas.height !== 300) {
+        canvas.height = 300;
+      }
 
       const { fretMin, fretMax, zoom, showDegrees, theme } = state;
       const colors = themes[theme];

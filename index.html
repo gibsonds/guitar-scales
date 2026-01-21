@@ -1241,9 +1241,8 @@
             const degreeIndex = intervals.indexOf(intervalFromRoot);
             displayText = degreeIndex >= 0 ? (scaleData.properties?.scale_degrees || [])[degreeIndex] || note.fret : note.fret;
           } else {
-            // Show note name
-            const noteNames = state.enharmonicPreference === 'sharps' ? NOTE_NAMES_SHARPS : NOTE_NAMES_FLATS;
-            displayText = noteNames[noteSemitone];
+            // Show fret number (not note name - fret numbers are what you need in position view!)
+            displayText = note.fret;
           }
 
           // Draw text inside circle
@@ -2450,7 +2449,14 @@
     document.getElementById('toggleDisplay').addEventListener('click', (e) => {
       state.showDegrees = !state.showDegrees;
       e.currentTarget.textContent = state.showDegrees ? '#' : '♪';
-      e.currentTarget.title = state.showDegrees ? 'Showing degrees (click for notes)' : 'Showing notes (click for degrees)';
+
+      // Context-aware tooltip: in position view, ♪ means fret numbers; in fretboard view, ♪ means note names
+      if (state.viewMode === 'position') {
+        e.currentTarget.title = state.showDegrees ? 'Showing degrees (click for fret numbers)' : 'Showing fret numbers (click for degrees)';
+      } else {
+        e.currentTarget.title = state.showDegrees ? 'Showing degrees (click for notes)' : 'Showing notes (click for degrees)';
+      }
+
       drawFretboard();
     });
 
@@ -2497,6 +2503,14 @@
         shiftControls.style.display = 'flex';
       } else {
         shiftControls.style.display = 'none';
+      }
+
+      // Update toggle display button tooltip based on view mode
+      const toggleDisplayBtn = document.getElementById('toggleDisplay');
+      if (state.viewMode === 'position') {
+        toggleDisplayBtn.title = state.showDegrees ? 'Showing degrees (click for fret numbers)' : 'Showing fret numbers (click for degrees)';
+      } else {
+        toggleDisplayBtn.title = state.showDegrees ? 'Showing degrees (click for notes)' : 'Showing notes (click for degrees)';
       }
 
       drawFretboard(); // Redraw with new view mode

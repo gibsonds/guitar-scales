@@ -36,9 +36,9 @@
         "b7"
       ],
       "fingering_variations": {
-        "index": {
+        "position_1": {
           "starting_finger": 1,
-          "description": "Starting with index finger",
+          "description": "Position 1 (5th position)",
           "frets": {
             "6": [
               "5",
@@ -69,6 +69,78 @@
               "5",
               "7",
               "8"
+            ]
+          }
+        },
+        "position_2": {
+          "starting_finger": 2,
+          "description": "Position 2 (7th position)",
+          "frets": {
+            "6": [
+              "7",
+              "8",
+              "10"
+            ],
+            "5": [
+              "7",
+              "8",
+              "10"
+            ],
+            "4": [
+              "7",
+              "9",
+              "10"
+            ],
+            "3": [
+              "7",
+              "9",
+              "11"
+            ],
+            "2": [
+              "8",
+              "10",
+              "12"
+            ],
+            "1": [
+              "7",
+              "8",
+              "10"
+            ]
+          }
+        },
+        "position_3": {
+          "starting_finger": 1,
+          "description": "Position 3 (open position)",
+          "frets": {
+            "6": [
+              "0",
+              "2",
+              "3"
+            ],
+            "5": [
+              "0",
+              "2",
+              "3"
+            ],
+            "4": [
+              "0",
+              "2",
+              "4"
+            ],
+            "3": [
+              "0",
+              "2",
+              "4"
+            ],
+            "2": [
+              "1",
+              "3",
+              "5"
+            ],
+            "1": [
+              "0",
+              "2",
+              "3"
             ]
           }
         }

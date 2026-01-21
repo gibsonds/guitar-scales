@@ -5,7 +5,7 @@
     "starting_tone": "C",
     "starting_string": "6",
     "starting_fret": "8",
-    "scale_type": "Lydian (Mode 4 of Major Scale)",
+    "scale_type": "Lydian",
     "tuning": [
       "E",
       "A",
@@ -36,9 +36,9 @@
         "7"
       ],
       "fingering_variations": {
-        "index": {
+        "position_1": {
           "starting_finger": 1,
-          "description": "Starting with index finger",
+          "description": "Position 1 (8th position)",
           "frets": {
             "6": [
               "8",
@@ -71,21 +71,81 @@
               "14"
             ]
           }
+        },
+        "position_2": {
+          "starting_finger": 2,
+          "description": "Position 2 (10th position)",
+          "frets": {
+            "6": [
+              "10",
+              "12",
+              "13"
+            ],
+            "5": [
+              "10",
+              "12",
+              "14"
+            ],
+            "4": [
+              "10",
+              "12",
+              "14"
+            ],
+            "3": [
+              "11",
+              "12",
+              "14"
+            ],
+            "2": [
+              "12",
+              "13",
+              "15"
+            ],
+            "1": [
+              "12",
+              "14",
+              "15"
+            ]
+          }
+        },
+        "position_3": {
+          "starting_finger": 1,
+          "description": "Position 3 (3rd position)",
+          "frets": {
+            "6": [
+              "3",
+              "5",
+              "7"
+            ],
+            "5": [
+              "4",
+              "5",
+              "7"
+            ],
+            "4": [
+              "4",
+              "5",
+              "7"
+            ],
+            "3": [
+              "4",
+              "6",
+              "7"
+            ],
+            "2": [
+              "5",
+              "7",
+              "8"
+            ],
+            "1": [
+              "5",
+              "7",
+              "9"
+            ]
+          }
         }
       },
-      "category": "modes_major",
-      "progressions": [
-        {
-          "name": "IVmaj7 vamp",
-          "progression": "||: Fmaj7 | Fmaj7 | Fmaj7 | Fmaj7 :||",
-          "description": "Lydian modal vamp (bright, dreamy)"
-        },
-        {
-          "name": "I-II",
-          "progression": "||: Fmaj7 | Gmaj7 | Fmaj7 | Gmaj7 :||",
-          "description": "Bright major II chord (from #4)"
-        }
-      ]
+      "category": "modes_major"
     }
   }
 }

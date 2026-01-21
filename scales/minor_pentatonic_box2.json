@@ -1,10 +1,10 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "minor_pentatonic_box2",
+    "exercise": "minor_pentatonic",
     "starting_tone": "E",
     "starting_string": "6",
-    "starting_fret": "12",
+    "starting_fret": "0",
     "scale_type": "Minor Pentatonic",
     "tuning": [
       "E",
@@ -32,68 +32,41 @@
         "b7"
       ],
       "pattern_type": "box",
-      "position": 2,
-      "description": "Box shape pattern - common rock/blues position (transcribed from 12th fret)",
+      "description": "Minor pentatonic scale - 5 box positions covering the entire neck",
       "fingering_variations": {
-        "index": {
+        "position_1": {
           "starting_finger": 1,
-          "description": "Starting with index finger on 12th fret",
+          "description": "Position 1 (open position)",
           "frets": {
             "6": [
-              "12",
-              "15"
+              "0",
+              "3"
             ],
             "5": [
-              "12",
-              "14"
+              "0",
+              "2"
             ],
             "4": [
-              "12",
-              "14"
+              "0",
+              "2"
             ],
             "3": [
-              "12",
-              "14"
+              "0",
+              "2"
             ],
             "2": [
-              "12",
-              "15"
+              "0",
+              "3"
             ],
             "1": [
-              "12",
-              "15"
-            ]
-          },
-          "finger_assignments": {
-            "6": [
-              1,
-              4
-            ],
-            "5": [
-              1,
-              3
-            ],
-            "4": [
-              1,
-              3
-            ],
-            "3": [
-              1,
-              3
-            ],
-            "2": [
-              1,
-              4
-            ],
-            "1": [
-              1,
-              4
+              "0",
+              "3"
             ]
           }
         },
-        "position_shift": {
+        "position_2": {
           "starting_finger": 1,
-          "description": "With position shift on G string",
+          "description": "Position 2 (12th position)",
           "frets": {
             "6": [
               "12",
@@ -108,40 +81,106 @@
               "14"
             ],
             "3": [
-              "14",
-              "17"
+              "12",
+              "14"
             ],
             "2": [
-              "15",
-              "17"
+              "12",
+              "15"
             ],
             "1": [
+              "12",
               "15"
             ]
-          },
-          "finger_assignments": {
+          }
+        },
+        "position_3": {
+          "starting_finger": 1,
+          "description": "Position 3 (2nd position)",
+          "frets": {
             "6": [
-              1,
-              4
+              "3",
+              "5"
             ],
             "5": [
-              1,
-              3
+              "2",
+              "5"
             ],
             "4": [
-              1,
-              3
+              "2",
+              "4"
             ],
             "3": [
-              1,
-              4
+              "2",
+              "4"
             ],
             "2": [
-              1,
-              3
+              "3",
+              "5"
             ],
             "1": [
-              1
+              "3",
+              "5"
+            ]
+          }
+        },
+        "position_4": {
+          "starting_finger": 1,
+          "description": "Position 4 (5th position)",
+          "frets": {
+            "6": [
+              "5",
+              "7"
+            ],
+            "5": [
+              "5",
+              "7"
+            ],
+            "4": [
+              "4",
+              "7"
+            ],
+            "3": [
+              "4",
+              "7"
+            ],
+            "2": [
+              "5",
+              "7"
+            ],
+            "1": [
+              "5",
+              "8"
+            ]
+          }
+        },
+        "position_5": {
+          "starting_finger": 1,
+          "description": "Position 5 (7th position)",
+          "frets": {
+            "6": [
+              "7",
+              "10"
+            ],
+            "5": [
+              "7",
+              "9"
+            ],
+            "4": [
+              "7",
+              "9"
+            ],
+            "3": [
+              "7",
+              "9"
+            ],
+            "2": [
+              "8",
+              "10"
+            ],
+            "1": [
+              "8",
+              "10"
             ]
           }
         }

@@ -1112,6 +1112,33 @@
         const variation = fingeringVariations[variationKey];
         const frets = variation.frets;
 
+        // Smart octave wrapping: Check if transposition creates unplayable pattern
+        let autoShift = state.positionShift;
+
+        // First pass: check what frets we'd get with current transposition
+        let maxFret = 0;
+        let minFrettedNote = 999;
+        let maxFrettedNote = 0;
+
+        for (let stringNum = 6; stringNum >= 1; stringNum--) {
+          const stringKey = String(stringNum);
+          if (frets[stringKey]) {
+            frets[stringKey].forEach(fretStr => {
+              const fret = parseInt(fretStr) + semitoneShift + autoShift;
+              maxFret = Math.max(maxFret, fret);
+              if (fret > 0) {
+                minFrettedNote = Math.min(minFrettedNote, fret);
+                maxFrettedNote = Math.max(maxFrettedNote, fret);
+              }
+            });
+          }
+        }
+
+        // Auto-apply -12 if pattern would be unplayable
+        if (maxFret > 22 || (maxFrettedNote - minFrettedNote > 12)) {
+          autoShift -= 12;
+        }
+
         // Calculate sequence for this variation
         // Play from low E (string 6) to high e (string 1)
         const notesWithSequence = [];
@@ -1124,7 +1151,7 @@
             const stringFrets = frets[stringKey];
             stringFrets.forEach(fretStr => {
               const originalFret = parseInt(fretStr);
-              let transposedFret = originalFret + semitoneShift + state.positionShift;
+              let transposedFret = originalFret + semitoneShift + autoShift;
 
               // Ensure fret doesn't go negative
               if (transposedFret < 0) {
@@ -1151,7 +1178,12 @@
         ctx.fillStyle = colors.textPrimary;
         ctx.font = 'bold 14px sans-serif';
         ctx.textAlign = 'left';
-        ctx.fillText(`Position ${varIndex + 1}: ${variation.description || variationKey}`, margin, currentY - 10);
+        let labelText = `Position ${varIndex + 1}: ${variation.description || variationKey}`;
+        // Add indicator if auto-shifted
+        if (autoShift !== state.positionShift) {
+          labelText += ' (auto-shifted -12)';
+        }
+        ctx.fillText(labelText, margin, currentY - 10);
 
         // Draw strings (e-B-G-D-A-E from top to bottom, standard tab format)
         const stringNames = ['e', 'B', 'G', 'D', 'A', 'E'];

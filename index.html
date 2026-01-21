@@ -1118,7 +1118,12 @@
             const stringFrets = frets[stringKey];
             stringFrets.forEach(fretStr => {
               const originalFret = parseInt(fretStr);
-              const transposedFret = originalFret + semitoneShift;
+              let transposedFret = originalFret + semitoneShift;
+
+              // Keep frets in practical range (0-12) by wrapping down octave
+              while (transposedFret > 12) {
+                transposedFret -= 12;
+              }
 
               // Calculate the note at this position to determine if it's a root
               const openStringSemitone = STANDARD_TUNING[6 - stringNum];

@@ -342,10 +342,15 @@
 <body>
   <div class="header-row">
     <h1>🎸 Guitar Scale Explorer</h1>
-    <div style="display: flex; gap: 0.5rem;">
+    <div style="display: flex; gap: 0.5rem; align-items: center;">
       <button id="viewModeToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Toggle view mode">
         <span id="viewModeIcon">🎼</span>
       </button>
+      <div id="positionShiftControls" style="display: none; gap: 0.25rem;">
+        <button class="control-btn position-shift-btn" data-shift="-12" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" title="Shift down one octave">−12</button>
+        <button class="control-btn position-shift-btn active" data-shift="0" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" title="No shift">0</button>
+        <button class="control-btn position-shift-btn" data-shift="12" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" title="Shift up one octave">+12</button>
+      </div>
       <button id="themeToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Toggle theme">
         <span id="themeIcon">☀️</span>
       </button>
@@ -594,7 +599,8 @@
       metronomeEnabled: false,
       metronomeBpm: 72,
       metronomeSound: 'woodblock',
-      viewMode: 'fretboard' // 'fretboard' or 'position'
+      viewMode: 'fretboard', // 'fretboard' or 'position'
+      positionShift: 0 // -12, 0, or +12 for octave shifting in position view
     };
 
     // Theme colors
@@ -1118,11 +1124,11 @@
             const stringFrets = frets[stringKey];
             stringFrets.forEach(fretStr => {
               const originalFret = parseInt(fretStr);
-              let transposedFret = originalFret + semitoneShift;
+              let transposedFret = originalFret + semitoneShift + state.positionShift;
 
-              // Keep frets in practical range (0-12) by wrapping down octave
-              while (transposedFret > 12) {
-                transposedFret -= 12;
+              // Ensure fret doesn't go negative
+              if (transposedFret < 0) {
+                transposedFret += 12;
               }
 
               // Calculate the note at this position to determine if it's a root
@@ -2421,6 +2427,15 @@
     document.getElementById('viewModeToggle').addEventListener('click', () => {
       state.viewMode = state.viewMode === 'fretboard' ? 'position' : 'fretboard';
       document.getElementById('viewModeIcon').textContent = state.viewMode === 'fretboard' ? '🎼' : '🎸';
+
+      // Show/hide position shift controls
+      const shiftControls = document.getElementById('positionShiftControls');
+      if (state.viewMode === 'position') {
+        shiftControls.style.display = 'flex';
+      } else {
+        shiftControls.style.display = 'none';
+      }
+
       drawFretboard(); // Redraw with new view mode
     });
 
@@ -2428,6 +2443,20 @@
       state.theme = state.theme === 'dark' ? 'light' : 'dark';
       renderProgressions(); // Re-render progressions with new theme
       applyTheme();
+    });
+
+    // Position shift controls
+    document.querySelectorAll('.position-shift-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const shift = parseInt(e.currentTarget.dataset.shift);
+        state.positionShift = shift;
+
+        // Update active state
+        document.querySelectorAll('.position-shift-btn').forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+
+        drawFretboard(); // Redraw with new shift
+      });
     });
 
     // Canvas drag functionality

@@ -1,0 +1,114 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "major_blues",
+    "starting_tone": "G",
+    "starting_string": "6",
+    "starting_fret": "3",
+    "scale_type": "Major Blues",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "2",
+        "3",
+        "4",
+        "7",
+        "9"
+      ],
+      "mode": "Major Blues",
+      "recalculate_on_tone_change": true,
+      "scale_degrees": [
+        "1",
+        "2",
+        "b3",
+        "3",
+        "5",
+        "6"
+      ],
+      "description": "Major blues scale with blue note (b3) - 5 box positions based on pentatonic framework",
+      "fingering_variations": {
+        "position_1": {
+          "starting_finger": 2,
+          "description": "Position 1 (3rd position - root on low E)",
+          "frets": {
+            "6": ["3", "4", "5"],
+            "5": ["2", "5"],
+            "4": ["2", "4"],
+            "3": ["2", "3", "4"],
+            "2": ["3", "5"],
+            "1": ["3", "4", "5"]
+          }
+        },
+        "position_2": {
+          "starting_finger": 1,
+          "description": "Position 2 (5th position - 2nd on low E)",
+          "frets": {
+            "6": ["5", "7"],
+            "5": ["5", "6", "7"],
+            "4": ["4", "7"],
+            "3": ["4", "7"],
+            "2": ["5", "6", "8"],
+            "1": ["5", "7"]
+          }
+        },
+        "position_3": {
+          "starting_finger": 1,
+          "description": "Position 3 (7th position - 3rd on low E)",
+          "frets": {
+            "6": ["7", "10"],
+            "5": ["7", "8", "9"],
+            "4": ["7", "9"],
+            "3": ["7", "9"],
+            "2": ["8", "10"],
+            "1": ["7", "8", "10"]
+          }
+        },
+        "position_4": {
+          "starting_finger": 1,
+          "description": "Position 4 (10th position - 5th on low E)",
+          "frets": {
+            "6": ["10", "12"],
+            "5": ["9", "12"],
+            "4": ["9", "10", "11"],
+            "3": ["9", "11"],
+            "2": ["10", "12"],
+            "1": ["10", "12"]
+          }
+        },
+        "position_5": {
+          "starting_finger": 1,
+          "description": "Position 5 (12th position - 6th on low E)",
+          "frets": {
+            "6": ["12", "15"],
+            "5": ["12", "13", "14"],
+            "4": ["11", "14"],
+            "3": ["11", "14"],
+            "2": ["12", "15"],
+            "1": ["12", "13", "15"]
+          }
+        }
+      },
+      "category": "pentatonic_blues",
+      "progressions": [
+        {
+          "name": "I-IV-V",
+          "progression": "||: G7 | C7 | D7 | D7 :||",
+          "description": "Classic major blues progression"
+        },
+        {
+          "name": "12-bar blues",
+          "progression": "||: G7 | G7 | G7 | G7 | C7 | C7 | G7 | G7 | D7 | C7 | G7 | D7 :||",
+          "description": "Standard 12-bar blues"
+        }
+      ]
+    }
+  }
+}

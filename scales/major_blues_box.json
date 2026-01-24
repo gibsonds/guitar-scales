@@ -18,6 +18,7 @@
       "intervals": [
         "0",
         "2",
+        "3",
         "4",
         "7",
         "9"
@@ -27,20 +28,24 @@
       "scale_degrees": [
         "1",
         "2",
+        "b3",
         "3",
         "5",
         "6"
       ],
+      "description": "Major blues scale with blue note (b3) - 6 notes total",
       "fingering_variations": {
         "index": {
           "starting_finger": 1,
-          "description": "Starting with index finger",
+          "description": "Starting with index finger (box position with blue note)",
           "frets": {
             "6": [
               "5",
-              "7"
+              "7",
+              "8"
             ],
             "5": [
+              "3",
               "4",
               "7"
             ],
@@ -50,6 +55,7 @@
             ],
             "3": [
               "4",
+              "5",
               "6"
             ],
             "2": [
@@ -58,7 +64,8 @@
             ],
             "1": [
               "5",
-              "7"
+              "7",
+              "8"
             ]
           }
         }

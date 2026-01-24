@@ -5,7 +5,7 @@
     "starting_tone": "B",
     "starting_string": "6",
     "starting_fret": "7",
-    "scale_type": "Locrian ♮2 (Mode 6 of Melodic Minor)",
+    "scale_type": "Locrian \u266e2 (Mode 6 of Melodic Minor)",
     "tuning": [
       "E",
       "A",
@@ -24,7 +24,7 @@
         "8",
         "10"
       ],
-      "mode": "Locrian ♮2 (6th mode of Melodic Minor)",
+      "mode": "Locrian \u266e2 (6th mode of Melodic Minor)",
       "recalculate_on_tone_change": true,
       "scale_degrees": [
         "1",
@@ -36,73 +36,257 @@
         "b7"
       ],
       "pattern_type": "3nps",
-      "description": "Locrian ♮2 - Half-diminished sound with natural 2",
+      "description": "Locrian \u266e2 - Half-diminished sound with natural 2",
       "fingering_variations": {
-        "index": {
-          "starting_finger": 1,
-          "description": "Starting with index finger on 7th fret",
+        "position_1": {
+          "starting_finger": 2,
+          "description": "Position 1 (2nd position)",
           "frets": {
             "6": [
-              "7",
-              "9",
-              "10"
+              "2",
+              "4",
+              "5"
             ],
             "5": [
-              "7",
-              "9",
-              "10"
+              "0",
+              "2",
+              "3"
             ],
             "4": [
-              "7",
-              "9",
-              "11"
-            ],
-            "3": [
-              "7",
-              "9",
-              "11"
-            ],
-            "2": [
-              "7",
-              "8",
-              "10"
-            ],
-            "1": [
-              "7",
-              "9",
-              "10"
-            ]
-          },
-          "finger_assignments": {
-            "6": [
-              "1",
-              "3",
-              "4"
-            ],
-            "5": [
-              "1",
-              "3",
-              "4"
-            ],
-            "4": [
-              "1",
-              "3",
+              "0",
+              "2",
               "4"
             ],
             "3": [
-              "1",
-              "3",
-              "4"
-            ],
-            "2": [
               "1",
               "2",
               "4"
             ],
-            "1": [
+            "2": [
+              "0",
               "1",
-              "3",
+              "3"
+            ],
+            "1": [
+              "0",
+              "2",
               "4"
+            ]
+          }
+        },
+        "position_2": {
+          "starting_finger": 2,
+          "description": "Position 2 (4th position)",
+          "frets": {
+            "6": [
+              "4",
+              "5",
+              "7"
+            ],
+            "5": [
+              "2",
+              "3",
+              "5"
+            ],
+            "4": [
+              "2",
+              "4",
+              "6"
+            ],
+            "3": [
+              "2",
+              "4",
+              "5"
+            ],
+            "2": [
+              "3",
+              "5",
+              "7"
+            ],
+            "1": [
+              "2",
+              "4",
+              "5"
+            ]
+          }
+        },
+        "position_3": {
+          "starting_finger": 2,
+          "description": "Position 3 (6th position)",
+          "frets": {
+            "6": [
+              "7",
+              "8",
+              "10"
+            ],
+            "5": [
+              "5",
+              "7",
+              "9"
+            ],
+            "4": [
+              "4",
+              "6",
+              "7"
+            ],
+            "3": [
+              "4",
+              "5",
+              "7"
+            ],
+            "2": [
+              "5",
+              "7",
+              "9"
+            ],
+            "1": [
+              "4",
+              "5",
+              "7"
+            ]
+          }
+        },
+        "position_4": {
+          "starting_finger": 1,
+          "description": "Position 4 (7th position)",
+          "frets": {
+            "6": [
+              "7",
+              "8",
+              "10"
+            ],
+            "5": [
+              "5",
+              "7",
+              "9"
+            ],
+            "4": [
+              "6",
+              "7",
+              "9"
+            ],
+            "3": [
+              "5",
+              "7",
+              "9"
+            ],
+            "2": [
+              "5",
+              "7",
+              "9"
+            ],
+            "1": [
+              "5",
+              "7",
+              "8"
+            ]
+          }
+        },
+        "position_5": {
+          "starting_finger": 1,
+          "description": "Position 5 (9th position)",
+          "frets": {
+            "6": [
+              "10",
+              "12",
+              "14"
+            ],
+            "5": [
+              "7",
+              "9",
+              "11"
+            ],
+            "4": [
+              "7",
+              "9",
+              "10"
+            ],
+            "3": [
+              "7",
+              "9",
+              "11"
+            ],
+            "2": [
+              "7",
+              "9",
+              "10"
+            ],
+            "1": [
+              "7",
+              "8",
+              "10"
+            ]
+          }
+        },
+        "position_6": {
+          "starting_finger": 1,
+          "description": "Position 6 (11th position)",
+          "frets": {
+            "6": [
+              "12",
+              "14",
+              "16"
+            ],
+            "5": [
+              "9",
+              "11",
+              "12"
+            ],
+            "4": [
+              "9",
+              "10",
+              "12"
+            ],
+            "3": [
+              "9",
+              "11",
+              "13"
+            ],
+            "2": [
+              "9",
+              "10",
+              "12"
+            ],
+            "1": [
+              "10",
+              "12",
+              "14"
+            ]
+          }
+        },
+        "position_7": {
+          "starting_finger": 1,
+          "description": "Position 7 (13th position)",
+          "frets": {
+            "6": [
+              "14",
+              "16",
+              "17"
+            ],
+            "5": [
+              "11",
+              "12",
+              "14"
+            ],
+            "4": [
+              "12",
+              "14",
+              "16"
+            ],
+            "3": [
+              "11",
+              "13",
+              "14"
+            ],
+            "2": [
+              "12",
+              "13",
+              "15"
+            ],
+            "1": [
+              "12",
+              "14",
+              "16"
             ]
           }
         }

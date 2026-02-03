@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "d#min_pos3",
+    "chord_name": "D#m",
+    "root_note": "D#",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "11",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "11",
+          "finger": 1,
+          "note": "D#"
+        },
+        "5": {
+          "fret": "13",
+          "finger": 3,
+          "note": "A#"
+        },
+        "4": {
+          "fret": "13",
+          "finger": 4,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "11",
+          "finger": 1,
+          "note": "F#"
+        },
+        "2": {
+          "fret": "11",
+          "finger": 1,
+          "note": "A#"
+        },
+        "1": {
+          "fret": "11",
+          "finger": 1,
+          "note": "D#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "D#m chord - full barre at 5th fret (5-7-7-5-5-5)"
+    }
+  }
+}

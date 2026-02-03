@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "d#dim_pos2",
+    "chord_name": "D#dim",
+    "root_note": "D#",
+    "chord_type": "Diminished",
+    "starting_string": "6",
+    "starting_fret": "11",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "6"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "b5"
+      ],
+      "chord_tones": [
+        "D#",
+        "F#",
+        "A"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "11",
+          "finger": 1,
+          "note": "D#"
+        },
+        "5": {
+          "fret": "12",
+          "finger": 2,
+          "note": "A"
+        },
+        "4": {
+          "fret": "13",
+          "finger": 4,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "11",
+          "finger": 1,
+          "note": "F#"
+        },
+        "2": {
+          "fret": "10",
+          "finger": 0,
+          "note": "A"
+        },
+        "1": {
+          "fret": "11",
+          "finger": 1,
+          "note": "D#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "D#dim chord - barre voicing (7-8-9-7-6-7)"
+    }
+  }
+}

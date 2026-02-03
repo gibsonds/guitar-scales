@@ -1,0 +1,71 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "g#maj_pos2",
+    "chord_name": "G#",
+    "root_note": "G#",
+    "chord_type": "Major",
+    "starting_string": "6",
+    "starting_fret": "16",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5"
+      ],
+      "chord_tones": [
+        "G#",
+        "C",
+        "D#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "16",
+          "finger": 1,
+          "note": "G#"
+        },
+        "5": {
+          "fret": "18",
+          "finger": 3,
+          "note": "C"
+        },
+        "4": {
+          "fret": "18",
+          "finger": 4,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "17",
+          "finger": 2,
+          "note": "G#"
+        },
+        "2": {
+          "fret": "16",
+          "finger": 1,
+          "note": "C"
+        },
+        "1": {
+          "fret": "16",
+          "finger": 1,
+          "note": "D#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "G# chord - barre chord at 8th fret (8-10-10-9-8-8)"
+    }
+  }
+}

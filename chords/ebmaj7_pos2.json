@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "d#maj7_pos2",
+    "chord_name": "D#maj7",
+    "root_note": "D#",
+    "chord_type": "Major 7",
+    "starting_string": "6",
+    "starting_fret": "11",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7"
+      ],
+      "chord_tones": [
+        "D#",
+        "G",
+        "A#",
+        "D"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "11",
+          "finger": 1,
+          "note": "D#"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "12",
+          "finger": 2,
+          "note": "D"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 3,
+          "note": "G"
+        },
+        "2": {
+          "fret": "11",
+          "finger": 1,
+          "note": "A#"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "D#maj7 chord - barre voicing at 8th fret (8-x-9-9-8-x)"
+    }
+  }
+}

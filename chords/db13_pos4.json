@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c#13_pos4",
+    "chord_name": "C#13",
+    "root_note": "C#",
+    "chord_type": "Dominant 13",
+    "starting_string": "4",
+    "starting_fret": "3",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "C#",
+        "F",
+        "G#",
+        "B",
+        "D#",
+        "A#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "3",
+          "finger": 1,
+          "note": "F"
+        },
+        "3": {
+          "fret": "4",
+          "finger": 2,
+          "note": "B"
+        },
+        "2": {
+          "fret": "4",
+          "finger": 2,
+          "note": "D#"
+        },
+        "1": {
+          "fret": "3",
+          "finger": 1,
+          "note": "A#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "C#13 chord - rootless voicing (x-x-2-3-3-2)"
+    }
+  }
+}

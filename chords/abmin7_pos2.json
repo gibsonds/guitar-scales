@@ -1,0 +1,70 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "g#min7_pos2",
+    "chord_name": "G#min7",
+    "root_note": "G#",
+    "chord_type": "Minor 7",
+    "starting_string": "5",
+    "starting_fret": "11",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "G#",
+        "B",
+        "D#",
+        "F#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "11",
+          "finger": 1,
+          "note": "G#"
+        },
+        "4": {
+          "fret": "13",
+          "finger": 3,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "11",
+          "finger": 1,
+          "note": "F#"
+        },
+        "2": {
+          "fret": "12",
+          "finger": 2,
+          "note": "B"
+        },
+        "1": {
+          "fret": "11",
+          "finger": 1,
+          "note": "D#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "G#min7 chord - mid-neck voicing"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c#13_pos1",
+    "chord_name": "C#13",
+    "root_note": "C#",
+    "chord_type": "Dominant 13",
+    "starting_string": "5",
+    "starting_fret": "4",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10",
+        "14",
+        "21"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7",
+        "9",
+        "13"
+      ],
+      "chord_tones": [
+        "C#",
+        "F",
+        "G#",
+        "B",
+        "D#",
+        "A#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "4",
+          "finger": 1,
+          "note": "C#"
+        },
+        "4": {
+          "fret": "4",
+          "finger": 1,
+          "note": "A#"
+        },
+        "3": {
+          "fret": "4",
+          "finger": 1,
+          "note": "B"
+        },
+        "2": {
+          "fret": "6",
+          "finger": 3,
+          "note": "F"
+        },
+        "1": "mute"
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "C#13 chord - barre voicing (x-3-3-3-5-x)"
+    }
+  }
+}

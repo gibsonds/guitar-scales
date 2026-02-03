@@ -1,0 +1,69 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c#maj9_pos4",
+    "chord_name": "C#maj9",
+    "root_note": "C#",
+    "chord_type": "Major 9",
+    "starting_string": "4",
+    "starting_fret": "3",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9"
+      ],
+      "chord_tones": [
+        "C#",
+        "F",
+        "G#",
+        "C",
+        "D#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "3",
+          "finger": 1,
+          "note": "F"
+        },
+        "3": {
+          "fret": "5",
+          "finger": 3,
+          "note": "C"
+        },
+        "2": {
+          "fret": "4",
+          "finger": 2,
+          "note": "D#"
+        },
+        "1": {
+          "fret": "6",
+          "finger": 4,
+          "note": "G#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "C#maj9 chord - rootless voicing (x-x-2-4-3-5)"
+    }
+  }
+}

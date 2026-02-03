@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "g#min7_pos4",
+    "chord_name": "G#min7",
+    "root_note": "G#",
+    "chord_type": "Minor 7",
+    "starting_string": "4",
+    "starting_fret": "16",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "G#",
+        "B",
+        "D#",
+        "F#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "18",
+          "finger": 3,
+          "note": "G#"
+        },
+        "3": {
+          "fret": "16",
+          "finger": 1,
+          "note": "F#"
+        },
+        "2": {
+          "fret": "16",
+          "finger": 1,
+          "note": "B"
+        },
+        "1": {
+          "fret": "16",
+          "finger": 1,
+          "note": "D#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 4,
+      "description": "G#min7 chord - top four strings (x-x-10-8-8-8)"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "g#min_pos1",
+    "chord_name": "G#m",
+    "root_note": "G#",
+    "chord_type": "Minor",
+    "starting_string": "5",
+    "starting_fret": "11",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "G#",
+        "B",
+        "D#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "11",
+          "finger": 0,
+          "note": "G#"
+        },
+        "4": {
+          "fret": "13",
+          "finger": 2,
+          "note": "D#"
+        },
+        "3": {
+          "fret": "13",
+          "finger": 3,
+          "note": "G#"
+        },
+        "2": {
+          "fret": "12",
+          "finger": 1,
+          "note": "B"
+        },
+        "1": {
+          "fret": "11",
+          "finger": 0,
+          "note": "D#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 1,
+      "description": "G#m chord - open position (x-0-2-2-1-0)"
+    }
+  }
+}

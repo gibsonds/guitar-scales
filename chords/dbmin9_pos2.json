@@ -1,0 +1,77 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c#min9_pos2",
+    "chord_name": "C#min9",
+    "root_note": "C#",
+    "chord_type": "Minor 9",
+    "starting_string": "6",
+    "starting_fret": "9",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "14"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "C#",
+        "E",
+        "G#",
+        "B",
+        "D#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "9",
+          "finger": 1,
+          "note": "C#"
+        },
+        "5": {
+          "fret": "11",
+          "finger": 3,
+          "note": "E"
+        },
+        "4": {
+          "fret": "9",
+          "finger": 1,
+          "note": "G#"
+        },
+        "3": {
+          "fret": "9",
+          "finger": 1,
+          "note": "B"
+        },
+        "2": {
+          "fret": "9",
+          "finger": 1,
+          "note": "E"
+        },
+        "1": {
+          "fret": "11",
+          "finger": 4,
+          "note": "D#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 2,
+      "description": "C#min9 chord - barre voicing (8-10-8-8-8-10)"
+    }
+  }
+}

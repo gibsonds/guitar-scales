@@ -1,0 +1,70 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "f#min7_pos3",
+    "chord_name": "F#min7",
+    "root_note": "F#",
+    "chord_type": "Minor 7",
+    "starting_string": "5",
+    "starting_fret": "6",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7"
+      ],
+      "chord_tones": [
+        "F#",
+        "A",
+        "C#",
+        "E"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "9",
+          "finger": 2,
+          "note": "F#"
+        },
+        "4": {
+          "fret": "11",
+          "finger": 4,
+          "note": "C#"
+        },
+        "3": {
+          "fret": "9",
+          "finger": 1,
+          "note": "E"
+        },
+        "2": {
+          "fret": "10",
+          "finger": 3,
+          "note": "A"
+        },
+        "1": {
+          "fret": "9",
+          "finger": 1,
+          "note": "C#"
+        }
+      },
+      "category": "arpeggios",
+      "position": 3,
+      "description": "F#min7 chord - position voicing (x-3-5-3-4-3)"
+    }
+  }
+}

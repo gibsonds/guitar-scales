@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "c7_pos3",
+    "exercise": "c7_caged_d",
     "chord_name": "C7",
     "root_note": "C",
     "chord_type": "Dominant 7",
-    "starting_string": "5",
-    "starting_fret": "3",
+    "starting_string": "4",
+    "starting_fret": "5",
     "tuning": [
       "E",
       "A",
@@ -36,35 +36,34 @@
       ],
       "voicing": {
         "6": "mute",
-        "5": {
-          "fret": "3",
-          "finger": 1,
-          "note": "C"
-        },
+        "5": "mute",
         "4": {
           "fret": "5",
-          "finger": 4,
+          "finger": 1,
           "note": "G"
         },
         "3": {
-          "fret": "3",
+          "fret": "5",
           "finger": 1,
-          "note": "Bb"
+          "note": "C"
         },
         "2": {
           "fret": "5",
-          "finger": 3,
+          "finger": 1,
           "note": "E"
         },
         "1": {
-          "fret": "3",
-          "finger": 1,
-          "note": "G"
+          "fret": "6",
+          "finger": 2,
+          "note": "Bb"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "2nd",
+      "bass_note": "G",
+      "category": "chords",
       "position": 3,
-      "description": "C7 chord - barre voicing (x-3-5-3-5-3)"
+      "description": "C7 chord - D-shape voicing at 5th fret"
     }
   }
 }

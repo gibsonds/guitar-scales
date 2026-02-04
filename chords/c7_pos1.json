@@ -1,7 +1,7 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "c7_pos1",
+    "exercise": "c7_caged_a",
     "chord_name": "C7",
     "root_note": "C",
     "chord_type": "Dominant 7",
@@ -56,15 +56,14 @@
           "finger": 1,
           "note": "C"
         },
-        "1": {
-          "fret": "0",
-          "finger": 0,
-          "note": "E"
-        }
+        "1": "mute"
       },
-      "category": "arpeggios",
-      "position": 1,
-      "description": "C7 chord - open voicing with root on 5th string"
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 2,
+      "description": "C7 chord - A-shape voicing at 3rd fret"
     }
   }
 }

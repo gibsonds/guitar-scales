@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "c7_pos5",
+    "exercise": "c7_caged_d_high",
     "chord_name": "C7",
     "root_note": "C",
     "chord_type": "Dominant 7",
-    "starting_string": "6",
-    "starting_fret": "8",
+    "starting_string": "4",
+    "starting_fret": "10",
     "tuning": [
       "E",
       "A",
@@ -35,40 +35,35 @@
         "Bb"
       ],
       "voicing": {
-        "6": {
-          "fret": "8",
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "10",
           "finger": 1,
           "note": "C"
         },
-        "5": {
-          "fret": "10",
-          "finger": 3,
-          "note": "E"
-        },
-        "4": {
-          "fret": "8",
-          "finger": 1,
-          "note": "G"
-        },
         "3": {
-          "fret": "8",
-          "finger": 1,
-          "note": "Bb"
+          "fret": "12",
+          "finger": 3,
+          "note": "G"
         },
         "2": {
-          "fret": "9",
+          "fret": "11",
           "finger": 2,
-          "note": "E"
+          "note": "Bb"
         },
         "1": {
-          "fret": "8",
-          "finger": 1,
-          "note": "G"
+          "fret": "12",
+          "finger": 4,
+          "note": "E"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 5,
-      "description": "C7 chord - full barre at 8th fret (8-10-8-8-9-8)"
+      "description": "C7 chord - D-shape high position at 10th fret with b7 on B string"
     }
   }
 }

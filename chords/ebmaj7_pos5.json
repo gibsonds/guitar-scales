@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "d#maj7_pos5",
-    "chord_name": "D#maj7",
-    "root_note": "D#",
+    "exercise": "ebmaj7_pos5",
+    "chord_name": "Ebmaj7",
+    "root_note": "Eb",
     "chord_type": "Major 7",
-    "starting_string": "5",
-    "starting_fret": "15",
+    "starting_string": "4",
+    "starting_fret": "13",
     "tuning": [
       "E",
       "A",
@@ -29,38 +29,41 @@
         "7"
       ],
       "chord_tones": [
-        "D#",
+        "Eb",
         "G",
-        "A#",
+        "Bb",
         "D"
       ],
       "voicing": {
         "6": "mute",
-        "5": {
-          "fret": "18",
-          "finger": 4,
-          "note": "D#"
-        },
+        "5": "mute",
         "4": {
-          "fret": "17",
-          "finger": 3,
-          "note": "A#"
+          "fret": "13",
+          "finger": 1,
+          "note": "Eb"
         },
         "3": {
-          "fret": "16",
-          "finger": 2,
-          "note": "D"
+          "fret": "3",
+          "finger": 3,
+          "note": "Bb"
         },
         "2": {
-          "fret": "15",
-          "finger": 1,
-          "note": "G"
+          "fret": "3",
+          "finger": 4,
+          "note": "D"
         },
-        "1": "mute"
+        "1": {
+          "fret": "3",
+          "finger": 4,
+          "note": "G"
+        }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 5,
-      "description": "D#maj7 chord - upper position voicing (x-15-14-13-12-x)"
+      "description": "Ebmaj7 chord - D-shape high voicing at 10th fret"
     }
   }
 }

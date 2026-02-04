@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "f#maj7_pos3",
-    "chord_name": "F#maj7",
-    "root_note": "F#",
+    "exercise": "gbmaj7_pos3",
+    "chord_name": "Gbmaj7",
+    "root_note": "Gb",
     "chord_type": "Major 7",
-    "starting_string": "5",
-    "starting_fret": "9",
+    "starting_string": "4",
+    "starting_fret": "11",
     "tuning": [
       "E",
       "A",
@@ -29,42 +29,41 @@
         "7"
       ],
       "chord_tones": [
-        "F#",
-        "A#",
-        "C#",
+        "Gb",
+        "Bb",
+        "Db",
         "F"
       ],
       "voicing": {
         "6": "mute",
-        "5": {
-          "fret": "9",
-          "finger": 1,
-          "note": "F#"
-        },
+        "5": "mute",
         "4": {
           "fret": "11",
-          "finger": 4,
-          "note": "C#"
+          "finger": 1,
+          "note": "Db"
         },
         "3": {
-          "fret": "10",
-          "finger": 2,
-          "note": "F"
+          "fret": "11",
+          "finger": 1,
+          "note": "Gb"
         },
         "2": {
           "fret": "11",
-          "finger": 4,
-          "note": "A#"
+          "finger": 1,
+          "note": "Bb"
         },
         "1": {
-          "fret": "9",
-          "finger": 1,
-          "note": "C#"
+          "fret": "13",
+          "finger": 3,
+          "note": "F"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 3,
-      "description": "F#maj7 chord - classic voicing (x-3-5-4-5-3)"
+      "description": "Gbmaj7 chord - D-shape voicing at 5th fret"
     }
   }
 }

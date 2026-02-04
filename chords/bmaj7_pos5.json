@@ -5,8 +5,8 @@
     "chord_name": "Bmaj7",
     "root_note": "B",
     "chord_type": "Major 7",
-    "starting_string": "5",
-    "starting_fret": "23",
+    "starting_string": "4",
+    "starting_fret": "9",
     "tuning": [
       "E",
       "A",
@@ -30,37 +30,40 @@
       ],
       "chord_tones": [
         "B",
-        "D#",
-        "F#",
-        "A#"
+        "Eb",
+        "Gb",
+        "Bb"
       ],
       "voicing": {
         "6": "mute",
-        "5": {
-          "fret": "26",
-          "finger": 4,
+        "5": "mute",
+        "4": {
+          "fret": "9",
+          "finger": 1,
           "note": "B"
         },
-        "4": {
-          "fret": "25",
-          "finger": 3,
-          "note": "F#"
-        },
         "3": {
-          "fret": "24",
-          "finger": 2,
-          "note": "A#"
+          "fret": "11",
+          "finger": 3,
+          "note": "Gb"
         },
         "2": {
-          "fret": "23",
-          "finger": 1,
-          "note": "D#"
+          "fret": "11",
+          "finger": 4,
+          "note": "Bb"
         },
-        "1": "mute"
+        "1": {
+          "fret": "11",
+          "finger": 4,
+          "note": "Eb"
+        }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 5,
-      "description": "Bmaj7 chord - upper position voicing (x-15-14-13-12-x)"
+      "description": "Bmaj7 chord - D-shape high voicing at 10th fret"
     }
   }
 }

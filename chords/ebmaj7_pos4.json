@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "d#maj7_pos4",
-    "chord_name": "D#maj7",
-    "root_note": "D#",
+    "exercise": "ebmaj7_pos4",
+    "chord_name": "Ebmaj7",
+    "root_note": "Eb",
     "chord_type": "Major 7",
     "starting_string": "4",
-    "starting_fret": "10",
+    "starting_fret": "13",
     "tuning": [
       "E",
       "A",
@@ -29,9 +29,9 @@
         "7"
       ],
       "chord_tones": [
-        "D#",
+        "Eb",
         "G",
-        "A#",
+        "Bb",
         "D"
       ],
       "voicing": {
@@ -39,18 +39,18 @@
         "5": "mute",
         "4": {
           "fret": "13",
-          "finger": 3,
-          "note": "D#"
+          "finger": 4,
+          "note": "Eb"
         },
         "3": {
           "fret": "12",
-          "finger": 2,
+          "finger": 3,
           "note": "G"
         },
         "2": {
           "fret": "11",
-          "finger": 1,
-          "note": "A#"
+          "finger": 2,
+          "note": "Bb"
         },
         "1": {
           "fret": "10",
@@ -58,9 +58,12 @@
           "note": "D"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 4,
-      "description": "D#maj7 chord - top four strings voicing (x-x-10-9-8-7)"
+      "description": "Ebmaj7 chord - E-shape voicing at 10th fret"
     }
   }
 }

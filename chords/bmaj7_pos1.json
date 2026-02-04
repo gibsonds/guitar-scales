@@ -30,9 +30,9 @@
       ],
       "chord_tones": [
         "B",
-        "D#",
-        "F#",
-        "A#"
+        "Eb",
+        "Gb",
+        "Bb"
       ],
       "voicing": {
         "6": "mute",
@@ -44,25 +44,28 @@
         "4": {
           "fret": "13",
           "finger": 2,
-          "note": "D#"
+          "note": "Eb"
         },
         "3": {
           "fret": "11",
           "finger": 0,
-          "note": "F#"
+          "note": "Gb"
         },
         "2": {
           "fret": "11",
           "finger": 0,
-          "note": "A#"
+          "note": "Bb"
         },
         "1": {
           "fret": "11",
           "finger": 0,
-          "note": "D#"
+          "note": "Eb"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 1,
       "description": "Bmaj7 chord - open voicing with root on 5th string"
     }

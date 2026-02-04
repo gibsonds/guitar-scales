@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "f#maj7_pos4",
-    "chord_name": "F#maj7",
-    "root_note": "F#",
+    "exercise": "gbmaj7_pos4",
+    "chord_name": "Gbmaj7",
+    "root_note": "Gb",
     "chord_type": "Major 7",
     "starting_string": "4",
-    "starting_fret": "13",
+    "starting_fret": "4",
     "tuning": [
       "E",
       "A",
@@ -29,28 +29,28 @@
         "7"
       ],
       "chord_tones": [
-        "F#",
-        "A#",
-        "C#",
+        "Gb",
+        "Bb",
+        "Db",
         "F"
       ],
       "voicing": {
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "16",
-          "finger": 3,
-          "note": "F#"
+          "fret": "4",
+          "finger": 4,
+          "note": "Gb"
         },
         "3": {
-          "fret": "15",
-          "finger": 2,
-          "note": "A#"
+          "fret": "3",
+          "finger": 3,
+          "note": "Bb"
         },
         "2": {
           "fret": "14",
-          "finger": 1,
-          "note": "C#"
+          "finger": 2,
+          "note": "Db"
         },
         "1": {
           "fret": "13",
@@ -58,9 +58,12 @@
           "note": "F"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 4,
-      "description": "F#maj7 chord - top four strings voicing (x-x-10-9-8-7)"
+      "description": "Gbmaj7 chord - E-shape voicing at 10th fret"
     }
   }
 }

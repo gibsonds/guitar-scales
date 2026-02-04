@@ -1,9 +1,9 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "a#maj7_pos1",
-    "chord_name": "A#maj7",
-    "root_note": "A#",
+    "exercise": "bbmaj7_pos1",
+    "chord_name": "Bbmaj7",
+    "root_note": "Bb",
     "chord_type": "Major 7",
     "starting_string": "5",
     "starting_fret": "13",
@@ -29,7 +29,7 @@
         "7"
       ],
       "chord_tones": [
-        "A#",
+        "Bb",
         "D",
         "F",
         "A"
@@ -39,7 +39,7 @@
         "5": {
           "fret": "13",
           "finger": 3,
-          "note": "A#"
+          "note": "Bb"
         },
         "4": {
           "fret": "12",
@@ -62,9 +62,12 @@
           "note": "D"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 1,
-      "description": "A#maj7 chord - open voicing with root on 5th string"
+      "description": "Bbmaj7 chord - open voicing with root on 5th string"
     }
   }
 }

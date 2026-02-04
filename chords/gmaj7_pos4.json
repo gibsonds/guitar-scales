@@ -6,7 +6,7 @@
     "root_note": "G",
     "chord_type": "Major 7",
     "starting_string": "4",
-    "starting_fret": "14",
+    "starting_fret": "5",
     "tuning": [
       "E",
       "A",
@@ -38,18 +38,18 @@
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "17",
-          "finger": 3,
+          "fret": "5",
+          "finger": 4,
           "note": "G"
         },
         "3": {
-          "fret": "16",
-          "finger": 2,
+          "fret": "4",
+          "finger": 3,
           "note": "B"
         },
         "2": {
-          "fret": "15",
-          "finger": 1,
+          "fret": "3",
+          "finger": 2,
           "note": "D"
         },
         "1": {
@@ -58,9 +58,12 @@
           "note": "F#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 4,
-      "description": "Gmaj7 chord - top four strings voicing (x-x-10-9-8-7)"
+      "description": "Gmaj7 chord - E-shape voicing at 10th fret"
     }
   }
 }

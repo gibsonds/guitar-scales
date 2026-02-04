@@ -62,7 +62,10 @@
           "note": "B"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 1,
       "description": "Gmaj7 chord - open voicing with root on 5th string"
     }

@@ -6,7 +6,7 @@
     "root_note": "A",
     "chord_type": "Major 7",
     "starting_string": "4",
-    "starting_fret": "16",
+    "starting_fret": "7",
     "tuning": [
       "E",
       "A",
@@ -38,29 +38,32 @@
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "19",
-          "finger": 3,
+          "fret": "7",
+          "finger": 4,
           "note": "A"
         },
         "3": {
-          "fret": "18",
-          "finger": 2,
+          "fret": "6",
+          "finger": 3,
           "note": "C#"
         },
         "2": {
-          "fret": "17",
-          "finger": 1,
+          "fret": "5",
+          "finger": 2,
           "note": "E"
         },
         "1": {
-          "fret": "16",
+          "fret": "4",
           "finger": 1,
           "note": "G#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 4,
-      "description": "Amaj7 chord - top four strings voicing (x-x-10-9-8-7)"
+      "description": "Amaj7 chord - E-shape voicing at 10th fret"
     }
   }
 }

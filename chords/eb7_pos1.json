@@ -1,9 +1,9 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "d#7_pos1",
-    "chord_name": "D#7",
-    "root_note": "D#",
+    "exercise": "eb7_pos1",
+    "chord_name": "Eb7",
+    "root_note": "Eb",
     "chord_type": "Dominant 7",
     "starting_string": "5",
     "starting_fret": "6",
@@ -29,10 +29,10 @@
         "b7"
       ],
       "chord_tones": [
-        "D#",
+        "Eb",
         "G",
-        "A#",
-        "C#"
+        "Bb",
+        "Db"
       ],
       "voicing": {
         "6": "mute",
@@ -56,15 +56,14 @@
           "finger": 1,
           "note": "D#"
         },
-        "1": {
-          "fret": "3",
-          "finger": 0,
-          "note": "G"
-        }
+        "1": "mute"
       },
-      "category": "arpeggios",
-      "position": 1,
-      "description": "D#7 chord - open voicing with root on 5th string"
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 2,
+      "description": "Eb7 chord - A-shape voicing at 6th fret"
     }
   }
 }

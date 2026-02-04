@@ -5,8 +5,8 @@
     "chord_name": "G#7",
     "root_note": "G#",
     "chord_type": "Dominant 7",
-    "starting_string": "5",
-    "starting_fret": "11",
+    "starting_string": "4",
+    "starting_fret": "13",
     "tuning": [
       "E",
       "A",
@@ -36,35 +36,34 @@
       ],
       "voicing": {
         "6": "mute",
-        "5": {
-          "fret": "11",
-          "finger": 1,
-          "note": "G#"
-        },
+        "5": "mute",
         "4": {
           "fret": "13",
-          "finger": 4,
+          "finger": 1,
           "note": "D#"
         },
         "3": {
-          "fret": "11",
+          "fret": "13",
           "finger": 1,
-          "note": "F#"
+          "note": "G#"
         },
         "2": {
           "fret": "13",
-          "finger": 3,
+          "finger": 1,
           "note": "C"
         },
         "1": {
-          "fret": "11",
-          "finger": 1,
-          "note": "D#"
+          "fret": "14",
+          "finger": 2,
+          "note": "F#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "2nd",
+      "bass_note": "G",
+      "category": "chords",
       "position": 3,
-      "description": "G#7 chord - barre voicing (x-3-5-3-5-3)"
+      "description": "G#7 chord - D-shape voicing at 5th fret"
     }
   }
 }

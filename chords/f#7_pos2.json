@@ -6,7 +6,7 @@
     "root_note": "F#",
     "chord_type": "Dominant 7",
     "starting_string": "5",
-    "starting_fret": "14",
+    "starting_fret": "9",
     "tuning": [
       "E",
       "A",
@@ -37,30 +37,37 @@
       "voicing": {
         "6": "mute",
         "5": {
-          "fret": "14",
+          "fret": "9",
           "finger": 1,
           "note": "F#"
         },
-        "4": "mute",
+        "4": {
+          "fret": "11",
+          "finger": 3,
+          "note": "C#"
+        },
         "3": {
-          "fret": "15",
-          "finger": 2,
+          "fret": "9",
+          "finger": 1,
           "note": "E"
         },
         "2": {
-          "fret": "14",
-          "finger": 1,
+          "fret": "11",
+          "finger": 4,
           "note": "A#"
         },
         "1": {
-          "fret": "14",
+          "fret": "9",
           "finger": 1,
           "note": "C#"
         }
       },
-      "category": "arpeggios",
-      "position": 2,
-      "description": "F#7 chord - compact voicing at 8th fret"
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 1,
+      "description": "F#7 chord - C-shape barre voicing at 9th fret"
     }
   }
 }

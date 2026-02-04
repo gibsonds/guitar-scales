@@ -5,8 +5,8 @@
     "chord_name": "F7",
     "root_note": "F",
     "chord_type": "Dominant 7",
-    "starting_string": "5",
-    "starting_fret": "8",
+    "starting_string": "4",
+    "starting_fret": "10",
     "tuning": [
       "E",
       "A",
@@ -32,39 +32,38 @@
         "F",
         "A",
         "C",
-        "Eb"
+        "D#"
       ],
       "voicing": {
         "6": "mute",
-        "5": {
-          "fret": "8",
-          "finger": 1,
-          "note": "F"
-        },
+        "5": "mute",
         "4": {
           "fret": "10",
-          "finger": 4,
+          "finger": 1,
           "note": "C"
         },
         "3": {
-          "fret": "8",
+          "fret": "10",
           "finger": 1,
-          "note": "Eb"
+          "note": "F"
         },
         "2": {
           "fret": "10",
-          "finger": 3,
+          "finger": 1,
           "note": "A"
         },
         "1": {
-          "fret": "8",
-          "finger": 1,
-          "note": "C"
+          "fret": "11",
+          "finger": 2,
+          "note": "D#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "2nd",
+      "bass_note": "G",
+      "category": "chords",
       "position": 3,
-      "description": "F7 chord - barre voicing (x-3-5-3-5-3)"
+      "description": "F7 chord - D-shape voicing at 5th fret"
     }
   }
 }

@@ -5,8 +5,8 @@
     "chord_name": "A7",
     "root_note": "A",
     "chord_type": "Dominant 7",
-    "starting_string": "4",
-    "starting_fret": "19",
+    "starting_string": "6",
+    "starting_fret": "5",
     "tuning": [
       "E",
       "A",
@@ -35,32 +35,43 @@
         "G"
       ],
       "voicing": {
-        "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "19",
+        "6": {
+          "fret": "5",
           "finger": 1,
           "note": "A"
         },
-        "3": {
-          "fret": "18",
+        "5": {
+          "fret": "7",
+          "finger": 3,
+          "note": "E"
+        },
+        "4": {
+          "fret": "5",
           "finger": 1,
           "note": "G"
         },
-        "2": {
-          "fret": "19",
+        "3": {
+          "fret": "6",
           "finger": 2,
           "note": "C#"
         },
-        "1": {
-          "fret": "19",
-          "finger": 3,
+        "2": {
+          "fret": "5",
+          "finger": 1,
           "note": "E"
+        },
+        "1": {
+          "fret": "5",
+          "finger": 1,
+          "note": "A"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 4,
-      "description": "A7 chord - compact top strings (x-x-10-9-10-10)"
+      "description": "A7 chord - E-shape barre voicing at 8th fret"
     }
   }
 }

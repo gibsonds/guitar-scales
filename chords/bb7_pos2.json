@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "a#7_pos2",
-    "chord_name": "A#7",
-    "root_note": "A#",
+    "exercise": "bb7_pos2",
+    "chord_name": "Bb7",
+    "root_note": "Bb",
     "chord_type": "Dominant 7",
     "starting_string": "5",
-    "starting_fret": "18",
+    "starting_fret": "13",
     "tuning": [
       "E",
       "A",
@@ -29,38 +29,45 @@
         "b7"
       ],
       "chord_tones": [
-        "A#",
+        "Bb",
         "D",
         "F",
-        "G#"
+        "Ab"
       ],
       "voicing": {
         "6": "mute",
         "5": {
-          "fret": "18",
+          "fret": "13",
           "finger": 1,
           "note": "A#"
         },
-        "4": "mute",
+        "4": {
+          "fret": "3",
+          "finger": 3,
+          "note": "F"
+        },
         "3": {
-          "fret": "19",
-          "finger": 2,
+          "fret": "13",
+          "finger": 1,
           "note": "G#"
         },
         "2": {
-          "fret": "18",
-          "finger": 1,
+          "fret": "3",
+          "finger": 4,
           "note": "D"
         },
         "1": {
-          "fret": "18",
+          "fret": "13",
           "finger": 1,
           "note": "F"
         }
       },
-      "category": "arpeggios",
-      "position": 2,
-      "description": "A#7 chord - compact voicing at 8th fret"
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 1,
+      "description": "Bb7 chord - C-shape barre voicing at 13th fret"
     }
   }
 }

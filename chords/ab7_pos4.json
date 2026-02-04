@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "g#7_pos4",
-    "chord_name": "G#7",
-    "root_note": "G#",
+    "exercise": "ab7_pos4",
+    "chord_name": "Ab7",
+    "root_note": "Ab",
     "chord_type": "Dominant 7",
-    "starting_string": "4",
-    "starting_fret": "18",
+    "starting_string": "6",
+    "starting_fret": "4",
     "tuning": [
       "E",
       "A",
@@ -29,38 +29,49 @@
         "b7"
       ],
       "chord_tones": [
-        "G#",
+        "Ab",
         "C",
-        "D#",
-        "F#"
+        "Eb",
+        "Gb"
       ],
       "voicing": {
-        "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "18",
+        "6": {
+          "fret": "4",
           "finger": 1,
           "note": "G#"
         },
-        "3": {
-          "fret": "17",
+        "5": {
+          "fret": "6",
+          "finger": 3,
+          "note": "D#"
+        },
+        "4": {
+          "fret": "4",
           "finger": 1,
           "note": "F#"
         },
-        "2": {
-          "fret": "18",
+        "3": {
+          "fret": "5",
           "finger": 2,
           "note": "C"
         },
-        "1": {
-          "fret": "18",
-          "finger": 3,
+        "2": {
+          "fret": "4",
+          "finger": 1,
           "note": "D#"
+        },
+        "1": {
+          "fret": "4",
+          "finger": 1,
+          "note": "G#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 4,
-      "description": "G#7 chord - compact top strings (x-x-10-9-10-10)"
+      "description": "Ab7 chord - E-shape barre voicing at 8th fret"
     }
   }
 }

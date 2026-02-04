@@ -56,15 +56,14 @@
           "finger": 1,
           "note": "E"
         },
-        "1": {
-          "fret": "4",
-          "finger": 0,
-          "note": "G#"
-        }
+        "1": "mute"
       },
-      "category": "arpeggios",
-      "position": 1,
-      "description": "E7 chord - open voicing with root on 5th string"
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 2,
+      "description": "E7 chord - A-shape voicing at 7th fret"
     }
   }
 }

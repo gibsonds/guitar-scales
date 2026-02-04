@@ -1,9 +1,9 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "c#7_pos1",
-    "chord_name": "C#7",
-    "root_note": "C#",
+    "exercise": "db7_pos1",
+    "chord_name": "Db7",
+    "root_note": "Db",
     "chord_type": "Dominant 7",
     "starting_string": "5",
     "starting_fret": "4",
@@ -29,9 +29,9 @@
         "b7"
       ],
       "chord_tones": [
-        "C#",
+        "Db",
         "F",
-        "G#",
+        "Ab",
         "B"
       ],
       "voicing": {
@@ -56,15 +56,14 @@
           "finger": 1,
           "note": "C#"
         },
-        "1": {
-          "fret": "1",
-          "finger": 0,
-          "note": "F"
-        }
+        "1": "mute"
       },
-      "category": "arpeggios",
-      "position": 1,
-      "description": "C#7 chord - open voicing with root on 5th string"
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 2,
+      "description": "Db7 chord - A-shape voicing at 4th fret"
     }
   }
 }

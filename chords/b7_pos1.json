@@ -30,8 +30,8 @@
       ],
       "chord_tones": [
         "B",
-        "D#",
-        "F#",
+        "Eb",
+        "Gb",
         "A"
       ],
       "voicing": {
@@ -56,15 +56,14 @@
           "finger": 1,
           "note": "B"
         },
-        "1": {
-          "fret": "11",
-          "finger": 0,
-          "note": "D#"
-        }
+        "1": "mute"
       },
-      "category": "arpeggios",
-      "position": 1,
-      "description": "B7 chord - open voicing with root on 5th string"
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 2,
+      "description": "B7 chord - A-shape voicing at 14th fret"
     }
   }
 }

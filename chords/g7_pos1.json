@@ -56,15 +56,14 @@
           "finger": 1,
           "note": "G"
         },
-        "1": {
-          "fret": "7",
-          "finger": 0,
-          "note": "B"
-        }
+        "1": "mute"
       },
-      "category": "arpeggios",
-      "position": 1,
-      "description": "G7 chord - open voicing with root on 5th string"
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 2,
+      "description": "G7 chord - A-shape voicing at 10th fret"
     }
   }
 }

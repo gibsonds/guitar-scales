@@ -5,8 +5,8 @@
     "chord_name": "D7",
     "root_note": "D",
     "chord_type": "Dominant 7",
-    "starting_string": "6",
-    "starting_fret": "10",
+    "starting_string": "4",
+    "starting_fret": "12",
     "tuning": [
       "E",
       "A",
@@ -35,40 +35,35 @@
         "C"
       ],
       "voicing": {
-        "6": {
-          "fret": "10",
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "12",
           "finger": 1,
           "note": "D"
         },
-        "5": {
-          "fret": "12",
-          "finger": 3,
-          "note": "F#"
-        },
-        "4": {
-          "fret": "10",
-          "finger": 1,
-          "note": "A"
-        },
         "3": {
-          "fret": "10",
-          "finger": 1,
-          "note": "C"
+          "fret": "14",
+          "finger": 3,
+          "note": "A"
         },
         "2": {
-          "fret": "11",
+          "fret": "13",
           "finger": 2,
-          "note": "F#"
+          "note": "C"
         },
         "1": {
-          "fret": "10",
-          "finger": 1,
-          "note": "A"
+          "fret": "14",
+          "finger": 4,
+          "note": "F#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 5,
-      "description": "D7 chord - full barre at 8th fret (8-10-8-8-9-8)"
+      "description": "D7 chord - D-shape high position at 10th fret with b7 on B string"
     }
   }
 }

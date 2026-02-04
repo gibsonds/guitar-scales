@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "g#7_pos5",
-    "chord_name": "G#7",
-    "root_note": "G#",
+    "exercise": "ab7_pos5",
+    "chord_name": "Ab7",
+    "root_note": "Ab",
     "chord_type": "Dominant 7",
-    "starting_string": "6",
-    "starting_fret": "16",
+    "starting_string": "4",
+    "starting_fret": "6",
     "tuning": [
       "E",
       "A",
@@ -29,46 +29,41 @@
         "b7"
       ],
       "chord_tones": [
-        "G#",
+        "Ab",
         "C",
-        "D#",
-        "F#"
+        "Eb",
+        "Gb"
       ],
       "voicing": {
-        "6": {
-          "fret": "16",
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "6",
           "finger": 1,
           "note": "G#"
         },
-        "5": {
-          "fret": "18",
-          "finger": 3,
-          "note": "C"
-        },
-        "4": {
-          "fret": "16",
-          "finger": 1,
-          "note": "D#"
-        },
         "3": {
-          "fret": "16",
-          "finger": 1,
-          "note": "F#"
+          "fret": "8",
+          "finger": 3,
+          "note": "D#"
         },
         "2": {
-          "fret": "17",
+          "fret": "7",
           "finger": 2,
-          "note": "C"
+          "note": "F#"
         },
         "1": {
-          "fret": "16",
-          "finger": 1,
-          "note": "D#"
+          "fret": "8",
+          "finger": 4,
+          "note": "C"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 5,
-      "description": "G#7 chord - full barre at 8th fret (8-10-8-8-9-8)"
+      "description": "Ab7 chord - D-shape high position at 10th fret with b7 on B string"
     }
   }
 }

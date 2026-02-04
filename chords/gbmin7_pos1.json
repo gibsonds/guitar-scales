@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "f#min7_pos1",
-    "chord_name": "F#min7",
-    "root_note": "F#",
+    "exercise": "gbmin7_pos1",
+    "chord_name": "Gbmin7",
+    "root_note": "Gb",
     "chord_type": "Minor 7",
-    "starting_string": "6",
-    "starting_fret": "14",
+    "starting_string": "5",
+    "starting_fret": "9",
     "tuning": [
       "E",
       "A",
@@ -29,46 +29,45 @@
         "b7"
       ],
       "chord_tones": [
-        "F#",
+        "Gb",
         "A",
-        "C#",
+        "Db",
         "E"
       ],
       "voicing": {
-        "6": {
-          "fret": "14",
-          "finger": 1,
-          "note": "F#"
-        },
+        "6": "mute",
         "5": {
-          "fret": "16",
-          "finger": 3,
-          "note": "A"
+          "fret": "9",
+          "finger": 1,
+          "note": "Gb"
         },
         "4": {
-          "fret": "14",
-          "finger": 1,
-          "note": "C#"
+          "fret": "11",
+          "finger": 3,
+          "note": "Db"
         },
         "3": {
-          "fret": "14",
+          "fret": "9",
           "finger": 1,
           "note": "E"
         },
         "2": {
-          "fret": "14",
-          "finger": 1,
+          "fret": "10",
+          "finger": 2,
           "note": "A"
         },
         "1": {
-          "fret": "14",
+          "fret": "9",
           "finger": 1,
-          "note": "C#"
+          "note": "Db"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "Gb",
+      "category": "chords",
       "position": 1,
-      "description": "F#min7 chord - barre voicing with root on 6th string, fret 8"
+      "description": "Gbmin7 chord - C-shape voicing at 3rd fret"
     }
   }
 }

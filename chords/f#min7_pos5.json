@@ -6,7 +6,7 @@
     "root_note": "F#",
     "chord_type": "Minor 7",
     "starting_string": "5",
-    "starting_fret": "19",
+    "starting_fret": "7",
     "tuning": [
       "E",
       "A",
@@ -37,30 +37,33 @@
       "voicing": {
         "6": "mute",
         "5": {
-          "fret": "21",
-          "finger": 3,
+          "fret": "7",
+          "finger": 2,
           "note": "F#"
         },
         "4": {
-          "fret": "19",
-          "finger": 1,
+          "fret": "7",
+          "finger": 3,
           "note": "E"
         },
         "3": {
-          "fret": "19",
+          "fret": "6",
           "finger": 1,
           "note": "A"
         },
         "2": {
-          "fret": "19",
-          "finger": 1,
+          "fret": "7",
+          "finger": 4,
           "note": "C#"
         },
         "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "F#",
+      "category": "chords",
       "position": 5,
-      "description": "F#min7 chord - upper neck voicing (x-15-13-13-13-x)"
+      "description": "F#min7 chord - A-shape high voicing at 13th fret"
     }
   }
 }

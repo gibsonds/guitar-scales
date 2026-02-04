@@ -5,8 +5,8 @@
     "chord_name": "C#min7",
     "root_note": "C#",
     "chord_type": "Minor 7",
-    "starting_string": "4",
-    "starting_fret": "9",
+    "starting_string": "5",
+    "starting_fret": "7",
     "tuning": [
       "E",
       "A",
@@ -36,31 +36,34 @@
       ],
       "voicing": {
         "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "11",
-          "finger": 3,
-          "note": "C#"
-        },
-        "3": {
-          "fret": "9",
-          "finger": 1,
+        "5": {
+          "fret": "7",
+          "finger": 2,
           "note": "B"
         },
-        "2": {
-          "fret": "9",
-          "finger": 1,
-          "note": "E"
-        },
-        "1": {
-          "fret": "9",
+        "4": {
+          "fret": "6",
           "finger": 1,
           "note": "G#"
+        },
+        "3": {
+          "fret": "6",
+          "finger": 1,
+          "note": "C#"
+        },
+        "2": "mute",
+        "1": {
+          "fret": "7",
+          "finger": 3,
+          "note": "B"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "C#",
+      "category": "chords",
       "position": 4,
-      "description": "C#min7 chord - top four strings (x-x-10-8-8-8)"
+      "description": "C#min7 chord - D-shape voicing at 6th fret"
     }
   }
 }

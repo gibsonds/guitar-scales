@@ -37,30 +37,33 @@
       "voicing": {
         "6": "mute",
         "5": {
-          "fret": "15",
-          "finger": 3,
+          "fret": "13",
+          "finger": 2,
           "note": "C"
         },
         "4": {
           "fret": "13",
-          "finger": 1,
+          "finger": 3,
           "note": "Bb"
         },
         "3": {
-          "fret": "13",
+          "fret": "12",
           "finger": 1,
           "note": "Eb"
         },
         "2": {
           "fret": "13",
-          "finger": 1,
+          "finger": 4,
           "note": "G"
         },
         "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 5,
-      "description": "Cmin7 chord - upper neck voicing (x-15-13-13-13-x)"
+      "description": "Cmin7 chord - A-shape high voicing at 13th fret"
     }
   }
 }

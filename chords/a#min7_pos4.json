@@ -5,8 +5,8 @@
     "chord_name": "A#min7",
     "root_note": "A#",
     "chord_type": "Minor 7",
-    "starting_string": "4",
-    "starting_fret": "18",
+    "starting_string": "5",
+    "starting_fret": "4",
     "tuning": [
       "E",
       "A",
@@ -36,31 +36,34 @@
       ],
       "voicing": {
         "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "20",
-          "finger": 3,
-          "note": "A#"
-        },
-        "3": {
-          "fret": "18",
-          "finger": 1,
+        "5": {
+          "fret": "4",
+          "finger": 2,
           "note": "G#"
         },
-        "2": {
-          "fret": "18",
-          "finger": 1,
-          "note": "C#"
-        },
-        "1": {
-          "fret": "18",
+        "4": {
+          "fret": "3",
           "finger": 1,
           "note": "F"
+        },
+        "3": {
+          "fret": "3",
+          "finger": 1,
+          "note": "A#"
+        },
+        "2": "mute",
+        "1": {
+          "fret": "4",
+          "finger": 3,
+          "note": "G#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "A#",
+      "category": "chords",
       "position": 4,
-      "description": "A#min7 chord - top four strings (x-x-10-8-8-8)"
+      "description": "A#min7 chord - D-shape voicing at 6th fret"
     }
   }
 }

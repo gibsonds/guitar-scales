@@ -5,8 +5,8 @@
     "chord_name": "Cmin7",
     "root_note": "C",
     "chord_type": "Minor 7",
-    "starting_string": "4",
-    "starting_fret": "8",
+    "starting_string": "5",
+    "starting_fret": "6",
     "tuning": [
       "E",
       "A",
@@ -36,31 +36,34 @@
       ],
       "voicing": {
         "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "10",
-          "finger": 3,
-          "note": "C"
-        },
-        "3": {
-          "fret": "8",
-          "finger": 1,
+        "5": {
+          "fret": "6",
+          "finger": 2,
           "note": "Bb"
         },
-        "2": {
-          "fret": "8",
-          "finger": 1,
-          "note": "Eb"
-        },
-        "1": {
-          "fret": "8",
+        "4": {
+          "fret": "5",
           "finger": 1,
           "note": "G"
+        },
+        "3": {
+          "fret": "5",
+          "finger": 1,
+          "note": "C"
+        },
+        "2": "mute",
+        "1": {
+          "fret": "6",
+          "finger": 3,
+          "note": "Bb"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 4,
-      "description": "Cmin7 chord - top four strings (x-x-10-8-8-8)"
+      "description": "Cmin7 chord - D-shape voicing at 6th fret"
     }
   }
 }

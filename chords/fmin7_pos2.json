@@ -5,8 +5,8 @@
     "chord_name": "Fmin7",
     "root_note": "F",
     "chord_type": "Minor 7",
-    "starting_string": "5",
-    "starting_fret": "8",
+    "starting_string": "6",
+    "starting_fret": "12",
     "tuning": [
       "E",
       "A",
@@ -30,41 +30,48 @@
       ],
       "chord_tones": [
         "F",
-        "Ab",
+        "G#",
         "C",
-        "Eb"
+        "D#"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
-          "fret": "8",
+        "6": {
+          "fret": "12",
           "finger": 1,
-          "note": "F"
+          "note": "D#"
         },
-        "4": {
-          "fret": "10",
+        "5": {
+          "fret": "14",
           "finger": 3,
           "note": "C"
         },
-        "3": {
-          "fret": "8",
+        "4": {
+          "fret": "12",
           "finger": 1,
-          "note": "Eb"
+          "note": "F"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 1,
+          "note": "G#"
         },
         "2": {
-          "fret": "9",
-          "finger": 2,
-          "note": "Ab"
-        },
-        "1": {
-          "fret": "8",
+          "fret": "12",
           "finger": 1,
           "note": "C"
+        },
+        "1": {
+          "fret": "12",
+          "finger": 1,
+          "note": "D#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "F",
+      "category": "chords",
       "position": 2,
-      "description": "Fmin7 chord - mid-neck voicing"
+      "description": "Fmin7 chord - E-shape barre at 7th fret"
     }
   }
 }

@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "f#min7_pos5",
-    "chord_name": "F#min7",
-    "root_note": "F#",
+    "exercise": "gbmin7_pos5",
+    "chord_name": "Gbmin7",
+    "root_note": "Gb",
     "chord_type": "Minor 7",
     "starting_string": "5",
-    "starting_fret": "19",
+    "starting_fret": "7",
     "tuning": [
       "E",
       "A",
@@ -29,38 +29,41 @@
         "b7"
       ],
       "chord_tones": [
-        "F#",
+        "Gb",
         "A",
-        "C#",
+        "Db",
         "E"
       ],
       "voicing": {
         "6": "mute",
         "5": {
-          "fret": "21",
-          "finger": 3,
-          "note": "F#"
+          "fret": "7",
+          "finger": 2,
+          "note": "Gb"
         },
         "4": {
-          "fret": "19",
-          "finger": 1,
+          "fret": "7",
+          "finger": 3,
           "note": "E"
         },
         "3": {
-          "fret": "19",
+          "fret": "6",
           "finger": 1,
           "note": "A"
         },
         "2": {
-          "fret": "19",
-          "finger": 1,
-          "note": "C#"
+          "fret": "7",
+          "finger": 4,
+          "note": "Db"
         },
         "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "Gb",
+      "category": "chords",
       "position": 5,
-      "description": "F#min7 chord - upper neck voicing (x-15-13-13-13-x)"
+      "description": "Gbmin7 chord - A-shape high voicing at 13th fret"
     }
   }
 }

@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "f#min7_pos3",
-    "chord_name": "F#min7",
-    "root_note": "F#",
+    "exercise": "gbmin7_pos3",
+    "chord_name": "Gbmin7",
+    "root_note": "Gb",
     "chord_type": "Minor 7",
-    "starting_string": "5",
-    "starting_fret": "6",
+    "starting_string": "6",
+    "starting_fret": "13",
     "tuning": [
       "E",
       "A",
@@ -29,42 +29,45 @@
         "b7"
       ],
       "chord_tones": [
-        "F#",
+        "Gb",
         "A",
-        "C#",
+        "Db",
         "E"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
-          "fret": "9",
-          "finger": 2,
-          "note": "F#"
-        },
-        "4": {
-          "fret": "11",
-          "finger": 4,
-          "note": "C#"
-        },
-        "3": {
-          "fret": "9",
+        "6": {
+          "fret": "13",
           "finger": 1,
           "note": "E"
         },
-        "2": {
-          "fret": "10",
-          "finger": 3,
+        "5": "mute",
+        "4": {
+          "fret": "13",
+          "finger": 1,
+          "note": "Gb"
+        },
+        "3": {
+          "fret": "13",
+          "finger": 1,
           "note": "A"
         },
-        "1": {
-          "fret": "9",
+        "2": {
+          "fret": "13",
           "finger": 1,
-          "note": "C#"
+          "note": "Db"
+        },
+        "1": {
+          "fret": "13",
+          "finger": 1,
+          "note": "E"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "Gb",
+      "category": "chords",
       "position": 3,
-      "description": "F#min7 chord - position voicing (x-3-5-3-4-3)"
+      "description": "Gbmin7 chord - E-shape alternate at 7th fret"
     }
   }
 }

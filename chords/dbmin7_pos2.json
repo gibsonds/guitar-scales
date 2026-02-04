@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "c#min7_pos2",
-    "chord_name": "C#min7",
-    "root_note": "C#",
+    "exercise": "dbmin7_pos2",
+    "chord_name": "Dbmin7",
+    "root_note": "Db",
     "chord_type": "Minor 7",
-    "starting_string": "5",
-    "starting_fret": "4",
+    "starting_string": "6",
+    "starting_fret": "8",
     "tuning": [
       "E",
       "A",
@@ -29,42 +29,49 @@
         "b7"
       ],
       "chord_tones": [
-        "C#",
+        "Db",
         "E",
-        "G#",
+        "Ab",
         "B"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
-          "fret": "4",
-          "finger": 1,
-          "note": "C#"
-        },
-        "4": {
-          "fret": "6",
-          "finger": 3,
-          "note": "G#"
-        },
-        "3": {
-          "fret": "4",
+        "6": {
+          "fret": "8",
           "finger": 1,
           "note": "B"
         },
-        "2": {
-          "fret": "5",
-          "finger": 2,
+        "5": {
+          "fret": "10",
+          "finger": 3,
+          "note": "Ab"
+        },
+        "4": {
+          "fret": "8",
+          "finger": 1,
+          "note": "Db"
+        },
+        "3": {
+          "fret": "8",
+          "finger": 1,
           "note": "E"
         },
-        "1": {
-          "fret": "4",
+        "2": {
+          "fret": "8",
           "finger": 1,
-          "note": "G#"
+          "note": "Ab"
+        },
+        "1": {
+          "fret": "8",
+          "finger": 1,
+          "note": "B"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "Db",
+      "category": "chords",
       "position": 2,
-      "description": "C#min7 chord - mid-neck voicing"
+      "description": "Dbmin7 chord - E-shape barre at 7th fret"
     }
   }
 }

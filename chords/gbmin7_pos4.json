@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "f#min7_pos4",
-    "chord_name": "F#min7",
-    "root_note": "F#",
+    "exercise": "gbmin7_pos4",
+    "chord_name": "Gbmin7",
+    "root_note": "Gb",
     "chord_type": "Minor 7",
-    "starting_string": "4",
-    "starting_fret": "14",
+    "starting_string": "5",
+    "starting_fret": "12",
     "tuning": [
       "E",
       "A",
@@ -29,38 +29,41 @@
         "b7"
       ],
       "chord_tones": [
-        "F#",
+        "Gb",
         "A",
-        "C#",
+        "Db",
         "E"
       ],
       "voicing": {
         "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "16",
-          "finger": 3,
-          "note": "F#"
-        },
-        "3": {
-          "fret": "14",
-          "finger": 1,
+        "5": {
+          "fret": "12",
+          "finger": 2,
           "note": "E"
         },
-        "2": {
-          "fret": "14",
+        "4": {
+          "fret": "11",
           "finger": 1,
-          "note": "A"
+          "note": "Db"
         },
-        "1": {
-          "fret": "14",
+        "3": {
+          "fret": "11",
           "finger": 1,
-          "note": "C#"
+          "note": "Gb"
+        },
+        "2": "mute",
+        "1": {
+          "fret": "12",
+          "finger": 3,
+          "note": "E"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "Gb",
+      "category": "chords",
       "position": 4,
-      "description": "F#min7 chord - top four strings (x-x-10-8-8-8)"
+      "description": "Gbmin7 chord - D-shape voicing at 6th fret"
     }
   }
 }

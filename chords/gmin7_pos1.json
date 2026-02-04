@@ -5,8 +5,8 @@
     "chord_name": "Gmin7",
     "root_note": "G",
     "chord_type": "Minor 7",
-    "starting_string": "6",
-    "starting_fret": "15",
+    "starting_string": "5",
+    "starting_fret": "10",
     "tuning": [
       "E",
       "A",
@@ -35,40 +35,39 @@
         "F"
       ],
       "voicing": {
-        "6": {
-          "fret": "15",
+        "6": "mute",
+        "5": {
+          "fret": "10",
           "finger": 1,
           "note": "G"
         },
-        "5": {
-          "fret": "17",
-          "finger": 3,
-          "note": "A#"
-        },
         "4": {
-          "fret": "15",
-          "finger": 1,
+          "fret": "12",
+          "finger": 3,
           "note": "D"
         },
         "3": {
-          "fret": "15",
+          "fret": "10",
           "finger": 1,
           "note": "F"
         },
         "2": {
-          "fret": "15",
-          "finger": 1,
+          "fret": "11",
+          "finger": 2,
           "note": "A#"
         },
         "1": {
-          "fret": "15",
+          "fret": "10",
           "finger": 1,
           "note": "D"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "G",
+      "category": "chords",
       "position": 1,
-      "description": "Gmin7 chord - barre voicing with root on 6th string, fret 8"
+      "description": "Gmin7 chord - C-shape voicing at 3rd fret"
     }
   }
 }

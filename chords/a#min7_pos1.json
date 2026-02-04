@@ -5,8 +5,8 @@
     "chord_name": "A#min7",
     "root_note": "A#",
     "chord_type": "Minor 7",
-    "starting_string": "6",
-    "starting_fret": "18",
+    "starting_string": "5",
+    "starting_fret": "13",
     "tuning": [
       "E",
       "A",
@@ -35,40 +35,39 @@
         "G#"
       ],
       "voicing": {
-        "6": {
-          "fret": "18",
+        "6": "mute",
+        "5": {
+          "fret": "13",
           "finger": 1,
           "note": "A#"
         },
-        "5": {
-          "fret": "20",
-          "finger": 3,
-          "note": "C#"
-        },
         "4": {
-          "fret": "18",
-          "finger": 1,
+          "fret": "3",
+          "finger": 3,
           "note": "F"
         },
         "3": {
-          "fret": "18",
+          "fret": "13",
           "finger": 1,
           "note": "G#"
         },
         "2": {
-          "fret": "18",
-          "finger": 1,
+          "fret": "14",
+          "finger": 2,
           "note": "C#"
         },
         "1": {
-          "fret": "18",
+          "fret": "13",
           "finger": 1,
           "note": "F"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "A#",
+      "category": "chords",
       "position": 1,
-      "description": "A#min7 chord - barre voicing with root on 6th string, fret 8"
+      "description": "A#min7 chord - C-shape voicing at 3rd fret"
     }
   }
 }

@@ -1,9 +1,9 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "c#min7_pos5",
-    "chord_name": "C#min7",
-    "root_note": "C#",
+    "exercise": "dbmin7_pos5",
+    "chord_name": "Dbmin7",
+    "root_note": "Db",
     "chord_type": "Minor 7",
     "starting_string": "5",
     "starting_fret": "14",
@@ -29,38 +29,41 @@
         "b7"
       ],
       "chord_tones": [
-        "C#",
+        "Db",
         "E",
-        "G#",
+        "Ab",
         "B"
       ],
       "voicing": {
         "6": "mute",
         "5": {
-          "fret": "16",
-          "finger": 3,
-          "note": "C#"
+          "fret": "14",
+          "finger": 2,
+          "note": "Db"
         },
         "4": {
           "fret": "14",
-          "finger": 1,
+          "finger": 3,
           "note": "B"
         },
         "3": {
-          "fret": "14",
+          "fret": "13",
           "finger": 1,
           "note": "E"
         },
         "2": {
           "fret": "14",
-          "finger": 1,
-          "note": "G#"
+          "finger": 4,
+          "note": "Ab"
         },
         "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "Db",
+      "category": "chords",
       "position": 5,
-      "description": "C#min7 chord - upper neck voicing (x-15-13-13-13-x)"
+      "description": "Dbmin7 chord - A-shape high voicing at 13th fret"
     }
   }
 }

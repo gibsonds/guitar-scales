@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "cmaj_pos5",
+    "chord_name": "Cmaj",
+    "root_note": "C",
+    "chord_type": "Major",
+    "starting_string": "6",
+    "starting_fret": "12",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5"
+      ],
+      "chord_tones": [
+        "C",
+        "E",
+        "G"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "12",
+          "finger": 2,
+          "note": "E"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "10",
+          "finger": 1,
+          "note": "C"
+        },
+        "3": {
+          "fret": "12",
+          "finger": 3,
+          "note": "G"
+        },
+        "2": {
+          "fret": "13",
+          "finger": 4,
+          "note": "C"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 5,
+      "description": "Cmaj chord - D-shape high voicing at 12th fret"
+    }
+  }
+}

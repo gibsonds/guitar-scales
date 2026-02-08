@@ -2,11 +2,11 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "gmaj_pos1",
-    "chord_name": "G",
+    "chord_name": "Gmaj",
     "root_note": "G",
     "chord_type": "Major",
     "starting_string": "5",
-    "starting_fret": "7",
+    "starting_fret": "10",
     "tuning": [
       "E",
       "A",
@@ -59,9 +59,12 @@
           "note": "B"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "G",
+      "category": "chords",
       "position": 1,
-      "description": "G chord - open position (x-3-2-0-1-0)"
+      "description": "Gmaj chord - open C-shape voicing"
     }
   }
 }

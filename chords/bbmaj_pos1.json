@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "a#maj_pos1",
-    "chord_name": "A#",
-    "root_note": "A#",
+    "exercise": "bbmaj_pos1",
+    "chord_name": "Bbmaj",
+    "root_note": "Bb",
     "chord_type": "Major",
     "starting_string": "5",
-    "starting_fret": "10",
+    "starting_fret": "13",
     "tuning": [
       "E",
       "A",
@@ -27,7 +27,7 @@
         "5"
       ],
       "chord_tones": [
-        "A#",
+        "Bb",
         "D",
         "F"
       ],
@@ -36,7 +36,7 @@
         "5": {
           "fret": "13",
           "finger": 3,
-          "note": "A#"
+          "note": "Bb"
         },
         "4": {
           "fret": "12",
@@ -51,7 +51,7 @@
         "2": {
           "fret": "11",
           "finger": 1,
-          "note": "A#"
+          "note": "Bb"
         },
         "1": {
           "fret": "10",
@@ -59,9 +59,12 @@
           "note": "D"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "Bb",
+      "category": "chords",
       "position": 1,
-      "description": "A# chord - open position (x-3-2-0-1-0)"
+      "description": "Bbmaj chord - open C-shape voicing"
     }
   }
 }

@@ -1,11 +1,11 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "f#maj_pos3",
-    "chord_name": "F#",
-    "root_note": "F#",
+    "exercise": "gbmaj_pos3",
+    "chord_name": "Gbmaj",
+    "root_note": "Gb",
     "chord_type": "Major",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "9",
     "tuning": [
       "E",
@@ -27,41 +27,36 @@
         "5"
       ],
       "chord_tones": [
-        "F#",
-        "A#",
-        "C#"
+        "Gb",
+        "Bb",
+        "Db"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "9",
-          "finger": 1,
-          "note": "F#"
+          "finger": 2,
+          "note": "Db"
         },
+        "5": "mute",
         "4": {
-          "fret": "11",
-          "finger": 3,
-          "note": "C#"
+          "fret": "8",
+          "finger": 1,
+          "note": "Bb"
         },
         "3": {
           "fret": "11",
           "finger": 4,
-          "note": "F#"
+          "note": "Gb"
         },
-        "2": {
-          "fret": "11",
-          "finger": 4,
-          "note": "A#"
-        },
-        "1": {
-          "fret": "9",
-          "finger": 1,
-          "note": "C#"
-        }
+        "2": "mute",
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "Gb",
+      "category": "chords",
       "position": 3,
-      "description": "F# chord - mid-neck position (x-3-5-5-5-3)"
+      "description": "Gbmaj chord - G-shape fragment at 3rd fret"
     }
   }
 }

@@ -2,10 +2,10 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "d#maj_pos3",
-    "chord_name": "D#",
+    "chord_name": "D#maj",
     "root_note": "D#",
     "chord_type": "Major",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "6",
     "tuning": [
       "E",
@@ -32,36 +32,31 @@
         "A#"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "6",
-          "finger": 1,
-          "note": "D#"
-        },
-        "4": {
-          "fret": "8",
-          "finger": 3,
+          "finger": 2,
           "note": "A#"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "5",
+          "finger": 1,
+          "note": "G"
         },
         "3": {
           "fret": "8",
           "finger": 4,
           "note": "D#"
         },
-        "2": {
-          "fret": "8",
-          "finger": 4,
-          "note": "G"
-        },
-        "1": {
-          "fret": "6",
-          "finger": 1,
-          "note": "A#"
-        }
+        "2": "mute",
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "D#",
+      "category": "chords",
       "position": 3,
-      "description": "D# chord - mid-neck position (x-3-5-5-5-3)"
+      "description": "D#maj chord - G-shape fragment at 3rd fret"
     }
   }
 }

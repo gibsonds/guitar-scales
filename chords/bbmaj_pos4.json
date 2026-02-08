@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "a#maj_pos4",
-    "chord_name": "A#",
-    "root_note": "A#",
+    "exercise": "bbmaj_pos4",
+    "chord_name": "Bbmaj",
+    "root_note": "Bb",
     "chord_type": "Major",
-    "starting_string": "4",
-    "starting_fret": "15",
+    "starting_string": "6",
+    "starting_fret": "5",
     "tuning": [
       "E",
       "A",
@@ -27,37 +27,48 @@
         "5"
       ],
       "chord_tones": [
-        "A#",
+        "Bb",
         "D",
         "F"
       ],
       "voicing": {
-        "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "15",
+        "6": {
+          "fret": "5",
           "finger": 1,
           "note": "F"
+        },
+        "5": {
+          "fret": "7",
+          "finger": 3,
+          "note": "F"
+        },
+        "4": {
+          "fret": "7",
+          "finger": 4,
+          "note": "Bb"
         },
         "3": {
-          "fret": "15",
-          "finger": 1,
-          "note": "A#"
-        },
-        "2": {
-          "fret": "15",
-          "finger": 1,
+          "fret": "6",
+          "finger": 2,
           "note": "D"
         },
-        "1": {
-          "fret": "15",
+        "2": {
+          "fret": "5",
           "finger": 1,
           "note": "F"
+        },
+        "1": {
+          "fret": "5",
+          "finger": 1,
+          "note": "Bb"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "Bb",
+      "category": "chords",
       "position": 4,
-      "description": "A# chord - top strings barre (x-x-5-5-5-5)"
+      "description": "Bbmaj chord - E-shape barre at 7th fret"
     }
   }
 }

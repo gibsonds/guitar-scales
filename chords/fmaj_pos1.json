@@ -2,11 +2,11 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "fmaj_pos1",
-    "chord_name": "F",
+    "chord_name": "Fmaj",
     "root_note": "F",
     "chord_type": "Major",
     "starting_string": "5",
-    "starting_fret": "5",
+    "starting_fret": "8",
     "tuning": [
       "E",
       "A",
@@ -59,9 +59,12 @@
           "note": "A"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "F",
+      "category": "chords",
       "position": 1,
-      "description": "F chord - open position (x-3-2-0-1-0)"
+      "description": "Fmaj chord - open C-shape voicing"
     }
   }
 }

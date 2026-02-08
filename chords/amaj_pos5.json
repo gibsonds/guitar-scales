@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "amaj_pos5",
+    "chord_name": "Amaj",
+    "root_note": "A",
+    "chord_type": "Major",
+    "starting_string": "6",
+    "starting_fret": "9",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5"
+      ],
+      "chord_tones": [
+        "A",
+        "C#",
+        "E"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "9",
+          "finger": 2,
+          "note": "C#"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "7",
+          "finger": 1,
+          "note": "A"
+        },
+        "3": {
+          "fret": "9",
+          "finger": 3,
+          "note": "E"
+        },
+        "2": {
+          "fret": "10",
+          "finger": 4,
+          "note": "A"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "A",
+      "category": "chords",
+      "position": 5,
+      "description": "Amaj chord - D-shape high voicing at 12th fret"
+    }
+  }
+}

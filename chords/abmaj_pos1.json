@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "g#maj_pos1",
-    "chord_name": "G#",
-    "root_note": "G#",
+    "exercise": "abmaj_pos1",
+    "chord_name": "Abmaj",
+    "root_note": "Ab",
     "chord_type": "Major",
     "starting_string": "5",
-    "starting_fret": "8",
+    "starting_fret": "11",
     "tuning": [
       "E",
       "A",
@@ -27,16 +27,16 @@
         "5"
       ],
       "chord_tones": [
-        "G#",
+        "Ab",
         "C",
-        "D#"
+        "Eb"
       ],
       "voicing": {
         "6": "mute",
         "5": {
           "fret": "11",
           "finger": 3,
-          "note": "G#"
+          "note": "Ab"
         },
         "4": {
           "fret": "10",
@@ -46,12 +46,12 @@
         "3": {
           "fret": "8",
           "finger": 0,
-          "note": "D#"
+          "note": "Eb"
         },
         "2": {
           "fret": "9",
           "finger": 1,
-          "note": "G#"
+          "note": "Ab"
         },
         "1": {
           "fret": "8",
@@ -59,9 +59,12 @@
           "note": "C"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "Ab",
+      "category": "chords",
       "position": 1,
-      "description": "G# chord - open position (x-3-2-0-1-0)"
+      "description": "Abmaj chord - open C-shape voicing"
     }
   }
 }

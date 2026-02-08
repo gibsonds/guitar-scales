@@ -2,10 +2,10 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "amaj_pos3",
-    "chord_name": "A",
+    "chord_name": "Amaj",
     "root_note": "A",
     "chord_type": "Major",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "12",
     "tuning": [
       "E",
@@ -32,36 +32,31 @@
         "E"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "12",
-          "finger": 1,
-          "note": "A"
-        },
-        "4": {
-          "fret": "14",
-          "finger": 3,
+          "finger": 2,
           "note": "E"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "11",
+          "finger": 1,
+          "note": "C#"
         },
         "3": {
           "fret": "14",
           "finger": 4,
           "note": "A"
         },
-        "2": {
-          "fret": "14",
-          "finger": 4,
-          "note": "C#"
-        },
-        "1": {
-          "fret": "12",
-          "finger": 1,
-          "note": "E"
-        }
+        "2": "mute",
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "A",
+      "category": "chords",
       "position": 3,
-      "description": "A chord - mid-neck position (x-3-5-5-5-3)"
+      "description": "Amaj chord - G-shape fragment at 3rd fret"
     }
   }
 }

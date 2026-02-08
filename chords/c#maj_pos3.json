@@ -2,10 +2,10 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "c#maj_pos3",
-    "chord_name": "C#",
+    "chord_name": "C#maj",
     "root_note": "C#",
     "chord_type": "Major",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "4",
     "tuning": [
       "E",
@@ -32,36 +32,31 @@
         "G#"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "4",
-          "finger": 1,
-          "note": "C#"
-        },
-        "4": {
-          "fret": "6",
-          "finger": 3,
+          "finger": 2,
           "note": "G#"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "3",
+          "finger": 1,
+          "note": "F"
         },
         "3": {
           "fret": "6",
           "finger": 4,
           "note": "C#"
         },
-        "2": {
-          "fret": "6",
-          "finger": 4,
-          "note": "F"
-        },
-        "1": {
-          "fret": "4",
-          "finger": 1,
-          "note": "G#"
-        }
+        "2": "mute",
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "C#",
+      "category": "chords",
       "position": 3,
-      "description": "C# chord - mid-neck position (x-3-5-5-5-3)"
+      "description": "C#maj chord - G-shape fragment at 3rd fret"
     }
   }
 }

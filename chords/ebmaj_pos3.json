@@ -1,11 +1,11 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "d#maj_pos3",
-    "chord_name": "D#",
-    "root_note": "D#",
+    "exercise": "ebmaj_pos3",
+    "chord_name": "Ebmaj",
+    "root_note": "Eb",
     "chord_type": "Major",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "6",
     "tuning": [
       "E",
@@ -27,41 +27,36 @@
         "5"
       ],
       "chord_tones": [
-        "D#",
+        "Eb",
         "G",
-        "A#"
+        "Bb"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "6",
-          "finger": 1,
-          "note": "D#"
+          "finger": 2,
+          "note": "Bb"
         },
+        "5": "mute",
         "4": {
-          "fret": "8",
-          "finger": 3,
-          "note": "A#"
+          "fret": "5",
+          "finger": 1,
+          "note": "G"
         },
         "3": {
           "fret": "8",
           "finger": 4,
-          "note": "D#"
+          "note": "Eb"
         },
-        "2": {
-          "fret": "8",
-          "finger": 4,
-          "note": "G"
-        },
-        "1": {
-          "fret": "6",
-          "finger": 1,
-          "note": "A#"
-        }
+        "2": "mute",
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "Eb",
+      "category": "chords",
       "position": 3,
-      "description": "D# chord - mid-neck position (x-3-5-5-5-3)"
+      "description": "Ebmaj chord - G-shape fragment at 3rd fret"
     }
   }
 }

@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "c#maj_pos2",
-    "chord_name": "C#",
-    "root_note": "C#",
+    "exercise": "dbmaj_pos2",
+    "chord_name": "Dbmaj",
+    "root_note": "Db",
     "chord_type": "Major",
-    "starting_string": "6",
-    "starting_fret": "9",
+    "starting_string": "5",
+    "starting_fret": "4",
     "tuning": [
       "E",
       "A",
@@ -27,45 +27,44 @@
         "5"
       ],
       "chord_tones": [
-        "C#",
+        "Db",
         "F",
-        "G#"
+        "Ab"
       ],
       "voicing": {
-        "6": {
-          "fret": "9",
-          "finger": 1,
-          "note": "C#"
-        },
+        "6": "mute",
         "5": {
-          "fret": "11",
-          "finger": 3,
-          "note": "F"
+          "fret": "4",
+          "finger": 1,
+          "note": "Db"
         },
         "4": {
-          "fret": "11",
-          "finger": 4,
-          "note": "G#"
+          "fret": "6",
+          "finger": 3,
+          "note": "Ab"
         },
         "3": {
-          "fret": "10",
-          "finger": 2,
-          "note": "C#"
+          "fret": "6",
+          "finger": 4,
+          "note": "Db"
         },
         "2": {
-          "fret": "9",
-          "finger": 1,
+          "fret": "6",
+          "finger": 4,
           "note": "F"
         },
         "1": {
-          "fret": "9",
+          "fret": "4",
           "finger": 1,
-          "note": "G#"
+          "note": "Ab"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "Db",
+      "category": "chords",
       "position": 2,
-      "description": "C# chord - barre chord at 8th fret (8-10-10-9-8-8)"
+      "description": "Dbmaj chord - A-shape barre at 3rd fret"
     }
   }
 }

@@ -2,11 +2,11 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "c#maj_pos1",
-    "chord_name": "C#",
+    "chord_name": "C#maj",
     "root_note": "C#",
     "chord_type": "Major",
     "starting_string": "5",
-    "starting_fret": "1",
+    "starting_fret": "4",
     "tuning": [
       "E",
       "A",
@@ -59,9 +59,12 @@
           "note": "F"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "C#",
+      "category": "chords",
       "position": 1,
-      "description": "C# chord - open position (x-3-2-0-1-0)"
+      "description": "C#maj chord - open C-shape voicing"
     }
   }
 }

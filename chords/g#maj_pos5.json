@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "g#maj_pos5",
+    "chord_name": "G#maj",
+    "root_note": "G#",
+    "chord_type": "Major",
+    "starting_string": "6",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5"
+      ],
+      "chord_tones": [
+        "G#",
+        "C",
+        "D#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "8",
+          "finger": 2,
+          "note": "C"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "6",
+          "finger": 1,
+          "note": "G#"
+        },
+        "3": {
+          "fret": "8",
+          "finger": 3,
+          "note": "D#"
+        },
+        "2": {
+          "fret": "9",
+          "finger": 4,
+          "note": "G#"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "G#",
+      "category": "chords",
+      "position": 5,
+      "description": "G#maj chord - D-shape high voicing at 12th fret"
+    }
+  }
+}

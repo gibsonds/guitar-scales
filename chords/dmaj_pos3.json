@@ -2,10 +2,10 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "dmaj_pos3",
-    "chord_name": "D",
+    "chord_name": "Dmaj",
     "root_note": "D",
     "chord_type": "Major",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "5",
     "tuning": [
       "E",
@@ -32,36 +32,31 @@
         "A"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "5",
-          "finger": 1,
-          "note": "D"
-        },
-        "4": {
-          "fret": "7",
-          "finger": 3,
+          "finger": 2,
           "note": "A"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "4",
+          "finger": 1,
+          "note": "F#"
         },
         "3": {
           "fret": "7",
           "finger": 4,
           "note": "D"
         },
-        "2": {
-          "fret": "7",
-          "finger": 4,
-          "note": "F#"
-        },
-        "1": {
-          "fret": "5",
-          "finger": 1,
-          "note": "A"
-        }
+        "2": "mute",
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "D",
+      "category": "chords",
       "position": 3,
-      "description": "D chord - mid-neck position (x-3-5-5-5-3)"
+      "description": "Dmaj chord - G-shape fragment at 3rd fret"
     }
   }
 }

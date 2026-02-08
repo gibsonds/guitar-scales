@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "ebmaj_pos5",
+    "chord_name": "Ebmaj",
+    "root_note": "Eb",
+    "chord_type": "Major",
+    "starting_string": "6",
+    "starting_fret": "3",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5"
+      ],
+      "chord_tones": [
+        "Eb",
+        "G",
+        "Bb"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "3",
+          "finger": 2,
+          "note": "G"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "13",
+          "finger": 1,
+          "note": "Eb"
+        },
+        "3": {
+          "fret": "3",
+          "finger": 3,
+          "note": "Bb"
+        },
+        "2": {
+          "fret": "4",
+          "finger": 4,
+          "note": "Eb"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "Eb",
+      "category": "chords",
+      "position": 5,
+      "description": "Ebmaj chord - D-shape high voicing at 12th fret"
+    }
+  }
+}

@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "c#maj_pos1",
-    "chord_name": "C#",
-    "root_note": "C#",
+    "exercise": "dbmaj_pos1",
+    "chord_name": "Dbmaj",
+    "root_note": "Db",
     "chord_type": "Major",
     "starting_string": "5",
-    "starting_fret": "1",
+    "starting_fret": "4",
     "tuning": [
       "E",
       "A",
@@ -27,16 +27,16 @@
         "5"
       ],
       "chord_tones": [
-        "C#",
+        "Db",
         "F",
-        "G#"
+        "Ab"
       ],
       "voicing": {
         "6": "mute",
         "5": {
           "fret": "4",
           "finger": 3,
-          "note": "C#"
+          "note": "Db"
         },
         "4": {
           "fret": "3",
@@ -46,12 +46,12 @@
         "3": {
           "fret": "1",
           "finger": 0,
-          "note": "G#"
+          "note": "Ab"
         },
         "2": {
           "fret": "2",
           "finger": 1,
-          "note": "C#"
+          "note": "Db"
         },
         "1": {
           "fret": "1",
@@ -59,9 +59,12 @@
           "note": "F"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "Db",
+      "category": "chords",
       "position": 1,
-      "description": "C# chord - open position (x-3-2-0-1-0)"
+      "description": "Dbmaj chord - open C-shape voicing"
     }
   }
 }

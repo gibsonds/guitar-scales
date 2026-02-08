@@ -1,11 +1,11 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "c#maj_pos3",
-    "chord_name": "C#",
-    "root_note": "C#",
+    "exercise": "dbmaj_pos3",
+    "chord_name": "Dbmaj",
+    "root_note": "Db",
     "chord_type": "Major",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "4",
     "tuning": [
       "E",
@@ -27,41 +27,36 @@
         "5"
       ],
       "chord_tones": [
-        "C#",
+        "Db",
         "F",
-        "G#"
+        "Ab"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "4",
-          "finger": 1,
-          "note": "C#"
+          "finger": 2,
+          "note": "Ab"
         },
+        "5": "mute",
         "4": {
-          "fret": "6",
-          "finger": 3,
-          "note": "G#"
+          "fret": "3",
+          "finger": 1,
+          "note": "F"
         },
         "3": {
           "fret": "6",
           "finger": 4,
-          "note": "C#"
+          "note": "Db"
         },
-        "2": {
-          "fret": "6",
-          "finger": 4,
-          "note": "F"
-        },
-        "1": {
-          "fret": "4",
-          "finger": 1,
-          "note": "G#"
-        }
+        "2": "mute",
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "Db",
+      "category": "chords",
       "position": 3,
-      "description": "C# chord - mid-neck position (x-3-5-5-5-3)"
+      "description": "Dbmaj chord - G-shape fragment at 3rd fret"
     }
   }
 }

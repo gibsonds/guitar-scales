@@ -2,10 +2,10 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "fmaj_pos3",
-    "chord_name": "F",
+    "chord_name": "Fmaj",
     "root_note": "F",
     "chord_type": "Major",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "8",
     "tuning": [
       "E",
@@ -32,36 +32,31 @@
         "C"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "8",
-          "finger": 1,
-          "note": "F"
-        },
-        "4": {
-          "fret": "10",
-          "finger": 3,
+          "finger": 2,
           "note": "C"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "7",
+          "finger": 1,
+          "note": "A"
         },
         "3": {
           "fret": "10",
           "finger": 4,
           "note": "F"
         },
-        "2": {
-          "fret": "10",
-          "finger": 4,
-          "note": "A"
-        },
-        "1": {
-          "fret": "8",
-          "finger": 1,
-          "note": "C"
-        }
+        "2": "mute",
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "F",
+      "category": "chords",
       "position": 3,
-      "description": "F chord - mid-neck position (x-3-5-5-5-3)"
+      "description": "Fmaj chord - G-shape fragment at 3rd fret"
     }
   }
 }

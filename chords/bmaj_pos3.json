@@ -2,10 +2,10 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "bmaj_pos3",
-    "chord_name": "B",
+    "chord_name": "Bmaj",
     "root_note": "B",
     "chord_type": "Major",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "14",
     "tuning": [
       "E",
@@ -28,40 +28,35 @@
       ],
       "chord_tones": [
         "B",
-        "D#",
-        "F#"
+        "Eb",
+        "Gb"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "14",
-          "finger": 1,
-          "note": "B"
+          "finger": 2,
+          "note": "Gb"
         },
+        "5": "mute",
         "4": {
-          "fret": "16",
-          "finger": 3,
-          "note": "F#"
+          "fret": "13",
+          "finger": 1,
+          "note": "Eb"
         },
         "3": {
-          "fret": "16",
+          "fret": "4",
           "finger": 4,
           "note": "B"
         },
-        "2": {
-          "fret": "16",
-          "finger": 4,
-          "note": "D#"
-        },
-        "1": {
-          "fret": "14",
-          "finger": 1,
-          "note": "F#"
-        }
+        "2": "mute",
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "B",
+      "category": "chords",
       "position": 3,
-      "description": "B chord - mid-neck position (x-3-5-5-5-3)"
+      "description": "Bmaj chord - G-shape fragment at 3rd fret"
     }
   }
 }

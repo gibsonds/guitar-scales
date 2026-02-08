@@ -1,0 +1,66 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gbmaj_pos5",
+    "chord_name": "Gbmaj",
+    "root_note": "Gb",
+    "chord_type": "Major",
+    "starting_string": "6",
+    "starting_fret": "6",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5"
+      ],
+      "chord_tones": [
+        "Gb",
+        "Bb",
+        "Db"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "6",
+          "finger": 2,
+          "note": "Bb"
+        },
+        "5": "mute",
+        "4": {
+          "fret": "4",
+          "finger": 1,
+          "note": "Gb"
+        },
+        "3": {
+          "fret": "6",
+          "finger": 3,
+          "note": "Db"
+        },
+        "2": {
+          "fret": "7",
+          "finger": 4,
+          "note": "Gb"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "Gb",
+      "category": "chords",
+      "position": 5,
+      "description": "Gbmaj chord - D-shape high voicing at 12th fret"
+    }
+  }
+}

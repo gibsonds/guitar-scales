@@ -2,11 +2,11 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "cmaj_pos2",
-    "chord_name": "C",
+    "chord_name": "Cmaj",
     "root_note": "C",
     "chord_type": "Major",
-    "starting_string": "6",
-    "starting_fret": "8",
+    "starting_string": "5",
+    "starting_fret": "3",
     "tuning": [
       "E",
       "A",
@@ -32,40 +32,39 @@
         "G"
       ],
       "voicing": {
-        "6": {
-          "fret": "8",
+        "6": "mute",
+        "5": {
+          "fret": "3",
           "finger": 1,
           "note": "C"
         },
-        "5": {
-          "fret": "10",
-          "finger": 3,
-          "note": "E"
-        },
         "4": {
-          "fret": "10",
-          "finger": 4,
+          "fret": "5",
+          "finger": 3,
           "note": "G"
         },
         "3": {
-          "fret": "9",
-          "finger": 2,
+          "fret": "5",
+          "finger": 4,
           "note": "C"
         },
         "2": {
-          "fret": "8",
-          "finger": 1,
+          "fret": "5",
+          "finger": 4,
           "note": "E"
         },
         "1": {
-          "fret": "8",
+          "fret": "3",
           "finger": 1,
           "note": "G"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 2,
-      "description": "C major - barre chord at 8th fret (8-10-10-9-8-8)"
+      "description": "Cmaj chord - A-shape barre at 3rd fret"
     }
   }
 }

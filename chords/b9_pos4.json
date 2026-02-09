@@ -4,9 +4,9 @@
     "exercise": "b9_pos4",
     "chord_name": "B9",
     "root_note": "B",
-    "chord_type": "Dominant 9",
-    "starting_string": "5",
-    "starting_fret": "18",
+    "chord_type": "Dominant 9th",
+    "starting_string": "4",
+    "starting_fret": "6",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -32,38 +32,41 @@
       ],
       "chord_tones": [
         "B",
-        "D#",
-        "F#",
+        "Eb",
+        "Gb",
         "A",
-        "C#"
+        "Db"
       ],
       "voicing": {
         "6": "mute",
-        "5": {
-          "fret": "21",
-          "finger": 4,
-          "note": "F#"
-        },
+        "5": "mute",
         "4": {
-          "fret": "20",
-          "finger": 3,
-          "note": "B"
+          "fret": "7",
+          "finger": 2,
+          "note": "Eb"
         },
         "3": {
-          "fret": "19",
-          "finger": 2,
-          "note": "D#"
+          "fret": "6",
+          "finger": 1,
+          "note": "Db"
         },
         "2": {
-          "fret": "18",
-          "finger": 1,
-          "note": "A"
+          "fret": "7",
+          "finger": 3,
+          "note": "Db"
         },
-        "1": "mute"
+        "1": {
+          "fret": "7",
+          "finger": 4,
+          "note": "B"
+        }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "Eb",
+      "category": "chords",
       "position": 4,
-      "description": "B9 chord - mid-neck voicing (x-10-9-8-7-x)"
+      "description": "B9 chord - D-shape mid voicing at 7th fret"
     }
   }
 }

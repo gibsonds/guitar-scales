@@ -4,7 +4,7 @@
     "exercise": "c9_pos1",
     "chord_name": "C9",
     "root_note": "C",
-    "chord_type": "Dominant 9",
+    "chord_type": "Dominant 9th",
     "starting_string": "5",
     "starting_fret": "3",
     "tuning": [
@@ -21,7 +21,7 @@
         "4",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -41,33 +41,36 @@
         "6": "mute",
         "5": {
           "fret": "3",
-          "finger": 1,
+          "finger": 2,
           "note": "C"
         },
         "4": {
-          "fret": "5",
-          "finger": 3,
-          "note": "G"
+          "fret": "2",
+          "finger": 1,
+          "note": "E"
         },
         "3": {
           "fret": "3",
-          "finger": 1,
+          "finger": 3,
           "note": "Bb"
         },
         "2": {
-          "fret": "5",
-          "finger": 4,
-          "note": "E"
+          "fret": "3",
+          "finger": 3,
+          "note": "D"
         },
         "1": {
-          "fret": "5",
-          "finger": 4,
-          "note": "D"
+          "fret": "3",
+          "finger": 3,
+          "note": "G"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 1,
-      "description": "C9 chord - barre voicing (x-3-5-3-5-5)"
+      "description": "C9 chord - A-shape voicing at 3rd fret"
     }
   }
 }

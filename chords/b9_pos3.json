@@ -4,9 +4,9 @@
     "exercise": "b9_pos3",
     "chord_name": "B9",
     "root_note": "B",
-    "chord_type": "Dominant 9",
+    "chord_type": "Dominant 9th",
     "starting_string": "4",
-    "starting_fret": "21",
+    "starting_fret": "4",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -32,38 +32,41 @@
       ],
       "chord_tones": [
         "B",
-        "D#",
-        "F#",
+        "Eb",
+        "Gb",
         "A",
-        "C#"
+        "Db"
       ],
       "voicing": {
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "21",
+          "fret": "4",
           "finger": 1,
-          "note": "B"
+          "note": "Gb"
         },
         "3": {
-          "fret": "22",
-          "finger": 2,
-          "note": "C#"
+          "fret": "6",
+          "finger": 3,
+          "note": "Db"
         },
         "2": {
-          "fret": "21",
+          "fret": "4",
           "finger": 1,
-          "note": "D#"
+          "note": "A"
         },
         "1": {
-          "fret": "21",
-          "finger": 1,
-          "note": "F#"
+          "fret": "5",
+          "finger": 2,
+          "note": "B"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "Gb",
+      "category": "chords",
       "position": 3,
-      "description": "B9 chord - upper position (x-x-10-11-10-10)"
+      "description": "B9 chord - D-shape voicing at 5th fret"
     }
   }
 }

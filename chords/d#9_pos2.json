@@ -4,7 +4,7 @@
     "exercise": "d#9_pos2",
     "chord_name": "D#9",
     "root_note": "D#",
-    "chord_type": "Dominant 9",
+    "chord_type": "Dominant 9th",
     "starting_string": "6",
     "starting_fret": "11",
     "tuning": [
@@ -21,7 +21,7 @@
         "4",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -46,32 +46,35 @@
         "5": {
           "fret": "13",
           "finger": 3,
-          "note": "G"
+          "note": "A#"
         },
         "4": {
           "fret": "11",
           "finger": 1,
-          "note": "A#"
+          "note": "G"
         },
         "3": {
-          "fret": "11",
-          "finger": 1,
+          "fret": "12",
+          "finger": 2,
           "note": "C#"
         },
         "2": {
-          "fret": "12",
-          "finger": 2,
-          "note": "G"
+          "fret": "11",
+          "finger": 1,
+          "note": "F"
         },
         "1": {
           "fret": "13",
           "finger": 4,
-          "note": "F"
+          "note": "A#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "D#",
+      "category": "chords",
       "position": 2,
-      "description": "D#9 chord - full barre at 8th fret (8-10-8-8-9-10)"
+      "description": "D#9 chord - E-shape barre at 8th fret"
     }
   }
 }

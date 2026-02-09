@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "f9_pos5",
+    "chord_name": "F9",
+    "root_note": "F",
+    "chord_type": "Dominant 9th",
+    "starting_string": "4",
+    "starting_fret": "3",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10",
+        "2"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "F",
+        "A",
+        "C",
+        "D#",
+        "G"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "3",
+          "finger": 1,
+          "note": "F"
+        },
+        "3": {
+          "fret": "14",
+          "finger": 1,
+          "note": "D#"
+        },
+        "2": {
+          "fret": "4",
+          "finger": 3,
+          "note": "A"
+        },
+        "1": {
+          "fret": "3",
+          "finger": 2,
+          "note": "G"
+        }
+      },
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "F",
+      "category": "chords",
+      "position": 5,
+      "description": "F9 chord - D-shape high voicing at 10th fret"
+    }
+  }
+}

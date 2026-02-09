@@ -4,8 +4,8 @@
     "exercise": "d9_pos4",
     "chord_name": "D9",
     "root_note": "D",
-    "chord_type": "Dominant 9",
-    "starting_string": "5",
+    "chord_type": "Dominant 9th",
+    "starting_string": "4",
     "starting_fret": "9",
     "tuning": [
       "E",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -39,31 +39,34 @@
       ],
       "voicing": {
         "6": "mute",
-        "5": {
-          "fret": "12",
-          "finger": 4,
-          "note": "A"
-        },
+        "5": "mute",
         "4": {
-          "fret": "11",
-          "finger": 3,
-          "note": "D"
-        },
-        "3": {
           "fret": "10",
           "finger": 2,
           "note": "F#"
         },
-        "2": {
+        "3": {
           "fret": "9",
           "finger": 1,
-          "note": "C"
+          "note": "E"
         },
-        "1": "mute"
+        "2": {
+          "fret": "10",
+          "finger": 3,
+          "note": "E"
+        },
+        "1": {
+          "fret": "10",
+          "finger": 4,
+          "note": "D"
+        }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "F#",
+      "category": "chords",
       "position": 4,
-      "description": "D9 chord - mid-neck voicing (x-10-9-8-7-x)"
+      "description": "D9 chord - D-shape mid voicing at 7th fret"
     }
   }
 }

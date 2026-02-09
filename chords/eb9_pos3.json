@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "d#9_pos3",
-    "chord_name": "D#9",
-    "root_note": "D#",
-    "chord_type": "Dominant 9",
+    "exercise": "eb9_pos3",
+    "chord_name": "Eb9",
+    "root_note": "Eb",
+    "chord_type": "Dominant 9th",
     "starting_string": "4",
-    "starting_fret": "13",
+    "starting_fret": "8",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -31,39 +31,42 @@
         "9"
       ],
       "chord_tones": [
-        "D#",
+        "Eb",
         "G",
-        "A#",
-        "C#",
+        "Bb",
+        "Db",
         "F"
       ],
       "voicing": {
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "13",
+          "fret": "8",
           "finger": 1,
-          "note": "D#"
+          "note": "Bb"
         },
         "3": {
-          "fret": "14",
-          "finger": 2,
+          "fret": "10",
+          "finger": 3,
           "note": "F"
         },
         "2": {
-          "fret": "13",
+          "fret": "8",
           "finger": 1,
-          "note": "G"
+          "note": "Db"
         },
         "1": {
-          "fret": "13",
-          "finger": 1,
-          "note": "A#"
+          "fret": "9",
+          "finger": 2,
+          "note": "Eb"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "Bb",
+      "category": "chords",
       "position": 3,
-      "description": "D#9 chord - upper position (x-x-10-11-10-10)"
+      "description": "Eb9 chord - D-shape voicing at 5th fret"
     }
   }
 }

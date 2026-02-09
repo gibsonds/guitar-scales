@@ -4,9 +4,9 @@
     "exercise": "g9_pos3",
     "chord_name": "G9",
     "root_note": "G",
-    "chord_type": "Dominant 9",
+    "chord_type": "Dominant 9th",
     "starting_string": "4",
-    "starting_fret": "17",
+    "starting_fret": "12",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -41,29 +41,32 @@
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "17",
+          "fret": "12",
           "finger": 1,
-          "note": "G"
+          "note": "D"
         },
         "3": {
-          "fret": "18",
-          "finger": 2,
+          "fret": "14",
+          "finger": 3,
           "note": "A"
         },
         "2": {
-          "fret": "17",
+          "fret": "12",
           "finger": 1,
-          "note": "B"
+          "note": "F"
         },
         "1": {
-          "fret": "17",
-          "finger": 1,
-          "note": "D"
+          "fret": "13",
+          "finger": 2,
+          "note": "G"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "D",
+      "category": "chords",
       "position": 3,
-      "description": "G9 chord - upper position (x-x-10-11-10-10)"
+      "description": "G9 chord - D-shape voicing at 5th fret"
     }
   }
 }

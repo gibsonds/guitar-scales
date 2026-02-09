@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "db9_pos5",
+    "chord_name": "Db9",
+    "root_note": "Db",
+    "chord_type": "Dominant 9th",
+    "starting_string": "4",
+    "starting_fret": "11",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "10",
+        "2"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "Db",
+        "F",
+        "Ab",
+        "B",
+        "Eb"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "11",
+          "finger": 1,
+          "note": "Db"
+        },
+        "3": {
+          "fret": "10",
+          "finger": 1,
+          "note": "B"
+        },
+        "2": {
+          "fret": "12",
+          "finger": 3,
+          "note": "F"
+        },
+        "1": {
+          "fret": "11",
+          "finger": 2,
+          "note": "Eb"
+        }
+      },
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "Db",
+      "category": "chords",
+      "position": 5,
+      "description": "Db9 chord - D-shape high voicing at 10th fret"
+    }
+  }
+}

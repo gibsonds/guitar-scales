@@ -4,9 +4,9 @@
     "exercise": "bmaj9_pos4",
     "chord_name": "Bmaj9",
     "root_note": "B",
-    "chord_type": "Major 9",
+    "chord_type": "Major 9th",
     "starting_string": "4",
-    "starting_fret": "13",
+    "starting_fret": "6",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "11",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -32,38 +32,41 @@
       ],
       "chord_tones": [
         "B",
-        "D#",
-        "F#",
-        "A#",
-        "C#"
+        "Eb",
+        "Gb",
+        "Bb",
+        "Db"
       ],
       "voicing": {
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "13",
-          "finger": 1,
-          "note": "D#"
+          "fret": "9",
+          "finger": 4,
+          "note": "B"
         },
         "3": {
-          "fret": "15",
-          "finger": 3,
-          "note": "A#"
+          "fret": "6",
+          "finger": 1,
+          "note": "Db"
         },
         "2": {
-          "fret": "14",
+          "fret": "7",
           "finger": 2,
-          "note": "C#"
+          "note": "Eb"
         },
         "1": {
-          "fret": "16",
-          "finger": 4,
-          "note": "F#"
+          "fret": "6",
+          "finger": 1,
+          "note": "Bb"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "B",
+      "category": "chords",
       "position": 4,
-      "description": "Bmaj9 chord - rootless voicing (x-x-2-4-3-5)"
+      "description": "Bmaj9 chord - D-shape voicing at 7th fret"
     }
   }
 }

@@ -4,9 +4,9 @@
     "exercise": "emaj9_pos4",
     "chord_name": "Emaj9",
     "root_note": "E",
-    "chord_type": "Major 9",
+    "chord_type": "Major 9th",
     "starting_string": "4",
-    "starting_fret": "6",
+    "starting_fret": "11",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "11",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -41,29 +41,32 @@
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "6",
-          "finger": 1,
-          "note": "G#"
+          "fret": "14",
+          "finger": 4,
+          "note": "E"
         },
         "3": {
-          "fret": "8",
-          "finger": 3,
-          "note": "D#"
-        },
-        "2": {
-          "fret": "7",
-          "finger": 2,
+          "fret": "11",
+          "finger": 1,
           "note": "F#"
         },
+        "2": {
+          "fret": "12",
+          "finger": 2,
+          "note": "G#"
+        },
         "1": {
-          "fret": "9",
-          "finger": 4,
-          "note": "B"
+          "fret": "11",
+          "finger": 1,
+          "note": "D#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "E",
+      "category": "chords",
       "position": 4,
-      "description": "Emaj9 chord - rootless voicing (x-x-2-4-3-5)"
+      "description": "Emaj9 chord - D-shape voicing at 7th fret"
     }
   }
 }

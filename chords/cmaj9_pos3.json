@@ -4,9 +4,9 @@
     "exercise": "cmaj9_pos3",
     "chord_name": "Cmaj9",
     "root_note": "C",
-    "chord_type": "Major 9",
-    "starting_string": "4",
-    "starting_fret": "10",
+    "chord_type": "Major 9th",
+    "starting_string": "5",
+    "starting_fret": "3",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "11",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -39,31 +39,34 @@
       ],
       "voicing": {
         "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "10",
-          "finger": 1,
+        "5": {
+          "fret": "3",
+          "finger": 2,
           "note": "C"
         },
-        "3": {
-          "fret": "11",
-          "finger": 2,
-          "note": "D"
-        },
-        "2": {
-          "fret": "12",
-          "finger": 3,
+        "4": {
+          "fret": "2",
+          "finger": 1,
           "note": "E"
         },
-        "1": {
-          "fret": "10",
-          "finger": 1,
-          "note": "G"
-        }
+        "3": {
+          "fret": "4",
+          "finger": 4,
+          "note": "B"
+        },
+        "2": {
+          "fret": "3",
+          "finger": 3,
+          "note": "D"
+        },
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 3,
-      "description": "Cmaj9 chord - upper position (x-x-10-11-12-10)"
+      "description": "Cmaj9 chord - A-shape compact voicing at 3rd fret"
     }
   }
 }

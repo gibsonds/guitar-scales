@@ -4,9 +4,9 @@
     "exercise": "a#maj9_pos2",
     "chord_name": "A#maj9",
     "root_note": "A#",
-    "chord_type": "Major 9",
-    "starting_string": "5",
-    "starting_fret": "17",
+    "chord_type": "Major 9th",
+    "starting_string": "6",
+    "starting_fret": "6",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "11",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -38,32 +38,35 @@
         "C"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
-          "fret": "20",
-          "finger": 3,
-          "note": "F"
+        "6": {
+          "fret": "6",
+          "finger": 1,
+          "note": "A#"
         },
+        "5": "mute",
         "4": {
-          "fret": "19",
+          "fret": "7",
           "finger": 2,
           "note": "A#"
         },
         "3": {
-          "fret": "18",
-          "finger": 1,
+          "fret": "7",
+          "finger": 2,
           "note": "D"
         },
-        "2": {
-          "fret": "20",
-          "finger": 4,
+        "2": "mute",
+        "1": {
+          "fret": "8",
+          "finger": 3,
           "note": "C"
-        },
-        "1": "mute"
+        }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "A#",
+      "category": "chords",
       "position": 2,
-      "description": "A#maj9 chord - mid-neck voicing (x-10-9-8-10-x)"
+      "description": "A#maj9 chord - E-shape fragment at 8th fret"
     }
   }
 }

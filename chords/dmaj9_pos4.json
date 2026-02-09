@@ -4,9 +4,9 @@
     "exercise": "dmaj9_pos4",
     "chord_name": "Dmaj9",
     "root_note": "D",
-    "chord_type": "Major 9",
+    "chord_type": "Major 9th",
     "starting_string": "4",
-    "starting_fret": "4",
+    "starting_fret": "9",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "11",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -41,29 +41,32 @@
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "4",
-          "finger": 1,
-          "note": "F#"
+          "fret": "12",
+          "finger": 4,
+          "note": "D"
         },
         "3": {
-          "fret": "6",
-          "finger": 3,
-          "note": "C#"
-        },
-        "2": {
-          "fret": "5",
-          "finger": 2,
+          "fret": "9",
+          "finger": 1,
           "note": "E"
         },
+        "2": {
+          "fret": "10",
+          "finger": 2,
+          "note": "F#"
+        },
         "1": {
-          "fret": "7",
-          "finger": 4,
-          "note": "A"
+          "fret": "9",
+          "finger": 1,
+          "note": "C#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "D",
+      "category": "chords",
       "position": 4,
-      "description": "Dmaj9 chord - rootless voicing (x-x-2-4-3-5)"
+      "description": "Dmaj9 chord - D-shape voicing at 7th fret"
     }
   }
 }

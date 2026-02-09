@@ -1,0 +1,76 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gbmaj9_pos5",
+    "chord_name": "Gbmaj9",
+    "root_note": "Gb",
+    "chord_type": "Major 9th",
+    "starting_string": "5",
+    "starting_fret": "9",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "11",
+        "2"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9"
+      ],
+      "chord_tones": [
+        "Gb",
+        "Bb",
+        "Db",
+        "F",
+        "Ab"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "9",
+          "finger": 4,
+          "note": "Gb"
+        },
+        "4": {
+          "fret": "6",
+          "finger": 1,
+          "note": "Bb"
+        },
+        "3": {
+          "fret": "6",
+          "finger": 1,
+          "note": "Db"
+        },
+        "2": {
+          "fret": "6",
+          "finger": 1,
+          "note": "F"
+        },
+        "1": {
+          "fret": "6",
+          "finger": 1,
+          "note": "Bb"
+        }
+      },
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "Gb",
+      "category": "chords",
+      "position": 5,
+      "description": "Gbmaj9 chord - G-shape high voicing at 15th fret"
+    }
+  }
+}

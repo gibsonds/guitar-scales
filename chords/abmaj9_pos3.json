@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "g#maj9_pos3",
-    "chord_name": "G#maj9",
-    "root_note": "G#",
-    "chord_type": "Major 9",
-    "starting_string": "4",
-    "starting_fret": "18",
+    "exercise": "abmaj9_pos3",
+    "chord_name": "Abmaj9",
+    "root_note": "Ab",
+    "chord_type": "Major 9th",
+    "starting_string": "5",
+    "starting_fret": "11",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "11",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -31,39 +31,42 @@
         "9"
       ],
       "chord_tones": [
-        "G#",
+        "Ab",
         "C",
-        "D#",
+        "Eb",
         "G",
-        "A#"
+        "Bb"
       ],
       "voicing": {
         "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "18",
-          "finger": 1,
-          "note": "G#"
-        },
-        "3": {
-          "fret": "19",
+        "5": {
+          "fret": "11",
           "finger": 2,
-          "note": "A#"
+          "note": "Ab"
         },
-        "2": {
-          "fret": "20",
-          "finger": 3,
+        "4": {
+          "fret": "10",
+          "finger": 1,
           "note": "C"
         },
-        "1": {
-          "fret": "18",
-          "finger": 1,
-          "note": "D#"
-        }
+        "3": {
+          "fret": "12",
+          "finger": 4,
+          "note": "G"
+        },
+        "2": {
+          "fret": "11",
+          "finger": 3,
+          "note": "Bb"
+        },
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "Ab",
+      "category": "chords",
       "position": 3,
-      "description": "G#maj9 chord - upper position (x-x-10-11-12-10)"
+      "description": "Abmaj9 chord - A-shape compact voicing at 3rd fret"
     }
   }
 }

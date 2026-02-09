@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "c#maj9_pos1",
-    "chord_name": "C#maj9",
-    "root_note": "C#",
-    "chord_type": "Major 9",
+    "exercise": "dbmaj9_pos1",
+    "chord_name": "Dbmaj9",
+    "root_note": "Db",
+    "chord_type": "Major 9th",
     "starting_string": "5",
-    "starting_fret": "1",
+    "starting_fret": "4",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "11",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -31,43 +31,46 @@
         "9"
       ],
       "chord_tones": [
-        "C#",
+        "Db",
         "F",
-        "G#",
+        "Ab",
         "C",
-        "D#"
+        "Eb"
       ],
       "voicing": {
         "6": "mute",
         "5": {
           "fret": "4",
-          "finger": 2,
-          "note": "C#"
+          "finger": 1,
+          "note": "Db"
         },
         "4": {
-          "fret": "3",
-          "finger": 1,
-          "note": "F"
+          "fret": "6",
+          "finger": 3,
+          "note": "Ab"
         },
         "3": {
-          "fret": "1",
-          "finger": 0,
-          "note": "G#"
+          "fret": "5",
+          "finger": 2,
+          "note": "C"
         },
         "2": {
-          "fret": "1",
-          "finger": 0,
-          "note": "C"
+          "fret": "4",
+          "finger": 1,
+          "note": "Eb"
         },
         "1": {
           "fret": "4",
-          "finger": 3,
-          "note": "D#"
+          "finger": 1,
+          "note": "Ab"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "Db",
+      "category": "chords",
       "position": 1,
-      "description": "C#maj9 chord - open position voicing (x-3-2-0-0-3)"
+      "description": "Dbmaj9 chord - A-shape voicing at 3rd fret"
     }
   }
 }

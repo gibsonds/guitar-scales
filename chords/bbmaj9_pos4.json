@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "a#maj9_pos4",
-    "chord_name": "A#maj9",
-    "root_note": "A#",
-    "chord_type": "Major 9",
+    "exercise": "bbmaj9_pos4",
+    "chord_name": "Bbmaj9",
+    "root_note": "Bb",
+    "chord_type": "Major 9th",
     "starting_string": "4",
-    "starting_fret": "12",
+    "starting_fret": "5",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "11",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -31,7 +31,7 @@
         "9"
       ],
       "chord_tones": [
-        "A#",
+        "Bb",
         "D",
         "F",
         "A",
@@ -41,29 +41,32 @@
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "12",
-          "finger": 1,
-          "note": "D"
+          "fret": "8",
+          "finger": 4,
+          "note": "Bb"
         },
         "3": {
-          "fret": "14",
-          "finger": 3,
-          "note": "A"
-        },
-        "2": {
-          "fret": "13",
-          "finger": 2,
+          "fret": "5",
+          "finger": 1,
           "note": "C"
         },
+        "2": {
+          "fret": "6",
+          "finger": 2,
+          "note": "D"
+        },
         "1": {
-          "fret": "15",
-          "finger": 4,
-          "note": "F"
+          "fret": "5",
+          "finger": 1,
+          "note": "A"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "Bb",
+      "category": "chords",
       "position": 4,
-      "description": "A#maj9 chord - rootless voicing (x-x-2-4-3-5)"
+      "description": "Bbmaj9 chord - D-shape voicing at 7th fret"
     }
   }
 }

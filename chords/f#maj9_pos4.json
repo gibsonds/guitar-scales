@@ -4,9 +4,9 @@
     "exercise": "f#maj9_pos4",
     "chord_name": "F#maj9",
     "root_note": "F#",
-    "chord_type": "Major 9",
+    "chord_type": "Major 9th",
     "starting_string": "4",
-    "starting_fret": "8",
+    "starting_fret": "13",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "4",
         "7",
         "11",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -41,29 +41,32 @@
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "8",
-          "finger": 1,
-          "note": "A#"
+          "fret": "4",
+          "finger": 4,
+          "note": "F#"
         },
         "3": {
-          "fret": "10",
-          "finger": 3,
-          "note": "F"
-        },
-        "2": {
-          "fret": "9",
-          "finger": 2,
+          "fret": "13",
+          "finger": 1,
           "note": "G#"
         },
+        "2": {
+          "fret": "14",
+          "finger": 2,
+          "note": "A#"
+        },
         "1": {
-          "fret": "11",
-          "finger": 4,
-          "note": "C#"
+          "fret": "13",
+          "finger": 1,
+          "note": "F"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "F#",
+      "category": "chords",
       "position": 4,
-      "description": "F#maj9 chord - rootless voicing (x-x-2-4-3-5)"
+      "description": "F#maj9 chord - D-shape voicing at 7th fret"
     }
   }
 }

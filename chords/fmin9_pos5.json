@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "fmin9_pos5",
+    "chord_name": "Fmin9",
+    "root_note": "F",
+    "chord_type": "Minor 9th",
+    "starting_string": "4",
+    "starting_fret": "5",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "2"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "F",
+        "G#",
+        "C",
+        "D#",
+        "G"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "5",
+          "finger": 1,
+          "note": "G"
+        },
+        "3": {
+          "fret": "5",
+          "finger": 1,
+          "note": "C"
+        },
+        "2": {
+          "fret": "4",
+          "finger": 1,
+          "note": "D#"
+        },
+        "1": {
+          "fret": "4",
+          "finger": 1,
+          "note": "G#"
+        }
+      },
+      "caged_shape": "D",
+      "inversion": "2nd",
+      "bass_note": "G",
+      "category": "chords",
+      "position": 5,
+      "description": "Fmin9 chord - D-shape high voicing at 12th fret"
+    }
+  }
+}

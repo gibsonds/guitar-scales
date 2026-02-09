@@ -4,9 +4,9 @@
     "exercise": "emin9_pos3",
     "chord_name": "Emin9",
     "root_note": "E",
-    "chord_type": "Minor 9",
-    "starting_string": "4",
-    "starting_fret": "14",
+    "chord_type": "Minor 9th",
+    "starting_string": "5",
+    "starting_fret": "10",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -39,31 +39,38 @@
       ],
       "voicing": {
         "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "14",
-          "finger": 1,
-          "note": "E"
-        },
-        "3": {
-          "fret": "14",
-          "finger": 1,
-          "note": "D"
-        },
-        "2": {
-          "fret": "15",
+        "5": {
+          "fret": "10",
           "finger": 2,
           "note": "G"
         },
-        "1": {
-          "fret": "14",
+        "4": {
+          "fret": "9",
           "finger": 1,
           "note": "B"
+        },
+        "3": {
+          "fret": "11",
+          "finger": 3,
+          "note": "F#"
+        },
+        "2": {
+          "fret": "12",
+          "finger": 4,
+          "note": "B"
+        },
+        "1": {
+          "fret": "12",
+          "finger": 4,
+          "note": "E"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "1st",
+      "bass_note": "G",
+      "category": "chords",
       "position": 3,
-      "description": "Emin9 chord - compact upper voicing (x-x-10-10-11-10)"
+      "description": "Emin9 chord - C-shape voicing at 6th fret"
     }
   }
 }

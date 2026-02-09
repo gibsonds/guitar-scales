@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "g#min9_pos5",
+    "chord_name": "G#min9",
+    "root_note": "G#",
+    "chord_type": "Minor 9th",
+    "starting_string": "4",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "2"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "G#",
+        "B",
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "8",
+          "finger": 1,
+          "note": "A#"
+        },
+        "3": {
+          "fret": "8",
+          "finger": 1,
+          "note": "D#"
+        },
+        "2": {
+          "fret": "7",
+          "finger": 1,
+          "note": "F#"
+        },
+        "1": {
+          "fret": "7",
+          "finger": 1,
+          "note": "B"
+        }
+      },
+      "caged_shape": "D",
+      "inversion": "2nd",
+      "bass_note": "A#",
+      "category": "chords",
+      "position": 5,
+      "description": "G#min9 chord - D-shape high voicing at 12th fret"
+    }
+  }
+}

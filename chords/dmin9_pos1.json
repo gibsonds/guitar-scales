@@ -4,7 +4,7 @@
     "exercise": "dmin9_pos1",
     "chord_name": "Dmin9",
     "root_note": "D",
-    "chord_type": "Minor 9",
+    "chord_type": "Minor 9th",
     "starting_string": "5",
     "starting_fret": "5",
     "tuning": [
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -55,19 +55,22 @@
           "note": "C"
         },
         "2": {
-          "fret": "6",
-          "finger": 2,
-          "note": "F"
+          "fret": "5",
+          "finger": 1,
+          "note": "E"
         },
         "1": {
-          "fret": "7",
-          "finger": 4,
-          "note": "E"
+          "fret": "5",
+          "finger": 1,
+          "note": "A"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "D",
+      "category": "chords",
       "position": 1,
-      "description": "Dmin9 chord - mid-neck voicing (x-3-5-3-4-5)"
+      "description": "Dmin9 chord - A-shape voicing at 3rd fret"
     }
   }
 }

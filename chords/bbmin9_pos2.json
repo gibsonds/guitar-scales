@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "a#min9_pos2",
-    "chord_name": "A#min9",
-    "root_note": "A#",
-    "chord_type": "Minor 9",
+    "exercise": "bbmin9_pos2",
+    "chord_name": "Bbmin9",
+    "root_note": "Bb",
+    "chord_type": "Minor 9th",
     "starting_string": "6",
-    "starting_fret": "18",
+    "starting_fret": "6",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -31,47 +31,50 @@
         "9"
       ],
       "chord_tones": [
-        "A#",
-        "C#",
+        "Bb",
+        "Db",
         "F",
-        "G#",
+        "Ab",
         "C"
       ],
       "voicing": {
         "6": {
-          "fret": "18",
+          "fret": "6",
           "finger": 1,
-          "note": "A#"
+          "note": "Bb"
         },
         "5": {
-          "fret": "20",
+          "fret": "8",
           "finger": 3,
-          "note": "C#"
+          "note": "F"
         },
         "4": {
-          "fret": "18",
+          "fret": "10",
+          "finger": 4,
+          "note": "C"
+        },
+        "3": {
+          "fret": "6",
+          "finger": 1,
+          "note": "Db"
+        },
+        "2": {
+          "fret": "6",
           "finger": 1,
           "note": "F"
         },
-        "3": {
-          "fret": "18",
-          "finger": 1,
-          "note": "G#"
-        },
-        "2": {
-          "fret": "18",
-          "finger": 1,
-          "note": "C#"
-        },
         "1": {
-          "fret": "20",
-          "finger": 4,
-          "note": "C"
+          "fret": "6",
+          "finger": 1,
+          "note": "Bb"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "Bb",
+      "category": "chords",
       "position": 2,
-      "description": "A#min9 chord - barre voicing (8-10-8-8-8-10)"
+      "description": "Bbmin9 chord - E-shape barre at 8th fret"
     }
   }
 }

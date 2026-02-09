@@ -1,10 +1,10 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "f#min9_pos2",
-    "chord_name": "F#min9",
-    "root_note": "F#",
-    "chord_type": "Minor 9",
+    "exercise": "gbmin9_pos2",
+    "chord_name": "Gbmin9",
+    "root_note": "Gb",
+    "chord_type": "Minor 9th",
     "starting_string": "6",
     "starting_fret": "14",
     "tuning": [
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -31,47 +31,50 @@
         "9"
       ],
       "chord_tones": [
-        "F#",
+        "Gb",
         "A",
-        "C#",
+        "Db",
         "E",
-        "G#"
+        "Ab"
       ],
       "voicing": {
         "6": {
           "fret": "14",
           "finger": 1,
-          "note": "F#"
+          "note": "Gb"
         },
         "5": {
-          "fret": "16",
+          "fret": "4",
           "finger": 3,
-          "note": "A"
+          "note": "Db"
         },
         "4": {
-          "fret": "14",
-          "finger": 1,
-          "note": "C#"
+          "fret": "6",
+          "finger": 4,
+          "note": "Ab"
         },
         "3": {
           "fret": "14",
           "finger": 1,
-          "note": "E"
+          "note": "A"
         },
         "2": {
           "fret": "14",
           "finger": 1,
-          "note": "A"
+          "note": "Db"
         },
         "1": {
-          "fret": "16",
-          "finger": 4,
-          "note": "G#"
+          "fret": "14",
+          "finger": 1,
+          "note": "Gb"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "Gb",
+      "category": "chords",
       "position": 2,
-      "description": "F#min9 chord - barre voicing (8-10-8-8-8-10)"
+      "description": "Gbmin9 chord - E-shape barre at 8th fret"
     }
   }
 }

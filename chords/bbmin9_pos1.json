@@ -1,10 +1,10 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "a#min9_pos1",
-    "chord_name": "A#min9",
-    "root_note": "A#",
-    "chord_type": "Minor 9",
+    "exercise": "bbmin9_pos1",
+    "chord_name": "Bbmin9",
+    "root_note": "Bb",
+    "chord_type": "Minor 9th",
     "starting_string": "5",
     "starting_fret": "13",
     "tuning": [
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -31,10 +31,10 @@
         "9"
       ],
       "chord_tones": [
-        "A#",
-        "C#",
+        "Bb",
+        "Db",
         "F",
-        "G#",
+        "Ab",
         "C"
       ],
       "voicing": {
@@ -42,32 +42,35 @@
         "5": {
           "fret": "13",
           "finger": 1,
-          "note": "A#"
+          "note": "Bb"
         },
         "4": {
-          "fret": "15",
+          "fret": "3",
           "finger": 3,
           "note": "F"
         },
         "3": {
           "fret": "13",
           "finger": 1,
-          "note": "G#"
+          "note": "Ab"
         },
         "2": {
-          "fret": "14",
-          "finger": 2,
-          "note": "C#"
+          "fret": "13",
+          "finger": 1,
+          "note": "C"
         },
         "1": {
-          "fret": "15",
-          "finger": 4,
-          "note": "C"
+          "fret": "13",
+          "finger": 1,
+          "note": "F"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "Bb",
+      "category": "chords",
       "position": 1,
-      "description": "A#min9 chord - mid-neck voicing (x-3-5-3-4-5)"
+      "description": "Bbmin9 chord - A-shape voicing at 3rd fret"
     }
   }
 }

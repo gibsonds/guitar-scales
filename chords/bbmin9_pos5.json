@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "bbmin9_pos5",
+    "chord_name": "Bbmin9",
+    "root_note": "Bb",
+    "chord_type": "Minor 9th",
+    "starting_string": "4",
+    "starting_fret": "10",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "2"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "Bb",
+        "Db",
+        "F",
+        "Ab",
+        "C"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "10",
+          "finger": 1,
+          "note": "C"
+        },
+        "3": {
+          "fret": "10",
+          "finger": 1,
+          "note": "F"
+        },
+        "2": {
+          "fret": "9",
+          "finger": 1,
+          "note": "Ab"
+        },
+        "1": {
+          "fret": "9",
+          "finger": 1,
+          "note": "Db"
+        }
+      },
+      "caged_shape": "D",
+      "inversion": "2nd",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 5,
+      "description": "Bbmin9 chord - D-shape high voicing at 12th fret"
+    }
+  }
+}

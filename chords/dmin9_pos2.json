@@ -4,7 +4,7 @@
     "exercise": "dmin9_pos2",
     "chord_name": "Dmin9",
     "root_note": "D",
-    "chord_type": "Minor 9",
+    "chord_type": "Minor 9th",
     "starting_string": "6",
     "starting_fret": "10",
     "tuning": [
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -46,32 +46,35 @@
         "5": {
           "fret": "12",
           "finger": 3,
-          "note": "F"
+          "note": "A"
         },
         "4": {
-          "fret": "10",
-          "finger": 1,
-          "note": "A"
+          "fret": "14",
+          "finger": 4,
+          "note": "E"
         },
         "3": {
           "fret": "10",
           "finger": 1,
-          "note": "C"
+          "note": "F"
         },
         "2": {
           "fret": "10",
           "finger": 1,
-          "note": "F"
+          "note": "A"
         },
         "1": {
-          "fret": "12",
-          "finger": 4,
-          "note": "E"
+          "fret": "10",
+          "finger": 1,
+          "note": "D"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "D",
+      "category": "chords",
       "position": 2,
-      "description": "Dmin9 chord - barre voicing (8-10-8-8-8-10)"
+      "description": "Dmin9 chord - E-shape barre at 8th fret"
     }
   }
 }

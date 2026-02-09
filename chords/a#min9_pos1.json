@@ -4,7 +4,7 @@
     "exercise": "a#min9_pos1",
     "chord_name": "A#min9",
     "root_note": "A#",
-    "chord_type": "Minor 9",
+    "chord_type": "Minor 9th",
     "starting_string": "5",
     "starting_fret": "13",
     "tuning": [
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -45,7 +45,7 @@
           "note": "A#"
         },
         "4": {
-          "fret": "15",
+          "fret": "3",
           "finger": 3,
           "note": "F"
         },
@@ -55,19 +55,22 @@
           "note": "G#"
         },
         "2": {
-          "fret": "14",
-          "finger": 2,
-          "note": "C#"
+          "fret": "13",
+          "finger": 1,
+          "note": "C"
         },
         "1": {
-          "fret": "15",
-          "finger": 4,
-          "note": "C"
+          "fret": "13",
+          "finger": 1,
+          "note": "F"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "A#",
+      "category": "chords",
       "position": 1,
-      "description": "A#min9 chord - mid-neck voicing (x-3-5-3-4-5)"
+      "description": "A#min9 chord - A-shape voicing at 3rd fret"
     }
   }
 }

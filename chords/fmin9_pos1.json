@@ -4,7 +4,7 @@
     "exercise": "fmin9_pos1",
     "chord_name": "Fmin9",
     "root_note": "F",
-    "chord_type": "Minor 9",
+    "chord_type": "Minor 9th",
     "starting_string": "5",
     "starting_fret": "8",
     "tuning": [
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -32,9 +32,9 @@
       ],
       "chord_tones": [
         "F",
-        "Ab",
+        "G#",
         "C",
-        "Eb",
+        "D#",
         "G"
       ],
       "voicing": {
@@ -52,22 +52,25 @@
         "3": {
           "fret": "8",
           "finger": 1,
-          "note": "Eb"
+          "note": "D#"
         },
         "2": {
-          "fret": "9",
-          "finger": 2,
-          "note": "Ab"
+          "fret": "8",
+          "finger": 1,
+          "note": "G"
         },
         "1": {
-          "fret": "10",
-          "finger": 4,
-          "note": "G"
+          "fret": "8",
+          "finger": 1,
+          "note": "C"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "F",
+      "category": "chords",
       "position": 1,
-      "description": "Fmin9 chord - mid-neck voicing (x-3-5-3-4-5)"
+      "description": "Fmin9 chord - A-shape voicing at 3rd fret"
     }
   }
 }

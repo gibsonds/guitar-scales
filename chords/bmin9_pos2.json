@@ -4,9 +4,9 @@
     "exercise": "bmin9_pos2",
     "chord_name": "Bmin9",
     "root_note": "B",
-    "chord_type": "Minor 9",
+    "chord_type": "Minor 9th",
     "starting_string": "6",
-    "starting_fret": "19",
+    "starting_fret": "7",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -33,45 +33,48 @@
       "chord_tones": [
         "B",
         "D",
-        "F#",
+        "Gb",
         "A",
-        "C#"
+        "Db"
       ],
       "voicing": {
         "6": {
-          "fret": "19",
+          "fret": "7",
           "finger": 1,
           "note": "B"
         },
         "5": {
-          "fret": "21",
+          "fret": "9",
           "finger": 3,
-          "note": "D"
+          "note": "Gb"
         },
         "4": {
-          "fret": "19",
-          "finger": 1,
-          "note": "F#"
+          "fret": "11",
+          "finger": 4,
+          "note": "Db"
         },
         "3": {
-          "fret": "19",
-          "finger": 1,
-          "note": "A"
-        },
-        "2": {
-          "fret": "19",
+          "fret": "7",
           "finger": 1,
           "note": "D"
         },
+        "2": {
+          "fret": "7",
+          "finger": 1,
+          "note": "Gb"
+        },
         "1": {
-          "fret": "21",
-          "finger": 4,
-          "note": "C#"
+          "fret": "7",
+          "finger": 1,
+          "note": "B"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "B",
+      "category": "chords",
       "position": 2,
-      "description": "Bmin9 chord - barre voicing (8-10-8-8-8-10)"
+      "description": "Bmin9 chord - E-shape barre at 8th fret"
     }
   }
 }

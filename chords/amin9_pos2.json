@@ -4,9 +4,9 @@
     "exercise": "amin9_pos2",
     "chord_name": "Amin9",
     "root_note": "A",
-    "chord_type": "Minor 9",
+    "chord_type": "Minor 9th",
     "starting_string": "6",
-    "starting_fret": "17",
+    "starting_fret": "5",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -39,39 +39,42 @@
       ],
       "voicing": {
         "6": {
-          "fret": "17",
+          "fret": "5",
           "finger": 1,
           "note": "A"
         },
         "5": {
-          "fret": "19",
+          "fret": "7",
           "finger": 3,
-          "note": "C"
+          "note": "E"
         },
         "4": {
-          "fret": "17",
+          "fret": "9",
+          "finger": 4,
+          "note": "B"
+        },
+        "3": {
+          "fret": "5",
+          "finger": 1,
+          "note": "C"
+        },
+        "2": {
+          "fret": "5",
           "finger": 1,
           "note": "E"
         },
-        "3": {
-          "fret": "17",
-          "finger": 1,
-          "note": "G"
-        },
-        "2": {
-          "fret": "17",
-          "finger": 1,
-          "note": "C"
-        },
         "1": {
-          "fret": "19",
-          "finger": 4,
-          "note": "B"
+          "fret": "5",
+          "finger": 1,
+          "note": "A"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "A",
+      "category": "chords",
       "position": 2,
-      "description": "Amin9 chord - barre voicing (8-10-8-8-8-10)"
+      "description": "Amin9 chord - E-shape barre at 8th fret"
     }
   }
 }

@@ -1,0 +1,72 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "emin9_pos5",
+    "chord_name": "Emin9",
+    "root_note": "E",
+    "chord_type": "Minor 9th",
+    "starting_string": "4",
+    "starting_fret": "4",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7",
+        "10",
+        "2"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5",
+        "b7",
+        "9"
+      ],
+      "chord_tones": [
+        "E",
+        "G",
+        "B",
+        "D",
+        "F#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "4",
+          "finger": 1,
+          "note": "F#"
+        },
+        "3": {
+          "fret": "4",
+          "finger": 1,
+          "note": "B"
+        },
+        "2": {
+          "fret": "3",
+          "finger": 1,
+          "note": "D"
+        },
+        "1": {
+          "fret": "3",
+          "finger": 1,
+          "note": "G"
+        }
+      },
+      "caged_shape": "D",
+      "inversion": "2nd",
+      "bass_note": "F#",
+      "category": "chords",
+      "position": 5,
+      "description": "Emin9 chord - D-shape high voicing at 12th fret"
+    }
+  }
+}

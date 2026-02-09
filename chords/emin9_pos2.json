@@ -4,7 +4,7 @@
     "exercise": "emin9_pos2",
     "chord_name": "Emin9",
     "root_note": "E",
-    "chord_type": "Minor 9",
+    "chord_type": "Minor 9th",
     "starting_string": "6",
     "starting_fret": "12",
     "tuning": [
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -46,32 +46,35 @@
         "5": {
           "fret": "14",
           "finger": 3,
-          "note": "G"
+          "note": "B"
         },
         "4": {
-          "fret": "12",
-          "finger": 1,
-          "note": "B"
+          "fret": "4",
+          "finger": 4,
+          "note": "F#"
         },
         "3": {
           "fret": "12",
           "finger": 1,
-          "note": "D"
+          "note": "G"
         },
         "2": {
           "fret": "12",
           "finger": 1,
-          "note": "G"
+          "note": "B"
         },
         "1": {
-          "fret": "14",
-          "finger": 4,
-          "note": "F#"
+          "fret": "12",
+          "finger": 1,
+          "note": "E"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "E",
+      "category": "chords",
       "position": 2,
-      "description": "Emin9 chord - barre voicing (8-10-8-8-8-10)"
+      "description": "Emin9 chord - E-shape barre at 8th fret"
     }
   }
 }

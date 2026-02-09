@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "f#min9_pos4",
-    "chord_name": "F#min9",
-    "root_note": "F#",
-    "chord_type": "Minor 9",
+    "exercise": "gbmin9_pos4",
+    "chord_name": "Gbmin9",
+    "root_note": "Gb",
+    "chord_type": "Minor 9th",
     "starting_string": "4",
-    "starting_fret": "7",
+    "starting_fret": "4",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -31,39 +31,42 @@
         "9"
       ],
       "chord_tones": [
-        "F#",
+        "Gb",
         "A",
-        "C#",
+        "Db",
         "E",
-        "G#"
+        "Ab"
       ],
       "voicing": {
         "6": "mute",
         "5": "mute",
         "4": {
-          "fret": "7",
+          "fret": "4",
           "finger": 1,
-          "note": "A"
+          "note": "Gb"
         },
         "3": {
-          "fret": "9",
+          "fret": "6",
           "finger": 3,
-          "note": "E"
+          "note": "Db"
         },
         "2": {
-          "fret": "9",
-          "finger": 3,
-          "note": "G#"
+          "fret": "5",
+          "finger": 2,
+          "note": "E"
         },
         "1": {
-          "fret": "9",
-          "finger": 3,
-          "note": "C#"
+          "fret": "4",
+          "finger": 1,
+          "note": "Ab"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "Gb",
+      "category": "chords",
       "position": 4,
-      "description": "F#min9 chord - rootless voicing (x-x-1-3-3-3)"
+      "description": "Gbmin9 chord - D-shape voicing at 10th fret"
     }
   }
 }

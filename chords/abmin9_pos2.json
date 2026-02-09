@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "g#min9_pos2",
-    "chord_name": "G#min9",
-    "root_note": "G#",
-    "chord_type": "Minor 9",
+    "exercise": "abmin9_pos2",
+    "chord_name": "Abmin9",
+    "root_note": "Ab",
+    "chord_type": "Minor 9th",
     "starting_string": "6",
-    "starting_fret": "16",
+    "starting_fret": "4",
     "tuning": [
       "E",
       "A",
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -31,47 +31,50 @@
         "9"
       ],
       "chord_tones": [
-        "G#",
+        "Ab",
         "B",
-        "D#",
-        "F#",
-        "A#"
+        "Eb",
+        "Gb",
+        "Bb"
       ],
       "voicing": {
         "6": {
-          "fret": "16",
+          "fret": "4",
           "finger": 1,
-          "note": "G#"
+          "note": "Ab"
         },
         "5": {
-          "fret": "18",
+          "fret": "6",
           "finger": 3,
-          "note": "B"
+          "note": "Eb"
         },
         "4": {
-          "fret": "16",
-          "finger": 1,
-          "note": "D#"
+          "fret": "8",
+          "finger": 4,
+          "note": "Bb"
         },
         "3": {
-          "fret": "16",
-          "finger": 1,
-          "note": "F#"
-        },
-        "2": {
-          "fret": "16",
+          "fret": "4",
           "finger": 1,
           "note": "B"
         },
+        "2": {
+          "fret": "4",
+          "finger": 1,
+          "note": "Eb"
+        },
         "1": {
-          "fret": "18",
-          "finger": 4,
-          "note": "A#"
+          "fret": "4",
+          "finger": 1,
+          "note": "Ab"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "Ab",
+      "category": "chords",
       "position": 2,
-      "description": "G#min9 chord - barre voicing (8-10-8-8-8-10)"
+      "description": "Abmin9 chord - E-shape barre at 8th fret"
     }
   }
 }

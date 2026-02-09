@@ -4,7 +4,7 @@
     "exercise": "f#min9_pos2",
     "chord_name": "F#min9",
     "root_note": "F#",
-    "chord_type": "Minor 9",
+    "chord_type": "Minor 9th",
     "starting_string": "6",
     "starting_fret": "14",
     "tuning": [
@@ -21,7 +21,7 @@
         "3",
         "7",
         "10",
-        "14"
+        "2"
       ],
       "chord_degrees": [
         "1",
@@ -44,34 +44,37 @@
           "note": "F#"
         },
         "5": {
-          "fret": "16",
+          "fret": "4",
           "finger": 3,
-          "note": "A"
+          "note": "C#"
         },
         "4": {
-          "fret": "14",
-          "finger": 1,
-          "note": "C#"
+          "fret": "6",
+          "finger": 4,
+          "note": "G#"
         },
         "3": {
           "fret": "14",
           "finger": 1,
-          "note": "E"
+          "note": "A"
         },
         "2": {
           "fret": "14",
           "finger": 1,
-          "note": "A"
+          "note": "C#"
         },
         "1": {
-          "fret": "16",
-          "finger": 4,
-          "note": "G#"
+          "fret": "14",
+          "finger": 1,
+          "note": "F#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "F#",
+      "category": "chords",
       "position": 2,
-      "description": "F#min9 chord - barre voicing (8-10-8-8-8-10)"
+      "description": "F#min9 chord - E-shape barre at 8th fret"
     }
   }
 }

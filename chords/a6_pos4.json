@@ -1,0 +1,69 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "a6_pos4",
+    "chord_name": "A6",
+    "root_note": "A",
+    "chord_type": "Major 6th",
+    "starting_string": "4",
+    "starting_fret": "6",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "9"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "6"
+      ],
+      "chord_tones": [
+        "A",
+        "C#",
+        "E",
+        "F#"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
+          "fret": "7",
+          "finger": 2,
+          "note": "A"
+        },
+        "3": {
+          "fret": "6",
+          "finger": 1,
+          "note": "C#"
+        },
+        "2": {
+          "fret": "7",
+          "finger": 3,
+          "note": "E"
+        },
+        "1": {
+          "fret": "5",
+          "finger": 1,
+          "note": "A"
+        }
+      },
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "A",
+      "category": "chords",
+      "position": 4,
+      "description": "A6 chord - D-shape voicing at 9th fret"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "c6_pos3",
+    "chord_name": "C6",
+    "root_note": "C",
+    "chord_type": "Major 6th",
+    "starting_string": "5",
+    "starting_fret": "15",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "4",
+        "7",
+        "9"
+      ],
+      "chord_degrees": [
+        "1",
+        "3",
+        "5",
+        "6"
+      ],
+      "chord_tones": [
+        "C",
+        "E",
+        "G",
+        "A"
+      ],
+      "voicing": {
+        "6": "mute",
+        "5": {
+          "fret": "15",
+          "finger": 2,
+          "note": "C"
+        },
+        "4": {
+          "fret": "14",
+          "finger": 1,
+          "note": "E"
+        },
+        "3": {
+          "fret": "14",
+          "finger": 1,
+          "note": "A"
+        },
+        "2": "mute",
+        "1": {
+          "fret": "17",
+          "finger": 4,
+          "note": "C"
+        }
+      },
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 3,
+      "description": "C6 chord - G-shape high voicing at 15th fret"
+    }
+  }
+}

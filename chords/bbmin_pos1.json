@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "a#min_pos1",
-    "chord_name": "A#m",
-    "root_note": "A#",
+    "exercise": "bbmin_pos1",
+    "chord_name": "Bbmin",
+    "root_note": "Bb",
     "chord_type": "Minor",
     "starting_string": "5",
-    "starting_fret": "1",
+    "starting_fret": "13",
     "tuning": [
       "E",
       "A",
@@ -27,41 +27,44 @@
         "5"
       ],
       "chord_tones": [
-        "A#",
-        "C#",
+        "Bb",
+        "Db",
         "F"
       ],
       "voicing": {
         "6": "mute",
         "5": {
-          "fret": "1",
-          "finger": 0,
-          "note": "A#"
+          "fret": "13",
+          "finger": 1,
+          "note": "Bb"
         },
         "4": {
           "fret": "3",
-          "finger": 2,
+          "finger": 3,
           "note": "F"
         },
         "3": {
           "fret": "3",
-          "finger": 3,
-          "note": "A#"
+          "finger": 4,
+          "note": "Bb"
         },
         "2": {
-          "fret": "2",
-          "finger": 1,
-          "note": "C#"
+          "fret": "14",
+          "finger": 2,
+          "note": "Db"
         },
         "1": {
-          "fret": "1",
-          "finger": 0,
+          "fret": "13",
+          "finger": 1,
           "note": "F"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "Bb",
+      "category": "chords",
       "position": 1,
-      "description": "A#m chord - open position (x-0-2-2-1-0)"
+      "description": "Bbmin chord - A-shape barre at 3rd fret"
     }
   }
 }

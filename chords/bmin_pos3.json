@@ -2,11 +2,11 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "bmin_pos3",
-    "chord_name": "Bm",
+    "chord_name": "Bmin",
     "root_note": "B",
     "chord_type": "Minor",
-    "starting_string": "6",
-    "starting_fret": "7",
+    "starting_string": "4",
+    "starting_fret": "9",
     "tuning": [
       "E",
       "A",
@@ -29,43 +29,38 @@
       "chord_tones": [
         "B",
         "D",
-        "F#"
+        "Gb"
       ],
       "voicing": {
-        "6": {
-          "fret": "7",
-          "finger": 1,
-          "note": "B"
-        },
-        "5": {
-          "fret": "9",
-          "finger": 3,
-          "note": "F#"
-        },
+        "6": "mute",
+        "5": "mute",
         "4": {
           "fret": "9",
-          "finger": 4,
+          "finger": 1,
           "note": "B"
         },
         "3": {
-          "fret": "7",
-          "finger": 1,
-          "note": "D"
+          "fret": "11",
+          "finger": 3,
+          "note": "Gb"
         },
         "2": {
-          "fret": "7",
-          "finger": 1,
-          "note": "F#"
+          "fret": "12",
+          "finger": 4,
+          "note": "B"
         },
         "1": {
-          "fret": "7",
-          "finger": 1,
-          "note": "B"
+          "fret": "10",
+          "finger": 2,
+          "note": "D"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "B",
+      "category": "chords",
       "position": 3,
-      "description": "Bm chord - full barre at 5th fret (5-7-7-5-5-5)"
+      "description": "Bmin chord - D-shape high voicing at 10th fret"
     }
   }
 }

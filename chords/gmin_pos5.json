@@ -1,0 +1,62 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "gmin_pos5",
+    "chord_name": "Gmin",
+    "root_note": "G",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "6",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "G",
+        "A#",
+        "D"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "6",
+          "finger": 2,
+          "note": "A#"
+        },
+        "5": {
+          "fret": "5",
+          "finger": 1,
+          "note": "G"
+        },
+        "4": "mute",
+        "3": "mute",
+        "2": {
+          "fret": "7",
+          "finger": 3,
+          "note": "D"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "G",
+      "category": "chords",
+      "position": 5,
+      "description": "Gmin chord - G-shape fragment at 11th fret"
+    }
+  }
+}

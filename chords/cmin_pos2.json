@@ -2,10 +2,10 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "cmin_pos2",
-    "chord_name": "Cm",
+    "chord_name": "Cmin",
     "root_note": "C",
     "chord_type": "Minor",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "8",
     "tuning": [
       "E",
@@ -28,40 +28,47 @@
       ],
       "chord_tones": [
         "C",
-        "D#",
+        "Eb",
         "G"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "8",
           "finger": 1,
           "note": "C"
         },
-        "4": {
+        "5": {
           "fret": "10",
           "finger": 3,
           "note": "G"
         },
-        "3": {
+        "4": {
           "fret": "10",
           "finger": 4,
           "note": "C"
         },
+        "3": {
+          "fret": "8",
+          "finger": 1,
+          "note": "Eb"
+        },
         "2": {
           "fret": "8",
           "finger": 1,
-          "note": "D#"
+          "note": "G"
         },
         "1": {
           "fret": "8",
           "finger": 1,
-          "note": "G"
+          "note": "C"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 2,
-      "description": "Cm chord - barre at 5th fret (x-5-7-7-5-5)"
+      "description": "Cmin chord - E-shape barre at 8th fret"
     }
   }
 }

@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "a#min_pos4",
-    "chord_name": "A#m",
-    "root_note": "A#",
+    "exercise": "bbmin_pos4",
+    "chord_name": "Bbmin",
+    "root_note": "Bb",
     "chord_type": "Minor",
-    "starting_string": "4",
-    "starting_fret": "8",
+    "starting_string": "5",
+    "starting_fret": "4",
     "tuning": [
       "E",
       "A",
@@ -27,37 +27,40 @@
         "5"
       ],
       "chord_tones": [
-        "A#",
-        "C#",
+        "Bb",
+        "Db",
         "F"
       ],
       "voicing": {
         "6": "mute",
-        "5": "mute",
-        "4": {
-          "fret": "8",
-          "finger": 1,
-          "note": "A#"
+        "5": {
+          "fret": "4",
+          "finger": 2,
+          "note": "Db"
         },
-        "3": {
-          "fret": "10",
-          "finger": 3,
+        "4": {
+          "fret": "3",
+          "finger": 1,
           "note": "F"
         },
-        "2": {
-          "fret": "11",
-          "finger": 4,
-          "note": "A#"
+        "3": {
+          "fret": "3",
+          "finger": 1,
+          "note": "Bb"
         },
-        "1": {
-          "fret": "9",
-          "finger": 2,
-          "note": "C#"
-        }
+        "2": {
+          "fret": "6",
+          "finger": 4,
+          "note": "F"
+        },
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "Bb",
+      "category": "chords",
       "position": 4,
-      "description": "A#m chord - top strings voicing (x-x-7-9-10-8)"
+      "description": "Bbmin chord - C-shape voicing at 6th fret"
     }
   }
 }

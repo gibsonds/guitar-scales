@@ -2,11 +2,11 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "gmin_pos3",
-    "chord_name": "Gm",
+    "chord_name": "Gmin",
     "root_note": "G",
     "chord_type": "Minor",
-    "starting_string": "6",
-    "starting_fret": "15",
+    "starting_string": "4",
+    "starting_fret": "5",
     "tuning": [
       "E",
       "A",
@@ -32,40 +32,35 @@
         "D"
       ],
       "voicing": {
-        "6": {
-          "fret": "15",
-          "finger": 1,
-          "note": "G"
-        },
-        "5": {
-          "fret": "17",
-          "finger": 3,
-          "note": "D"
-        },
+        "6": "mute",
+        "5": "mute",
         "4": {
-          "fret": "17",
-          "finger": 4,
+          "fret": "5",
+          "finger": 1,
           "note": "G"
         },
         "3": {
-          "fret": "15",
-          "finger": 1,
-          "note": "A#"
-        },
-        "2": {
-          "fret": "15",
-          "finger": 1,
+          "fret": "7",
+          "finger": 3,
           "note": "D"
         },
-        "1": {
-          "fret": "15",
-          "finger": 1,
+        "2": {
+          "fret": "8",
+          "finger": 4,
           "note": "G"
+        },
+        "1": {
+          "fret": "6",
+          "finger": 2,
+          "note": "A#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "G",
+      "category": "chords",
       "position": 3,
-      "description": "Gm chord - full barre at 5th fret (5-7-7-5-5-5)"
+      "description": "Gmin chord - D-shape high voicing at 10th fret"
     }
   }
 }

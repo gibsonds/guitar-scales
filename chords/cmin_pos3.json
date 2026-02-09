@@ -2,11 +2,11 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "cmin_pos3",
-    "chord_name": "Cm",
+    "chord_name": "Cmin",
     "root_note": "C",
     "chord_type": "Minor",
-    "starting_string": "6",
-    "starting_fret": "8",
+    "starting_string": "4",
+    "starting_fret": "10",
     "tuning": [
       "E",
       "A",
@@ -28,44 +28,39 @@
       ],
       "chord_tones": [
         "C",
-        "D#",
+        "Eb",
         "G"
       ],
       "voicing": {
-        "6": {
-          "fret": "8",
-          "finger": 1,
-          "note": "C"
-        },
-        "5": {
-          "fret": "10",
-          "finger": 3,
-          "note": "G"
-        },
+        "6": "mute",
+        "5": "mute",
         "4": {
           "fret": "10",
-          "finger": 4,
+          "finger": 1,
           "note": "C"
         },
         "3": {
-          "fret": "8",
-          "finger": 1,
-          "note": "D#"
-        },
-        "2": {
-          "fret": "8",
-          "finger": 1,
+          "fret": "12",
+          "finger": 3,
           "note": "G"
         },
-        "1": {
-          "fret": "8",
-          "finger": 1,
+        "2": {
+          "fret": "13",
+          "finger": 4,
           "note": "C"
+        },
+        "1": {
+          "fret": "11",
+          "finger": 2,
+          "note": "Eb"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 3,
-      "description": "Cm chord - full barre at 5th fret (5-7-7-5-5-5)"
+      "description": "Cmin chord - D-shape high voicing at 10th fret"
     }
   }
 }

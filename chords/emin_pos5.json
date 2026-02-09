@@ -1,0 +1,62 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "emin_pos5",
+    "chord_name": "Emin",
+    "root_note": "E",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "3",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "E",
+        "G",
+        "B"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "3",
+          "finger": 2,
+          "note": "G"
+        },
+        "5": {
+          "fret": "14",
+          "finger": 1,
+          "note": "E"
+        },
+        "4": "mute",
+        "3": "mute",
+        "2": {
+          "fret": "4",
+          "finger": 3,
+          "note": "B"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "E",
+      "category": "chords",
+      "position": 5,
+      "description": "Emin chord - G-shape fragment at 11th fret"
+    }
+  }
+}

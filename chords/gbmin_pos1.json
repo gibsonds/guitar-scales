@@ -1,9 +1,9 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "f#min_pos1",
-    "chord_name": "F#m",
-    "root_note": "F#",
+    "exercise": "gbmin_pos1",
+    "chord_name": "Gbmin",
+    "root_note": "Gb",
     "chord_type": "Minor",
     "starting_string": "5",
     "starting_fret": "9",
@@ -27,41 +27,44 @@
         "5"
       ],
       "chord_tones": [
-        "F#",
+        "Gb",
         "A",
-        "C#"
+        "Db"
       ],
       "voicing": {
         "6": "mute",
         "5": {
           "fret": "9",
-          "finger": 0,
-          "note": "F#"
+          "finger": 1,
+          "note": "Gb"
         },
         "4": {
           "fret": "11",
-          "finger": 2,
-          "note": "C#"
+          "finger": 3,
+          "note": "Db"
         },
         "3": {
           "fret": "11",
-          "finger": 3,
-          "note": "F#"
+          "finger": 4,
+          "note": "Gb"
         },
         "2": {
           "fret": "10",
-          "finger": 1,
+          "finger": 2,
           "note": "A"
         },
         "1": {
           "fret": "9",
-          "finger": 0,
-          "note": "C#"
+          "finger": 1,
+          "note": "Db"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "Gb",
+      "category": "chords",
       "position": 1,
-      "description": "F#m chord - open position (x-0-2-2-1-0)"
+      "description": "Gbmin chord - A-shape barre at 3rd fret"
     }
   }
 }

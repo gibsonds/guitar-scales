@@ -2,11 +2,11 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "amin_pos4",
-    "chord_name": "Am",
+    "chord_name": "Amin",
     "root_note": "A",
     "chord_type": "Minor",
-    "starting_string": "4",
-    "starting_fret": "7",
+    "starting_string": "5",
+    "starting_fret": "3",
     "tuning": [
       "E",
       "A",
@@ -33,31 +33,34 @@
       ],
       "voicing": {
         "6": "mute",
-        "5": "mute",
+        "5": {
+          "fret": "3",
+          "finger": 2,
+          "note": "C"
+        },
         "4": {
-          "fret": "7",
+          "fret": "14",
+          "finger": 1,
+          "note": "E"
+        },
+        "3": {
+          "fret": "14",
           "finger": 1,
           "note": "A"
         },
-        "3": {
-          "fret": "9",
-          "finger": 3,
+        "2": {
+          "fret": "5",
+          "finger": 4,
           "note": "E"
         },
-        "2": {
-          "fret": "10",
-          "finger": 4,
-          "note": "A"
-        },
-        "1": {
-          "fret": "8",
-          "finger": 2,
-          "note": "C"
-        }
+        "1": "mute"
       },
-      "category": "arpeggios",
+      "caged_shape": "C",
+      "inversion": "root",
+      "bass_note": "A",
+      "category": "chords",
       "position": 4,
-      "description": "A minor - top strings voicing (x-x-7-9-10-8)"
+      "description": "Amin chord - C-shape voicing at 6th fret"
     }
   }
 }

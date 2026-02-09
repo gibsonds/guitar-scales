@@ -1,12 +1,12 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "a#min_pos3",
-    "chord_name": "A#m",
-    "root_note": "A#",
+    "exercise": "bbmin_pos3",
+    "chord_name": "Bbmin",
+    "root_note": "Bb",
     "chord_type": "Minor",
-    "starting_string": "6",
-    "starting_fret": "6",
+    "starting_string": "4",
+    "starting_fret": "8",
     "tuning": [
       "E",
       "A",
@@ -27,45 +27,40 @@
         "5"
       ],
       "chord_tones": [
-        "A#",
-        "C#",
+        "Bb",
+        "Db",
         "F"
       ],
       "voicing": {
-        "6": {
-          "fret": "6",
-          "finger": 1,
-          "note": "A#"
-        },
-        "5": {
+        "6": "mute",
+        "5": "mute",
+        "4": {
           "fret": "8",
+          "finger": 1,
+          "note": "Bb"
+        },
+        "3": {
+          "fret": "10",
           "finger": 3,
           "note": "F"
         },
-        "4": {
-          "fret": "8",
-          "finger": 4,
-          "note": "A#"
-        },
-        "3": {
-          "fret": "6",
-          "finger": 1,
-          "note": "C#"
-        },
         "2": {
-          "fret": "6",
-          "finger": 1,
-          "note": "F"
+          "fret": "11",
+          "finger": 4,
+          "note": "Bb"
         },
         "1": {
-          "fret": "6",
-          "finger": 1,
-          "note": "A#"
+          "fret": "9",
+          "finger": 2,
+          "note": "Db"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "Bb",
+      "category": "chords",
       "position": 3,
-      "description": "A#m chord - full barre at 5th fret (5-7-7-5-5-5)"
+      "description": "Bbmin chord - D-shape high voicing at 10th fret"
     }
   }
 }

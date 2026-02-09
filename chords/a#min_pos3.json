@@ -2,11 +2,11 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "a#min_pos3",
-    "chord_name": "A#m",
+    "chord_name": "A#min",
     "root_note": "A#",
     "chord_type": "Minor",
-    "starting_string": "6",
-    "starting_fret": "6",
+    "starting_string": "4",
+    "starting_fret": "8",
     "tuning": [
       "E",
       "A",
@@ -32,40 +32,35 @@
         "F"
       ],
       "voicing": {
-        "6": {
-          "fret": "6",
-          "finger": 1,
-          "note": "A#"
-        },
-        "5": {
-          "fret": "8",
-          "finger": 3,
-          "note": "F"
-        },
+        "6": "mute",
+        "5": "mute",
         "4": {
           "fret": "8",
-          "finger": 4,
+          "finger": 1,
           "note": "A#"
         },
         "3": {
-          "fret": "6",
-          "finger": 1,
-          "note": "C#"
-        },
-        "2": {
-          "fret": "6",
-          "finger": 1,
+          "fret": "10",
+          "finger": 3,
           "note": "F"
         },
-        "1": {
-          "fret": "6",
-          "finger": 1,
+        "2": {
+          "fret": "11",
+          "finger": 4,
           "note": "A#"
+        },
+        "1": {
+          "fret": "9",
+          "finger": 2,
+          "note": "C#"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "A#",
+      "category": "chords",
       "position": 3,
-      "description": "A#m chord - full barre at 5th fret (5-7-7-5-5-5)"
+      "description": "A#min chord - D-shape high voicing at 10th fret"
     }
   }
 }

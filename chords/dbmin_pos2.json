@@ -1,11 +1,11 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "c#min_pos2",
-    "chord_name": "C#m",
-    "root_note": "C#",
+    "exercise": "dbmin_pos2",
+    "chord_name": "Dbmin",
+    "root_note": "Db",
     "chord_type": "Minor",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "9",
     "tuning": [
       "E",
@@ -27,41 +27,48 @@
         "5"
       ],
       "chord_tones": [
-        "C#",
+        "Db",
         "E",
-        "G#"
+        "Ab"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "9",
           "finger": 1,
-          "note": "C#"
+          "note": "Db"
+        },
+        "5": {
+          "fret": "11",
+          "finger": 3,
+          "note": "Ab"
         },
         "4": {
           "fret": "11",
-          "finger": 3,
-          "note": "G#"
+          "finger": 4,
+          "note": "Db"
         },
         "3": {
-          "fret": "11",
-          "finger": 4,
-          "note": "C#"
-        },
-        "2": {
           "fret": "9",
           "finger": 1,
           "note": "E"
         },
+        "2": {
+          "fret": "9",
+          "finger": 1,
+          "note": "Ab"
+        },
         "1": {
           "fret": "9",
           "finger": 1,
-          "note": "G#"
+          "note": "Db"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "Db",
+      "category": "chords",
       "position": 2,
-      "description": "C#m chord - barre at 5th fret (x-5-7-7-5-5)"
+      "description": "Dbmin chord - E-shape barre at 8th fret"
     }
   }
 }

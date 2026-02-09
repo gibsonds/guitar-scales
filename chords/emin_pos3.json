@@ -2,11 +2,11 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "emin_pos3",
-    "chord_name": "Em",
+    "chord_name": "Emin",
     "root_note": "E",
     "chord_type": "Minor",
-    "starting_string": "6",
-    "starting_fret": "12",
+    "starting_string": "4",
+    "starting_fret": "14",
     "tuning": [
       "E",
       "A",
@@ -32,40 +32,35 @@
         "B"
       ],
       "voicing": {
-        "6": {
-          "fret": "12",
-          "finger": 1,
-          "note": "E"
-        },
-        "5": {
-          "fret": "14",
-          "finger": 3,
-          "note": "B"
-        },
+        "6": "mute",
+        "5": "mute",
         "4": {
           "fret": "14",
-          "finger": 4,
+          "finger": 1,
           "note": "E"
         },
         "3": {
-          "fret": "12",
-          "finger": 1,
-          "note": "G"
-        },
-        "2": {
-          "fret": "12",
-          "finger": 1,
+          "fret": "4",
+          "finger": 3,
           "note": "B"
         },
-        "1": {
-          "fret": "12",
-          "finger": 1,
+        "2": {
+          "fret": "5",
+          "finger": 4,
           "note": "E"
+        },
+        "1": {
+          "fret": "3",
+          "finger": 2,
+          "note": "G"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "D",
+      "inversion": "root",
+      "bass_note": "E",
+      "category": "chords",
       "position": 3,
-      "description": "Em chord - full barre at 5th fret (5-7-7-5-5-5)"
+      "description": "Emin chord - D-shape high voicing at 10th fret"
     }
   }
 }

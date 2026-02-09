@@ -2,10 +2,10 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "fmin_pos2",
-    "chord_name": "Fm",
+    "chord_name": "Fmin",
     "root_note": "F",
     "chord_type": "Minor",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "13",
     "tuning": [
       "E",
@@ -28,40 +28,47 @@
       ],
       "chord_tones": [
         "F",
-        "Ab",
+        "G#",
         "C"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "13",
           "finger": 1,
           "note": "F"
         },
-        "4": {
-          "fret": "15",
+        "5": {
+          "fret": "3",
           "finger": 3,
           "note": "C"
         },
-        "3": {
-          "fret": "15",
+        "4": {
+          "fret": "3",
           "finger": 4,
           "note": "F"
+        },
+        "3": {
+          "fret": "13",
+          "finger": 1,
+          "note": "G#"
         },
         "2": {
           "fret": "13",
           "finger": 1,
-          "note": "Ab"
+          "note": "C"
         },
         "1": {
           "fret": "13",
           "finger": 1,
-          "note": "C"
+          "note": "F"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "F",
+      "category": "chords",
       "position": 2,
-      "description": "Fm chord - barre at 5th fret (x-5-7-7-5-5)"
+      "description": "Fmin chord - E-shape barre at 8th fret"
     }
   }
 }

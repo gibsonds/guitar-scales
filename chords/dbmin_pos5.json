@@ -1,0 +1,62 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "dbmin_pos5",
+    "chord_name": "Dbmin",
+    "root_note": "Db",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "12",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "Db",
+        "E",
+        "Ab"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "12",
+          "finger": 2,
+          "note": "E"
+        },
+        "5": {
+          "fret": "11",
+          "finger": 1,
+          "note": "Db"
+        },
+        "4": "mute",
+        "3": "mute",
+        "2": {
+          "fret": "13",
+          "finger": 3,
+          "note": "Ab"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "Db",
+      "category": "chords",
+      "position": 5,
+      "description": "Dbmin chord - G-shape fragment at 11th fret"
+    }
+  }
+}

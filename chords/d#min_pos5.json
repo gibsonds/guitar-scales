@@ -1,0 +1,62 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "d#min_pos5",
+    "chord_name": "D#min",
+    "root_note": "D#",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "14",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "D#",
+        "F#",
+        "A#"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "14",
+          "finger": 2,
+          "note": "F#"
+        },
+        "5": {
+          "fret": "13",
+          "finger": 1,
+          "note": "D#"
+        },
+        "4": "mute",
+        "3": "mute",
+        "2": {
+          "fret": "3",
+          "finger": 3,
+          "note": "A#"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "D#",
+      "category": "chords",
+      "position": 5,
+      "description": "D#min chord - G-shape fragment at 11th fret"
+    }
+  }
+}

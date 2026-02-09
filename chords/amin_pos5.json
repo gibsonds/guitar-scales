@@ -1,0 +1,62 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "amin_pos5",
+    "chord_name": "Amin",
+    "root_note": "A",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "8",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "A",
+        "C",
+        "E"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "8",
+          "finger": 2,
+          "note": "C"
+        },
+        "5": {
+          "fret": "7",
+          "finger": 1,
+          "note": "A"
+        },
+        "4": "mute",
+        "3": "mute",
+        "2": {
+          "fret": "9",
+          "finger": 3,
+          "note": "E"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "A",
+      "category": "chords",
+      "position": 5,
+      "description": "Amin chord - G-shape fragment at 11th fret"
+    }
+  }
+}

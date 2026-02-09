@@ -2,7 +2,7 @@
   "TableName": "GuitarExercises",
   "Item": {
     "exercise": "cmin_pos1",
-    "chord_name": "Cm",
+    "chord_name": "Cmin",
     "root_note": "C",
     "chord_type": "Minor",
     "starting_string": "5",
@@ -28,40 +28,43 @@
       ],
       "chord_tones": [
         "C",
-        "D#",
+        "Eb",
         "G"
       ],
       "voicing": {
         "6": "mute",
         "5": {
           "fret": "3",
-          "finger": 0,
+          "finger": 1,
           "note": "C"
         },
         "4": {
           "fret": "5",
-          "finger": 2,
+          "finger": 3,
           "note": "G"
         },
         "3": {
           "fret": "5",
-          "finger": 3,
+          "finger": 4,
           "note": "C"
         },
         "2": {
           "fret": "4",
-          "finger": 1,
-          "note": "D#"
+          "finger": 2,
+          "note": "Eb"
         },
         "1": {
           "fret": "3",
-          "finger": 0,
+          "finger": 1,
           "note": "G"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "A",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
       "position": 1,
-      "description": "Cm chord - open position (x-0-2-2-1-0)"
+      "description": "Cmin chord - A-shape barre at 3rd fret"
     }
   }
 }

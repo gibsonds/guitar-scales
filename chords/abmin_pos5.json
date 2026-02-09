@@ -1,0 +1,62 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "abmin_pos5",
+    "chord_name": "Abmin",
+    "root_note": "Ab",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "7",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "Ab",
+        "B",
+        "Eb"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "7",
+          "finger": 2,
+          "note": "B"
+        },
+        "5": {
+          "fret": "6",
+          "finger": 1,
+          "note": "Ab"
+        },
+        "4": "mute",
+        "3": "mute",
+        "2": {
+          "fret": "8",
+          "finger": 3,
+          "note": "Eb"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "Ab",
+      "category": "chords",
+      "position": 5,
+      "description": "Abmin chord - G-shape fragment at 11th fret"
+    }
+  }
+}

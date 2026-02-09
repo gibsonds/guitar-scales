@@ -1,0 +1,62 @@
+{
+  "TableName": "GuitarExercises",
+  "Item": {
+    "exercise": "cmin_pos5",
+    "chord_name": "Cmin",
+    "root_note": "C",
+    "chord_type": "Minor",
+    "starting_string": "6",
+    "starting_fret": "11",
+    "tuning": [
+      "E",
+      "A",
+      "D",
+      "G",
+      "B",
+      "E"
+    ],
+    "properties": {
+      "intervals": [
+        "0",
+        "3",
+        "7"
+      ],
+      "chord_degrees": [
+        "1",
+        "b3",
+        "5"
+      ],
+      "chord_tones": [
+        "C",
+        "Eb",
+        "G"
+      ],
+      "voicing": {
+        "6": {
+          "fret": "11",
+          "finger": 2,
+          "note": "Eb"
+        },
+        "5": {
+          "fret": "10",
+          "finger": 1,
+          "note": "C"
+        },
+        "4": "mute",
+        "3": "mute",
+        "2": {
+          "fret": "12",
+          "finger": 3,
+          "note": "G"
+        },
+        "1": "mute"
+      },
+      "caged_shape": "G",
+      "inversion": "root",
+      "bass_note": "C",
+      "category": "chords",
+      "position": 5,
+      "description": "Cmin chord - G-shape fragment at 11th fret"
+    }
+  }
+}

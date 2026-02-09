@@ -1,11 +1,11 @@
 {
   "TableName": "GuitarExercises",
   "Item": {
-    "exercise": "a#min_pos2",
-    "chord_name": "A#m",
-    "root_note": "A#",
+    "exercise": "bbmin_pos2",
+    "chord_name": "Bbmin",
+    "root_note": "Bb",
     "chord_type": "Minor",
-    "starting_string": "5",
+    "starting_string": "6",
     "starting_fret": "6",
     "tuning": [
       "E",
@@ -27,41 +27,48 @@
         "5"
       ],
       "chord_tones": [
-        "A#",
-        "C#",
+        "Bb",
+        "Db",
         "F"
       ],
       "voicing": {
-        "6": "mute",
-        "5": {
+        "6": {
           "fret": "6",
           "finger": 1,
-          "note": "A#"
+          "note": "Bb"
         },
-        "4": {
+        "5": {
           "fret": "8",
           "finger": 3,
           "note": "F"
         },
-        "3": {
+        "4": {
           "fret": "8",
           "finger": 4,
-          "note": "A#"
+          "note": "Bb"
+        },
+        "3": {
+          "fret": "6",
+          "finger": 1,
+          "note": "Db"
         },
         "2": {
           "fret": "6",
           "finger": 1,
-          "note": "C#"
+          "note": "F"
         },
         "1": {
           "fret": "6",
           "finger": 1,
-          "note": "F"
+          "note": "Bb"
         }
       },
-      "category": "arpeggios",
+      "caged_shape": "E",
+      "inversion": "root",
+      "bass_note": "Bb",
+      "category": "chords",
       "position": 2,
-      "description": "A#m chord - barre at 5th fret (x-5-7-7-5-5)"
+      "description": "Bbmin chord - E-shape barre at 8th fret"
     }
   }
 }

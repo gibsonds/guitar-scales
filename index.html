@@ -337,6 +337,208 @@
       font-size: 0.813rem;
       padding: 2rem 0 1rem;
     }
+    /* Feedback Modal */
+    .feedback-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.6);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .feedback-overlay.open {
+      display: flex;
+    }
+    .feedback-modal {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+    .feedback-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .feedback-modal-header h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .feedback-modal-header button {
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0.25rem;
+      line-height: 1;
+    }
+    .feedback-modal-header button:hover {
+      color: var(--text-primary);
+    }
+    .feedback-modal-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .feedback-field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.375rem;
+    }
+    .feedback-field select,
+    .feedback-field input,
+    .feedback-field textarea {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--select-border);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-family: inherit;
+      background: var(--select-bg);
+      color: var(--text-secondary);
+      transition: border-color 0.2s;
+    }
+    .feedback-field select {
+      height: 38px;
+      cursor: pointer;
+    }
+    .feedback-field textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .feedback-field select:focus,
+    .feedback-field input:focus,
+    .feedback-field textarea:focus {
+      outline: none;
+      border-color: #4a9eff;
+    }
+    .feedback-field.error select,
+    .feedback-field.error input,
+    .feedback-field.error textarea {
+      border-color: #ff4a4a;
+    }
+    .feedback-field .field-error {
+      font-size: 0.75rem;
+      color: #ff4a4a;
+      margin-top: 0.25rem;
+      display: none;
+    }
+    .feedback-field.error .field-error {
+      display: block;
+    }
+    .feedback-context {
+      background: var(--control-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 0.625rem 0.75rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .feedback-context summary {
+      cursor: pointer;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .feedback-context pre {
+      margin-top: 0.375rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .feedback-modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.25rem;
+      border-top: 1px solid var(--card-border);
+      gap: 0.75rem;
+    }
+    .feedback-modal-footer a {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .feedback-modal-footer a:hover {
+      color: var(--text-secondary);
+      text-decoration: underline;
+    }
+    .feedback-btn-submit {
+      padding: 0.5rem 1.25rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #4a9eff 0%, #3b7dd6 100%);
+      color: #fff;
+      transition: opacity 0.2s;
+    }
+    .feedback-btn-submit:hover {
+      opacity: 0.9;
+    }
+    .feedback-btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .feedback-btn-cancel {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--button-border);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: transparent;
+      color: var(--button-text);
+      transition: all 0.2s;
+    }
+    .feedback-btn-cancel:hover {
+      background: var(--button-hover-bg);
+      border-color: var(--button-hover-border);
+      color: var(--text-secondary);
+    }
+    .feedback-status {
+      text-align: center;
+      padding: 2rem 1.25rem;
+    }
+    .feedback-status .status-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .feedback-status h4 {
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .feedback-status p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .feedback-hp {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
@@ -351,6 +553,7 @@
         <button class="control-btn position-shift-btn active" data-shift="0" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" title="No shift">0</button>
         <button class="control-btn position-shift-btn" data-shift="12" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" title="Shift up one octave">+12</button>
       </div>
+      <button id="feedbackToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Send feedback">💬</button>
       <button id="themeToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Toggle theme">
         <span id="themeIcon">☀️</span>
       </button>
@@ -542,6 +745,86 @@
         Practice Over
       </div>
       <div id="progressionsList" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
+    </div>
+  </div>
+
+  <!-- Feedback Modal -->
+  <div id="feedbackOverlay" class="feedback-overlay">
+    <div class="feedback-modal">
+      <!-- Form State -->
+      <div id="feedbackFormState">
+        <div class="feedback-modal-header">
+          <h3>Send Feedback</h3>
+          <button id="feedbackClose" title="Close">&times;</button>
+        </div>
+        <div class="feedback-modal-body">
+          <div class="feedback-field">
+            <label for="feedbackType">Type</label>
+            <select id="feedbackType">
+              <option value="bug">Bug Report</option>
+              <option value="feature">Feature Request</option>
+              <option value="general" selected>General Feedback</option>
+            </select>
+          </div>
+          <div class="feedback-field" id="feedbackMessageField">
+            <label for="feedbackMessage">Message</label>
+            <textarea id="feedbackMessage" placeholder="Describe your feedback... (min 10 characters)" rows="4"></textarea>
+            <div class="field-error" id="feedbackMessageError">Please enter at least 10 characters.</div>
+          </div>
+          <div class="feedback-field" id="feedbackEmailField">
+            <label for="feedbackEmail">Email (optional)</label>
+            <input type="email" id="feedbackEmail" placeholder="your@email.com — only if you want a reply" />
+            <div class="field-error" id="feedbackEmailError">Please enter a valid email address.</div>
+          </div>
+          <!-- Honeypot -->
+          <div class="feedback-hp" aria-hidden="true">
+            <label for="feedbackWebsite">Website</label>
+            <input type="text" id="feedbackWebsite" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <details class="feedback-context">
+            <summary>Auto-captured context</summary>
+            <pre id="feedbackContextDisplay"></pre>
+          </details>
+        </div>
+        <div class="feedback-modal-footer">
+          <a href="https://github.com/dgibson314/GuitarLLM/issues" target="_blank" rel="noopener">Or file on GitHub</a>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="feedback-btn-cancel" id="feedbackCancel">Cancel</button>
+            <button class="feedback-btn-submit" id="feedbackSubmit">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success State -->
+      <div id="feedbackSuccessState" style="display: none;">
+        <div class="feedback-modal-header">
+          <h3>Feedback Sent</h3>
+          <button id="feedbackCloseSuccess" title="Close">&times;</button>
+        </div>
+        <div class="feedback-status">
+          <div class="status-icon">&#10003;</div>
+          <h4>Thank you!</h4>
+          <p>Your feedback has been sent. We appreciate you helping improve Guitar Scale Explorer.</p>
+          <button class="feedback-btn-cancel" id="feedbackDone">Close</button>
+        </div>
+      </div>
+
+      <!-- Error State -->
+      <div id="feedbackErrorState" style="display: none;">
+        <div class="feedback-modal-header">
+          <h3>Submission Failed</h3>
+          <button id="feedbackCloseError" title="Close">&times;</button>
+        </div>
+        <div class="feedback-status">
+          <div class="status-icon">&#9888;</div>
+          <h4>Something went wrong</h4>
+          <p id="feedbackErrorMessage">Could not send your feedback. Please try again or file an issue on GitHub.</p>
+          <div style="display: flex; gap: 0.5rem; justify-content: center;">
+            <button class="feedback-btn-cancel" id="feedbackErrorClose">Close</button>
+            <button class="feedback-btn-submit" id="feedbackRetry">Retry</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -3310,6 +3593,194 @@
     // Close voicings section handler
     document.getElementById('closeVoicingsBtn').addEventListener('click', () => {
       document.getElementById('chordVoicingsSection').style.display = 'none';
+    });
+
+    // ── Feedback Modal ──────────────────────────────────────────────
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdaopkq';
+    const FEEDBACK_COOLDOWN_MS = 60000; // 60 seconds between submissions
+    let lastFeedbackSubmitTime = 0;
+    let pendingFeedbackPayload = null;
+
+    function gatherFeedbackContext() {
+      const scaleName = state.currentScale
+        ? (state.currentScale.display_name || state.currentScale.id || 'none')
+        : 'none';
+      const root = state.currentScaleData
+        ? (state.currentScaleData.root || state.currentScaleData.starting_tone || 'N/A')
+        : 'N/A';
+      return {
+        scale: scaleName,
+        root: root,
+        viewMode: state.viewMode,
+        theme: state.theme,
+        fretRange: `${state.fretMin}-${state.fretMax}`,
+        screenSize: `${window.innerWidth}x${window.innerHeight}`,
+        appVersion: 'v2.5.0',
+        userAgent: navigator.userAgent
+      };
+    }
+
+    function showFeedbackState(stateName) {
+      document.getElementById('feedbackFormState').style.display = stateName === 'form' ? '' : 'none';
+      document.getElementById('feedbackSuccessState').style.display = stateName === 'success' ? '' : 'none';
+      document.getElementById('feedbackErrorState').style.display = stateName === 'error' ? '' : 'none';
+    }
+
+    function openFeedbackModal() {
+      const overlay = document.getElementById('feedbackOverlay');
+      // Reset to form state
+      showFeedbackState('form');
+      // Clear previous input
+      document.getElementById('feedbackType').value = 'general';
+      document.getElementById('feedbackMessage').value = '';
+      document.getElementById('feedbackEmail').value = '';
+      document.getElementById('feedbackWebsite').value = '';
+      // Clear error styles
+      document.getElementById('feedbackMessageField').classList.remove('error');
+      document.getElementById('feedbackEmailField').classList.remove('error');
+      // Re-enable submit
+      const submitBtn = document.getElementById('feedbackSubmit');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send';
+      // Check cooldown
+      const elapsed = Date.now() - lastFeedbackSubmitTime;
+      if (lastFeedbackSubmitTime > 0 && elapsed < FEEDBACK_COOLDOWN_MS) {
+        const remaining = Math.ceil((FEEDBACK_COOLDOWN_MS - elapsed) / 1000);
+        submitBtn.disabled = true;
+        submitBtn.textContent = `Wait ${remaining}s`;
+        const cooldownInterval = setInterval(() => {
+          const now = Date.now() - lastFeedbackSubmitTime;
+          if (now >= FEEDBACK_COOLDOWN_MS) {
+            clearInterval(cooldownInterval);
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send';
+          } else {
+            submitBtn.textContent = `Wait ${Math.ceil((FEEDBACK_COOLDOWN_MS - now) / 1000)}s`;
+          }
+        }, 1000);
+      }
+      // Populate context
+      const ctx = gatherFeedbackContext();
+      document.getElementById('feedbackContextDisplay').textContent = JSON.stringify(ctx, null, 2);
+      overlay.classList.add('open');
+    }
+
+    function closeFeedbackModal() {
+      document.getElementById('feedbackOverlay').classList.remove('open');
+    }
+
+    /**
+     * Submit feedback payload. This is the ONLY function to change when
+     * migrating from Formspree to a backend endpoint.
+     * Payload shape: { type, message, email, context }
+     */
+    async function submitFeedback(payload) {
+      const body = {
+        _subject: `[Guitar Scale Explorer] ${payload.type}: ${payload.message.slice(0, 50)}`,
+        type: payload.type,
+        message: payload.message,
+        email: payload.email || '(not provided)',
+        context: JSON.stringify(payload.context)
+      };
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || `HTTP ${res.status}`);
+      }
+      return res.json();
+    }
+
+    async function handleFeedbackSubmit() {
+      // Honeypot check
+      if (document.getElementById('feedbackWebsite').value) return;
+
+      const messageField = document.getElementById('feedbackMessageField');
+      const emailField = document.getElementById('feedbackEmailField');
+      const message = document.getElementById('feedbackMessage').value.trim();
+      const email = document.getElementById('feedbackEmail').value.trim();
+      const type = document.getElementById('feedbackType').value;
+
+      // Validate message
+      let valid = true;
+      if (message.length < 10) {
+        messageField.classList.add('error');
+        valid = false;
+      } else {
+        messageField.classList.remove('error');
+      }
+      // Validate email (if provided)
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailField.classList.add('error');
+        valid = false;
+      } else {
+        emailField.classList.remove('error');
+      }
+      if (!valid) return;
+
+      // Rate limit
+      const elapsed = Date.now() - lastFeedbackSubmitTime;
+      if (lastFeedbackSubmitTime > 0 && elapsed < FEEDBACK_COOLDOWN_MS) return;
+
+      const submitBtn = document.getElementById('feedbackSubmit');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      const payload = {
+        type,
+        message,
+        email,
+        context: gatherFeedbackContext()
+      };
+      pendingFeedbackPayload = payload;
+
+      try {
+        await submitFeedback(payload);
+        lastFeedbackSubmitTime = Date.now();
+        showFeedbackState('success');
+      } catch (err) {
+        document.getElementById('feedbackErrorMessage').textContent =
+          `Could not send feedback: ${err.message}. Please try again or file an issue on GitHub.`;
+        showFeedbackState('error');
+      }
+    }
+
+    // Feedback event listeners
+    document.getElementById('feedbackToggle').addEventListener('click', openFeedbackModal);
+    document.getElementById('feedbackClose').addEventListener('click', closeFeedbackModal);
+    document.getElementById('feedbackCancel').addEventListener('click', closeFeedbackModal);
+    document.getElementById('feedbackCloseSuccess').addEventListener('click', closeFeedbackModal);
+    document.getElementById('feedbackDone').addEventListener('click', closeFeedbackModal);
+    document.getElementById('feedbackCloseError').addEventListener('click', closeFeedbackModal);
+    document.getElementById('feedbackErrorClose').addEventListener('click', closeFeedbackModal);
+    document.getElementById('feedbackSubmit').addEventListener('click', handleFeedbackSubmit);
+    document.getElementById('feedbackRetry').addEventListener('click', () => {
+      showFeedbackState('form');
+      if (pendingFeedbackPayload) {
+        document.getElementById('feedbackType').value = pendingFeedbackPayload.type;
+        document.getElementById('feedbackMessage').value = pendingFeedbackPayload.message;
+        document.getElementById('feedbackEmail').value = pendingFeedbackPayload.email;
+      }
+    });
+    // Close on backdrop click
+    document.getElementById('feedbackOverlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeFeedbackModal();
+    });
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.getElementById('feedbackOverlay').classList.contains('open')) {
+        closeFeedbackModal();
+      }
+    });
+    // Clear error styling on input
+    document.getElementById('feedbackMessage').addEventListener('input', () => {
+      document.getElementById('feedbackMessageField').classList.remove('error');
+    });
+    document.getElementById('feedbackEmail').addEventListener('input', () => {
+      document.getElementById('feedbackEmailField').classList.remove('error');
     });
 
     // Initialize

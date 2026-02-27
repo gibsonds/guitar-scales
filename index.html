@@ -3679,9 +3679,11 @@
         _subject: `[Guitar Scale Explorer] ${payload.type}: ${payload.message.slice(0, 50)}`,
         type: payload.type,
         message: payload.message,
-        email: payload.email || '(not provided)',
         context: JSON.stringify(payload.context)
       };
+      if (payload.email) {
+        body._replyto = payload.email;
+      }
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },

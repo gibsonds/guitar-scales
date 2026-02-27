@@ -829,11 +829,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.5.0 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.6.0 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.5.0 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.6.0 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -3615,7 +3615,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.5.0',
+        appVersion: 'v2.6.0',
         userAgent: navigator.userAgent
       };
     }
@@ -3684,14 +3684,12 @@
       if (payload.email) {
         body._replyto = payload.email;
       }
-      console.log('[Feedback] Submitting:', JSON.stringify(body));
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(body)
       });
       const data = await res.json().catch(() => ({}));
-      console.log('[Feedback] Response:', res.status, JSON.stringify(data));
       if (!res.ok) {
         const errors = data.errors?.map(e => e.message || e.code).join(', ') || data.error || `HTTP ${res.status}`;
         throw new Error(errors);

@@ -3684,16 +3684,19 @@
       if (payload.email) {
         body._replyto = payload.email;
       }
+      console.log('[Feedback] Submitting:', JSON.stringify(body));
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(body)
       });
+      const data = await res.json().catch(() => ({}));
+      console.log('[Feedback] Response:', res.status, JSON.stringify(data));
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || `HTTP ${res.status}`);
+        const errors = data.errors?.map(e => e.message || e.code).join(', ') || data.error || `HTTP ${res.status}`;
+        throw new Error(errors);
       }
-      return res.json();
+      return data;
     }
 
     async function handleFeedbackSubmit() {

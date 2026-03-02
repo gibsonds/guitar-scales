@@ -831,11 +831,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.7.0 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.8.0 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.7.0 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.8.0 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -857,6 +857,13 @@
       'G#': 'Ab', 'Ab': 'G#',
       'A#': 'Bb', 'Bb': 'A#'
     };
+
+    // Analytics helper - sends custom events to GoatCounter
+    function trackEvent(name) {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: 'event/' + name, title: name, event: true });
+      }
+    }
 
     // State
     const state = {
@@ -1146,6 +1153,7 @@
      */
     async function playScale() {
       if (isPlaying) return;
+      trackEvent('play-scale');
 
       const notes = collectScaleNotes();
       if (notes.length === 0) {
@@ -2074,6 +2082,7 @@
     }
 
     function selectScale(scaleId) {
+      trackEvent('scale-select/' + scaleId);
       state.selectedScaleId = scaleId;
 
       // Reset fingering pattern and chord selection when switching scales
@@ -2704,7 +2713,10 @@
     }
 
     // Event listeners
-    rootSelect.addEventListener('change', updateDisplay);
+    rootSelect.addEventListener('change', () => {
+      trackEvent('root-change/' + rootSelect.value);
+      updateDisplay();
+    });
 
     fingeringPatternSelect.addEventListener('change', (e) => {
       state.selectedFingeringPattern = e.target.value;
@@ -2773,6 +2785,7 @@
       await Tone.start();
 
       state.metronomeEnabled = !state.metronomeEnabled;
+      trackEvent('metronome/' + (state.metronomeEnabled ? 'on' : 'off'));
       const toggleBtn = document.getElementById('metronomeToggle');
 
       if (state.metronomeEnabled) {
@@ -2854,6 +2867,7 @@
 
     document.getElementById('toggleDisplay').addEventListener('click', (e) => {
       state.showDegrees = !state.showDegrees;
+      trackEvent('display/' + (state.showDegrees ? 'degrees' : 'notes'));
       e.currentTarget.textContent = state.showDegrees ? '#' : '♪';
 
       // Context-aware tooltip: in position view, ♪ means fret numbers; in fretboard view, ♪ means note names
@@ -2868,6 +2882,7 @@
 
     document.getElementById('enharmonicToggle').addEventListener('click', (e) => {
       state.enharmonicPreference = state.enharmonicPreference === 'sharps' ? 'flats' : 'sharps';
+      trackEvent('enharmonic/' + state.enharmonicPreference);
       // Update button to show current preference
       e.currentTarget.textContent = state.enharmonicPreference === 'sharps' ? '♯' : '♭';
       e.currentTarget.title = state.enharmonicPreference === 'sharps' ? 'Showing sharps (click for flats)' : 'Showing flats (click for sharps)';
@@ -2901,6 +2916,7 @@
 
     document.getElementById('viewModeToggle').addEventListener('click', () => {
       state.viewMode = state.viewMode === 'fretboard' ? 'position' : 'fretboard';
+      trackEvent('view-mode/' + state.viewMode);
       document.getElementById('viewModeIcon').textContent = state.viewMode === 'fretboard' ? '🎼' : '🎸';
 
       // Show/hide position shift controls
@@ -2924,6 +2940,7 @@
 
     document.getElementById('themeToggle').addEventListener('click', () => {
       state.theme = state.theme === 'dark' ? 'light' : 'dark';
+      trackEvent('theme/' + state.theme);
       renderProgressions(); // Re-render progressions with new theme
       applyTheme();
     });
@@ -3480,6 +3497,7 @@
      * Load and display chord voicings
      */
     async function loadChordVoicings(chordRoot, chordSymbol) {
+      trackEvent('chord-voicing/' + chordRoot + chordSymbol);
       const container = document.getElementById('chordDiagramsContainer');
       const section = document.getElementById('chordVoicingsSection');
 
@@ -3617,7 +3635,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.7.0',
+        appVersion: 'v2.8.0',
         userAgent: navigator.userAgent
       };
     }
@@ -3629,6 +3647,7 @@
     }
 
     function openFeedbackModal() {
+      trackEvent('feedback-open');
       const overlay = document.getElementById('feedbackOverlay');
       // Reset to form state
       showFeedbackState('form');
@@ -3746,6 +3765,7 @@
         await submitFeedback(payload);
         lastFeedbackSubmitTime = Date.now();
         showFeedbackState('success');
+        trackEvent('feedback-submit');
       } catch (err) {
         document.getElementById('feedbackErrorMessage').textContent =
           `Could not send feedback: ${err.message}. Please try again or file an issue on GitHub.`;

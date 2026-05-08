@@ -969,11 +969,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.9.0 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.10.0 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.9.0 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.10.0 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -1982,14 +1982,16 @@
         'aeolian_3nps', 'altered_dominant', 'arpeggio_2noteperstring_dominant7',
         'arpeggio_2notesperstring_m7b5', 'arpeggio_major_7_2_notes_per_string',
         'arpeggio_minor_7_2_notes_per_string', 'dorian_3nps', 'dorian_b2_3nps',
-        'dorian_sharp4_3nps', 'half_whole_diminished', 'harmonic_minor_3nps',
+        'dorian_b5_3nps', 'dorian_sharp4_3nps', 'half_whole_diminished',
+        'harmonic_major_3nps', 'harmonic_minor_3nps',
         'hexatonic_pos1', 'ionian_3nps', 'ionian_augmented_3nps', 'jazz_blues_pos1',
-        'locrian_3nps', 'locrian_natural2_3nps', 'locrian_natural6_3nps',
-        'lydian_3nps', 'lydian_augmented_3nps', 'lydian_dominant_3nps',
-        'lydian_sharp2_3nps', 'major_blues', 'major_pentatonic', 'melodic_minor_3nps',
-        'minor_pentatonic', 'mixolydian_3nps',
-        'mixolydian_b6_3nps', 'phrygian_3nps', 'phrygian_dominant_3nps',
-        'super_locrian_bb7_3nps', 'whole_tone'
+        'locrian_3nps', 'locrian_bb7_3nps', 'locrian_natural2_3nps', 'locrian_natural6_3nps',
+        'lydian_3nps', 'lydian_augmented_3nps', 'lydian_augmented_sharp2_3nps',
+        'lydian_b3_3nps', 'lydian_dominant_3nps', 'lydian_sharp2_3nps',
+        'major_blues', 'major_pentatonic', 'melodic_minor_3nps',
+        'minor_pentatonic', 'mixolydian_3nps', 'mixolydian_b2_3nps',
+        'mixolydian_b6_3nps', 'phrygian_3nps', 'phrygian_b4_3nps',
+        'phrygian_dominant_3nps', 'super_locrian_bb7_3nps', 'whole_tone'
       ];
 
       const promises = scaleFiles.map(async (filename) => {
@@ -2036,6 +2038,7 @@
         'modes_major': { label: 'Major Scale Modes', scales: [] },
         'modes_melodic_minor': { label: 'Melodic Minor Modes', scales: [] },
         'modes_harmonic_minor': { label: 'Harmonic Minor Modes', scales: [] },
+        'modes_harmonic_major': { label: 'Harmonic Major Modes', scales: [] },
         'pentatonic_blues': { label: 'Pentatonic & Blues Scales', scales: [] },
         'symmetrical': { label: 'Symmetrical Scales', scales: [] },
         'scales': { label: 'Other Scales', scales: [] },
@@ -3773,7 +3776,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.9.0',
+        appVersion: 'v2.10.0',
         userAgent: navigator.userAgent
       };
     }

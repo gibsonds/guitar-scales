@@ -969,11 +969,11 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.10.0 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.10.1 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.10.0 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.10.1 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -2067,7 +2067,7 @@
 
       // Create custom dropdown structure with collapsible categories
       let scalesHeaderAdded = false;
-      ['arpeggios', 'modes_major', 'modes_melodic_minor', 'modes_harmonic_minor', 'pentatonic_blues', 'symmetrical', 'scales', 'modes'].forEach(categoryKey => {
+      ['arpeggios', 'modes_major', 'modes_melodic_minor', 'modes_harmonic_minor', 'modes_harmonic_major', 'pentatonic_blues', 'symmetrical', 'scales', 'modes'].forEach(categoryKey => {
         const category = categories[categoryKey];
         if (category.scales.length > 0) {
           hasResults = true;
@@ -3776,7 +3776,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.10.0',
+        appVersion: 'v2.10.1',
         userAgent: navigator.userAgent
       };
     }

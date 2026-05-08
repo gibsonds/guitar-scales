@@ -541,6 +541,79 @@
       width: 0;
       overflow: hidden;
     }
+    /* Practice Diary — reuses .feedback-* modal/form classes */
+    .diary-stats {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .diary-stat {
+      flex: 1;
+      background: var(--control-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 0.625rem 0.75rem;
+      text-align: center;
+    }
+    .diary-stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+    .diary-stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 0.125rem;
+    }
+    .diary-sessions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+    .diary-session {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.5rem 0.625rem;
+      background: var(--control-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      font-size: 0.813rem;
+    }
+    .diary-session-main {
+      color: var(--text-secondary);
+      flex: 1;
+      min-width: 0;
+    }
+    .diary-session-scale {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .diary-session-meta {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+    .diary-session-notes {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 0.125rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .diary-empty {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
   </style>
 </head>
 <body>
@@ -555,6 +628,7 @@
         <button class="control-btn position-shift-btn active" data-shift="0" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" title="No shift">0</button>
         <button class="control-btn position-shift-btn" data-shift="12" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" title="Shift up one octave">+12</button>
       </div>
+      <button id="diaryToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Practice diary">📓</button>
       <button id="feedbackToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Send feedback">💬</button>
       <button id="themeToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Toggle theme">
         <span id="themeIcon">☀️</span>
@@ -824,6 +898,70 @@
           <div style="display: flex; gap: 0.5rem; justify-content: center;">
             <button class="feedback-btn-cancel" id="feedbackErrorClose">Close</button>
             <button class="feedback-btn-submit" id="feedbackRetry">Retry</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Practice Diary Modal -->
+  <div id="diaryOverlay" class="feedback-overlay">
+    <div class="feedback-modal">
+      <!-- View State -->
+      <div id="diaryViewState">
+        <div class="feedback-modal-header">
+          <h3>📓 Practice Diary</h3>
+          <button id="diaryClose" title="Close">&times;</button>
+        </div>
+        <div class="feedback-modal-body">
+          <div class="diary-stats">
+            <div class="diary-stat">
+              <div class="diary-stat-value" id="diaryStreakValue">0</div>
+              <div class="diary-stat-label">Day Streak</div>
+            </div>
+            <div class="diary-stat">
+              <div class="diary-stat-value" id="diaryWeekValue">0</div>
+              <div class="diary-stat-label">Min This Week</div>
+            </div>
+            <div class="diary-stat">
+              <div class="diary-stat-value" id="diaryTotalValue">0</div>
+              <div class="diary-stat-label">Total Sessions</div>
+            </div>
+          </div>
+          <div class="diary-sessions" id="diarySessionList"></div>
+        </div>
+        <div class="feedback-modal-footer">
+          <button class="feedback-btn-cancel" id="diaryClearBtn">Clear history</button>
+          <button class="feedback-btn-submit" id="diaryLogBtn">Log practice</button>
+        </div>
+      </div>
+
+      <!-- Log Form State -->
+      <div id="diaryLogState" style="display: none;">
+        <div class="feedback-modal-header">
+          <h3>Log Practice Session</h3>
+          <button id="diaryLogClose" title="Close">&times;</button>
+        </div>
+        <div class="feedback-modal-body">
+          <div class="feedback-context">
+            <strong style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.08em;">Currently practicing</strong>
+            <div id="diaryCurrentContext" style="margin-top: 0.375rem; color: var(--text-secondary); font-size: 0.875rem;"></div>
+          </div>
+          <div class="feedback-field" id="diaryDurationField">
+            <label for="diaryDuration">Duration (minutes)</label>
+            <input type="number" id="diaryDuration" min="1" max="600" value="15" />
+            <div class="field-error" id="diaryDurationError">Enter a number between 1 and 600.</div>
+          </div>
+          <div class="feedback-field">
+            <label for="diaryNotes">Notes (optional)</label>
+            <textarea id="diaryNotes" rows="3" placeholder="What did you work on?"></textarea>
+          </div>
+        </div>
+        <div class="feedback-modal-footer">
+          <div></div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="feedback-btn-cancel" id="diaryLogCancel">Back</button>
+            <button class="feedback-btn-submit" id="diaryLogSave">Save</button>
           </div>
         </div>
       </div>
@@ -3806,6 +3944,239 @@
     });
     document.getElementById('feedbackEmail').addEventListener('input', () => {
       document.getElementById('feedbackEmailField').classList.remove('error');
+    });
+
+    // ── Practice Diary ──────────────────────────────────────────────
+    const DIARY_STORAGE_KEY = 'gse_practice_diary_v1';
+    const DIARY_MAX_RENDER = 20;
+
+    function diaryGetSessions() {
+      try {
+        const raw = localStorage.getItem(DIARY_STORAGE_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (err) {
+        console.warn('Diary: failed to read storage', err);
+        return [];
+      }
+    }
+
+    function diarySaveSessions(sessions) {
+      try {
+        localStorage.setItem(DIARY_STORAGE_KEY, JSON.stringify(sessions));
+        return true;
+      } catch (err) {
+        console.error('Diary: failed to write storage', err);
+        return false;
+      }
+    }
+
+    function diaryAppendSession(session) {
+      const sessions = diaryGetSessions();
+      sessions.push(session);
+      return diarySaveSessions(sessions);
+    }
+
+    function diaryClear() {
+      try { localStorage.removeItem(DIARY_STORAGE_KEY); } catch (err) { /* ignore */ }
+    }
+
+    function diaryDayKey(ts) {
+      const d = new Date(ts);
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    }
+
+    function diaryComputeStreak(sessions) {
+      if (!sessions.length) return 0;
+      const days = new Set(sessions.map(s => diaryDayKey(s.timestamp)));
+      const today = diaryDayKey(Date.now());
+      const yesterday = diaryDayKey(Date.now() - 86400000);
+      // Streak only counts if most recent activity is today or yesterday.
+      if (!days.has(today) && !days.has(yesterday)) return 0;
+      let cursor = days.has(today) ? new Date() : new Date(Date.now() - 86400000);
+      let streak = 0;
+      while (days.has(diaryDayKey(cursor.getTime()))) {
+        streak += 1;
+        cursor.setDate(cursor.getDate() - 1);
+      }
+      return streak;
+    }
+
+    function diaryComputeWeeklyMinutes(sessions) {
+      const cutoff = Date.now() - 7 * 86400000;
+      return sessions
+        .filter(s => s.timestamp >= cutoff)
+        .reduce((sum, s) => sum + (Number(s.minutes) || 0), 0);
+    }
+
+    function diaryFormatRelativeDate(ts) {
+      const sessionDay = diaryDayKey(ts);
+      const today = diaryDayKey(Date.now());
+      const yesterday = diaryDayKey(Date.now() - 86400000);
+      if (sessionDay === today) return 'Today';
+      if (sessionDay === yesterday) return 'Yesterday';
+      const d = new Date(ts);
+      return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    }
+
+    function diaryCurrentContext() {
+      const scale = state.currentScale
+        ? (state.currentScale.display_name || state.currentScale.id || 'No scale selected')
+        : 'No scale selected';
+      const root = state.currentScaleData
+        ? (state.currentScaleData.root || state.currentScaleData.starting_tone || '')
+        : '';
+      return { scale, root, viewMode: state.viewMode };
+    }
+
+    function diaryRenderView() {
+      const sessions = diaryGetSessions();
+      document.getElementById('diaryStreakValue').textContent = diaryComputeStreak(sessions);
+      document.getElementById('diaryWeekValue').textContent = diaryComputeWeeklyMinutes(sessions);
+      document.getElementById('diaryTotalValue').textContent = sessions.length;
+
+      const list = document.getElementById('diarySessionList');
+      list.innerHTML = '';
+      if (!sessions.length) {
+        const empty = document.createElement('div');
+        empty.className = 'diary-empty';
+        empty.textContent = 'No practice logged yet. Tap "Log practice" to start.';
+        list.appendChild(empty);
+        document.getElementById('diaryClearBtn').style.visibility = 'hidden';
+        return;
+      }
+      document.getElementById('diaryClearBtn').style.visibility = '';
+
+      const recent = sessions.slice().sort((a, b) => b.timestamp - a.timestamp).slice(0, DIARY_MAX_RENDER);
+      recent.forEach(s => {
+        const row = document.createElement('div');
+        row.className = 'diary-session';
+
+        const main = document.createElement('div');
+        main.className = 'diary-session-main';
+        const scaleEl = document.createElement('span');
+        scaleEl.className = 'diary-session-scale';
+        scaleEl.textContent = s.root ? `${s.root} ${s.scale}` : s.scale;
+        main.appendChild(scaleEl);
+        if (s.notes) {
+          const notes = document.createElement('span');
+          notes.className = 'diary-session-notes';
+          notes.textContent = s.notes;
+          notes.title = s.notes;
+          main.appendChild(notes);
+        }
+
+        const meta = document.createElement('div');
+        meta.className = 'diary-session-meta';
+        meta.textContent = `${s.minutes} min · ${diaryFormatRelativeDate(s.timestamp)}`;
+
+        row.appendChild(main);
+        row.appendChild(meta);
+        list.appendChild(row);
+      });
+    }
+
+    function diaryShowState(name) {
+      document.getElementById('diaryViewState').style.display = name === 'view' ? '' : 'none';
+      document.getElementById('diaryLogState').style.display = name === 'log' ? '' : 'none';
+    }
+
+    function openDiaryModal() {
+      trackEvent('diary-open');
+      diaryShowState('view');
+      diaryRenderView();
+      document.getElementById('diaryOverlay').classList.add('open');
+    }
+
+    function closeDiaryModal() {
+      document.getElementById('diaryOverlay').classList.remove('open');
+    }
+
+    function openDiaryLogForm() {
+      const ctx = diaryCurrentContext();
+      document.getElementById('diaryCurrentContext').textContent =
+        ctx.root ? `${ctx.root} ${ctx.scale} (${ctx.viewMode})` : `${ctx.scale} (${ctx.viewMode})`;
+      document.getElementById('diaryDuration').value = '15';
+      document.getElementById('diaryNotes').value = '';
+      document.getElementById('diaryDurationField').classList.remove('error');
+      diaryShowState('log');
+      // Focus duration for fast keyboard entry
+      setTimeout(() => document.getElementById('diaryDuration').focus(), 50);
+    }
+
+    function handleDiarySave() {
+      const durationField = document.getElementById('diaryDurationField');
+      const minutes = parseInt(document.getElementById('diaryDuration').value, 10);
+      if (!Number.isFinite(minutes) || minutes < 1 || minutes > 600) {
+        durationField.classList.add('error');
+        return;
+      }
+      durationField.classList.remove('error');
+
+      const ctx = diaryCurrentContext();
+      const session = {
+        timestamp: Date.now(),
+        scale: ctx.scale,
+        root: ctx.root,
+        viewMode: ctx.viewMode,
+        minutes,
+        notes: document.getElementById('diaryNotes').value.trim().slice(0, 500)
+      };
+      const ok = diaryAppendSession(session);
+      if (!ok) {
+        durationField.classList.add('error');
+        document.getElementById('diaryDurationError').textContent =
+          'Could not save (storage full or unavailable).';
+        return;
+      }
+      trackEvent('diary-log');
+      diaryShowState('view');
+      diaryRenderView();
+    }
+
+    function handleDiaryClear() {
+      const sessions = diaryGetSessions();
+      if (!sessions.length) return;
+      if (!window.confirm(`Delete all ${sessions.length} logged session(s)? This can't be undone.`)) return;
+      diaryClear();
+      trackEvent('diary-clear');
+      diaryRenderView();
+    }
+
+    // Diary event listeners
+    document.getElementById('diaryToggle').addEventListener('click', openDiaryModal);
+    document.getElementById('diaryClose').addEventListener('click', closeDiaryModal);
+    document.getElementById('diaryLogClose').addEventListener('click', closeDiaryModal);
+    document.getElementById('diaryLogBtn').addEventListener('click', openDiaryLogForm);
+    document.getElementById('diaryLogCancel').addEventListener('click', () => diaryShowState('view'));
+    document.getElementById('diaryLogSave').addEventListener('click', handleDiarySave);
+    document.getElementById('diaryClearBtn').addEventListener('click', handleDiaryClear);
+    document.getElementById('diaryDuration').addEventListener('input', () => {
+      document.getElementById('diaryDurationField').classList.remove('error');
+    });
+    // Submit form on Enter in duration field
+    document.getElementById('diaryDuration').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); handleDiarySave(); }
+    });
+    // Close on backdrop click
+    document.getElementById('diaryOverlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeDiaryModal();
+    });
+    // Close on Escape (only when log form is in view-state, otherwise step back to view)
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const overlay = document.getElementById('diaryOverlay');
+      if (!overlay.classList.contains('open')) return;
+      const inLogForm = document.getElementById('diaryLogState').style.display !== 'none';
+      if (inLogForm) {
+        diaryShowState('view');
+      } else {
+        closeDiaryModal();
+      }
     });
 
     // Initialize

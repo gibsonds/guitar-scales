@@ -614,6 +614,26 @@
       color: var(--text-muted);
       font-size: 0.875rem;
     }
+    .control-btn.timer-running {
+      color: #ff4a4a;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+    .timer-summary {
+      background: var(--control-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 0.75rem 0.875rem;
+      line-height: 1.6;
+    }
+    .timer-summary-scale {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .timer-summary-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
   </style>
 </head>
 <body>
@@ -628,6 +648,7 @@
         <button class="control-btn position-shift-btn active" data-shift="0" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" title="No shift">0</button>
         <button class="control-btn position-shift-btn" data-shift="12" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;" title="Shift up one octave">+12</button>
       </div>
+      <button id="timerToggle" class="control-btn" style="width: auto; padding: 0 1rem; min-width: 56px;" title="Start practice timer">⏱️</button>
       <button id="diaryToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Practice diary">📓</button>
       <button id="feedbackToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Send feedback">💬</button>
       <button id="themeToggle" class="control-btn" style="width: auto; padding: 0 1rem;" title="Toggle theme">
@@ -936,7 +957,7 @@
         </div>
       </div>
 
-      <!-- Log Form State -->
+      <!-- Log Form State (manual entry from diary view) -->
       <div id="diaryLogState" style="display: none;">
         <div class="feedback-modal-header">
           <h3>Log Practice Session</h3>
@@ -968,12 +989,39 @@
     </div>
   </div>
 
+  <!-- Timer Save Modal (shown when ⏱ timer stops) -->
+  <div id="timerSaveOverlay" class="feedback-overlay">
+    <div class="feedback-modal">
+      <div class="feedback-modal-header">
+        <h3>Save Practice Session</h3>
+      </div>
+      <div class="feedback-modal-body">
+        <div class="timer-summary">
+          <div>Practiced <span id="timerSaveScaleLabel" class="timer-summary-scale"></span></div>
+          <div>Duration: <span id="timerSaveDuration"></span></div>
+          <div id="timerSaveMetronome" class="timer-summary-meta" style="display: none;"></div>
+        </div>
+        <div class="feedback-field">
+          <label for="timerSaveNotes">Notes (optional)</label>
+          <textarea id="timerSaveNotes" rows="3" placeholder="What did you focus on?"></textarea>
+        </div>
+      </div>
+      <div class="feedback-modal-footer">
+        <div></div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="feedback-btn-cancel" id="timerSaveDiscard">Discard</button>
+          <button class="feedback-btn-submit" id="timerSaveBtn">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.10.1 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.11.0 - Deployed on GitHub Pages
   </footer>
 
   <script>
-    console.log('Guitar Scale Explorer v2.10.1 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.11.0 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -3776,7 +3824,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.10.1',
+        appVersion: 'v2.11.0',
         userAgent: navigator.userAgent
       };
     }
@@ -4033,7 +4081,10 @@
       const root = state.currentScaleData
         ? (state.currentScaleData.root || state.currentScaleData.starting_tone || '')
         : '';
-      return { scale, root, viewMode: state.viewMode };
+      const metronome = state.metronomeEnabled
+        ? { bpm: state.metronomeBpm, sound: state.metronomeSound }
+        : null;
+      return { scale, root, viewMode: state.viewMode, metronome };
     }
 
     function diaryRenderView() {
@@ -4075,7 +4126,10 @@
 
         const meta = document.createElement('div');
         meta.className = 'diary-session-meta';
-        meta.textContent = `${s.minutes} min · ${diaryFormatRelativeDate(s.timestamp)}`;
+        const metaParts = [`${s.minutes} min`];
+        if (s.metronome && s.metronome.bpm) metaParts.push(`${s.metronome.bpm} BPM`);
+        metaParts.push(diaryFormatRelativeDate(s.timestamp));
+        meta.textContent = metaParts.join(' · ');
 
         row.appendChild(main);
         row.appendChild(meta);
@@ -4127,7 +4181,9 @@
         root: ctx.root,
         viewMode: ctx.viewMode,
         minutes,
-        notes: document.getElementById('diaryNotes').value.trim().slice(0, 500)
+        notes: document.getElementById('diaryNotes').value.trim().slice(0, 500),
+        metronome: ctx.metronome,
+        source: 'manual'
       };
       const ok = diaryAppendSession(session);
       if (!ok) {
@@ -4182,10 +4238,185 @@
       }
     });
 
+    // ── Practice Timer ──────────────────────────────────────────────
+    const TIMER_STORAGE_KEY = 'gse_diary_timer_v1';
+    const TIMER_STALE_HOURS = 6;
+    let timerTickHandle = null;
+    let pendingTimerEntry = null;
+
+    function timerGetState() {
+      try {
+        const raw = localStorage.getItem(TIMER_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (err) {
+        console.warn('Timer: failed to read storage', err);
+        return null;
+      }
+    }
+
+    function timerSaveState(s) {
+      try {
+        if (s) localStorage.setItem(TIMER_STORAGE_KEY, JSON.stringify(s));
+        else localStorage.removeItem(TIMER_STORAGE_KEY);
+      } catch (err) {
+        console.warn('Timer: failed to write storage', err);
+      }
+    }
+
+    function timerStart() {
+      if (timerGetState()) return;
+      const ctx = diaryCurrentContext();
+      timerSaveState({
+        startedAt: Date.now(),
+        scale: ctx.scale,
+        root: ctx.root,
+        viewMode: ctx.viewMode,
+        metronome: ctx.metronome
+      });
+      timerTickStart();
+      trackEvent('diary-timer-start');
+    }
+
+    function timerTickStart() {
+      if (timerTickHandle) clearInterval(timerTickHandle);
+      timerRender();
+      timerTickHandle = setInterval(timerRender, 1000);
+    }
+
+    function timerTickStop() {
+      if (timerTickHandle) {
+        clearInterval(timerTickHandle);
+        timerTickHandle = null;
+      }
+    }
+
+    function timerRender() {
+      const t = timerGetState();
+      const btn = document.getElementById('timerToggle');
+      if (!btn) return;
+      if (!t) {
+        btn.classList.remove('timer-running');
+        btn.textContent = '⏱️';
+        btn.title = 'Start practice timer';
+        return;
+      }
+      const totalSec = Math.floor((Date.now() - t.startedAt) / 1000);
+      const m = Math.floor(totalSec / 60);
+      const s = totalSec % 60;
+      btn.classList.add('timer-running');
+      btn.textContent = `🔴 ${m}:${String(s).padStart(2, '0')}`;
+      btn.title = `Stop timer & log practice (${t.root ? t.root + ' ' : ''}${t.scale})`;
+    }
+
+    function timerStop() {
+      const t = timerGetState();
+      if (!t) return;
+      timerTickStop();
+      openTimerSaveModal(t);
+    }
+
+    function openTimerSaveModal(t) {
+      const totalSec = Math.floor((Date.now() - t.startedAt) / 1000);
+      const m = Math.floor(totalSec / 60);
+      const s = totalSec % 60;
+      document.getElementById('timerSaveScaleLabel').textContent =
+        t.root ? `${t.root} ${t.scale}` : t.scale;
+      document.getElementById('timerSaveDuration').textContent =
+        m > 0 ? `${m} min ${s} sec` : `${s} sec`;
+      const metroEl = document.getElementById('timerSaveMetronome');
+      if (t.metronome && t.metronome.bpm) {
+        metroEl.style.display = '';
+        metroEl.textContent = `Metronome: ${t.metronome.bpm} BPM (${t.metronome.sound})`;
+      } else {
+        metroEl.style.display = 'none';
+      }
+      document.getElementById('timerSaveNotes').value = '';
+      pendingTimerEntry = { timerState: t, totalSec };
+      document.getElementById('timerSaveOverlay').classList.add('open');
+      setTimeout(() => document.getElementById('timerSaveNotes').focus(), 50);
+    }
+
+    function handleTimerSave() {
+      if (!pendingTimerEntry) return;
+      const { timerState: t, totalSec } = pendingTimerEntry;
+      // Sub-minute sessions need confirmation — likely an accident.
+      if (totalSec < 60) {
+        if (!window.confirm(`Only ${totalSec} seconds practiced. Save anyway?`)) return;
+      }
+      const minutes = Math.max(1, Math.round(totalSec / 60));
+      const session = {
+        timestamp: t.startedAt,
+        scale: t.scale,
+        root: t.root,
+        viewMode: t.viewMode,
+        minutes,
+        seconds: totalSec,
+        notes: document.getElementById('timerSaveNotes').value.trim().slice(0, 500),
+        metronome: t.metronome,
+        source: 'timer'
+      };
+      const ok = diaryAppendSession(session);
+      if (!ok) {
+        window.alert('Could not save (storage full or unavailable).');
+        return;
+      }
+      trackEvent('diary-timer-save');
+      closeTimerSaveModal(true);
+    }
+
+    function handleTimerDiscard() {
+      if (!pendingTimerEntry) { closeTimerSaveModal(true); return; }
+      const { totalSec } = pendingTimerEntry;
+      if (totalSec >= 60) {
+        const m = Math.round(totalSec / 60);
+        if (!window.confirm(`Discard ${m} minute(s) of practice?`)) return;
+      }
+      trackEvent('diary-timer-discard');
+      closeTimerSaveModal(true);
+    }
+
+    function closeTimerSaveModal(clearTimer) {
+      document.getElementById('timerSaveOverlay').classList.remove('open');
+      if (clearTimer) {
+        timerSaveState(null);
+        pendingTimerEntry = null;
+        timerRender();
+      }
+    }
+
+    function timerRestoreOnLoad() {
+      const t = timerGetState();
+      if (!t) return;
+      const elapsedHours = (Date.now() - t.startedAt) / 3600000;
+      if (elapsedHours > TIMER_STALE_HOURS) {
+        // Don't auto-resume something that's been "running" for hours — prompt instead.
+        const label = t.root ? `${t.root} ${t.scale}` : t.scale;
+        if (window.confirm(`A practice timer for ${label} has been running for ${elapsedHours.toFixed(1)} hours. Open save dialog (cancel = discard)?`)) {
+          openTimerSaveModal(t);
+        } else {
+          timerSaveState(null);
+          timerRender();
+        }
+        return;
+      }
+      timerTickStart();
+    }
+
+    // Timer event listeners
+    document.getElementById('timerToggle').addEventListener('click', () => {
+      if (timerGetState()) timerStop();
+      else timerStart();
+    });
+    document.getElementById('timerSaveBtn').addEventListener('click', handleTimerSave);
+    document.getElementById('timerSaveDiscard').addEventListener('click', handleTimerDiscard);
+    // No close button on timer save modal — must explicitly Save or Discard.
+    // Backdrop click is also disabled so accidental clicks don't lose data.
+
     // Initialize
     loadScaleCatalog().then(() => {
       applyTheme();
     });
+    timerRestoreOnLoad();
   </script>
 </body>
 </html>

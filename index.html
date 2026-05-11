@@ -634,6 +634,31 @@
       font-size: 0.75rem;
       color: var(--text-muted);
     }
+    .diary-sync-icon {
+      font-size: 0.8em;
+      margin-left: 0.5rem;
+      cursor: help;
+      transition: opacity 0.2s;
+    }
+    .device-id-display {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      background: var(--control-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 0.5rem 0.625rem;
+      word-break: break-all;
+      user-select: all;
+    }
+    .device-action-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .device-action-row input {
+      flex: 1;
+    }
   </style>
 </head>
 <body>
@@ -931,7 +956,7 @@
       <!-- View State -->
       <div id="diaryViewState">
         <div class="feedback-modal-header">
-          <h3>📓 Practice Diary</h3>
+          <h3>📓 Practice Diary<span id="diarySyncIcon" class="diary-sync-icon" title="Cloud sync"></span></h3>
           <button id="diaryClose" title="Close">&times;</button>
         </div>
         <div class="feedback-modal-body">
@@ -952,8 +977,51 @@
           <div class="diary-sessions" id="diarySessionList"></div>
         </div>
         <div class="feedback-modal-footer">
-          <button class="feedback-btn-cancel" id="diaryClearBtn">Clear history</button>
-          <button class="feedback-btn-submit" id="diaryLogBtn">Log practice</button>
+          <button class="feedback-btn-cancel" id="diaryDevicesBtn" style="font-size: 0.75rem;">Devices</button>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="feedback-btn-cancel" id="diaryClearBtn">Clear history</button>
+            <button class="feedback-btn-submit" id="diaryLogBtn">Log practice</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Devices State (cross-device pairing) -->
+      <div id="diaryDevicesState" style="display: none;">
+        <div class="feedback-modal-header">
+          <h3>Devices</h3>
+          <button id="diaryDevicesClose" title="Close">&times;</button>
+        </div>
+        <div class="feedback-modal-body">
+          <div class="feedback-field">
+            <label>This device's ID</label>
+            <div class="device-id-display" id="diaryDeviceIdDisplay"></div>
+            <div class="device-action-row" style="margin-top: 0.5rem;">
+              <button class="feedback-btn-cancel" id="diaryDeviceCopyBtn" style="font-size: 0.75rem;">Copy</button>
+              <span id="diaryDeviceCopyStatus" style="font-size: 0.75rem; color: var(--text-muted);"></span>
+            </div>
+          </div>
+          <div class="feedback-field">
+            <label for="diaryDeviceLabel">Label (optional)</label>
+            <div class="device-action-row">
+              <input type="text" id="diaryDeviceLabel" placeholder="e.g. MacBook Air" maxlength="60" />
+              <button class="feedback-btn-cancel" id="diaryDeviceLabelSave" style="font-size: 0.75rem;">Save</button>
+            </div>
+          </div>
+          <div class="feedback-field">
+            <label for="diaryDevicePairId">Switch to another device's data</label>
+            <div class="device-action-row">
+              <input type="text" id="diaryDevicePairId" placeholder="Paste device ID from another browser" />
+              <button class="feedback-btn-submit" id="diaryDeviceSwitchBtn" style="font-size: 0.75rem;">Switch</button>
+            </div>
+            <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.375rem;">
+              Replaces local data with that device's cloud data. Your current data stays in cloud under this device's ID.
+            </div>
+          </div>
+          <div id="diaryDeviceCloudInfo" style="font-size: 0.75rem; color: var(--text-muted);"></div>
+        </div>
+        <div class="feedback-modal-footer">
+          <div></div>
+          <button class="feedback-btn-cancel" id="diaryDevicesBack">Back</button>
         </div>
       </div>
 
@@ -1017,11 +1085,15 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.11.0 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.12.0 - Deployed on GitHub Pages
   </footer>
 
+  <!-- Cloud sync layer (no-ops gracefully if config.js sets API_BASE='' or is missing) -->
+  <script src="config.js"></script>
+  <script src="diary-cloud.js"></script>
+
   <script>
-    console.log('Guitar Scale Explorer v2.11.0 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.12.0 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -3824,7 +3896,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.11.0',
+        appVersion: 'v2.12.0',
         userAgent: navigator.userAgent
       };
     }
@@ -4024,13 +4096,63 @@
     }
 
     function diaryAppendSession(session) {
+      if (!session.id) {
+        session.id = (window.DiaryCloud && window.DiaryCloud.newId)
+          ? window.DiaryCloud.newId()
+          : ('id-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10));
+      }
+      if (!session.updatedAt) session.updatedAt = Date.now();
       const sessions = diaryGetSessions();
       sessions.push(session);
-      return diarySaveSessions(sessions);
+      const ok = diarySaveSessions(sessions);
+      if (ok && window.DiaryCloud && window.DiaryCloud.CLOUD_ENABLED) {
+        // Fire-and-forget — UI doesn't block on cloud. Errors surface via
+        // diary-cloud-* events (handled by updateSyncIcon below).
+        window.DiaryCloud.cloudPutSession(session).catch(function () {});
+      }
+      return ok;
     }
 
     function diaryClear() {
       try { localStorage.removeItem(DIARY_STORAGE_KEY); } catch (err) { /* ignore */ }
+      if (window.DiaryCloud && window.DiaryCloud.CLOUD_ENABLED) {
+        window.DiaryCloud.cloudClearAll().catch(function () {});
+      }
+    }
+
+    // Merge cloud sessions with local. Dedupe by id; prefer the entry
+    // with the higher updatedAt. Backfill ids for legacy local entries
+    // that pre-date the cloud era so they get pushed up on next save.
+    function diaryMergeAndStore(cloudSessions) {
+      const local = diaryGetSessions();
+      const map = new Map();
+      const orphanLocal = []; // local entries with no id — push to cloud
+      for (const s of local) {
+        if (!s.id) {
+          s.id = (window.DiaryCloud && window.DiaryCloud.newId)
+            ? window.DiaryCloud.newId()
+            : ('id-' + s.timestamp + '-' + Math.random().toString(36).slice(2, 8));
+          orphanLocal.push(s);
+        }
+        if (!s.updatedAt) s.updatedAt = s.timestamp || Date.now();
+        map.set(s.id, s);
+      }
+      for (const s of cloudSessions) {
+        const existing = map.get(s.id);
+        if (!existing || (s.updatedAt || 0) > (existing.updatedAt || 0)) {
+          map.set(s.id, s);
+        }
+      }
+      const merged = Array.from(map.values());
+      diarySaveSessions(merged);
+      // Push up entries that the cloud doesn't know about yet
+      if (window.DiaryCloud && window.DiaryCloud.CLOUD_ENABLED) {
+        const cloudIds = new Set(cloudSessions.map(function (s) { return s.id; }));
+        const toUpload = merged.filter(function (s) { return !cloudIds.has(s.id); });
+        for (const s of toUpload) {
+          window.DiaryCloud.cloudPutSession(s).catch(function () {});
+        }
+      }
     }
 
     function diaryDayKey(ts) {
@@ -4140,13 +4262,26 @@
     function diaryShowState(name) {
       document.getElementById('diaryViewState').style.display = name === 'view' ? '' : 'none';
       document.getElementById('diaryLogState').style.display = name === 'log' ? '' : 'none';
+      document.getElementById('diaryDevicesState').style.display = name === 'devices' ? '' : 'none';
     }
 
-    function openDiaryModal() {
+    async function openDiaryModal() {
       trackEvent('diary-open');
       diaryShowState('view');
       diaryRenderView();
       document.getElementById('diaryOverlay').classList.add('open');
+      // Async cloud refresh — re-renders if it brought back new data.
+      if (window.DiaryCloud && window.DiaryCloud.CLOUD_ENABLED) {
+        try {
+          const cloudSessions = await window.DiaryCloud.cloudGetSessions();
+          if (Array.isArray(cloudSessions)) {
+            diaryMergeAndStore(cloudSessions);
+            diaryRenderView();
+          }
+        } catch (err) {
+          console.warn('Diary cloud refresh failed', err);
+        }
+      }
     }
 
     function closeDiaryModal() {
@@ -4225,18 +4360,162 @@
     document.getElementById('diaryOverlay').addEventListener('click', (e) => {
       if (e.target === e.currentTarget) closeDiaryModal();
     });
-    // Close on Escape (only when log form is in view-state, otherwise step back to view)
+    // Close on Escape — sub-states step back to 'view' first, view closes the modal.
     document.addEventListener('keydown', (e) => {
       if (e.key !== 'Escape') return;
       const overlay = document.getElementById('diaryOverlay');
       if (!overlay.classList.contains('open')) return;
       const inLogForm = document.getElementById('diaryLogState').style.display !== 'none';
-      if (inLogForm) {
+      const inDevices = document.getElementById('diaryDevicesState').style.display !== 'none';
+      if (inLogForm || inDevices) {
         diaryShowState('view');
       } else {
         closeDiaryModal();
       }
     });
+
+    // ── Cloud sync indicator + Devices UX ───────────────────────────
+    let syncIconResetTimer = null;
+    function updateSyncIcon(stateName, detail) {
+      const el = document.getElementById('diarySyncIcon');
+      if (!el) return;
+      if (!window.DiaryCloud || !window.DiaryCloud.CLOUD_ENABLED) {
+        el.textContent = '';
+        el.title = '';
+        return;
+      }
+      if (syncIconResetTimer) { clearTimeout(syncIconResetTimer); syncIconResetTimer = null; }
+      const states = {
+        idle:    { txt: '☁️',  title: 'Cloud sync ready',                    color: 'var(--text-muted)', opacity: 0.5 },
+        saving:  { txt: '☁️↑', title: 'Syncing…',                            color: 'var(--text-muted)', opacity: 1 },
+        saved:   { txt: '☁️✓', title: 'Synced',                              color: '#4caf50',           opacity: 1 },
+        offline: { txt: '☁️⚠',  title: 'Offline — queued, will retry',        color: '#ff9800',           opacity: 1 },
+        error:   { txt: '☁️✗', title: 'Sync error: ' + ((detail && detail.message) || 'unknown'), color: '#f44336', opacity: 1 }
+      };
+      const s = states[stateName] || states.idle;
+      el.textContent = s.txt;
+      el.title = s.title;
+      el.style.color = s.color;
+      el.style.opacity = s.opacity;
+      if (stateName === 'saved') {
+        syncIconResetTimer = setTimeout(function () { updateSyncIcon('idle'); }, 2000);
+      }
+    }
+
+    window.addEventListener('diary-cloud-saving',  function ()  { updateSyncIcon('saving'); });
+    window.addEventListener('diary-cloud-saved',   function ()  { updateSyncIcon('saved'); });
+    window.addEventListener('diary-cloud-offline', function ()  { updateSyncIcon('offline'); });
+    window.addEventListener('diary-cloud-error',   function (e) { updateSyncIcon('error', e.detail); });
+
+    // Initial state — also reflects "queued ops waiting" if any
+    function refreshSyncIconInitial() {
+      if (!window.DiaryCloud || !window.DiaryCloud.CLOUD_ENABLED) { updateSyncIcon('idle'); return; }
+      if (window.DiaryCloud.getQueueSize() > 0) updateSyncIcon('offline');
+      else updateSyncIcon('idle');
+    }
+
+    // Devices sub-view
+    async function openDiaryDevicesView() {
+      diaryShowState('devices');
+      const idEl = document.getElementById('diaryDeviceIdDisplay');
+      const cloudInfo = document.getElementById('diaryDeviceCloudInfo');
+      const labelInput = document.getElementById('diaryDeviceLabel');
+      document.getElementById('diaryDeviceCopyStatus').textContent = '';
+      document.getElementById('diaryDevicePairId').value = '';
+
+      if (!window.DiaryCloud) {
+        idEl.textContent = '(cloud module not loaded)';
+        cloudInfo.textContent = '';
+        return;
+      }
+      idEl.textContent = window.DiaryCloud.getDeviceId();
+      labelInput.value = '';
+      if (!window.DiaryCloud.CLOUD_ENABLED) {
+        cloudInfo.textContent = 'Cloud sync disabled (config.js missing or empty API_BASE).';
+        return;
+      }
+      cloudInfo.textContent = 'Loading device info…';
+      try {
+        const info = await window.DiaryCloud.cloudGetDeviceInfo();
+        if (info) {
+          if (info.label) labelInput.value = info.label;
+          const created = info.createdAt ? new Date(info.createdAt).toLocaleString() : '?';
+          const synced = info.lastSyncAt ? new Date(info.lastSyncAt).toLocaleString() : '?';
+          cloudInfo.textContent = 'First seen: ' + created + ' · Last synced: ' + synced;
+        }
+      } catch (err) {
+        cloudInfo.textContent = 'Could not reach cloud.';
+      }
+    }
+
+    function copyDeviceIdToClipboard() {
+      const id = window.DiaryCloud ? window.DiaryCloud.getDeviceId() : '';
+      const status = document.getElementById('diaryDeviceCopyStatus');
+      if (!id) { status.textContent = 'no id'; return; }
+      const done = function () { status.textContent = 'copied'; setTimeout(function () { status.textContent = ''; }, 1500); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(id).then(done).catch(function () { status.textContent = 'copy failed'; });
+      } else {
+        // Fallback — select the text node so the user can ⌘C manually
+        const range = document.createRange();
+        range.selectNodeContents(document.getElementById('diaryDeviceIdDisplay'));
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        status.textContent = 'selected — press ⌘C';
+      }
+    }
+
+    async function saveDeviceLabel() {
+      if (!window.DiaryCloud || !window.DiaryCloud.CLOUD_ENABLED) return;
+      const label = document.getElementById('diaryDeviceLabel').value.trim();
+      try {
+        await window.DiaryCloud.cloudSetDeviceLabel(label);
+        const status = document.getElementById('diaryDeviceCopyStatus');
+        status.textContent = 'label saved';
+        setTimeout(function () { status.textContent = ''; }, 1500);
+      } catch (err) {
+        console.warn('Could not save device label', err);
+      }
+    }
+
+    async function switchToOtherDevice() {
+      if (!window.DiaryCloud || !window.DiaryCloud.CLOUD_ENABLED) return;
+      const newId = document.getElementById('diaryDevicePairId').value.trim();
+      if (!newId) return;
+      const msg = 'Switch to device "' + newId + '"?\n\n' +
+                  'This replaces your local diary with that device\'s cloud data. ' +
+                  'Your current data stays in cloud under your old device id (' +
+                  window.DiaryCloud.getDeviceId() + ').';
+      if (!window.confirm(msg)) return;
+      window.DiaryCloud.setDeviceId(newId);
+      // Clear local — on next openDiaryModal, cloud refresh will populate.
+      try { localStorage.removeItem(DIARY_STORAGE_KEY); } catch (_) {}
+      try { localStorage.removeItem('gse_diary_cloud_queue_v1'); } catch (_) {}
+      trackEvent('diary-device-switch');
+      // Refresh now
+      try {
+        const cloudSessions = await window.DiaryCloud.cloudGetSessions();
+        if (Array.isArray(cloudSessions)) {
+          diarySaveSessions(cloudSessions);
+        }
+      } catch (err) {
+        console.warn('Initial fetch after switch failed', err);
+      }
+      diaryShowState('view');
+      diaryRenderView();
+    }
+
+    // Devices event listeners
+    document.getElementById('diaryDevicesBtn').addEventListener('click', openDiaryDevicesView);
+    document.getElementById('diaryDevicesBack').addEventListener('click', function () { diaryShowState('view'); });
+    document.getElementById('diaryDevicesClose').addEventListener('click', closeDiaryModal);
+    document.getElementById('diaryDeviceCopyBtn').addEventListener('click', copyDeviceIdToClipboard);
+    document.getElementById('diaryDeviceLabelSave').addEventListener('click', saveDeviceLabel);
+    document.getElementById('diaryDeviceSwitchBtn').addEventListener('click', switchToOtherDevice);
+
+    // Initialize sync icon now that DiaryCloud may be loaded
+    refreshSyncIconInitial();
 
     // ── Practice Timer ──────────────────────────────────────────────
     const TIMER_STORAGE_KEY = 'gse_diary_timer_v1';

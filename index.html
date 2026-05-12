@@ -656,6 +656,104 @@
       border-color: #d64545;
       color: #fff;
     }
+    /* Practice Stats sub-view */
+    :root {
+      --hm-l0: #1e1e2a;
+      --hm-l1: #0e4429;
+      --hm-l2: #006d32;
+      --hm-l3: #26a641;
+      --hm-l4: #39d353;
+    }
+    [data-theme="light"] {
+      --hm-l0: #ebedf0;
+      --hm-l1: #9be9a8;
+      --hm-l2: #40c463;
+      --hm-l3: #30a14e;
+      --hm-l4: #216e39;
+    }
+    .diary-stats-section {
+      margin-bottom: 1.25rem;
+    }
+    .diary-stats-section h4 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .diary-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+    .diary-heatmap {
+      display: flex;
+      gap: 3px;
+      align-items: flex-start;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+    .diary-heatmap-col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 0 0 auto;
+    }
+    .diary-heatmap-cell {
+      width: 14px;
+      height: 14px;
+      border-radius: 2px;
+      background: var(--hm-l0);
+      cursor: help;
+    }
+    .diary-heatmap-cell.l1 { background: var(--hm-l1); }
+    .diary-heatmap-cell.l2 { background: var(--hm-l2); }
+    .diary-heatmap-cell.l3 { background: var(--hm-l3); }
+    .diary-heatmap-cell.l4 { background: var(--hm-l4); }
+    .diary-heatmap-legend {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    .diary-heatmap-legend-cells {
+      display: flex;
+      gap: 2px;
+    }
+    .diary-scale-bar-row {
+      display: grid;
+      grid-template-columns: 9rem 1fr 5.5rem;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.813rem;
+      margin-bottom: 0.375rem;
+    }
+    .diary-scale-bar-label {
+      color: var(--text-secondary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .diary-scale-bar-track {
+      height: 10px;
+      background: var(--control-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .diary-scale-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4a9eff, #3b7dd6);
+    }
+    .diary-scale-bar-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: right;
+      white-space: nowrap;
+    }
     .control-btn.timer-running {
       color: #ff4a4a;
       font-weight: 600;
@@ -1019,11 +1117,29 @@
           <div class="diary-sessions" id="diarySessionList"></div>
         </div>
         <div class="feedback-modal-footer">
-          <button class="feedback-btn-cancel" id="diaryDevicesBtn" style="font-size: 0.75rem;">Devices</button>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="feedback-btn-cancel" id="diaryStatsBtn" style="font-size: 0.75rem;">Stats</button>
+            <button class="feedback-btn-cancel" id="diaryDevicesBtn" style="font-size: 0.75rem;">Devices</button>
+          </div>
           <div style="display: flex; gap: 0.5rem;">
             <button class="feedback-btn-cancel" id="diaryClearBtn">Clear history</button>
             <button class="feedback-btn-submit" id="diaryLogBtn">Log practice</button>
           </div>
+        </div>
+      </div>
+
+      <!-- Stats State (heatmap + top scales + aggregates) -->
+      <div id="diaryStatsState" style="display: none;">
+        <div class="feedback-modal-header">
+          <h3>📊 Practice Stats</h3>
+          <button id="diaryStatsClose" title="Close">&times;</button>
+        </div>
+        <div class="feedback-modal-body">
+          <div id="diaryStatsBody"></div>
+        </div>
+        <div class="feedback-modal-footer">
+          <div></div>
+          <button class="feedback-btn-cancel" id="diaryStatsBack">Back</button>
         </div>
       </div>
 
@@ -1127,7 +1243,7 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.13.0 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.14.0 - Deployed on GitHub Pages
   </footer>
 
   <!-- Cloud sync layer (no-ops gracefully if config.js sets API_BASE='' or is missing) -->
@@ -1135,7 +1251,7 @@
   <script src="diary-cloud.js"></script>
 
   <script>
-    console.log('Guitar Scale Explorer v2.13.0 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.14.0 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -3938,7 +4054,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.13.0',
+        appVersion: 'v2.14.0',
         userAgent: navigator.userAgent
       };
     }
@@ -4360,6 +4476,7 @@
       document.getElementById('diaryViewState').style.display = name === 'view' ? '' : 'none';
       document.getElementById('diaryLogState').style.display = name === 'log' ? '' : 'none';
       document.getElementById('diaryDevicesState').style.display = name === 'devices' ? '' : 'none';
+      document.getElementById('diaryStatsState').style.display = name === 'stats' ? '' : 'none';
     }
 
     async function openDiaryModal() {
@@ -4546,7 +4663,8 @@
       if (!overlay.classList.contains('open')) return;
       const inLogForm = document.getElementById('diaryLogState').style.display !== 'none';
       const inDevices = document.getElementById('diaryDevicesState').style.display !== 'none';
-      if (inLogForm || inDevices) {
+      const inStats   = document.getElementById('diaryStatsState').style.display !== 'none';
+      if (inLogForm || inDevices || inStats) {
         diaryShowState('view');
       } else {
         closeDiaryModal();
@@ -4684,6 +4802,200 @@
       diaryShowState('view');
       diaryRenderView();
     }
+
+    // ── Practice Stats ──────────────────────────────────────────────
+    function diaryComputeLongestStreak(sessions) {
+      if (!sessions.length) return 0;
+      const days = Array.from(new Set(sessions.map(s => diaryDayKey(s.timestamp)))).sort();
+      if (!days.length) return 0;
+      let longest = 1, current = 1;
+      for (let i = 1; i < days.length; i++) {
+        const prev = new Date(days[i - 1] + 'T00:00:00');
+        const curr = new Date(days[i] + 'T00:00:00');
+        const diff = Math.round((curr - prev) / 86400000);
+        if (diff === 1) {
+          current += 1;
+          if (current > longest) longest = current;
+        } else {
+          current = 1;
+        }
+      }
+      return longest;
+    }
+
+    function diaryComputeStatsData(sessions) {
+      const totalSessions = sessions.length;
+      const totalMinutes = sessions.reduce((s, x) => s + (Number(x.minutes) || 0), 0);
+      const totalHours = (totalMinutes / 60).toFixed(1);
+      const avgMinutes = totalSessions > 0 ? Math.round(totalMinutes / totalSessions) : 0;
+      const longestStreak = diaryComputeLongestStreak(sessions);
+
+      // Heatmap: last 84 days, chronological (oldest first), filled column-by-column.
+      const dailyMins = {};
+      for (const s of sessions) {
+        const k = diaryDayKey(s.timestamp);
+        dailyMins[k] = (dailyMins[k] || 0) + (Number(s.minutes) || 0);
+      }
+      const heatmap = [];
+      for (let d = 83; d >= 0; d--) {
+        const date = new Date();
+        date.setHours(0, 0, 0, 0);
+        date.setDate(date.getDate() - d);
+        const key = diaryDayKey(date.getTime());
+        heatmap.push({ date, key, minutes: dailyMins[key] || 0 });
+      }
+
+      // Top scales by total minutes
+      const byScale = {};
+      for (const s of sessions) {
+        const key = (s.root ? s.root + ' ' : '') + (s.scale || '?');
+        if (!byScale[key]) byScale[key] = { label: key, minutes: 0, count: 0 };
+        byScale[key].minutes += (Number(s.minutes) || 0);
+        byScale[key].count += 1;
+      }
+      const topScales = Object.values(byScale)
+        .sort((a, b) => b.minutes - a.minutes)
+        .slice(0, 8);
+
+      return { totalSessions, totalMinutes, totalHours, avgMinutes, longestStreak, heatmap, topScales };
+    }
+
+    function diaryRenderStats() {
+      const sessions = diaryGetSessions();
+      const body = document.getElementById('diaryStatsBody');
+      body.innerHTML = '';
+      if (sessions.length < 3) {
+        const empty = document.createElement('div');
+        empty.className = 'diary-empty';
+        empty.textContent = 'Log a few sessions first to see your patterns.';
+        body.appendChild(empty);
+        return;
+      }
+      const d = diaryComputeStatsData(sessions);
+
+      // Aggregate grid
+      const agg = document.createElement('div');
+      agg.className = 'diary-stats-section';
+      const aggHdr = document.createElement('h4');
+      aggHdr.textContent = 'Totals';
+      agg.appendChild(aggHdr);
+      const aggGrid = document.createElement('div');
+      aggGrid.className = 'diary-stat-grid';
+      const stats = [
+        { value: d.totalHours, label: 'Hours' },
+        { value: d.totalSessions, label: 'Sessions' },
+        { value: d.avgMinutes, label: 'Avg min/session' },
+        { value: d.longestStreak, label: 'Longest streak' }
+      ];
+      for (const st of stats) {
+        const cell = document.createElement('div');
+        cell.className = 'diary-stat';
+        const val = document.createElement('div');
+        val.className = 'diary-stat-value';
+        val.textContent = st.value;
+        const lab = document.createElement('div');
+        lab.className = 'diary-stat-label';
+        lab.textContent = st.label;
+        cell.appendChild(val);
+        cell.appendChild(lab);
+        aggGrid.appendChild(cell);
+      }
+      agg.appendChild(aggGrid);
+      body.appendChild(agg);
+
+      // Heatmap
+      const hm = document.createElement('div');
+      hm.className = 'diary-stats-section';
+      const hmHdr = document.createElement('h4');
+      hmHdr.textContent = 'Last 12 weeks';
+      hm.appendChild(hmHdr);
+      const grid = document.createElement('div');
+      grid.className = 'diary-heatmap';
+      const maxMin = Math.max.apply(null, d.heatmap.map(h => h.minutes).concat([1]));
+      for (let c = 0; c < 12; c++) {
+        const col = document.createElement('div');
+        col.className = 'diary-heatmap-col';
+        for (let r = 0; r < 7; r++) {
+          const idx = c * 7 + r;
+          const day = d.heatmap[idx];
+          const cell = document.createElement('div');
+          cell.className = 'diary-heatmap-cell';
+          const m = day.minutes;
+          if (m > 0) {
+            const ratio = m / maxMin;
+            if (ratio < 0.25) cell.classList.add('l1');
+            else if (ratio < 0.5) cell.classList.add('l2');
+            else if (ratio < 0.75) cell.classList.add('l3');
+            else cell.classList.add('l4');
+          }
+          const dateStr = day.date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+          cell.title = m > 0 ? `${dateStr}: ${m} min` : `${dateStr}: —`;
+          col.appendChild(cell);
+        }
+        grid.appendChild(col);
+      }
+      hm.appendChild(grid);
+      // Legend
+      const legend = document.createElement('div');
+      legend.className = 'diary-heatmap-legend';
+      const less = document.createElement('span');
+      less.textContent = 'Less';
+      const cells = document.createElement('div');
+      cells.className = 'diary-heatmap-legend-cells';
+      ['', 'l1', 'l2', 'l3', 'l4'].forEach(cls => {
+        const c = document.createElement('div');
+        c.className = 'diary-heatmap-cell' + (cls ? ' ' + cls : '');
+        cells.appendChild(c);
+      });
+      const more = document.createElement('span');
+      more.textContent = 'More';
+      legend.appendChild(less);
+      legend.appendChild(cells);
+      legend.appendChild(more);
+      hm.appendChild(legend);
+      body.appendChild(hm);
+
+      // Top scales
+      const sc = document.createElement('div');
+      sc.className = 'diary-stats-section';
+      const scHdr = document.createElement('h4');
+      scHdr.textContent = 'Top scales by time';
+      sc.appendChild(scHdr);
+      const maxScaleMin = Math.max.apply(null, d.topScales.map(s => s.minutes).concat([1]));
+      for (const s of d.topScales) {
+        const row = document.createElement('div');
+        row.className = 'diary-scale-bar-row';
+        const lab = document.createElement('span');
+        lab.className = 'diary-scale-bar-label';
+        lab.textContent = s.label;
+        lab.title = s.label;
+        const track = document.createElement('div');
+        track.className = 'diary-scale-bar-track';
+        const fill = document.createElement('div');
+        fill.className = 'diary-scale-bar-fill';
+        fill.style.width = ((s.minutes / maxScaleMin) * 100) + '%';
+        track.appendChild(fill);
+        const meta = document.createElement('span');
+        meta.className = 'diary-scale-bar-meta';
+        meta.textContent = `${s.minutes} min · ${s.count}×`;
+        row.appendChild(lab);
+        row.appendChild(track);
+        row.appendChild(meta);
+        sc.appendChild(row);
+      }
+      body.appendChild(sc);
+    }
+
+    function openDiaryStatsView() {
+      trackEvent('diary-stats-open');
+      diaryShowState('stats');
+      diaryRenderStats();
+    }
+
+    // Stats event listeners
+    document.getElementById('diaryStatsBtn').addEventListener('click', openDiaryStatsView);
+    document.getElementById('diaryStatsClose').addEventListener('click', closeDiaryModal);
+    document.getElementById('diaryStatsBack').addEventListener('click', () => diaryShowState('view'));
 
     // Devices event listeners
     document.getElementById('diaryDevicesBtn').addEventListener('click', openDiaryDevicesView);

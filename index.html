@@ -614,6 +614,48 @@
       color: var(--text-muted);
       font-size: 0.875rem;
     }
+    .diary-session-actions {
+      display: flex;
+      gap: 0.25rem;
+      margin-left: 0.5rem;
+    }
+    .diary-row-btn {
+      background: none;
+      border: none;
+      padding: 0.125rem 0.375rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      border-radius: 4px;
+      opacity: 0.55;
+      transition: opacity 0.15s, background 0.15s;
+    }
+    .diary-row-btn:hover {
+      opacity: 1;
+      background: var(--button-hover-bg);
+    }
+    .diary-row-confirm {
+      display: flex;
+      gap: 0.375rem;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .diary-row-confirm button {
+      padding: 0.125rem 0.625rem;
+      font-size: 0.7rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      border: 1px solid var(--button-border);
+      background: var(--button-bg);
+      color: var(--button-text);
+    }
+    .diary-row-confirm button.danger {
+      background: #d64545;
+      border-color: #d64545;
+      color: #fff;
+    }
     .control-btn.timer-running {
       color: #ff4a4a;
       font-weight: 600;
@@ -1025,15 +1067,15 @@
         </div>
       </div>
 
-      <!-- Log Form State (manual entry from diary view) -->
+      <!-- Log Form State (also reused for edit mode — see openDiaryEditForm) -->
       <div id="diaryLogState" style="display: none;">
         <div class="feedback-modal-header">
-          <h3>Log Practice Session</h3>
+          <h3 id="diaryLogTitle">Log Practice Session</h3>
           <button id="diaryLogClose" title="Close">&times;</button>
         </div>
         <div class="feedback-modal-body">
           <div class="feedback-context">
-            <strong style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.08em;">Currently practicing</strong>
+            <strong id="diaryLogContextLabel" style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.08em;">Currently practicing</strong>
             <div id="diaryCurrentContext" style="margin-top: 0.375rem; color: var(--text-secondary); font-size: 0.875rem;"></div>
           </div>
           <div class="feedback-field" id="diaryDurationField">
@@ -1085,7 +1127,7 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.12.0 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.13.0 - Deployed on GitHub Pages
   </footer>
 
   <!-- Cloud sync layer (no-ops gracefully if config.js sets API_BASE='' or is missing) -->
@@ -1093,7 +1135,7 @@
   <script src="diary-cloud.js"></script>
 
   <script>
-    console.log('Guitar Scale Explorer v2.12.0 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.13.0 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -3896,7 +3938,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.12.0',
+        appVersion: 'v2.13.0',
         userAgent: navigator.userAgent
       };
     }
@@ -4253,13 +4295,68 @@
         metaParts.push(diaryFormatRelativeDate(s.timestamp));
         meta.textContent = metaParts.join(' · ');
 
+        const actions = document.createElement('div');
+        actions.className = 'diary-session-actions';
+        const editBtn = document.createElement('button');
+        editBtn.className = 'diary-row-btn';
+        editBtn.title = 'Edit session';
+        editBtn.textContent = '✏️';
+        editBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openDiaryEditForm(s);
+        });
+        const delBtn = document.createElement('button');
+        delBtn.className = 'diary-row-btn';
+        delBtn.title = 'Delete session';
+        delBtn.textContent = '🗑';
+        delBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showDeleteConfirm(row, meta, actions, s);
+        });
+        actions.appendChild(editBtn);
+        actions.appendChild(delBtn);
+
         row.appendChild(main);
         row.appendChild(meta);
+        row.appendChild(actions);
         list.appendChild(row);
       });
     }
 
+    // Replace meta + actions on the row with an inline confirm prompt.
+    function showDeleteConfirm(row, meta, actions, session) {
+      meta.style.display = 'none';
+      actions.style.display = 'none';
+      const confirm = document.createElement('div');
+      confirm.className = 'diary-row-confirm';
+      const text = document.createElement('span');
+      text.textContent = 'Delete?';
+      const cancel = document.createElement('button');
+      cancel.textContent = 'Cancel';
+      cancel.addEventListener('click', (e) => {
+        e.stopPropagation();
+        confirm.remove();
+        meta.style.display = '';
+        actions.style.display = '';
+      });
+      const del = document.createElement('button');
+      del.className = 'danger';
+      del.textContent = 'Delete';
+      del.addEventListener('click', (e) => {
+        e.stopPropagation();
+        deleteSessionById(session.id);
+      });
+      confirm.appendChild(text);
+      confirm.appendChild(cancel);
+      confirm.appendChild(del);
+      row.appendChild(confirm);
+    }
+
     function diaryShowState(name) {
+      // Leaving the log form clears edit mode so the next open starts fresh.
+      // Entering log mode is safe: openDiaryEditForm/openDiaryLogForm set
+      // (or null) editingId before calling this with name === 'log'.
+      if (name !== 'log') diaryEditingId = null;
       document.getElementById('diaryViewState').style.display = name === 'view' ? '' : 'none';
       document.getElementById('diaryLogState').style.display = name === 'log' ? '' : 'none';
       document.getElementById('diaryDevicesState').style.display = name === 'devices' ? '' : 'none';
@@ -4285,11 +4382,19 @@
     }
 
     function closeDiaryModal() {
+      diaryEditingId = null;
       document.getElementById('diaryOverlay').classList.remove('open');
     }
 
+    // When set, the log form is in edit mode for this session id (in
+    // local store), and Save updates instead of inserts.
+    let diaryEditingId = null;
+
     function openDiaryLogForm() {
+      diaryEditingId = null;
       const ctx = diaryCurrentContext();
+      document.getElementById('diaryLogTitle').textContent = 'Log Practice Session';
+      document.getElementById('diaryLogContextLabel').textContent = 'Currently practicing';
       document.getElementById('diaryCurrentContext').textContent =
         ctx.root ? `${ctx.root} ${ctx.scale} (${ctx.viewMode})` : `${ctx.scale} (${ctx.viewMode})`;
       document.getElementById('diaryDuration').value = '15';
@@ -4300,6 +4405,62 @@
       setTimeout(() => document.getElementById('diaryDuration').focus(), 50);
     }
 
+    function openDiaryEditForm(session) {
+      // Backfill an id for legacy local entries that pre-date the cloud era.
+      if (!session.id) {
+        session.id = (window.DiaryCloud && window.DiaryCloud.newId)
+          ? window.DiaryCloud.newId()
+          : ('id-' + (session.timestamp || Date.now()) + '-' + Math.random().toString(36).slice(2, 8));
+        // Persist the id assignment immediately so re-renders are stable.
+        const sessions = diaryGetSessions();
+        const idx = sessions.findIndex(x => x === session ||
+          (!x.id && x.timestamp === session.timestamp && x.scale === session.scale));
+        if (idx >= 0) {
+          sessions[idx] = session;
+          diarySaveSessions(sessions);
+        }
+      }
+      diaryEditingId = session.id;
+      document.getElementById('diaryLogTitle').textContent = 'Edit Practice Session';
+      document.getElementById('diaryLogContextLabel').textContent = 'Editing';
+      document.getElementById('diaryCurrentContext').textContent =
+        (session.root ? `${session.root} ` : '') + session.scale +
+        ` · logged ${diaryFormatRelativeDate(session.timestamp)}`;
+      document.getElementById('diaryDuration').value = String(session.minutes || 1);
+      document.getElementById('diaryNotes').value = session.notes || '';
+      document.getElementById('diaryDurationField').classList.remove('error');
+      document.getElementById('diaryDurationError').textContent = 'Enter a number between 1 and 600.';
+      diaryShowState('log');
+      setTimeout(() => document.getElementById('diaryDuration').focus(), 50);
+      trackEvent('diary-edit-open');
+    }
+
+    function updateSessionById(id, patch) {
+      const sessions = diaryGetSessions();
+      const idx = sessions.findIndex(s => s.id === id);
+      if (idx < 0) return null;
+      const updated = Object.assign({}, sessions[idx], patch, { updatedAt: Date.now() });
+      sessions[idx] = updated;
+      const ok = diarySaveSessions(sessions);
+      if (!ok) return null;
+      if (window.DiaryCloud && window.DiaryCloud.CLOUD_ENABLED) {
+        window.DiaryCloud.cloudPutSession(updated).catch(function () {});
+      }
+      return updated;
+    }
+
+    function deleteSessionById(id) {
+      const sessions = diaryGetSessions();
+      const next = sessions.filter(s => s.id !== id);
+      if (next.length === sessions.length) return; // nothing matched
+      diarySaveSessions(next);
+      if (window.DiaryCloud && window.DiaryCloud.CLOUD_ENABLED && id) {
+        window.DiaryCloud.cloudDeleteSession(id).catch(function () {});
+      }
+      trackEvent('diary-delete');
+      diaryRenderView();
+    }
+
     function handleDiarySave() {
       const durationField = document.getElementById('diaryDurationField');
       const minutes = parseInt(document.getElementById('diaryDuration').value, 10);
@@ -4308,7 +4469,25 @@
         return;
       }
       durationField.classList.remove('error');
+      const notes = document.getElementById('diaryNotes').value.trim().slice(0, 500);
 
+      // Edit mode: update existing session, keep scale/root/viewMode/timestamp.
+      if (diaryEditingId) {
+        const updated = updateSessionById(diaryEditingId, { minutes, notes });
+        if (!updated) {
+          durationField.classList.add('error');
+          document.getElementById('diaryDurationError').textContent =
+            'Could not save (session vanished or storage unavailable).';
+          return;
+        }
+        trackEvent('diary-edit-save');
+        diaryEditingId = null;
+        diaryShowState('view');
+        diaryRenderView();
+        return;
+      }
+
+      // Insert mode: capture current context for a new manual entry.
       const ctx = diaryCurrentContext();
       const session = {
         timestamp: Date.now(),
@@ -4316,7 +4495,7 @@
         root: ctx.root,
         viewMode: ctx.viewMode,
         minutes,
-        notes: document.getElementById('diaryNotes').value.trim().slice(0, 500),
+        notes,
         metronome: ctx.metronome,
         source: 'manual'
       };

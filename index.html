@@ -1243,7 +1243,7 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.14.0 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.14.1 - Deployed on GitHub Pages
   </footer>
 
   <!-- Cloud sync layer (no-ops gracefully if config.js sets API_BASE='' or is missing) -->
@@ -1251,7 +1251,7 @@
   <script src="diary-cloud.js"></script>
 
   <script>
-    console.log('Guitar Scale Explorer v2.14.0 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.14.1 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -1385,7 +1385,10 @@
 
     // Metronome setup
     let metronomeSynth = null;
-    let metronomeLoop = null;
+    let metronomeSchedulerHandle = null;
+    let metronomeNextBeatTime = 0;
+    const METRONOME_SCHEDULE_AHEAD = 0.1; // seconds — schedule this far into the future
+    const METRONOME_SCHEDULER_INTERVAL_MS = 25;
 
     function initMetronome(soundType = 'woodblock') {
       if (metronomeSynth) {
@@ -1445,32 +1448,47 @@
       metronomeSynth._config = config;
     }
 
-    function startMetronome() {
-      if (metronomeLoop) {
-        metronomeLoop.stop();
-        metronomeLoop.dispose();
+    // Precise scheduler pattern (cribbed from MDN's "Advanced techniques:
+    // Creating a step sequencer"). Unlike Tone.Loop+Transport which has
+    // initial-lookahead quirks, this schedules notes directly against
+    // AudioContext.currentTime so 120 BPM = 500ms intervals, exactly.
+    function metronomeScheduler() {
+      if (!metronomeSynth) return;
+      const config = metronomeSynth._config;
+      const secondsPerBeat = 60 / state.metronomeBpm;
+      const horizon = Tone.now() + METRONOME_SCHEDULE_AHEAD;
+      while (metronomeNextBeatTime < horizon) {
+        metronomeSynth.triggerAttackRelease(
+          config.note,
+          config.duration,
+          metronomeNextBeatTime
+        );
+        metronomeNextBeatTime += secondsPerBeat;
       }
+    }
 
+    function startMetronome() {
+      if (metronomeSchedulerHandle) {
+        clearInterval(metronomeSchedulerHandle);
+        metronomeSchedulerHandle = null;
+      }
       if (!metronomeSynth) {
         initMetronome(state.metronomeSound);
       }
-
-      const bpm = state.metronomeBpm;
-      Tone.Transport.bpm.value = bpm;
-
-      const config = metronomeSynth._config;
-      metronomeLoop = new Tone.Loop((time) => {
-        metronomeSynth.triggerAttackRelease(config.note, config.duration, time);
-      }, '4n');
-
-      Tone.Transport.start();
-      metronomeLoop.start(0);
+      // 50ms initial offset — small enough to feel instant, large enough
+      // to absorb context warmup so the very first click isn't clipped.
+      metronomeNextBeatTime = Tone.now() + 0.05;
+      metronomeScheduler();
+      metronomeSchedulerHandle = setInterval(
+        metronomeScheduler,
+        METRONOME_SCHEDULER_INTERVAL_MS
+      );
     }
 
     function stopMetronome() {
-      if (metronomeLoop) {
-        metronomeLoop.stop();
-        Tone.Transport.stop();
+      if (metronomeSchedulerHandle) {
+        clearInterval(metronomeSchedulerHandle);
+        metronomeSchedulerHandle = null;
       }
     }
 
@@ -3222,9 +3240,8 @@
       const newBpm = parseInt(e.target.value);
       if (newBpm >= 30 && newBpm <= 240) {
         state.metronomeBpm = newBpm;
-        if (state.metronomeEnabled) {
-          Tone.Transport.bpm.value = newBpm;
-        }
+        // Scheduler reads state.metronomeBpm on every tick, so no
+        // restart needed — next beat lands at the new tempo.
       }
     });
 
@@ -3244,23 +3261,15 @@
     });
 
     document.getElementById('metronomeBpmUp').addEventListener('click', () => {
-      const currentBpm = state.metronomeBpm;
-      const newBpm = Math.min(240, currentBpm + 1);
+      const newBpm = Math.min(240, state.metronomeBpm + 1);
       state.metronomeBpm = newBpm;
       document.getElementById('metronomeBpm').value = newBpm;
-      if (state.metronomeEnabled) {
-        Tone.Transport.bpm.value = newBpm;
-      }
     });
 
     document.getElementById('metronomeBpmDown').addEventListener('click', () => {
-      const currentBpm = state.metronomeBpm;
-      const newBpm = Math.max(30, currentBpm - 1);
+      const newBpm = Math.max(30, state.metronomeBpm - 1);
       state.metronomeBpm = newBpm;
       document.getElementById('metronomeBpm').value = newBpm;
-      if (state.metronomeEnabled) {
-        Tone.Transport.bpm.value = newBpm;
-      }
     });
 
     document.getElementById('fretRangeMinus').addEventListener('click', () => {
@@ -4054,7 +4063,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.14.0',
+        appVersion: 'v2.14.1',
         userAgent: navigator.userAgent
       };
     }

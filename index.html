@@ -759,6 +759,40 @@
       font-weight: 600;
       font-variant-numeric: tabular-nums;
     }
+    .control-btn#metronomeAccentToggle:not(.active) {
+      opacity: 0.55;
+    }
+    .metronome-beats {
+      display: none;
+      gap: 8px;
+      margin-top: 0.375rem;
+      align-items: center;
+      padding-left: 0.125rem;
+      min-height: 14px;
+    }
+    .metronome-beats.visible {
+      display: flex;
+    }
+    .metronome-beat-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--card-border);
+      transition: background 0.08s ease-out, transform 0.08s ease-out;
+    }
+    .metronome-beat-dot.accent {
+      background: #ff9558;
+      opacity: 0.55;
+    }
+    .metronome-beat-dot.active {
+      background: #4a9eff;
+      transform: scale(1.45);
+    }
+    .metronome-beat-dot.accent.active {
+      background: #ffb074;
+      opacity: 1;
+      transform: scale(1.6);
+    }
     .timer-summary {
       background: var(--control-bg);
       border: 1px solid var(--card-border);
@@ -898,6 +932,16 @@
           <option value="beep">Beep</option>
           <option value="cowbell">Cowbell</option>
         </select>
+        <select id="metronomeTimeSig" style="padding: 0.5rem 0.5rem; border: 1px solid var(--select-border); border-radius: 8px; font-size: 0.875rem; font-weight: 500; background: var(--select-bg); color: var(--text-secondary); cursor: pointer; height: 38px; min-width: 60px;" title="Time signature">
+          <option value="2/4">2/4</option>
+          <option value="3/4">3/4</option>
+          <option value="4/4" selected>4/4</option>
+          <option value="5/4">5/4</option>
+          <option value="6/8">6/8</option>
+        </select>
+        <button id="metronomeAccentToggle" class="control-btn active" style="width: auto; padding: 0 0.625rem; height: 38px; font-size: 0.75rem;" title="Accent on beat 1">
+          Accent
+        </button>
         <div style="display: flex; align-items: center; gap: 0.25rem;">
           <button id="metronomeBpmDown" class="control-btn" style="width: 28px; height: 38px; padding: 0; font-size: 16px;" title="Decrease BPM">−</button>
           <input
@@ -912,6 +956,7 @@
           <span style="font-size: 0.75rem; color: var(--text-muted);">BPM</span>
         </div>
       </div>
+      <div id="metronomeBeats" class="metronome-beats"></div>
     </div>
   </div>
 
@@ -1243,7 +1288,7 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.14.1 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.15.0 - Deployed on GitHub Pages
   </footer>
 
   <!-- Cloud sync layer (no-ops gracefully if config.js sets API_BASE='' or is missing) -->
@@ -1251,7 +1296,7 @@
   <script src="diary-cloud.js"></script>
 
   <script>
-    console.log('Guitar Scale Explorer v2.14.1 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.15.0 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -1307,6 +1352,8 @@
       metronomeEnabled: false,
       metronomeBpm: 72,
       metronomeSound: 'woodblock',
+      metronomeTimeSig: '4/4',
+      metronomeAccent: true,
       viewMode: 'fretboard', // 'fretboard' or 'position'
       positionShift: 0 // -12, 0, or +12 for octave shifting in position view
     };
@@ -1387,8 +1434,17 @@
     let metronomeSynth = null;
     let metronomeSchedulerHandle = null;
     let metronomeNextBeatTime = 0;
+    let metronomeCurrentBeat = 0; // 0-indexed within the current measure
+    let metronomeVisualTimeouts = []; // pending setTimeouts for beat highlights
     const METRONOME_SCHEDULE_AHEAD = 0.1; // seconds — schedule this far into the future
     const METRONOME_SCHEDULER_INTERVAL_MS = 25;
+    const METRONOME_PREFS_KEY = 'gse_metronome_prefs_v1';
+
+    function metronomeBeatsPerMeasure() {
+      const sig = state.metronomeTimeSig || '4/4';
+      const n = parseInt(sig.split('/')[0], 10);
+      return Number.isFinite(n) && n > 0 && n < 32 ? n : 4;
+    }
 
     function initMetronome(soundType = 'woodblock') {
       if (metronomeSynth) {
@@ -1403,6 +1459,7 @@
             envelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.1 }
           }),
           note: 'G5',
+          accentNote: 'G6',
           duration: '32n',
           volume: -8
         },
@@ -1413,6 +1470,7 @@
             envelope: { attack: 0.0006, decay: 0.05, sustain: 0, release: 0.02 }
           }),
           note: 'C6',
+          accentNote: 'C7',
           duration: '64n',
           volume: -5
         },
@@ -1422,6 +1480,7 @@
             envelope: { attack: 0.001, decay: 0.05, sustain: 0, release: 0.05 }
           }),
           note: 'C6',
+          accentNote: 'C7',
           duration: '16n',
           volume: -10
         },
@@ -1435,6 +1494,7 @@
             octaves: 1.5
           }),
           note: 'C4',
+          accentNote: 'C5',
           duration: '16n',
           volume: -12
         }
@@ -1449,22 +1509,63 @@
     }
 
     // Precise scheduler pattern (cribbed from MDN's "Advanced techniques:
-    // Creating a step sequencer"). Unlike Tone.Loop+Transport which has
-    // initial-lookahead quirks, this schedules notes directly against
+    // Creating a step sequencer"). Schedules notes directly against
     // AudioContext.currentTime so 120 BPM = 500ms intervals, exactly.
+    // Also tracks beat-in-measure for accent + visual indicator.
     function metronomeScheduler() {
       if (!metronomeSynth) return;
       const config = metronomeSynth._config;
       const secondsPerBeat = 60 / state.metronomeBpm;
+      const beatsPerMeasure = metronomeBeatsPerMeasure();
       const horizon = Tone.now() + METRONOME_SCHEDULE_AHEAD;
       while (metronomeNextBeatTime < horizon) {
+        const isAccent = state.metronomeAccent && metronomeCurrentBeat === 0;
+        const noteToPlay = isAccent ? (config.accentNote || config.note) : config.note;
         metronomeSynth.triggerAttackRelease(
-          config.note,
+          noteToPlay,
           config.duration,
           metronomeNextBeatTime
         );
+        // Schedule visual highlight aligned with the audio.
+        const beatIdx = metronomeCurrentBeat;
+        const delayMs = Math.max(0, (metronomeNextBeatTime - Tone.now()) * 1000);
+        const t = setTimeout(() => highlightBeat(beatIdx), delayMs);
+        metronomeVisualTimeouts.push(t);
         metronomeNextBeatTime += secondsPerBeat;
+        metronomeCurrentBeat = (metronomeCurrentBeat + 1) % beatsPerMeasure;
       }
+    }
+
+    function clearMetronomeVisualTimeouts() {
+      metronomeVisualTimeouts.forEach(clearTimeout);
+      metronomeVisualTimeouts = [];
+    }
+
+    function renderBeatIndicator() {
+      const el = document.getElementById('metronomeBeats');
+      if (!el) return;
+      const beats = metronomeBeatsPerMeasure();
+      el.innerHTML = '';
+      for (let i = 0; i < beats; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'metronome-beat-dot' +
+          (i === 0 && state.metronomeAccent ? ' accent' : '');
+        el.appendChild(dot);
+      }
+      el.classList.toggle('visible', !!state.metronomeEnabled);
+    }
+
+    function highlightBeat(beatIdx) {
+      const el = document.getElementById('metronomeBeats');
+      if (!el) return;
+      const dots = el.querySelectorAll('.metronome-beat-dot');
+      dots.forEach((d, i) => d.classList.toggle('active', i === beatIdx));
+    }
+
+    function clearBeatHighlight() {
+      const el = document.getElementById('metronomeBeats');
+      if (!el) return;
+      el.querySelectorAll('.metronome-beat-dot').forEach(d => d.classList.remove('active'));
     }
 
     function startMetronome() {
@@ -1472,9 +1573,12 @@
         clearInterval(metronomeSchedulerHandle);
         metronomeSchedulerHandle = null;
       }
+      clearMetronomeVisualTimeouts();
       if (!metronomeSynth) {
         initMetronome(state.metronomeSound);
       }
+      metronomeCurrentBeat = 0;
+      renderBeatIndicator();
       // 50ms initial offset — small enough to feel instant, large enough
       // to absorb context warmup so the very first click isn't clipped.
       metronomeNextBeatTime = Tone.now() + 0.05;
@@ -1490,6 +1594,52 @@
         clearInterval(metronomeSchedulerHandle);
         metronomeSchedulerHandle = null;
       }
+      clearMetronomeVisualTimeouts();
+      clearBeatHighlight();
+      const el = document.getElementById('metronomeBeats');
+      if (el) el.classList.remove('visible');
+    }
+
+    function loadMetronomePrefs() {
+      try {
+        const raw = localStorage.getItem(METRONOME_PREFS_KEY);
+        if (!raw) return;
+        const prefs = JSON.parse(raw);
+        if (!prefs || typeof prefs !== 'object') return;
+        if (typeof prefs.bpm === 'number' && prefs.bpm >= 30 && prefs.bpm <= 240) {
+          state.metronomeBpm = prefs.bpm;
+          const inp = document.getElementById('metronomeBpm');
+          if (inp) inp.value = String(prefs.bpm);
+        }
+        if (typeof prefs.sound === 'string') {
+          state.metronomeSound = prefs.sound;
+          const sel = document.getElementById('metronomeSound');
+          if (sel) sel.value = prefs.sound;
+        }
+        if (typeof prefs.timeSig === 'string' && /^\d+\/\d+$/.test(prefs.timeSig)) {
+          state.metronomeTimeSig = prefs.timeSig;
+          const sel = document.getElementById('metronomeTimeSig');
+          if (sel) sel.value = prefs.timeSig;
+        }
+        if (typeof prefs.accent === 'boolean') {
+          state.metronomeAccent = prefs.accent;
+          const btn = document.getElementById('metronomeAccentToggle');
+          if (btn) btn.classList.toggle('active', prefs.accent);
+        }
+      } catch (err) {
+        console.warn('Metronome: failed to load prefs', err);
+      }
+    }
+
+    function saveMetronomePrefs() {
+      try {
+        localStorage.setItem(METRONOME_PREFS_KEY, JSON.stringify({
+          bpm: state.metronomeBpm,
+          sound: state.metronomeSound,
+          timeSig: state.metronomeTimeSig,
+          accent: state.metronomeAccent
+        }));
+      } catch (_) { /* ignore quota errors */ }
     }
 
     // MIDI note numbers for open strings (standard tuning)
@@ -3242,6 +3392,7 @@
         state.metronomeBpm = newBpm;
         // Scheduler reads state.metronomeBpm on every tick, so no
         // restart needed — next beat lands at the new tempo.
+        saveMetronomePrefs();
       }
     });
 
@@ -3258,18 +3409,41 @@
       if (wasEnabled) {
         startMetronome();
       }
+      saveMetronomePrefs();
+    });
+
+    document.getElementById('metronomeTimeSig').addEventListener('change', (e) => {
+      state.metronomeTimeSig = e.target.value;
+      // Restart the beat counter — new measure starts fresh on next click.
+      metronomeCurrentBeat = 0;
+      clearMetronomeVisualTimeouts();
+      clearBeatHighlight();
+      renderBeatIndicator();
+      saveMetronomePrefs();
+      trackEvent('metronome-timesig/' + e.target.value);
+    });
+
+    document.getElementById('metronomeAccentToggle').addEventListener('click', () => {
+      state.metronomeAccent = !state.metronomeAccent;
+      const btn = document.getElementById('metronomeAccentToggle');
+      btn.classList.toggle('active', state.metronomeAccent);
+      renderBeatIndicator();
+      saveMetronomePrefs();
+      trackEvent('metronome-accent/' + (state.metronomeAccent ? 'on' : 'off'));
     });
 
     document.getElementById('metronomeBpmUp').addEventListener('click', () => {
       const newBpm = Math.min(240, state.metronomeBpm + 1);
       state.metronomeBpm = newBpm;
       document.getElementById('metronomeBpm').value = newBpm;
+      saveMetronomePrefs();
     });
 
     document.getElementById('metronomeBpmDown').addEventListener('click', () => {
       const newBpm = Math.max(30, state.metronomeBpm - 1);
       state.metronomeBpm = newBpm;
       document.getElementById('metronomeBpm').value = newBpm;
+      saveMetronomePrefs();
     });
 
     document.getElementById('fretRangeMinus').addEventListener('click', () => {
@@ -4063,7 +4237,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.14.1',
+        appVersion: 'v2.15.0',
         userAgent: navigator.userAgent
       };
     }
@@ -5196,6 +5370,7 @@
       applyTheme();
     });
     timerRestoreOnLoad();
+    loadMetronomePrefs();
   </script>
 </body>
 </html>

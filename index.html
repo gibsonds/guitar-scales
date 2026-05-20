@@ -793,6 +793,39 @@
       opacity: 1;
       transform: scale(1.6);
     }
+    .metronome-beat-dot.secondary {
+      background: #ffcb91;
+      opacity: 0.45;
+    }
+    .metronome-beat-dot.secondary.active {
+      background: #ffdfb3;
+      opacity: 1;
+      transform: scale(1.5);
+    }
+    #metronomeTapBtn.flash {
+      background: #4a9eff;
+      color: #fff;
+      border-color: #4a9eff;
+    }
+    .help-shortcuts {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .help-shortcuts th {
+      text-align: left;
+      padding: 0.4rem 0.875rem 0.4rem 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.813rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      vertical-align: top;
+    }
+    .help-shortcuts td {
+      padding: 0.4rem 0;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
     .timer-summary {
       background: var(--control-bg);
       border: 1px solid var(--card-border);
@@ -955,6 +988,9 @@
           <button id="metronomeBpmUp" class="control-btn" style="width: 28px; height: 38px; padding: 0; font-size: 16px;" title="Increase BPM">+</button>
           <span style="font-size: 0.75rem; color: var(--text-muted);">BPM</span>
         </div>
+        <button id="metronomeTapBtn" class="control-btn" style="width: auto; padding: 0 0.625rem; height: 38px; font-size: 0.75rem;" title="Tap tempo — tap 2+ times to set BPM (keyboard: T)">
+          Tap
+        </button>
       </div>
       <div id="metronomeBeats" class="metronome-beats"></div>
     </div>
@@ -1287,8 +1323,38 @@
     </div>
   </div>
 
+  <!-- Keyboard Shortcuts Help Modal (opened with ?) -->
+  <div id="helpOverlay" class="feedback-overlay">
+    <div class="feedback-modal">
+      <div class="feedback-modal-header">
+        <h3>⌨️ Keyboard Shortcuts</h3>
+        <button id="helpClose" title="Close">&times;</button>
+      </div>
+      <div class="feedback-modal-body">
+        <table class="help-shortcuts">
+          <tbody>
+            <tr><th>Space</th><td>Play scale</td></tr>
+            <tr><th>M</th><td>Toggle metronome</td></tr>
+            <tr><th>T</th><td>Tap tempo — tap 2+ times to set BPM</td></tr>
+            <tr><th>↑ / ↓</th><td>BPM ±1</td></tr>
+            <tr><th>Shift+↑ / Shift+↓</th><td>BPM ±5</td></tr>
+            <tr><th>D</th><td>Open practice diary</td></tr>
+            <tr><th>?</th><td>Show this help</td></tr>
+          </tbody>
+        </table>
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem;">
+          Shortcuts are disabled while typing in inputs or text areas.
+        </div>
+      </div>
+      <div class="feedback-modal-footer">
+        <div></div>
+        <button class="feedback-btn-cancel" id="helpCloseBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.15.1 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.16.0 - Deployed on GitHub Pages
   </footer>
 
   <!-- Cloud sync layer (no-ops gracefully if config.js sets API_BASE='' or is missing) -->
@@ -1296,7 +1362,7 @@
   <script src="diary-cloud.js"></script>
 
   <script>
-    console.log('Guitar Scale Explorer v2.15.1 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.16.0 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -1440,10 +1506,25 @@
     const METRONOME_SCHEDULER_INTERVAL_MS = 25;
     const METRONOME_PREFS_KEY = 'gse_metronome_prefs_v1';
 
+    // Per-time-sig metadata. secondaryAccents holds 0-indexed beat
+    // positions that get a softer accent (e.g., 6/8 accents 1 + 4 to
+    // give the compound-meter "strong-weak" feel).
+    const TIME_SIGS = {
+      '2/4': { beats: 2, secondaryAccents: [] },
+      '3/4': { beats: 3, secondaryAccents: [] },
+      '4/4': { beats: 4, secondaryAccents: [] },
+      '5/4': { beats: 5, secondaryAccents: [] },
+      '6/8': { beats: 6, secondaryAccents: [3] }
+    };
+
     function metronomeBeatsPerMeasure() {
-      const sig = state.metronomeTimeSig || '4/4';
-      const n = parseInt(sig.split('/')[0], 10);
-      return Number.isFinite(n) && n > 0 && n < 32 ? n : 4;
+      const meta = TIME_SIGS[state.metronomeTimeSig || '4/4'] || TIME_SIGS['4/4'];
+      return meta.beats;
+    }
+
+    function metronomeSecondaryAccents() {
+      const meta = TIME_SIGS[state.metronomeTimeSig || '4/4'] || TIME_SIGS['4/4'];
+      return meta.secondaryAccents;
     }
 
     function initMetronome(soundType = 'woodblock') {
@@ -1452,7 +1533,7 @@
       }
 
       const soundConfigs = {
-        // Renamed in v2.15.1: the old MembraneSynth "woodblock" sounded
+        // Renamed in v2.16.0: the old MembraneSynth "woodblock" sounded
         // like a pitched chirp, while the old sine "beep" sounded like
         // a real woodblock click. Internal keys now match the dropdown
         // labels. loadMetronomePrefs migrates old stored values.
@@ -1462,6 +1543,7 @@
             envelope: { attack: 0.001, decay: 0.05, sustain: 0, release: 0.05 }
           }),
           note: 'C6',
+          secondaryAccentNote: 'G6',
           accentNote: 'C7',
           duration: '16n',
           volume: -10
@@ -1473,6 +1555,7 @@
             envelope: { attack: 0.0006, decay: 0.05, sustain: 0, release: 0.02 }
           }),
           note: 'C6',
+          secondaryAccentNote: 'G6',
           accentNote: 'C7',
           duration: '64n',
           volume: -5
@@ -1484,6 +1567,7 @@
             envelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.1 }
           }),
           note: 'G5',
+          secondaryAccentNote: 'D6',
           accentNote: 'G6',
           duration: '32n',
           volume: -8
@@ -1498,6 +1582,7 @@
             octaves: 1.5
           }),
           note: 'C4',
+          secondaryAccentNote: 'G4',
           accentNote: 'C5',
           duration: '16n',
           volume: -12
@@ -1521,10 +1606,17 @@
       const config = metronomeSynth._config;
       const secondsPerBeat = 60 / state.metronomeBpm;
       const beatsPerMeasure = metronomeBeatsPerMeasure();
+      const secondaryBeats = metronomeSecondaryAccents();
       const horizon = Tone.now() + METRONOME_SCHEDULE_AHEAD;
       while (metronomeNextBeatTime < horizon) {
-        const isAccent = state.metronomeAccent && metronomeCurrentBeat === 0;
-        const noteToPlay = isAccent ? (config.accentNote || config.note) : config.note;
+        let noteToPlay = config.note;
+        if (state.metronomeAccent) {
+          if (metronomeCurrentBeat === 0) {
+            noteToPlay = config.accentNote || config.note;
+          } else if (secondaryBeats.indexOf(metronomeCurrentBeat) >= 0) {
+            noteToPlay = config.secondaryAccentNote || config.note;
+          }
+        }
         metronomeSynth.triggerAttackRelease(
           noteToPlay,
           config.duration,
@@ -1549,11 +1641,16 @@
       const el = document.getElementById('metronomeBeats');
       if (!el) return;
       const beats = metronomeBeatsPerMeasure();
+      const secondaryBeats = metronomeSecondaryAccents();
       el.innerHTML = '';
       for (let i = 0; i < beats; i++) {
         const dot = document.createElement('div');
-        dot.className = 'metronome-beat-dot' +
-          (i === 0 && state.metronomeAccent ? ' accent' : '');
+        let cls = 'metronome-beat-dot';
+        if (state.metronomeAccent) {
+          if (i === 0) cls += ' accent';
+          else if (secondaryBeats.indexOf(i) >= 0) cls += ' secondary';
+        }
+        dot.className = cls;
         el.appendChild(dot);
       }
       el.classList.toggle('visible', !!state.metronomeEnabled);
@@ -1616,7 +1713,7 @@
           if (inp) inp.value = String(prefs.bpm);
         }
         if (typeof prefs.sound === 'string') {
-          // v2.15.1 migration: 'beep' (sine click) → 'woodblock' (now
+          // v2.16.0 migration: 'beep' (sine click) → 'woodblock' (now
           // accurately labeled). Old 'woodblock' (membrane chirp) →
           // 'chirp'. Preserves the actual sound the user was hearing.
           let sound = prefs.sound;
@@ -3456,6 +3553,130 @@
       saveMetronomePrefs();
     });
 
+    // ── Tap Tempo ───────────────────────────────────────────────────
+    // Tap 2+ times; BPM derived from rolling average of last 4 intervals.
+    // If no tap for >TAP_WINDOW_MS, the history resets.
+    const TAP_WINDOW_MS = 2000;
+    const TAP_MAX_HISTORY = 5; // up to 5 taps = 4 intervals
+    let tapTimes = [];
+    let tapFlashTimer = null;
+
+    function adjustBpm(delta) {
+      const newBpm = Math.max(30, Math.min(240, state.metronomeBpm + delta));
+      if (newBpm === state.metronomeBpm) return;
+      state.metronomeBpm = newBpm;
+      const inp = document.getElementById('metronomeBpm');
+      if (inp) inp.value = String(newBpm);
+      saveMetronomePrefs();
+    }
+
+    function flashTapButton() {
+      const btn = document.getElementById('metronomeTapBtn');
+      if (!btn) return;
+      btn.classList.add('flash');
+      if (tapFlashTimer) clearTimeout(tapFlashTimer);
+      tapFlashTimer = setTimeout(() => btn.classList.remove('flash'), 120);
+    }
+
+    function recordTap() {
+      const now = Date.now();
+      if (tapTimes.length > 0 && now - tapTimes[tapTimes.length - 1] > TAP_WINDOW_MS) {
+        tapTimes = []; // stale — start fresh
+      }
+      tapTimes.push(now);
+      while (tapTimes.length > TAP_MAX_HISTORY) tapTimes.shift();
+      flashTapButton();
+      if (tapTimes.length < 2) return;
+      const intervals = [];
+      for (let i = 1; i < tapTimes.length; i++) {
+        intervals.push(tapTimes[i] - tapTimes[i - 1]);
+      }
+      const avgMs = intervals.reduce((a, b) => a + b, 0) / intervals.length;
+      if (avgMs <= 0) return;
+      const bpm = Math.round(60000 / avgMs);
+      const clamped = Math.max(30, Math.min(240, bpm));
+      state.metronomeBpm = clamped;
+      const inp = document.getElementById('metronomeBpm');
+      if (inp) inp.value = String(clamped);
+      saveMetronomePrefs();
+      trackEvent('metronome-tap');
+    }
+
+    document.getElementById('metronomeTapBtn').addEventListener('click', recordTap);
+
+    // ── Keyboard Shortcuts (#40) ────────────────────────────────────
+    function isTypingTarget(el) {
+      if (!el) return false;
+      const tag = el.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return true;
+      if (el.isContentEditable) return true;
+      return false;
+    }
+
+    function openHelpModal() {
+      const overlay = document.getElementById('helpOverlay');
+      if (overlay) overlay.classList.add('open');
+      trackEvent('help-open');
+    }
+
+    function closeHelpModal() {
+      const overlay = document.getElementById('helpOverlay');
+      if (overlay) overlay.classList.remove('open');
+    }
+
+    document.getElementById('helpClose').addEventListener('click', closeHelpModal);
+    document.getElementById('helpCloseBtn').addEventListener('click', closeHelpModal);
+    document.getElementById('helpOverlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeHelpModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      // Always allow Escape to close the help modal (other modals have
+      // their own Esc handlers).
+      if (e.key === 'Escape' &&
+          document.getElementById('helpOverlay').classList.contains('open')) {
+        closeHelpModal();
+        return;
+      }
+      if (isTypingTarget(e.target)) return;
+      // Skip if a modifier other than Shift is held (preserve browser shortcuts).
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+      switch (e.key) {
+        case '?':
+          e.preventDefault();
+          openHelpModal();
+          break;
+        case ' ':
+          e.preventDefault();
+          document.getElementById('playButton')?.click();
+          break;
+        case 'm':
+        case 'M':
+          e.preventDefault();
+          document.getElementById('metronomeToggle')?.click();
+          break;
+        case 't':
+        case 'T':
+          e.preventDefault();
+          recordTap();
+          break;
+        case 'd':
+        case 'D':
+          e.preventDefault();
+          document.getElementById('diaryToggle')?.click();
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          adjustBpm(e.shiftKey ? 5 : 1);
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          adjustBpm(e.shiftKey ? -5 : -1);
+          break;
+      }
+    });
+
     document.getElementById('fretRangeMinus').addEventListener('click', () => {
       state.fretMax = Math.max(5, state.fretMax - 6);
       document.getElementById('fretRangeDisplay').textContent = `${state.fretMin}-${state.fretMax}`;
@@ -4247,7 +4468,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.15.1',
+        appVersion: 'v2.16.0',
         userAgent: navigator.userAgent
       };
     }

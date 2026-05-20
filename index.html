@@ -929,7 +929,7 @@
         <select id="metronomeSound" style="padding: 0.5rem 0.75rem; border: 1px solid var(--select-border); border-radius: 8px; font-size: 0.875rem; font-weight: 500; background: var(--select-bg); color: var(--text-secondary); cursor: pointer; transition: all 0.2s; height: 38px; min-width: 100px;">
           <option value="woodblock">Woodblock</option>
           <option value="click">Click</option>
-          <option value="beep">Beep</option>
+          <option value="chirp">Chirp</option>
           <option value="cowbell">Cowbell</option>
         </select>
         <select id="metronomeTimeSig" style="padding: 0.5rem 0.5rem; border: 1px solid var(--select-border); border-radius: 8px; font-size: 0.875rem; font-weight: 500; background: var(--select-bg); color: var(--text-secondary); cursor: pointer; height: 38px; min-width: 60px;" title="Time signature">
@@ -1288,7 +1288,7 @@
   </div>
 
   <footer>
-    Guitar Scale Explorer - Full Fretboard View - v2.15.0 - Deployed on GitHub Pages
+    Guitar Scale Explorer - Full Fretboard View - v2.15.1 - Deployed on GitHub Pages
   </footer>
 
   <!-- Cloud sync layer (no-ops gracefully if config.js sets API_BASE='' or is missing) -->
@@ -1296,7 +1296,7 @@
   <script src="diary-cloud.js"></script>
 
   <script>
-    console.log('Guitar Scale Explorer v2.15.0 - Full Fretboard Edition');
+    console.log('Guitar Scale Explorer v2.15.1 - Full Fretboard Edition');
 
     // Constants
     const STANDARD_TUNING = [4, 9, 2, 7, 11, 4]; // E A D G B E (in semitones from C)
@@ -1452,16 +1452,19 @@
       }
 
       const soundConfigs = {
+        // Renamed in v2.15.1: the old MembraneSynth "woodblock" sounded
+        // like a pitched chirp, while the old sine "beep" sounded like
+        // a real woodblock click. Internal keys now match the dropdown
+        // labels. loadMetronomePrefs migrates old stored values.
         woodblock: {
-          synth: new Tone.MembraneSynth({
-            pitchDecay: 0.05,
-            octaves: 4,
-            envelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.1 }
+          synth: new Tone.Synth({
+            oscillator: { type: 'sine' },
+            envelope: { attack: 0.001, decay: 0.05, sustain: 0, release: 0.05 }
           }),
-          note: 'G5',
-          accentNote: 'G6',
-          duration: '32n',
-          volume: -8
+          note: 'C6',
+          accentNote: 'C7',
+          duration: '16n',
+          volume: -10
         },
         click: {
           synth: new Tone.MembraneSynth({
@@ -1474,15 +1477,16 @@
           duration: '64n',
           volume: -5
         },
-        beep: {
-          synth: new Tone.Synth({
-            oscillator: { type: 'sine' },
-            envelope: { attack: 0.001, decay: 0.05, sustain: 0, release: 0.05 }
+        chirp: {
+          synth: new Tone.MembraneSynth({
+            pitchDecay: 0.05,
+            octaves: 4,
+            envelope: { attack: 0.001, decay: 0.1, sustain: 0, release: 0.1 }
           }),
-          note: 'C6',
-          accentNote: 'C7',
-          duration: '16n',
-          volume: -10
+          note: 'G5',
+          accentNote: 'G6',
+          duration: '32n',
+          volume: -8
         },
         cowbell: {
           synth: new Tone.MetalSynth({
@@ -1612,9 +1616,15 @@
           if (inp) inp.value = String(prefs.bpm);
         }
         if (typeof prefs.sound === 'string') {
-          state.metronomeSound = prefs.sound;
+          // v2.15.1 migration: 'beep' (sine click) → 'woodblock' (now
+          // accurately labeled). Old 'woodblock' (membrane chirp) →
+          // 'chirp'. Preserves the actual sound the user was hearing.
+          let sound = prefs.sound;
+          if (sound === 'beep') sound = 'woodblock';
+          else if (sound === 'woodblock') sound = 'chirp';
+          state.metronomeSound = sound;
           const sel = document.getElementById('metronomeSound');
-          if (sel) sel.value = prefs.sound;
+          if (sel) sel.value = sound;
         }
         if (typeof prefs.timeSig === 'string' && /^\d+\/\d+$/.test(prefs.timeSig)) {
           state.metronomeTimeSig = prefs.timeSig;
@@ -4237,7 +4247,7 @@
         theme: state.theme,
         fretRange: `${state.fretMin}-${state.fretMax}`,
         screenSize: `${window.innerWidth}x${window.innerHeight}`,
-        appVersion: 'v2.15.0',
+        appVersion: 'v2.15.1',
         userAgent: navigator.userAgent
       };
     }

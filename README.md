@@ -112,3 +112,13 @@ Works in all modern browsers:
 
 MIT License - Feel free to fork and customize!
 
+
+## Browser script security
+
+Tone.js stays on the existing 14.8.49 CDN release, with SHA-384 Subresource Integrity and anonymous CORS. A changed CDN response is blocked by the browser rather than executed.
+
+GoatCounter's current integration script is self-hosted at `vendor/goatcounter-count.js`, copied without changes from https://gc.zgo.at/count.js on 2026-11-05. Its SHA-256 is `792b7abd26c1fb6ae62906833e09a301251e2641816e69e4f95aba518f3fe3f0`. The ISC attribution is alongside it. Analytics still uses the existing `guitarllm.goatcounter.com/count` endpoint; no analytics events or endpoint settings were changed. Self-hosting is supported by https://www.goatcounter.com/help/countjs-host.
+
+Updates are deliberate: review the official upstream script, replace the local file, update its integrity value in `index.html` and this digest, then test. Automatic script updates are no longer accepted. This static app intentionally has no npm package manifest or lockfile.
+
+Run the dependency-integrity checks with `node --test tests/*.test.mjs`.

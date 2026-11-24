@@ -942,6 +942,7 @@
       <button id="playButton" class="control-btn" style="width: auto; padding: 0 1rem; height: 38px;" title="Play scale">
         ▶ Play
       </button>
+      <span id="playbackStatus" role="status" style="font-size: 0.8rem; max-width: 22rem;"></span>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 0.25rem;">
@@ -1499,6 +1500,7 @@
     // Audio setup
     let synth = null;
     let isPlaying = false;
+    let scalePlayback = null;
 
     // Metronome setup
     let metronomeSynth = null;
@@ -1846,45 +1848,91 @@
     /**
      * Play the scale or arpeggio
      */
+    function stopScalePlayback() {
+      const playback = scalePlayback;
+      scalePlayback = null;
+      isPlaying = false;
+      if (playback) {
+        playback.timers.forEach(clearTimeout);
+        playback.cancelStart?.();
+        // Dispose voices as well as timers so no queued notes or release tails survive Stop.
+        if (synth) {
+          synth.dispose();
+          synth = null;
+        }
+      }
+      const button = document.getElementById('playButton');
+      button.textContent = '▶ Play';
+      button.title = 'Play scale';
+      button.disabled = false;
+      button.setAttribute('aria-pressed', 'false');
+    }
+
     async function playScale() {
-      if (isPlaying) return;
+      if (isPlaying) {
+        stopScalePlayback();
+        return;
+      }
       trackEvent('play-scale');
 
+      const status = document.getElementById('playbackStatus');
+      status.textContent = '';
       const notes = collectScaleNotes();
       if (notes.length === 0) {
-        console.log('No notes to play');
+        status.textContent = 'Select a scale with notes to play.';
         return;
       }
 
+      const playback = { timers: [], cancelStart: null };
+      scalePlayback = playback;
       isPlaying = true;
-      const playButton = document.getElementById('playButton');
-      playButton.textContent = '⏸ Playing...';
-      playButton.disabled = true;
+      const button = document.getElementById('playButton');
+      button.textContent = '■ Stop';
+      button.title = 'Stop scale playback';
+      button.setAttribute('aria-pressed', 'true');
 
-      // Ensure audio context is started
-      await Tone.start();
+      const fail = () => {
+        if (scalePlayback !== playback) return;
+        stopScalePlayback();
+        status.textContent = 'Audio could not start. Check your device volume and silent mode, then tap Play to retry.';
+      };
+      try {
+        // Call start inside the tap handler, preserving the browser's user activation.
+        // Some browsers leave resume pending indefinitely; Stop and a timeout both recover.
+        const started = Tone.start();
+        let startupTimer;
+        const interrupted = new Promise((_, reject) => {
+          playback.cancelStart = () => reject(new Error('Playback cancelled'));
+          startupTimer = setTimeout(() => reject(new Error('Audio startup timed out')), 5000);
+          playback.timers.push(startupTimer);
+        });
+        await Promise.race([started, interrupted]);
+        clearTimeout(startupTimer);
+        playback.cancelStart = null;
+        if (scalePlayback !== playback) return;
+        if (Tone.getContext().state !== 'running') throw new Error('Audio is not running');
 
-      if (!synth) {
-        const instrument = document.getElementById('instrumentSelect').value;
-        initAudio(instrument);
+        if (!synth) initAudio(document.getElementById('instrumentSelect').value);
+        // Only queue each note when it is due, so Stop can cancel every future note.
+        const playNote = note => {
+          if (scalePlayback !== playback) return;
+          try {
+            synth.triggerAttackRelease(midiToNoteName(note.midi), '8n', Tone.now());
+          } catch (_) {
+            fail();
+          }
+        };
+        playNote(notes[0]);
+        if (scalePlayback !== playback) return;
+        notes.slice(1).forEach((note, index) => {
+          playback.timers.push(setTimeout(() => playNote(note), (index + 1) * 300));
+        });
+        playback.timers.push(setTimeout(() => {
+          if (scalePlayback === playback) stopScalePlayback();
+        }, notes.length * 300 + 500));
+      } catch (_) {
+        fail();
       }
-
-      // Play notes sequentially
-      const noteDuration = '8n';  // Eighth note
-      const now = Tone.now();
-
-      notes.forEach((note, index) => {
-        const noteName = midiToNoteName(note.midi);
-        const time = now + index * 0.3;  // 300ms between notes
-        synth.triggerAttackRelease(noteName, noteDuration, time);
-      });
-
-      // Reset button after playing
-      setTimeout(() => {
-        isPlaying = false;
-        playButton.textContent = '▶ Play';
-        playButton.disabled = false;
-      }, notes.length * 300 + 500);
     }
 
     /**
@@ -3474,8 +3522,12 @@
       }
     });
 
-    document.getElementById('instrumentSelect').addEventListener('change', (e) => {
-      initAudio(e.target.value);
+    document.getElementById('instrumentSelect').addEventListener('change', () => {
+      stopScalePlayback();
+      if (synth) {
+        synth.dispose();
+        synth = null;
+      }
     });
 
     // Metronome event listeners

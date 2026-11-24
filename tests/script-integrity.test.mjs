@@ -7,12 +7,16 @@ const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 const scripts = [...html.matchAll(/<script\b([^>]*)>/g)].map(([, attrs]) => Object.fromEntries(
   [...attrs.matchAll(/([\w-]+)="([^"]*)"/g)].map(([, name, value]) => [name, value]),
 ));
-test('external executable scripts are HTTPS, version-pinned and integrity-protected', () => {
+test('Tone is self-hosted for the production CSP and matches its pinned integrity', async () => {
   const external = scripts.filter(s => s.src && /^(https?:)?\/\//.test(s.src));
-  assert.equal(external.length, 1);
-  assert.equal(external[0].src, 'https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js');
-  assert.equal(external[0].crossorigin, 'anonymous');
-  assert.equal(external[0].integrity, 'sha384-c6Uo4N9c3SOEigMVzP6IshUG1wQ5uMp3xeoQFiHWAQ86joWdgyajkvopySyKy/Z6');
+  assert.equal(external.length, 0);
+  const tone = scripts.find(s => s.src === 'vendor/tone-14.8.49.js');
+  assert.ok(tone);
+  assert.equal(tone.crossorigin, 'anonymous');
+  const data = await readFile(new URL('../vendor/tone-14.8.49.js', import.meta.url));
+  const integrity = `sha384-${createHash('sha384').update(data).digest('base64')}`;
+  assert.equal(integrity, 'sha384-c6Uo4N9c3SOEigMVzP6IshUG1wQ5uMp3xeoQFiHWAQ86joWdgyajkvopySyKy/Z6');
+  assert.equal(tone.integrity, integrity);
 });
 test('self-hosted analytics matches its pinned integrity and retains the endpoint', async () => {
   const analytics = scripts.find(s => s['data-goatcounter']);
